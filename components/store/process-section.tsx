@@ -1,0 +1,67 @@
+export function ProcessSection() {
+  const steps = [
+    {
+      number: "01",
+      title: "Browse",
+      description: "Explore 200+ premium pieces across 7 carefully curated categories.",
+      icon: (
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M2 8h12M7 4l5 4-5 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ),
+    },
+    {
+      number: "02",
+      title: "Enquire",
+      description: "Fill out our simple form for any piece. Takes less than a minute, no commitment required.",
+      icon: (
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <rect x="2" y="3" width="12" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M5 7h6M5 10h4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+    {
+      number: "03",
+      title: "Receive",
+      description: "Our team responds within 24 hours with pricing, availability and bespoke delivery options.",
+      icon: (
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8l4 4 6-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ),
+    },
+  ];
+
+  return (
+    <section className="px-5 pb-16 md:px-12 md:pb-24">
+      <div className="mb-11">
+        <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#8c847a]">
+          How It Works
+        </div>
+        <div className="font-[var(--font-cormorant)] text-[clamp(30px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
+          Simple by design
+        </div>
+      </div>
+      <div className="grid overflow-hidden rounded-[28px] border border-[#eae0d2] lg:grid-cols-3">
+        {steps.map((step, index) => (
+          <div
+            key={step.number}
+            className={`group bg-[#faf9f7] px-8 py-12 transition hover:bg-[#f4ede3] md:px-11 md:py-[52px] ${
+              index < steps.length - 1 ? "border-b border-[#eae0d2] lg:border-b-0 lg:border-r" : ""
+            }`}
+          >
+            <div className="mb-7 font-[var(--font-cormorant)] text-[80px] leading-none font-light italic text-[#eae0d2] transition group-hover:text-[#d6cab8]">
+              {step.number}
+            </div>
+            <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full border border-[#d6cab8] text-[#8c847a] transition group-hover:-rotate-[15deg] group-hover:border-[#0d0c0b] group-hover:text-[#0d0c0b]">
+              {step.icon}
+            </div>
+            <div className="mb-3 font-[var(--font-cormorant)] text-2xl text-[#0d0c0b]">{step.title}</div>
+            <p className="text-sm leading-[1.7] font-light text-[#5c5348]">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
