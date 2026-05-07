@@ -10,10 +10,10 @@ export function StoreFooter({ onNav }: Props) {
       <div className="mb-16 grid gap-10 md:grid-cols-2 xl:grid-cols-[2.2fr_1fr_1fr_1fr] xl:gap-14">
         <div>
           <div className="mb-[14px] flex items-center gap-2.5 font-[var(--font-cormorant)] text-[28px] tracking-[0.12em]">
-            <span className="flex h-[30px] w-[30px] items-center justify-center rounded-full border border-[rgba(255,255,255,.2)] text-[10px] tracking-[0.06em] text-[rgba(255,255,255,.4)]">
-              A
+            <span className="flex h-[30px] w-[30px] items-center justify-center rounded-full border border-[rgba(255,255,255,.2)] text-[9px] tracking-[0.06em] text-[rgba(255,255,255,.4)]">
+              GR
             </span>
-            AURÉ
+            GREEN ROOTS
           </div>
           <p className="max-w-[290px] text-[13.5px] leading-[1.75] font-light text-[rgba(255,255,255,.32)]">
             Premium clothing and accessories, available by enquiry. Every piece is curated with intention and enduring craft.
@@ -61,7 +61,7 @@ export function StoreFooter({ onNav }: Props) {
 
         <div>
           <FooterColumn title="Contact">
-            <span className="text-[13.5px] font-light text-[rgba(255,255,255,.45)]">hello@aure.co</span>
+            <span className="text-[13.5px] font-light text-[rgba(255,255,255,.45)]">hello@greenroots.co</span>
             <span className="text-[13.5px] font-light text-[rgba(255,255,255,.45)]">+1 (800) 287-3400</span>
             <span className="text-[13.5px] font-light text-[rgba(255,255,255,.45)]">Mon-Fri, 9am-6pm EST</span>
           </FooterColumn>
@@ -78,7 +78,7 @@ export function StoreFooter({ onNav }: Props) {
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[rgba(255,255,255,.06)] pt-7">
-        <span className="text-xs font-light text-[rgba(255,255,255,.2)]">© 2026 AURÉ. All rights reserved.</span>
+        <span className="text-xs font-light text-[rgba(255,255,255,.2)]">© 2026 Green Roots. All rights reserved.</span>
         <span className="text-xs font-light text-[rgba(255,255,255,.2)]">Crafted with care for quality.</span>
       </div>
     </footer>

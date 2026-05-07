@@ -15,8 +15,8 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "AURÉ - Premium Collection",
-  description: "Replica storefront built with Next.js 15 and Tailwind CSS.",
+  title: "Green Roots - Premium Collection",
+  description: "Green Roots — premium clothing, accessories, and gifts available by enquiry.",
 };
 
 export default function RootLayout({

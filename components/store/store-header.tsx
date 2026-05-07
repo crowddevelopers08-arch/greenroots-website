@@ -51,10 +51,10 @@ export function StoreHeader({ activeCategory, onNav, onSearch }: Props) {
           onClick={() => handleNav(null, null)}
           className="flex items-center gap-2 font-[var(--font-cormorant)] text-[18px] font-normal uppercase tracking-[0.12em] sm:gap-2.5 sm:text-[21px] sm:tracking-[0.15em]"
         >
-          <span className="flex h-7 w-7 items-center justify-center rounded-full border border-current text-[10px] tracking-[0.08em] opacity-60">
-            A
+          <span className="flex h-7 w-7 items-center justify-center rounded-full border border-current text-[9px] tracking-[0.08em] opacity-60">
+            GR
           </span>
-          AURÉ
+          GREEN ROOTS
         </button>
 
         <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center xl:flex">
