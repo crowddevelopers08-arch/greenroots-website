@@ -14,20 +14,20 @@ export function EditorialSection({ onNav }: Props) {
             Featured Collection
           </div>
           <h2 className="font-[var(--font-cormorant)] text-[clamp(36px,4vw,60px)] leading-[1.04] font-light tracking-[-0.01em] text-white">
-            The Art
+            Travel
             <br />
-            of <em className="text-[rgba(255,255,255,.45)]">Leather</em>
+            in <em className="text-[rgba(255,255,255,.45)]">Style</em>
             <br />
-            Craft
+            Always
           </h2>
           <p className="mt-5 max-w-[320px] text-[14.5px] leading-[1.7] font-light text-[rgba(255,255,255,.4)]">
-            Handcrafted bags and accessories using full-grain leather sourced from Europe&apos;s finest tanneries. Each piece tells a story.
+            From Delsey Paris trolleys to Wildcraft backpacks — premium travel companions handpicked for corporate gifting and everyday use.
           </p>
           <button
             onClick={() => onNav("Bags", null)}
             className="mt-12 inline-flex w-fit items-center gap-2.5 rounded-full bg-white px-[26px] py-[13px] text-[13px] font-semibold text-[#0d0c0b] transition hover:-translate-y-0.5 hover:bg-[#f4ede3] hover:shadow-[var(--shadow-2)]"
           >
-            Shop Bags
+            Explore Bags
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
               <path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

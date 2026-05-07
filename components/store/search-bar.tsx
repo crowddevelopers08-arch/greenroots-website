@@ -52,7 +52,7 @@ export function SearchBar({ open, onClose, onNav }: Props) {
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Search - Bags, Watches, Sneakers..."
+          placeholder="Search - Bags, Electronics, Apparel, Gifts..."
           className="min-w-0 flex-1 rounded-full border-[1.5px] border-[#eae0d2] bg-[#f4ede3] px-[22px] py-3 text-[15px] outline-none transition focus:border-[#b8a898] focus:bg-[#faf9f7]"
         />
         <button onClick={onClose} className="px-2 py-2 text-[13.5px] font-medium text-[#8c847a] sm:px-3">

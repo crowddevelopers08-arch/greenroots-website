@@ -74,7 +74,7 @@ export function Storefront() {
               </button>
             </div>
             <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-              {PRODS.Bags.slice(0, 4).map((product, index) => (
+              {PRODS["Bags"].slice(0, 4).map((product, index) => (
                 <ProductCard
                   key={product.id}
                   product={product}

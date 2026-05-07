@@ -25,24 +25,24 @@ function upgradeImage(url: string) {
 const HERO_SLIDE_CONFIGS: HeroSlideConfig[] = [
   {
     cat: "Bags",
-    productName: "Structured Tote",
-    eyebrow: "Featured Collection - Hand Bags",
-    title: ["Structured", "Tote", "for", "departure."],
-    note: "Crafted for city movement with pebbled leather, balanced proportions, and a quiet luxury silhouette.",
+    productName: "Wildcraft",
+    eyebrow: "Featured Collection - Backpacks",
+    title: ["Wildcraft", "Campus", "for", "adventure."],
+    note: "Engineered for the everyday explorer — 30L capacity, padded laptop sleeve, and ergonomic shoulder straps built to last.",
   },
   {
-    cat: "Watches",
-    productName: "Minimalist Field Watch",
-    eyebrow: "New Arrival - Analog Watches",
-    title: ["Minimalist", "Field", "watch", "rhythm."],
-    note: "A refined everyday timepiece with crisp detailing, sapphire clarity, and a leather strap that ages beautifully.",
+    cat: "Electronics",
+    productName: "JBL B2B",
+    eyebrow: "New Arrival - Earbuds",
+    title: ["JBL Pure", "Bass", "goes", "wireless."],
+    note: "24-hour total battery life, IPX5 sweat resistance, and JBL's signature deep bass sound in a truly wireless form.",
   },
   {
-    cat: "Shoes",
-    productName: "Leather Runner",
-    eyebrow: "Curated Drop - Sneakers",
-    title: ["Leather", "Runner", "for", "momentum."],
-    note: "Full-grain leather, responsive comfort, and a sport-luxury profile made to move from daywear to travel.",
+    cat: "Apparel",
+    productName: "Crocodile Polo",
+    eyebrow: "Curated Drop - Polo Shirts",
+    title: ["Crocodile", "Polo", "for", "presence."],
+    note: "Premium pique knit, embroidered heritage logo, and a classic three-button placket — corporate gifting elevated.",
   },
 ];
 

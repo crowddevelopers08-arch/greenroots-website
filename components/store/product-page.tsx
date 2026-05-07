@@ -120,17 +120,69 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-        {filteredProducts.map((product, index) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            category={category}
-            delay={index * 55}
-            onEnquiry={onEnquiry}
-          />
-        ))}
-      </div>
+      {subcategory === "Diva & La Opala" ? (
+        <div className="overflow-hidden rounded-[24px] border border-[#ebe2d6] bg-white shadow-[0_4px_32px_rgba(0,0,0,.06)]">
+          <div className="flex items-center gap-3 border-b border-[#ebe2d6] bg-[#fcfaf7] px-5 py-3">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-[#8c847a]">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <polyline points="14,2 14,8 20,8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className="text-[12.5px] font-medium text-[#5c5348]">Diva & La Opala — 2024 Catalogue</span>
+            <a
+              href="/catalogues/diva-la-opala-2024.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-[#dfd2c1] bg-white px-4 py-1.5 text-[11.5px] font-medium text-[#5c5348] transition hover:border-[#b8a898] hover:text-[#0d0c0b]"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                <polyline points="7 10 12 15 17 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+              </svg>
+              Download
+            </a>
+          </div>
+          <object
+            data="/catalogues/diva-la-opala-2024.pdf"
+            type="application/pdf"
+            className="h-[85vh] w-full"
+          >
+            <div className="flex h-[85vh] flex-col items-center justify-center gap-6 bg-[#fcfaf7] px-6 text-center">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="text-[#c4b49e]">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <polyline points="14,2 14,8 20,8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <div>
+                <div className="font-[var(--font-cormorant)] text-[26px] text-[#0d0c0b]">Diva & La Opala Catalogue</div>
+                <div className="mt-2 text-[13px] text-[#8c847a]">Your browser cannot display this PDF inline.</div>
+              </div>
+              <a
+                href="/catalogues/diva-la-opala-2024.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-[#0d0c0b] px-7 py-3.5 text-[13px] font-medium text-white transition hover:-translate-y-0.5"
+              >
+                Open Catalogue PDF
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+            </div>
+          </object>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          {filteredProducts.map((product, index) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              category={category}
+              delay={index * 55}
+              onEnquiry={onEnquiry}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
