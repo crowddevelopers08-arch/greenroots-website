@@ -38,7 +38,7 @@ export function ProcessSection() {
   return (
     <section className="px-5 pb-12 md:px-12 md:pb-16">
       <Reveal animation="fadeUp" duration={600} className="mb-11">
-        <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#8c847a]">
+        <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
           How It Works
         </div>
         <div className="font-[var(--font-cormorant)] text-[clamp(30px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
@@ -60,11 +60,11 @@ export function ProcessSection() {
             <div className="mb-7 font-[var(--font-cormorant)] text-[80px] leading-none font-light italic text-[#eae0d2] transition group-hover:text-[#d6cab8]">
               {step.number}
             </div>
-            <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full border border-[#d6cab8] text-[#8c847a] transition group-hover:-rotate-[15deg] group-hover:border-[#0d0c0b] group-hover:text-[#0d0c0b]">
+            <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full border border-[#c8baa8] text-[#5c5348] transition group-hover:-rotate-[15deg] group-hover:border-[#0d0c0b] group-hover:text-[#0d0c0b]">
               {step.icon}
             </div>
             <div className="mb-3 font-[var(--font-cormorant)] text-2xl text-[#0d0c0b]">{step.title}</div>
-            <p className="text-sm leading-[1.7] font-light text-[#5c5348]">{step.description}</p>
+            <p className="text-[14px] leading-[1.75] text-[#3d3530]">{step.description}</p>
           </Reveal>
         ))}
       </div>

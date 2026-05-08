@@ -32,7 +32,7 @@ export function EditorialElectronics({ onNav }: Props) {
 
       <Reveal animation="slideRight" duration={700} className="flex flex-col justify-between px-8 py-14 md:px-16 md:py-[72px]">
         <div>
-          <div className="mb-7 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8c847a]">
+          <div className="mb-7 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#5c5348]">
             New Arrivals
           </div>
           <h2 className="font-[var(--font-cormorant)] text-[clamp(36px,4vw,60px)] leading-[1.04] font-light tracking-[-0.01em] text-[#0d0c0b]">
@@ -42,7 +42,7 @@ export function EditorialElectronics({ onNav }: Props) {
             <br />
             forward
           </h2>
-          <p className="mt-5 max-w-[320px] text-[14.5px] leading-[1.7] font-light text-[#5c5348]">
+          <p className="mt-5 max-w-[320px] text-[14.5px] leading-[1.75] text-[#3d3530]">
             JBL, Noise, Blaupunkt and more — premium audio and electronics curated for corporate gifting and personal use.
           </p>
 
@@ -56,7 +56,7 @@ export function EditorialElectronics({ onNav }: Props) {
                 <div className="font-[var(--font-cormorant)] text-[28px] leading-none font-light text-[#0d0c0b]">
                   {item.value}
                 </div>
-                <div className="mt-1 text-[10px] uppercase tracking-[0.12em] text-[#8c847a]">
+                <div className="mt-1 text-[10px] uppercase tracking-[0.12em] text-[#5c5348]">
                   {item.label}
                 </div>
               </div>

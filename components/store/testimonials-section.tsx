@@ -36,7 +36,7 @@ export function TestimonialsSection() {
     <section className="px-5 pb-12 md:px-12 md:pb-16">
       <Reveal animation="fadeUp" duration={600} className="mb-11 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
         <div>
-          <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#8c847a]">
+          <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
             What Clients Say
           </div>
           <div className="font-[var(--font-cormorant)] text-[clamp(30px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
@@ -66,7 +66,7 @@ export function TestimonialsSection() {
           >
             <div>
               <div className="mb-5">{STARS}</div>
-              <p className="text-[14px] leading-[1.8] font-light text-[#5c5348]">
+              <p className="text-[14px] leading-[1.8] text-[#3d3530]">
                 &ldquo;{t.quote}&rdquo;
               </p>
             </div>
@@ -76,7 +76,7 @@ export function TestimonialsSection() {
               </div>
               <div>
                 <div className="text-[13px] font-semibold text-[#0d0c0b]">{t.name}</div>
-                <div className="text-[11.5px] text-[#8c847a]">{t.role}</div>
+                <div className="text-[11.5px] text-[#5c5348]">{t.role}</div>
               </div>
             </div>
           </Reveal>

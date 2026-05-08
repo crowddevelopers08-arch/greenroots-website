@@ -13,7 +13,7 @@ export function CategoryTiles({ current, onNav }: Props) {
     <section className="px-5 pt-8 md:px-12 md:pt-12">
       <Reveal animation="fadeUp" duration={600} className="mb-11 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end sm:gap-5">
         <div>
-          <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#8c847a]">
+          <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
             Browse
           </div>
           <div className="font-[var(--font-cormorant)] text-[clamp(30px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
@@ -54,7 +54,7 @@ export function CategoryTiles({ current, onNav }: Props) {
             </div>
             <div className="absolute inset-x-0 bottom-0 px-[14px] pb-5 pt-[18px]">
               <div className="mb-1 text-[13px] font-medium tracking-[0.01em] text-white">{category}</div>
-              <div className="text-[10.5px] tracking-[0.04em] text-[rgba(255,255,255,.5)]">{config.cnt} pieces</div>
+              <div className="text-[10.5px] tracking-[0.04em] text-[rgba(255,255,255,.78)]">{config.cnt} pieces</div>
             </div>
             <div className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-[#b8975a] transition group-hover:scale-x-100" />
           </Reveal>

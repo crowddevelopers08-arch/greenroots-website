@@ -35,7 +35,7 @@ function StatCard({ stat, active, index }: { stat: typeof STATS[0]; active: bool
       <div className="font-[var(--font-cormorant)] text-[clamp(44px,5.5vw,72px)] leading-none font-light tracking-[-0.02em] text-[#0d0c0b]">
         {count}{stat.suffix}
       </div>
-      <div className="mt-2.5 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#8c847a] transition group-hover:text-[#5c5348]">
+      <div className="mt-2.5 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348] transition group-hover:text-[#0d0c0b]">
         {stat.label}
       </div>
     </div>

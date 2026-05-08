@@ -65,7 +65,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
             justifyContent: "center",
             fontSize: 13,
             letterSpacing: "0.1em",
-            color: "rgba(255,255,255,0.55)",
+            color: "rgba(255,255,255,0.78)",
             animation: "scaleIn 0.7s cubic-bezier(.34,1.56,.64,1) 0.1s both",
           }}
         >
@@ -95,7 +95,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
             fontSize: 10,
             letterSpacing: "0.24em",
             textTransform: "uppercase",
-            color: "rgba(255,255,255,0.42)",
+            color: "rgba(255,255,255,0.72)",
             animation: "fadeUp 0.6s ease 0.9s both",
           }}
         >
@@ -133,7 +133,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
           fontSize: 10,
           letterSpacing: "0.18em",
           textTransform: "uppercase",
-          color: "rgba(255,255,255,0.2)",
+          color: "rgba(255,255,255,0.58)",
           animation: "fadeUp 0.6s ease 1.2s both",
         }}
       >

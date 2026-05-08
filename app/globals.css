@@ -140,6 +140,18 @@ select {
   to   { clip-path: inset(0 0 0% 0);   transform: translateY(0);    }
 }
 
+/* ── FAB pop-in (floating action buttons) ── */
+@keyframes fabPopIn {
+  from { opacity: 0; transform: scale(0) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0);    }
+}
+
+@keyframes fabRing {
+  0%   { transform: scale(1);   opacity: 0.55; }
+  70%  { transform: scale(1.9); opacity: 0;    }
+  100% { transform: scale(1.9); opacity: 0;    }
+}
+
 /* ── Ambient ── */
 @keyframes floatY {
   0%, 100% { transform: translateY(0);    }

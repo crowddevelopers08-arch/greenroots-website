@@ -17,7 +17,7 @@ export function CtaSection({ onNav }: Props) {
         <Reveal animation="fadeInBlur" duration={700}>
           <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[rgba(255,255,255,.1)] bg-[rgba(255,255,255,.06)] px-5 py-2">
             <span className="h-1.5 w-1.5 rounded-full bg-[#b8975a]" />
-            <span className="text-[10.5px] font-semibold uppercase tracking-[0.2em] text-[rgba(255,255,255,.75)]">
+            <span className="text-[10.5px] font-semibold uppercase tracking-[0.2em] text-[rgba(255,255,255,.90)]">
               Corporate Gifting
             </span>
           </div>
@@ -25,10 +25,10 @@ export function CtaSection({ onNav }: Props) {
           <h2 className="mx-auto mb-5 max-w-[640px] font-[var(--font-cormorant)] text-[clamp(36px,5vw,72px)] leading-[1.02] font-light tracking-[-0.02em] text-white">
             Ready to gift
             <br />
-            <em className="text-[rgba(255,255,255,.65)]">with intention?</em>
+            <em className="text-[rgba(255,255,255,.88)]">with intention?</em>
           </h2>
 
-          <p className="mx-auto mb-10 max-w-[460px] text-[14.5px] leading-[1.75] font-light text-[rgba(255,255,255,.72)]">
+          <p className="mx-auto mb-10 max-w-[460px] text-[14.5px] leading-[1.75] text-[rgba(255,255,255,.92)]">
             Browse our full catalogue and enquire on any piece. Our team responds within 24 hours with pricing, availability and delivery options.
           </p>
 
@@ -60,7 +60,7 @@ export function CtaSection({ onNav }: Props) {
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" className="shrink-0 text-[#b8975a]">
                   <path d={item.icon} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span className="text-[12px] font-medium text-[rgba(255,255,255,.65)]">{item.label}</span>
+                <span className="text-[12px] font-medium text-[rgba(255,255,255,.85)]">{item.label}</span>
               </div>
             ))}
           </div>

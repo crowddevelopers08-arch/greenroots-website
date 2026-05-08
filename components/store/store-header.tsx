@@ -166,7 +166,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch }: Props) {
       >
         <div className="mb-4 flex items-center justify-between gap-3">
           <div>
-            <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8c847a]">
+            <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
               Navigation
             </div>
             <div className="font-[var(--font-cormorant)] text-[28px] leading-none text-[#0d0c0b]">

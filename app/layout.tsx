@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Cormorant_Garamond, Outfit } from "next/font/google";
 import "./globals.css";
 
-const dmSans = DM_Sans({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-outfit",
 });
 
 const cormorant = Cormorant_Garamond({
@@ -25,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${cormorant.variable}`}>
-      <body className="font-[var(--font-dm-sans)] antialiased">{children}</body>
+    <html lang="en" className={`${outfit.variable} ${cormorant.variable}`}>
+      <body className="font-[var(--font-outfit)] antialiased">{children}</body>
     </html>
   );
 }

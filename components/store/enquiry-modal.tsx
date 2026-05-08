@@ -6,14 +6,15 @@ import { type CategoryKey, type Product } from "@/lib/store-data";
 type Props = {
   product: Product | null;
   category: CategoryKey | null;
+  bookOpen?: boolean;
   onClose: () => void;
 };
 
-export function EnquiryModal({ product, category, onClose }: Props) {
+export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
   const [form, setForm] = useState({ name: "", phone: "", email: "", msg: "" });
   const [done, setDone] = useState(false);
 
-  const isOpen = Boolean(product);
+  const isOpen = Boolean(product) || Boolean(bookOpen);
 
   useEffect(() => {
     if (!isOpen) {
@@ -23,7 +24,9 @@ export function EnquiryModal({ product, category, onClose }: Props) {
   }, [isOpen]);
 
   const message = useMemo(
-    () => `Thank you, ${form.name || "there"}! Your request for ${product?.name ?? "this product"} has been received. We'll be in touch within 24 hours.`,
+    () => product
+      ? `Thank you, ${form.name || "there"}! Your request for ${product.name} has been received. We'll be in touch within 24 hours.`
+      : `Thank you, ${form.name || "there"}! Your booking request has been received. We'll confirm your appointment within 24 hours.`,
     [form.name, product]
   );
 
@@ -52,10 +55,10 @@ export function EnquiryModal({ product, category, onClose }: Props) {
             <div className="flex items-start justify-between px-9 pt-8">
               <div>
                 <div className="mb-1.5 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-[#8c847a]">
-                  Product Enquiry
+                  {product ? "Product Enquiry" : "Book Appointment"}
                 </div>
                 <div className="font-[var(--font-cormorant)] text-[30px] tracking-[-0.01em] text-[#0d0c0b]">
-                  Request Details
+                  {product ? "Request Details" : "Get in Touch"}
                 </div>
               </div>
               <button
@@ -119,13 +122,15 @@ export function EnquiryModal({ product, category, onClose }: Props) {
                   className="rounded-xl border-[1.5px] border-[#eae0d2] bg-[#faf9f7] px-4 py-3 text-[13.5px] outline-none transition placeholder:text-[#b8a898] focus:border-[#252320]"
                 />
               </Field>
-              <Field label="Product">
-                <input
-                  readOnly
-                  value={product?.name ?? ""}
-                  className="rounded-xl border-[1.5px] border-[#eae0d2] bg-[#f4ede3] px-4 py-3 text-[13.5px] text-[#5c5348] outline-none"
-                />
-              </Field>
+              {product && (
+                <Field label="Product">
+                  <input
+                    readOnly
+                    value={product.name}
+                    className="rounded-xl border-[1.5px] border-[#eae0d2] bg-[#f4ede3] px-4 py-3 text-[13.5px] text-[#5c5348] outline-none"
+                  />
+                </Field>
+              )}
               <Field label="Message">
                 <textarea
                   value={form.msg}
@@ -140,7 +145,7 @@ export function EnquiryModal({ product, category, onClose }: Props) {
                   <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
-              <p className="text-center text-[11px] leading-[1.55] text-[#8c847a]">
+              <p className="text-center text-[12px] leading-[1.55] text-[#5c5348]">
                 We respond within 24 hours · No commitment required
               </p>
             </form>
@@ -153,7 +158,7 @@ export function EnquiryModal({ product, category, onClose }: Props) {
               </svg>
             </div>
             <h2 className="mb-3 font-[var(--font-cormorant)] text-[32px]">Enquiry Sent</h2>
-            <p className="mb-8 text-[15px] leading-[1.7] font-light text-[#5c5348]">{message}</p>
+            <p className="mb-8 text-[15px] leading-[1.7] text-[#3d3530]">{message}</p>
             <button
               onClick={onClose}
               className="rounded-full border-[1.5px] border-[#d6cab8] px-9 py-3 text-[13.5px] font-medium text-[#0d0c0b] transition hover:border-[#5c5348]"

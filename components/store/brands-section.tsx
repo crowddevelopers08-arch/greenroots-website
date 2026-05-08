@@ -13,7 +13,7 @@ export function BrandsSection() {
   return (
     <section className="pb-12 pt-6 md:pb-16 md:pt-8">
       <Reveal animation="fadeUp" duration={600} className="mb-6 px-5 md:px-12">
-        <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#8c847a]">
+        <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
           Our Portfolio
         </div>
         <div className="font-[var(--font-cormorant)] text-[clamp(30px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
@@ -43,7 +43,7 @@ export function BrandsSection() {
           {[...row].reverse().map((brand, index) => (
             <div
               key={`${brand}-r-${index}`}
-              className="inline-flex shrink-0 items-center rounded-full border border-[#e4d9cb] bg-[#faf9f7] px-6 py-3 text-[12.5px] font-medium tracking-[0.04em] text-[#8c847a]"
+              className="inline-flex shrink-0 items-center rounded-full border border-[#d6c8b4] bg-[#faf9f7] px-6 py-3 text-[12.5px] font-medium tracking-[0.04em] text-[#5c5348]"
             >
               {brand}
             </div>

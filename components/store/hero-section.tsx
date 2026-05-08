@@ -108,7 +108,7 @@ export function HeroSection({ onNav }: Props) {
             >
               <div className="mb-5 flex items-center gap-[14px] sm:mb-6">
                 <span className="h-px w-9 bg-[rgba(255,255,255,.4)]" />
-                <span className="text-[10.5px] font-medium uppercase tracking-[0.2em] text-[rgba(255,255,255,.75)]">
+                <span className="text-[10.5px] font-medium uppercase tracking-[0.2em] text-[rgba(255,255,255,.88)]">
                   {activeSlide.eyebrow}
                 </span>
               </div>
@@ -120,13 +120,13 @@ export function HeroSection({ onNav }: Props) {
                 <br />
                 <span className="text-[rgba(255,255,255,.88)]">{activeSlide.title[2]}</span>
                 <br />
-                <em className="text-[rgba(255,255,255,.58)]">{activeSlide.title[3]}</em>
+                <em className="text-[rgba(255,255,255,.82)]">{activeSlide.title[3]}</em>
               </h1>
 
-              <p className="mb-3 max-w-[470px] text-[14px] leading-[1.7] font-light text-[rgba(255,255,255,.78)] sm:text-[15.5px]">
+              <p className="mb-3 max-w-[470px] text-[14px] leading-[1.7] text-[rgba(255,255,255,.95)] sm:text-[15.5px]">
                 {activeSlide.note}
               </p>
-              <p className="mb-7 max-w-[430px] text-[12px] leading-[1.8] uppercase tracking-[0.14em] text-[rgba(255,255,255,.62)] sm:mb-8">
+              <p className="mb-7 max-w-[430px] text-[12px] leading-[1.8] uppercase tracking-[0.14em] text-[rgba(255,255,255,.80)] sm:mb-8">
                 {activeSlide.desc}
               </p>
 
@@ -148,7 +148,7 @@ export function HeroSection({ onNav }: Props) {
                 </button>
               </div>
 
-              <div className="mt-8 flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-[rgba(255,255,255,.4)]">
+              <div className="mt-8 flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-[rgba(255,255,255,.68)]">
                 <span>
                   {String(activeIndex + 1).padStart(2, "0")} / {String(HERO_SLIDES.length).padStart(2, "0")}
                 </span>
@@ -192,7 +192,7 @@ export function HeroSection({ onNav }: Props) {
                     </div>
                     <div className="px-3 py-3">
                       <div className="text-[12px] font-medium text-white">{slide.productName}</div>
-                      <div className="mt-0.5 text-[10px] uppercase tracking-[0.12em] text-[rgba(255,255,255,.5)]">
+                      <div className="mt-0.5 text-[10px] uppercase tracking-[0.12em] text-[rgba(255,255,255,.75)]">
                         {slide.cat}
                       </div>
                     </div>
@@ -245,7 +245,7 @@ export function HeroSection({ onNav }: Props) {
                       </div>
                     </div>
                     <div className="flex items-center justify-between gap-3">
-                      <div className="text-[10.5px] text-[#8c847a]">{slide.cat}</div>
+                      <div className="text-[10.5px] text-[#5c5348]">{slide.cat}</div>
                       {slide.badge ? (
                         <div className="rounded-full bg-[#ece5d8] px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#675d50]">
                           {slide.badge}
@@ -268,7 +268,7 @@ export function HeroSection({ onNav }: Props) {
               <div className="mb-0.5 font-[var(--font-cormorant)] text-4xl leading-none font-light text-white">
                 240+
               </div>
-              <div className="text-[10px] uppercase tracking-[0.1em] text-[rgba(255,255,255,.5)]">
+              <div className="text-[10px] uppercase tracking-[0.1em] text-[rgba(255,255,255,.72)]">
                 Curated pieces
               </div>
             </div>
@@ -278,7 +278,7 @@ export function HeroSection({ onNav }: Props) {
 
       <div
         style={{ animation: "fadeUp .6s var(--ease) .8s both" }}
-        className="absolute bottom-6 left-4 z-[3] flex items-center gap-3 text-[10.5px] uppercase tracking-[0.14em] text-[rgba(255,255,255,.35)] sm:bottom-8 sm:left-5 md:left-8 xl:left-12"
+        className="absolute bottom-6 left-4 z-[3] flex items-center gap-3 text-[10.5px] uppercase tracking-[0.14em] text-[rgba(255,255,255,.65)] sm:bottom-8 sm:left-5 md:left-8 xl:left-12"
       >
         <div className="relative h-10 w-px overflow-hidden bg-[rgba(255,255,255,.2)]">
           <span

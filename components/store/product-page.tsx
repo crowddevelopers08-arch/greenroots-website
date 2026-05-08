@@ -73,7 +73,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
         </div>
 
         <div className="relative z-[1] px-5 py-8 md:px-8 md:py-9 lg:px-10">
-          <div className="mb-8 flex flex-wrap items-center gap-2 text-[12.5px] text-[#8c847a]">
+          <div className="mb-8 flex flex-wrap items-center gap-2 text-[12.5px] text-[#5c5348]">
             {crumbs.map((crumb, index) => (
               <div key={`${crumb.label}-${index}`} className="flex items-center gap-2">
                 {index > 0 ? <span className="text-[#d6cab8]">›</span> : null}
@@ -90,7 +90,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
 
           <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-start">
             <div className="max-w-[760px]">
-              <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#8c847a]">
+              <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#5c5348]">
                 {category}
               </div>
 
@@ -98,14 +98,14 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                 {subcategory && subcategory !== "All" ? subcategory : category}
               </div>
 
-              <div className="mt-3 max-w-[540px] text-[13px] leading-[1.75] text-[#73685d] sm:text-[14px]">
+              <div className="mt-3 max-w-[540px] text-[13px] leading-[1.75] text-[#3d3530] sm:text-[14px]">
                 {sortedProducts.length} pieces · Enquire for pricing & availability
               </div>
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row md:flex-col md:items-end">
               <div className="rounded-[22px] border border-white/70 bg-white/80 px-5 py-4 shadow-[0_10px_30px_rgba(170,150,130,.08)] backdrop-blur-[6px]">
-                <div className="text-[10px] uppercase tracking-[0.14em] text-[#8c847a]">
+                <div className="text-[10px] uppercase tracking-[0.14em] text-[#5c5348]">
                   Available
                 </div>
                 <div className="mt-1 font-[var(--font-cormorant)] text-[30px] leading-none text-[#0d0c0b]">
@@ -216,7 +216,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               </svg>
               <div>
                 <div className="font-[var(--font-cormorant)] text-[26px] text-[#0d0c0b]">Diva & La Opala Catalogue</div>
-                <div className="mt-2 text-[13px] text-[#8c847a]">Your browser cannot display this PDF inline.</div>
+                <div className="mt-2 text-[13px] text-[#5c5348]">Your browser cannot display this PDF inline.</div>
               </div>
               <a
                 href="/catalogues/diva-la-opala-2024.pdf"

@@ -12,17 +12,17 @@ export function EditorialSection({ onNav }: Props) {
         <div className="pointer-events-none absolute right-0 top-0 hidden h-full w-px bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,.08)_20%,rgba(255,255,255,.08)_80%,transparent)] lg:block" />
         <Reveal animation="slideRight" duration={700}>
           <div>
-            <div className="mb-7 text-[10px] font-semibold uppercase tracking-[0.2em] text-[rgba(255,255,255,.55)]">
+            <div className="mb-7 text-[10px] font-semibold uppercase tracking-[0.2em] text-[rgba(255,255,255,.80)]">
               Featured Collection
             </div>
             <h2 className="font-[var(--font-cormorant)] text-[clamp(36px,4vw,60px)] leading-[1.04] font-light tracking-[-0.01em] text-white">
               Travel
               <br />
-              in <em className="text-[rgba(255,255,255,.45)]">Style</em>
+              in <em className="text-[rgba(255,255,255,.78)]">Style</em>
               <br />
               Always
             </h2>
-            <p className="mt-5 max-w-[320px] text-[14.5px] leading-[1.7] font-light text-[rgba(255,255,255,.7)]">
+            <p className="mt-5 max-w-[320px] text-[14.5px] leading-[1.75] text-[rgba(255,255,255,.92)]">
               From Delsey Paris trolleys to Wildcraft backpacks — premium travel companions handpicked for corporate gifting and everyday use.
             </p>
             <button

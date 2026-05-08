@@ -22,20 +22,20 @@ export function StoreFooter({ onNav }: Props) {
       <div className="mb-16 grid gap-10 md:grid-cols-2 xl:grid-cols-[2.2fr_1fr_1fr_1fr] xl:gap-14">
         <div>
           <div className="mb-[14px] flex items-center gap-2.5 font-[var(--font-cormorant)] text-[28px] tracking-[0.12em]">
-            <span className="flex h-[30px] w-[30px] items-center justify-center rounded-full border border-[rgba(255,255,255,.2)] text-[9px] tracking-[0.06em] text-[rgba(255,255,255,.4)]">
+            <span className="flex h-[30px] w-[30px] items-center justify-center rounded-full border border-[rgba(255,255,255,.3)] text-[9px] tracking-[0.06em] text-[rgba(255,255,255,.68)]">
               GR
             </span>
             GREEN ROOTS
           </div>
-          <p className="max-w-[290px] text-[13.5px] leading-[1.75] font-light text-[rgba(255,255,255,.58)]">
+          <p className="max-w-[290px] text-[13.5px] leading-[1.75] text-[rgba(255,255,255,.88)]">
             Premium clothing and accessories, available by enquiry. Every piece is curated with intention and enduring craft.
           </p>
           <div className="mt-9">
-            <div className="mb-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-[rgba(255,255,255,.5)]">
+            <div className="mb-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-[rgba(255,255,255,.75)]">
               Stay updated
             </div>
             {subscribed ? (
-              <div className="flex items-center gap-2 rounded-full border border-[rgba(255,255,255,.1)] bg-[rgba(255,255,255,.06)] px-5 py-3 text-[12.5px] text-[rgba(255,255,255,.6)]">
+              <div className="flex items-center gap-2 rounded-full border border-[rgba(255,255,255,.15)] bg-[rgba(255,255,255,.08)] px-5 py-3 text-[12.5px] text-[rgba(255,255,255,.85)]">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <path d="M2 7l4 4 6-6" stroke="#b8975a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -80,7 +80,7 @@ export function StoreFooter({ onNav }: Props) {
             <button
               key={category}
               onClick={() => onNav(category, null)}
-              className="text-left text-[13.5px] font-light text-[rgba(255,255,255,.65)] transition hover:text-white"
+              className="text-left text-[13.5px] text-[rgba(255,255,255,.88)] transition hover:text-white"
             >
               {category}
             </button>
@@ -92,7 +92,7 @@ export function StoreFooter({ onNav }: Props) {
             <a
               key={item}
               href={`mailto:hello@greenroots.co?subject=${encodeURIComponent(item)}`}
-              className="text-[13.5px] font-light text-[rgba(255,255,255,.65)] transition hover:text-white"
+              className="text-[13.5px] text-[rgba(255,255,255,.88)] transition hover:text-white"
             >
               {item}
             </a>
@@ -103,17 +103,17 @@ export function StoreFooter({ onNav }: Props) {
           <FooterColumn title="Contact">
             <a
               href="mailto:hello@greenroots.co"
-              className="text-[13.5px] font-light text-[rgba(255,255,255,.65)] transition hover:text-white"
+              className="text-[13.5px] text-[rgba(255,255,255,.88)] transition hover:text-white"
             >
               hello@greenroots.co
             </a>
             <a
               href="tel:+18002873400"
-              className="text-[13.5px] font-light text-[rgba(255,255,255,.65)] transition hover:text-white"
+              className="text-[13.5px] text-[rgba(255,255,255,.88)] transition hover:text-white"
             >
               +1 (800) 287-3400
             </a>
-            <span className="text-[13.5px] font-light text-[rgba(255,255,255,.65)]">Mon–Fri, 9am–6pm IST</span>
+            <span className="text-[13.5px] text-[rgba(255,255,255,.88)]">Mon–Fri, 9am–6pm IST</span>
           </FooterColumn>
           <div className="mt-7">
             <FooterColumn title="Legal">
@@ -121,7 +121,7 @@ export function StoreFooter({ onNav }: Props) {
                 <a
                   key={item}
                   href={`mailto:hello@greenroots.co?subject=${encodeURIComponent(item)}`}
-                  className="text-[13.5px] font-light text-[rgba(255,255,255,.65)] transition hover:text-white"
+                  className="text-[13.5px] text-[rgba(255,255,255,.88)] transition hover:text-white"
                 >
                   {item}
                 </a>
@@ -131,9 +131,9 @@ export function StoreFooter({ onNav }: Props) {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[rgba(255,255,255,.06)] pt-7">
-        <span className="text-xs font-light text-[rgba(255,255,255,.45)]">© 2026 Green Roots. All rights reserved.</span>
-        <span className="text-xs font-light text-[rgba(255,255,255,.45)]">Crafted with care for quality.</span>
+      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[rgba(255,255,255,.1)] pt-7">
+        <span className="text-xs font-light text-[rgba(255,255,255,.68)]">© 2026 Green Roots. All rights reserved.</span>
+        <span className="text-xs font-light text-[rgba(255,255,255,.68)]">Crafted with care for quality.</span>
       </div>
     </footer>
   );
@@ -148,7 +148,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <div className="mb-5 text-[10px] font-semibold uppercase tracking-[0.15em] text-[rgba(255,255,255,.5)]">
+      <div className="mb-5 text-[10px] font-semibold uppercase tracking-[0.15em] text-[rgba(255,255,255,.75)]">
         {title}
       </div>
       <div className="flex flex-col gap-[13px]">{children}</div>
@@ -162,7 +162,7 @@ function SocialIcon({ d, href }: { d: string; href: string }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(255,255,255,.1)] text-[rgba(255,255,255,.4)] transition hover:-translate-y-0.5 hover:border-[rgba(255,255,255,.28)] hover:text-white"
+      className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(255,255,255,.2)] text-[rgba(255,255,255,.68)] transition hover:-translate-y-0.5 hover:border-[rgba(255,255,255,.5)] hover:text-white"
     >
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
         <path d={d} stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
