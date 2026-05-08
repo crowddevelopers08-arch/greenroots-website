@@ -1,5 +1,16 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
 import { CAT, PRODS, type CategoryKey, type Product } from "@/lib/store-data";
 import { ProductCard } from "./product-card";
+
+type SortKey = "default" | "az" | "za";
+
+const SORT_OPTIONS: { key: SortKey; label: string }[] = [
+  { key: "default", label: "Default" },
+  { key: "az", label: "Name A–Z" },
+  { key: "za", label: "Name Z–A" },
+];
 
 type Props = {
   category: CategoryKey;
@@ -9,12 +20,33 @@ type Props = {
 };
 
 export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) {
+  const [sortBy, setSortBy] = useState<SortKey>("default");
+  const [sortOpen, setSortOpen] = useState(false);
+  const sortRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (sortRef.current && !sortRef.current.contains(e.target as Node)) {
+        setSortOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
   const config = CAT[category];
   const allProducts = PRODS[category];
   const filteredProducts =
     subcategory && subcategory !== "All"
       ? allProducts.filter((product) => product.sub === subcategory)
       : allProducts;
+
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
+    if (sortBy === "az") return a.name.localeCompare(b.name);
+    if (sortBy === "za") return b.name.localeCompare(a.name);
+    return 0;
+  });
+
   const subImages = Object.fromEntries(
     config.subs.map((sub) => [
       sub,
@@ -67,7 +99,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               </div>
 
               <div className="mt-3 max-w-[540px] text-[13px] leading-[1.75] text-[#73685d] sm:text-[14px]">
-                {filteredProducts.length} pieces · Enquire for pricing & availability
+                {sortedProducts.length} pieces · Enquire for pricing & availability
               </div>
             </div>
 
@@ -77,16 +109,46 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                   Available
                 </div>
                 <div className="mt-1 font-[var(--font-cormorant)] text-[30px] leading-none text-[#0d0c0b]">
-                  {String(filteredProducts.length).padStart(2, "0")}
+                  {String(sortedProducts.length).padStart(2, "0")}
                 </div>
               </div>
 
-              <button className="inline-flex items-center justify-center gap-2 rounded-full border border-[#dfd2c1] bg-white px-[18px] py-[10px] text-[12.5px] font-medium text-[#5c5348] transition hover:-translate-y-px hover:border-[#b8a898] hover:text-[#0d0c0b]">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 4h10M4 7h6M6 10h2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                </svg>
-                Filter
-              </button>
+              <div ref={sortRef} className="relative">
+                <button
+                  onClick={() => setSortOpen((v) => !v)}
+                  className={`inline-flex items-center justify-center gap-2 rounded-full border px-[18px] py-[10px] text-[12.5px] font-medium transition hover:-translate-y-px hover:text-[#0d0c0b] ${
+                    sortBy !== "default"
+                      ? "border-[#0d0c0b] bg-[#0d0c0b] text-white hover:bg-[#252320]"
+                      : "border-[#dfd2c1] bg-white text-[#5c5348] hover:border-[#b8a898]"
+                  }`}
+                >
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M2 4h10M4 7h6M6 10h2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                  </svg>
+                  {sortBy === "default" ? "Sort" : SORT_OPTIONS.find((o) => o.key === sortBy)?.label}
+                </button>
+
+                {sortOpen && (
+                  <div className="absolute right-0 top-[calc(100%+8px)] z-[50] min-w-[148px] overflow-hidden rounded-[16px] border border-[#e4d9cb] bg-white shadow-[var(--shadow-3)]">
+                    {SORT_OPTIONS.map((option) => (
+                      <button
+                        key={option.key}
+                        onClick={() => { setSortBy(option.key); setSortOpen(false); }}
+                        className={`flex w-full items-center justify-between gap-3 px-4 py-3 text-left text-[12.5px] transition hover:bg-[#f4ede3] ${
+                          sortBy === option.key ? "font-semibold text-[#0d0c0b]" : "font-medium text-[#5c5348]"
+                        }`}
+                      >
+                        {option.label}
+                        {sortBy === option.key && (
+                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                            <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
@@ -172,7 +234,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {filteredProducts.map((product, index) => (
+          {sortedProducts.map((product, index) => (
             <ProductCard
               key={product.id}
               product={product}

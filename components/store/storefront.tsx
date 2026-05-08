@@ -2,12 +2,18 @@
 
 import { useState } from "react";
 import { CAT, PRODS, type CategoryKey, type Product } from "@/lib/store-data";
+import { LoadingScreen } from "./loading-screen";
 import { StoreHeader } from "./store-header";
 import { HeroSection } from "./hero-section";
 import { TickerBar } from "./ticker-bar";
+import { StatsSection } from "./stats-section";
 import { CategoryTiles } from "./category-tiles";
+import { BrandsSection } from "./brands-section";
 import { EditorialSection } from "./editorial-section";
+import { EditorialElectronics } from "./editorial-electronics";
 import { ProcessSection } from "./process-section";
+import { TestimonialsSection } from "./testimonials-section";
+import { CtaSection } from "./cta-section";
 import { ProductCard } from "./product-card";
 import { ProductPage } from "./product-page";
 import { SearchBar } from "./search-bar";
@@ -15,6 +21,7 @@ import { EnquiryModal } from "./enquiry-modal";
 import { StoreFooter } from "./store-footer";
 
 export function Storefront() {
+  const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState<CategoryKey | null>(null);
   const [subcategory, setSubcategory] = useState<string | null>(null);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
@@ -33,6 +40,8 @@ export function Storefront() {
   };
 
   return (
+    <>
+      {loading && <LoadingScreen onDone={() => setLoading(false)} />}
     <main
       className="min-h-screen bg-[#faf9f7] text-[#0d0c0b]"
       style={
@@ -53,9 +62,13 @@ export function Storefront() {
         <>
           <HeroSection onNav={nav} />
           <TickerBar />
+          <StatsSection />
           <CategoryTiles current={category} onNav={nav} />
+          <BrandsSection />
           <EditorialSection onNav={nav} />
+          <EditorialElectronics onNav={nav} />
           <ProcessSection />
+          <TestimonialsSection />
           <section className="px-5 pb-16 md:px-12 md:pb-24">
             <div className="mb-9 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end sm:gap-5">
               <div>
@@ -98,6 +111,7 @@ export function Storefront() {
         </>
       )}
 
+      {!category && <CtaSection onNav={nav} />}
       <StoreFooter onNav={nav} />
       <EnquiryModal
         category={modalCategory}
@@ -108,5 +122,6 @@ export function Storefront() {
         }}
       />
     </main>
+    </>
   );
 }

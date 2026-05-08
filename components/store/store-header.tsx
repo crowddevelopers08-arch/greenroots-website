@@ -131,9 +131,12 @@ export function StoreHeader({ activeCategory, onNav, onSearch }: Props) {
               <path d="M11.5 11.5L15 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
           </button>
-          <button className="hidden rounded-full bg-[#0d0c0b] px-4 py-[9px] text-[12px] font-medium tracking-[0.03em] text-white transition hover:-translate-y-px hover:bg-[#252320] hover:shadow-[var(--shadow-2)] sm:inline-flex xl:px-5 xl:text-[12.5px]">
+          <a
+            href="mailto:hello@greenroots.co"
+            className="hidden rounded-full bg-[#0d0c0b] px-4 py-[9px] text-[12px] font-medium tracking-[0.03em] text-white transition hover:-translate-y-px hover:bg-[#252320] hover:shadow-[var(--shadow-2)] sm:inline-flex xl:px-5 xl:text-[12.5px]"
+          >
             Contact Us
-          </button>
+          </a>
           <button
             onClick={() => setMobileMenuOpen((value) => !value)}
             className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-[#d6cab8] text-[#5c5348] transition hover:bg-[#f4ede3] xl:hidden"

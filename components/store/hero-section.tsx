@@ -108,7 +108,7 @@ export function HeroSection({ onNav }: Props) {
             >
               <div className="mb-5 flex items-center gap-[14px] sm:mb-6">
                 <span className="h-px w-9 bg-[rgba(255,255,255,.4)]" />
-                <span className="text-[10.5px] font-medium uppercase tracking-[0.2em] text-[rgba(255,255,255,.55)]">
+                <span className="text-[10.5px] font-medium uppercase tracking-[0.2em] text-[rgba(255,255,255,.75)]">
                   {activeSlide.eyebrow}
                 </span>
               </div>
@@ -126,7 +126,7 @@ export function HeroSection({ onNav }: Props) {
               <p className="mb-3 max-w-[470px] text-[14px] leading-[1.7] font-light text-[rgba(255,255,255,.78)] sm:text-[15.5px]">
                 {activeSlide.note}
               </p>
-              <p className="mb-7 max-w-[430px] text-[12px] leading-[1.8] uppercase tracking-[0.14em] text-[rgba(255,255,255,.42)] sm:mb-8">
+              <p className="mb-7 max-w-[430px] text-[12px] leading-[1.8] uppercase tracking-[0.14em] text-[rgba(255,255,255,.62)] sm:mb-8">
                 {activeSlide.desc}
               </p>
 
@@ -158,7 +158,7 @@ export function HeroSection({ onNav }: Props) {
                       key={`${slide.productName}-progress`}
                       aria-label={`Show ${slide.productName}`}
                       onClick={() => setActiveIndex(index)}
-                      className="group h-6 flex-1"
+                      className="group h-6 flex-1 opacity-80"
                     >
                       <span className="block h-px w-full bg-[rgba(255,255,255,.2)]">
                         <span

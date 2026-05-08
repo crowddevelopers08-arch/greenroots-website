@@ -1,3 +1,5 @@
+import { Reveal } from "./reveal";
+
 export function ProcessSection() {
   const steps = [
     {
@@ -34,19 +36,23 @@ export function ProcessSection() {
   ];
 
   return (
-    <section className="px-5 pb-16 md:px-12 md:pb-24">
-      <div className="mb-11">
+    <section className="px-5 pb-12 md:px-12 md:pb-16">
+      <Reveal animation="fadeUp" duration={600} className="mb-11">
         <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#8c847a]">
           How It Works
         </div>
         <div className="font-[var(--font-cormorant)] text-[clamp(30px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
           Simple by design
         </div>
-      </div>
+      </Reveal>
+
       <div className="grid overflow-hidden rounded-[28px] border border-[#eae0d2] lg:grid-cols-3">
         {steps.map((step, index) => (
-          <div
+          <Reveal
             key={step.number}
+            animation="fadeUp"
+            delay={index * 120}
+            duration={600}
             className={`group bg-[#faf9f7] px-8 py-12 transition hover:bg-[#f4ede3] md:px-11 md:py-[52px] ${
               index < steps.length - 1 ? "border-b border-[#eae0d2] lg:border-b-0 lg:border-r" : ""
             }`}
@@ -59,7 +65,7 @@ export function ProcessSection() {
             </div>
             <div className="mb-3 font-[var(--font-cormorant)] text-2xl text-[#0d0c0b]">{step.title}</div>
             <p className="text-sm leading-[1.7] font-light text-[#5c5348]">{step.description}</p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>
