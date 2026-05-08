@@ -13,6 +13,11 @@ body {
   box-sizing: border-box;
 }
 
+/* Hide scrollbar for carousel */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 button,
 input,
 textarea,

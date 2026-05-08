@@ -10,8 +10,8 @@ export function CategoryTiles({ current, onNav }: Props) {
   const entries = Object.entries(CAT) as [CategoryKey, (typeof CAT)[CategoryKey]][];
 
   return (
-    <section className="px-5 pt-8 md:px-12 md:pt-12">
-      <Reveal animation="fadeUp" duration={600} className="mb-11 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end sm:gap-5">
+    <section className="px-5 pt-5 md:px-12 md:pt-12">
+      <Reveal animation="fadeUp" duration={600} className="mb-5 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end sm:gap-5 md:mb-11">
         <div>
           <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
             Browse

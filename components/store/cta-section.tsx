@@ -7,13 +7,13 @@ type Props = {
 
 export function CtaSection({ onNav }: Props) {
   return (
-    <section className="relative mx-5 mb-16 overflow-hidden rounded-[32px] bg-[#0d0c0b] md:mx-12 md:mb-24">
+    <section className="relative mx-4 mb-8 overflow-hidden rounded-[24px] bg-[#0d0c0b] md:mx-12 md:mb-24 md:rounded-[32px]">
       <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[32px]">
         <div className="absolute left-[-10%] top-[-30%] h-[500px] w-[500px] rounded-full bg-[rgba(184,151,90,.07)] blur-3xl" style={{ animation: "glowPulse 4s ease-in-out infinite" }} />
         <div className="absolute bottom-[-20%] right-[-5%] h-[400px] w-[400px] rounded-full bg-[rgba(255,255,255,.04)] blur-3xl" style={{ animation: "glowPulse 4s ease-in-out 2s infinite" }} />
       </div>
 
-      <div className="relative px-8 py-16 text-center md:px-16 md:py-24">
+      <div className="relative px-5 py-10 text-center md:px-16 md:py-24">
         <Reveal animation="fadeInBlur" duration={700}>
           <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[rgba(255,255,255,.1)] bg-[rgba(255,255,255,.06)] px-5 py-2">
             <span className="h-1.5 w-1.5 rounded-full bg-[#b8975a]" />
@@ -50,7 +50,7 @@ export function CtaSection({ onNav }: Props) {
             </a>
           </div>
 
-          <div className="mt-14 flex flex-wrap items-center justify-center gap-8 border-t border-[rgba(255,255,255,.06)] pt-10">
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 border-t border-[rgba(255,255,255,.06)] pt-6 sm:flex-row sm:flex-wrap sm:gap-8 md:mt-14 md:pt-10">
             {[
               { icon: "M9 12l2 2 4-4M7 2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9", label: "No commitment required" },
               { icon: "M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10zM12 6v6l4 2", label: "Response within 24 hours" },

@@ -7,8 +7,8 @@ type Props = {
 
 export function EditorialSection({ onNav }: Props) {
   return (
-    <section className="mx-5 mb-16 grid min-h-[540px] overflow-hidden rounded-[28px] bg-[#0d0c0b] shadow-[var(--shadow-3)] md:mx-12 md:mb-24 lg:grid-cols-2">
-      <div className="relative flex flex-col justify-between bg-[#0d0c0b] px-8 py-14 md:px-16 md:py-[72px]">
+    <section className="mx-4 mb-8 grid overflow-hidden rounded-[24px] bg-[#0d0c0b] shadow-[var(--shadow-3)] md:mx-12 md:mb-24 md:min-h-[540px] md:rounded-[28px] lg:grid-cols-2">
+      <div className="relative flex flex-col justify-between bg-[#0d0c0b] px-5 py-9 md:px-16 md:py-[72px]">
         <div className="pointer-events-none absolute right-0 top-0 hidden h-full w-px bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,.08)_20%,rgba(255,255,255,.08)_80%,transparent)] lg:block" />
         <Reveal animation="slideRight" duration={700}>
           <div>
@@ -27,7 +27,7 @@ export function EditorialSection({ onNav }: Props) {
             </p>
             <button
               onClick={() => onNav("Bags", null)}
-              className="mt-12 inline-flex w-fit items-center gap-2.5 rounded-full bg-white px-[26px] py-[13px] text-[13px] font-semibold text-[#0d0c0b] transition hover:-translate-y-0.5 hover:bg-[#f4ede3] hover:shadow-[var(--shadow-2)]"
+              className="mt-8 inline-flex w-fit items-center gap-2.5 rounded-full bg-white px-[26px] py-[13px] text-[13px] font-semibold text-[#0d0c0b] transition hover:-translate-y-0.5 hover:bg-[#f4ede3] hover:shadow-[var(--shadow-2)] md:mt-12"
             >
               Explore Bags
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none">

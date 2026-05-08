@@ -36,8 +36,8 @@ export function ProcessSection() {
   ];
 
   return (
-    <section className="px-5 pb-12 md:px-12 md:pb-16">
-      <Reveal animation="fadeUp" duration={600} className="mb-11">
+    <section className="px-5 pb-8 md:px-12 md:pb-16">
+      <Reveal animation="fadeUp" duration={600} className="mb-6 md:mb-11">
         <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
           How It Works
         </div>
@@ -53,11 +53,11 @@ export function ProcessSection() {
             animation="fadeUp"
             delay={index * 120}
             duration={600}
-            className={`group bg-[#faf9f7] px-8 py-12 transition hover:bg-[#f4ede3] md:px-11 md:py-[52px] ${
+            className={`group bg-[#faf9f7] px-6 py-8 transition hover:bg-[#f4ede3] md:px-11 md:py-[52px] ${
               index < steps.length - 1 ? "border-b border-[#eae0d2] lg:border-b-0 lg:border-r" : ""
             }`}
           >
-            <div className="mb-7 font-[var(--font-cormorant)] text-[80px] leading-none font-light italic text-[#eae0d2] transition group-hover:text-[#d6cab8]">
+            <div className="mb-4 font-[var(--font-cormorant)] text-[60px] leading-none font-light italic text-[#eae0d2] transition group-hover:text-[#d6cab8] md:mb-7 md:text-[80px]">
               {step.number}
             </div>
             <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full border border-[#c8baa8] text-[#5c5348] transition group-hover:-rotate-[15deg] group-hover:border-[#0d0c0b] group-hover:text-[#0d0c0b]">

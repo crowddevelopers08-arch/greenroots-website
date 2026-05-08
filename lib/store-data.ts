@@ -47,7 +47,7 @@ export const CAT: Record<
     subs: ["All", "Sheaffer", "Lapis Bard", "Parker", "Picassio Parri"],
     col: "#8A92BC",
     cnt: 4,
-    img: "https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=400&h=560&fit=crop&q=80",
+    img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=560&fit=crop&q=80",
   },
   "Water Bottles": {
     subs: ["All", "AQUAMINDER", "Glasafe", "Artiart", "Divine Copper", "Headway", "Borosil", "B4-BOT", "Bot-All"],
@@ -239,7 +239,7 @@ export const PRODS: Record<CategoryKey, Product[]> = {
       name: "MIVI",
       sub: "MIVI",
       desc: "Made in India earbuds, 13mm drivers, quad microphones, 48hr playback",
-      img: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600&h=800&fit=crop&q=80",
+      img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&h=800&fit=crop&q=80",
     },
     {
       id: 45,
@@ -253,7 +253,7 @@ export const PRODS: Record<CategoryKey, Product[]> = {
       name: "Xecch",
       sub: "Xecch",
       desc: "Cutting-edge wireless earbuds, active noise cancellation, extended playtime",
-      img: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=600&h=800&fit=crop&q=80",
+      img: "https://images.unsplash.com/photo-1546435770-a3e736b19889?w=600&h=800&fit=crop&q=80",
     },
     {
       id: 47,
@@ -278,14 +278,14 @@ export const PRODS: Record<CategoryKey, Product[]> = {
       sub: "Diva & La Opala",
       desc: "Premium opalware dinner sets, 27-piece collections, dishwasher-safe chip-resistant edges",
       badge: "New",
-      img: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=600&h=800&fit=crop&q=80",
+      img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop&q=80",
     },
     {
       id: 61,
       name: "Kent Corporate Gifting",
       sub: "Kent Corporate Gifting",
       desc: "RO+UV+UF water purifiers, 8L storage tank, mineral retention technology",
-      img: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=800&fit=crop&q=80",
+      img: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&h=800&fit=crop&q=80",
     },
     {
       id: 62,
@@ -335,7 +335,7 @@ export const PRODS: Record<CategoryKey, Product[]> = {
       name: "Hawkins",
       sub: "Hawkins",
       desc: "Hard anodised pressure cookers, 5L capacity, gasket release system, trusted legacy brand",
-      img: "https://images.unsplash.com/photo-1585664811087-47f65abbad64?w=600&h=800&fit=crop&q=80",
+      img: "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=600&h=800&fit=crop&q=80",
     },
     {
       id: 69,
@@ -382,7 +382,7 @@ export const PRODS: Record<CategoryKey, Product[]> = {
       name: "Parker",
       sub: "Parker",
       desc: "18k gold-plated nib fountain pens, Jotter duo sets, stainless steel executive gift boxes",
-      img: "https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=600&h=800&fit=crop&q=80",
+      img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&h=800&fit=crop&q=80",
     },
     {
       id: 83,
@@ -401,14 +401,14 @@ export const PRODS: Record<CategoryKey, Product[]> = {
       sub: "AQUAMINDER",
       desc: "Hydration reminder LED, 750ml, vacuum-insulated double wall, smart bottle technology",
       badge: "New",
-      img: "https://images.unsplash.com/photo-1608686207856-001b95cf60ca?w=600&h=800&fit=crop&q=80",
+      img: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&h=800&fit=crop&q=80",
     },
     {
       id: 101,
       name: "Glasafe",
       sub: "Glasafe",
       desc: "500ml crystal-clear borosilicate glass, anti-slip sleeve, dishwasher-safe design",
-      img: "https://images.unsplash.com/photo-1598135753163-6167c1a1ad65?w=600&h=800&fit=crop&q=80",
+      img: "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=600&h=800&fit=crop&q=80",
     },
     {
       id: 102,

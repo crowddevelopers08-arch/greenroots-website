@@ -11,8 +11,8 @@ export function BrandsSection() {
   const row = [...BRANDS, ...BRANDS];
 
   return (
-    <section className="pb-12 pt-6 md:pb-16 md:pt-8">
-      <Reveal animation="fadeUp" duration={600} className="mb-6 px-5 md:px-12">
+    <section className="pb-8 pt-4 md:pb-16 md:pt-8">
+      <Reveal animation="fadeUp" duration={600} className="mb-4 px-5 md:mb-6 md:px-12">
         <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
           Our Portfolio
         </div>

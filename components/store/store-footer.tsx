@@ -18,8 +18,8 @@ export function StoreFooter({ onNav }: Props) {
   }
 
   return (
-    <footer className="bg-[#0d0c0b] px-5 py-[60px] text-[rgba(255,255,255,.8)] md:px-12 md:py-[88px]">
-      <div className="mb-16 grid gap-10 md:grid-cols-2 xl:grid-cols-[2.2fr_1fr_1fr_1fr] xl:gap-14">
+    <footer className="bg-[#0d0c0b] px-5 py-10 text-[rgba(255,255,255,.8)] md:px-12 md:py-[88px]">
+      <div className="mb-10 grid gap-8 md:mb-16 md:grid-cols-2 md:gap-10 xl:grid-cols-[2.2fr_1fr_1fr_1fr] xl:gap-14">
         <div>
           <div className="mb-[14px] flex items-center gap-2.5 font-[var(--font-cormorant)] text-[28px] tracking-[0.12em]">
             <span className="flex h-[30px] w-[30px] items-center justify-center rounded-full border border-[rgba(255,255,255,.3)] text-[9px] tracking-[0.06em] text-[rgba(255,255,255,.68)]">

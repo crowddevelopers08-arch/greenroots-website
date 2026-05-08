@@ -44,6 +44,27 @@ const HERO_SLIDE_CONFIGS: HeroSlideConfig[] = [
     title: ["Crocodile", "Polo", "for", "presence."],
     note: "Premium pique knit, embroidered heritage logo, and a classic three-button placket — corporate gifting elevated.",
   },
+  {
+    cat: "Home Appliances",
+    productName: "Wonderchef",
+    eyebrow: "Home Collection - Kitchen Appliances",
+    title: ["Wonderchef", "Kitchen", "blends", "wellness."],
+    note: "PFOA-free hard anodised cookware, Nutri-blend mixers, and induction-compatible designs — the modern kitchen, elevated.",
+  },
+  {
+    cat: "Premium Gifts",
+    productName: "Sheaffer",
+    eyebrow: "Premium Gifts - Luxury Pens",
+    title: ["Sheaffer", "Prestige", "in every", "stroke."],
+    note: "Glossy black lacquer rollerballs, palladium trim, and premium fountain pen combinations — gifting that leaves a lasting mark.",
+  },
+  {
+    cat: "Water Bottles",
+    productName: "Divine Copper",
+    eyebrow: "Wellness Collection - Copper Bottles",
+    title: ["Divine", "Copper", "for", "wellness."],
+    note: "Hand-etched pure copper bottles with Ayurvedic wellness benefits — the art of mindful hydration, beautifully crafted.",
+  },
 ];
 
 const HERO_SLIDES = HERO_SLIDE_CONFIGS.map((slide) => {
@@ -77,6 +98,12 @@ export function HeroSection({ onNav }: Props) {
   }, []);
 
   const activeSlide = HERO_SLIDES[activeIndex];
+
+  const visibleIndices = [
+    activeIndex,
+    (activeIndex + 1) % HERO_SLIDES.length,
+    (activeIndex + 2) % HERO_SLIDES.length,
+  ];
 
   return (
     <section className="relative mt-[68px] min-h-[620px] overflow-hidden bg-[#0d0c0b] sm:min-h-[680px] xl:min-h-[calc(100svh-68px)]">
@@ -204,9 +231,10 @@ export function HeroSection({ onNav }: Props) {
 
           <div
             style={{ animation: "fadeLeft .7s var(--ease) .5s both" }}
-            className="mt-10 hidden xl:flex xl:w-[220px] xl:flex-col xl:gap-3 xl:justify-self-end 2xl:w-[232px]"
+            className="mt-10 hidden xl:flex xl:w-[200px] xl:flex-col xl:gap-2 xl:justify-self-end 2xl:w-[216px]"
           >
-            {HERO_SLIDES.map((slide, index) => {
+            {visibleIndices.map((index) => {
+              const slide = HERO_SLIDES[index];
               const isActive = index === activeIndex;
 
               return (
@@ -226,7 +254,7 @@ export function HeroSection({ onNav }: Props) {
                       : "border-[rgba(255,255,255,.28)] bg-[rgba(250,249,247,.84)] hover:-translate-x-1.5 hover:bg-[rgba(250,249,247,.96)] hover:shadow-[0_16px_48px_rgba(0,0,0,.35)]"
                   }`}
                 >
-                  <div className="overflow-hidden xl:h-[96px] 2xl:h-[104px]">
+                  <div className="overflow-hidden xl:h-[60px] 2xl:h-[68px]">
                     <img
                       src={slide.thumb}
                       alt={slide.productName}
@@ -235,24 +263,24 @@ export function HeroSection({ onNav }: Props) {
                       }`}
                     />
                   </div>
-                  <div className="px-[14px] py-[11px]">
-                    <div className="mb-0.5 flex items-center justify-between gap-3">
-                      <div className="text-xs font-medium text-[#0d0c0b]">{slide.productName}</div>
-                      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#0d0c0b] transition group-hover:-rotate-45">
-                        <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                  <div className="px-[11px] py-[8px]">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="truncate text-[11px] font-medium text-[#0d0c0b]">{slide.productName}</div>
+                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0d0c0b] transition group-hover:-rotate-45">
+                        <svg width="9" height="9" viewBox="0 0 11 11" fill="none">
                           <path d="M2 9L9 2M9 2H4M9 2v5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </div>
                     </div>
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="text-[10.5px] text-[#5c5348]">{slide.cat}</div>
+                    <div className="mt-0.5 flex items-center justify-between gap-2">
+                      <div className="text-[10px] text-[#5c5348]">{slide.cat}</div>
                       {slide.badge ? (
-                        <div className="rounded-full bg-[#ece5d8] px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#675d50]">
+                        <div className="rounded-full bg-[#ece5d8] px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-[0.12em] text-[#675d50]">
                           {slide.badge}
                         </div>
                       ) : null}
                     </div>
-                    <div className="mt-3 h-px w-full bg-[rgba(13,12,11,.08)]">
+                    <div className="mt-2 h-px w-full bg-[rgba(13,12,11,.08)]">
                       <div
                         className={`h-full origin-left bg-[#0d0c0b] transition-transform duration-[5200ms] ${
                           isActive ? "scale-x-100" : "scale-x-0"

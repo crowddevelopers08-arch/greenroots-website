@@ -132,10 +132,10 @@ export function Storefront() {
           <EditorialElectronics onNav={nav} />
           <ProcessSection />
           <TestimonialsSection />
-          <section className="px-5 pb-16 md:px-12 md:pb-24">
-            <div className="mb-9 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end sm:gap-5">
+          <section className="px-5 pb-8 md:px-12 md:pb-24">
+            <div className="mb-5 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end sm:gap-5 md:mb-9">
               <div>
-                <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#8c847a]">
+                <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
                   Handpicked
                 </div>
                 <div className="font-[var(--font-cormorant)] text-[clamp(30px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">

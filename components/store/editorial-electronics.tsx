@@ -9,7 +9,7 @@ const HIGHLIGHTS = ["24-hr battery life", "IPX5 sweat resistant", "Signature dee
 
 export function EditorialElectronics({ onNav }: Props) {
   return (
-    <section className="mx-5 mb-16 overflow-hidden rounded-[28px] border border-[#ebe2d6] bg-[#fcfaf7] shadow-[var(--shadow-2)] md:mx-12 md:mb-24 lg:grid lg:grid-cols-2">
+    <section className="mx-4 mb-8 overflow-hidden rounded-[24px] border border-[#ebe2d6] bg-[#fcfaf7] shadow-[var(--shadow-2)] md:mx-12 md:mb-24 md:rounded-[28px] lg:grid lg:grid-cols-2">
       <Reveal animation="slideLeft" duration={700} delay={150} className="group relative min-h-[260px] overflow-hidden lg:order-last">
         <img
           src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=900&h=700&fit=crop&q=88"
@@ -30,7 +30,7 @@ export function EditorialElectronics({ onNav }: Props) {
         </div>
       </Reveal>
 
-      <Reveal animation="slideRight" duration={700} className="flex flex-col justify-between px-8 py-14 md:px-16 md:py-[72px]">
+      <Reveal animation="slideRight" duration={700} className="flex flex-col justify-between px-5 py-9 md:px-16 md:py-[72px]">
         <div>
           <div className="mb-7 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#5c5348]">
             New Arrivals
@@ -66,7 +66,7 @@ export function EditorialElectronics({ onNav }: Props) {
 
         <button
           onClick={() => onNav("Electronics", null)}
-          className="mt-12 inline-flex w-fit items-center gap-2.5 rounded-full border border-[#d6cab8] bg-[#0d0c0b] px-[26px] py-[13px] text-[13px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#252320] hover:shadow-[var(--shadow-2)]"
+          className="mt-8 inline-flex w-fit items-center gap-2.5 rounded-full border border-[#d6cab8] bg-[#0d0c0b] px-[26px] py-[13px] text-[13px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#252320] hover:shadow-[var(--shadow-2)] md:mt-12"
         >
           Explore Electronics
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
