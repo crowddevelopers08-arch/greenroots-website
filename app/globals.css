@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+:root {
+  --font-body: var(--font-outfit);
+  --font-display: var(--font-cormorant);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -7,6 +12,11 @@ html {
 body {
   background: #faf9f7;
   color: #0d0c0b;
+  font-family: var(--font-body), sans-serif;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
@@ -23,6 +33,12 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+button,
+a,
+[role="button"] {
+  cursor: pointer;
 }
 
 @keyframes heroZoom {

@@ -15,6 +15,43 @@ export type Product = {
   img: string;
 };
 
+const APPAREL_IMAGE =
+  "https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=900&q=80";
+const APPAREL_IMAGE_2 =
+  "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=900&q=80";
+const APPAREL_IMAGE_3 =
+  "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=900&q=80";
+const BAGS_IMAGE =
+  "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=80";
+const BAGS_IMAGE_2 =
+  "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=900&q=80";
+const BAGS_IMAGE_3 =
+  "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=80";
+const ELECTRONICS_IMAGE =
+  "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=900&q=80";
+const ELECTRONICS_IMAGE_2 =
+  "https://images.unsplash.com/photo-1546435770-a3e736b19889?auto=format&fit=crop&w=900&q=80";
+const ELECTRONICS_IMAGE_3 =
+  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80";
+const HOME_APPLIANCES_IMAGE =
+  "https://images.unsplash.com/photo-1745166439895-3e6126e18370?auto=format&fit=crop&w=900&q=80";
+const HOME_APPLIANCES_IMAGE_2 =
+  "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?auto=format&fit=crop&w=900&q=80";
+const HOME_APPLIANCES_IMAGE_3 =
+  "https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=900&q=80";
+const PREMIUM_GIFTS_IMAGE =
+  "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80";
+const PREMIUM_GIFTS_IMAGE_2 =
+  "https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&w=900&q=80";
+const PREMIUM_GIFTS_IMAGE_3 =
+  "https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?auto=format&fit=crop&w=900&q=80";
+const WATER_BOTTLES_IMAGE =
+  "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=900&q=80";
+const WATER_BOTTLES_IMAGE_2 =
+  "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=900&q=80";
+const WATER_BOTTLES_IMAGE_3 =
+  "https://images.unsplash.com/photo-1556195332-95503f664ced?auto=format&fit=crop&w=900&q=80";
+
 export const CAT: Record<
   CategoryKey,
   { subs: string[]; col: string; cnt: number; img: string }
@@ -23,37 +60,37 @@ export const CAT: Record<
     subs: ["All", "BS", "PUMA", "Rare Rabbit", "SWISS MILITARY", "Adidas", "ALLEN SOLLY", "Reebok", "VANHEUSEN", "Crocodile Polo"],
     col: "#C4A882",
     cnt: 9,
-    img: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=560&fit=crop&q=80",
+    img: APPAREL_IMAGE,
   },
   Bags: {
     subs: ["All", "FD CAT Travel Bags", "TBB", "Artistix", "2024 Tucano", "Fur Jaden", "The House Of Creas", "Delsey Paris", "SWISS MILITARY", "Wildcraft", "Safari"],
     col: "#8AACC0",
     cnt: 10,
-    img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=560&fit=crop&q=80",
+    img: BAGS_IMAGE,
   },
   Electronics: {
     subs: ["All", "Hammer", "Ambrane", "SkullCandy", "JBL B2B", "MIVI", "Philips", "Xecch", "Blaupunkt", "Noise"],
     col: "#6CA882",
     cnt: 9,
-    img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=560&fit=crop&q=80",
+    img: ELECTRONICS_IMAGE,
   },
   "Home Appliances": {
     subs: ["All", "Diva & La Opala", "Kent Corporate Gifting", "Kutchina", "Skyline", "Zarah and Dazzle", "FABER", "Franke Faber", "Havells", "Hawkins", "Wonderchef", "BOROSIL", "BOROSIL BOTTLE & APPLIANCE"],
     col: "#C49A6C",
     cnt: 12,
-    img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=560&fit=crop&q=80",
+    img: HOME_APPLIANCES_IMAGE,
   },
   "Premium Gifts": {
     subs: ["All", "Sheaffer", "Lapis Bard", "Parker", "Picassio Parri"],
     col: "#8A92BC",
     cnt: 4,
-    img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=560&fit=crop&q=80",
+    img: PREMIUM_GIFTS_IMAGE,
   },
   "Water Bottles": {
     subs: ["All", "AQUAMINDER", "Glasafe", "Artiart", "Divine Copper", "Headway", "Borosil", "B4-BOT", "Bot-All"],
     col: "#7AACB8",
     cnt: 8,
-    img: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=560&fit=crop&q=80",
+    img: WATER_BOTTLES_IMAGE,
   },
 };
 
@@ -470,7 +507,7 @@ export const TICKER_ITEMS = [
 ];
 
 export const HERO_SCARDS = [
-  { cat: "Bags" as CategoryKey, name: "Wildcraft", img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300&h=180&fit=crop&q=80" },
-  { cat: "Electronics" as CategoryKey, name: "JBL B2B", img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=300&h=180&fit=crop&q=80" },
+  { cat: "Bags" as CategoryKey, name: "Wildcraft", img: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=300&h=180&fit=crop&q=80" },
+  { cat: "Electronics" as CategoryKey, name: "JBL B2B", img: "https://images.unsplash.com/photo-1563330232-57114bb0823c?w=300&h=180&fit=crop&q=80" },
   { cat: "Apparel" as CategoryKey, name: "Crocodile Polo", img: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=300&h=180&fit=crop&q=80" },
 ];

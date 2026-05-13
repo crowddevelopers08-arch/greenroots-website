@@ -40,6 +40,12 @@ export function Storefront() {
     setModalCategory(productCategory);
   };
 
+  const openContact = () => {
+    setModalProduct(null);
+    setModalCategory(null);
+    setBookOpen(true);
+  };
+
   return (
     <>
       {loading && <LoadingScreen onDone={() => setLoading(false)} />}
@@ -119,7 +125,12 @@ export function Storefront() {
       }
     >
       <SearchBar open={searchOpen} onClose={() => setSearchOpen(false)} onNav={nav} />
-      <StoreHeader activeCategory={category} onNav={nav} onSearch={() => setSearchOpen(true)} />
+      <StoreHeader
+        activeCategory={category}
+        onNav={nav}
+        onSearch={() => setSearchOpen(true)}
+        onContact={openContact}
+      />
 
       {!category ? (
         <>
@@ -174,7 +185,7 @@ export function Storefront() {
         </>
       )}
 
-      {!category && <CtaSection onNav={nav} />}
+      {!category && <CtaSection onNav={nav} onContact={openContact} />}
       <StoreFooter onNav={nav} />
       <EnquiryModal
         category={modalCategory}

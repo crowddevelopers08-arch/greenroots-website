@@ -303,19 +303,6 @@ export function HeroSection({ onNav }: Props) {
           </div>
         </div>
       </div>
-
-      <div
-        style={{ animation: "fadeUp .6s var(--ease) .8s both" }}
-        className="absolute bottom-6 left-4 z-[3] flex items-center gap-3 text-[10.5px] uppercase tracking-[0.14em] text-[rgba(255,255,255,.65)] sm:bottom-8 sm:left-5 md:left-8 xl:left-12"
-      >
-        <div className="relative h-10 w-px overflow-hidden bg-[rgba(255,255,255,.2)]">
-          <span
-            className="absolute inset-x-0 h-full bg-[rgba(255,255,255,.6)]"
-            style={{ top: "-100%", animation: "scrollTick 2s var(--ease) infinite" }}
-          />
-        </div>
-        Scroll
-      </div>
     </section>
   );
 }

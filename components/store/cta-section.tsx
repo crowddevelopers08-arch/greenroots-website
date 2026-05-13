@@ -3,9 +3,10 @@ import { Reveal } from "./reveal";
 
 type Props = {
   onNav: (category: CategoryKey | null, subcategory: string | null) => void;
+  onContact: () => void;
 };
 
-export function CtaSection({ onNav }: Props) {
+export function CtaSection({ onNav, onContact }: Props) {
   return (
     <section className="relative mx-4 mb-8 overflow-hidden rounded-[24px] bg-[#0d0c0b] md:mx-12 md:mb-24 md:rounded-[32px]">
       <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[32px]">
@@ -42,12 +43,12 @@ export function CtaSection({ onNav }: Props) {
                 <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            <a
-              href="mailto:hello@greenroots.co"
+            <button
+              onClick={onContact}
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[rgba(255,255,255,.28)] px-8 py-4 text-[13.5px] font-medium text-[rgba(255,255,255,.88)] transition hover:-translate-y-0.5 hover:border-[rgba(255,255,255,.5)] hover:text-white sm:w-auto"
             >
               Contact Directly
-            </a>
+            </button>
           </div>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 border-t border-[rgba(255,255,255,.06)] pt-6 sm:flex-row sm:flex-wrap sm:gap-8 md:mt-14 md:pt-10">
