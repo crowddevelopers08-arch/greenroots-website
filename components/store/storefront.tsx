@@ -20,10 +20,15 @@ import { SearchBar } from "./search-bar";
 import { EnquiryModal } from "./enquiry-modal";
 import { StoreFooter } from "./store-footer";
 
-export function Storefront() {
+type Props = {
+  initialCategory?: CategoryKey | null;
+  initialSubcategory?: string | null;
+};
+
+export function Storefront({ initialCategory = null, initialSubcategory = null }: Props) {
   const [loading, setLoading] = useState(true);
-  const [category, setCategory] = useState<CategoryKey | null>(null);
-  const [subcategory, setSubcategory] = useState<string | null>(null);
+  const [category, setCategory] = useState<CategoryKey | null>(initialCategory);
+  const [subcategory, setSubcategory] = useState<string | null>(initialSubcategory);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const [modalCategory, setModalCategory] = useState<CategoryKey | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);

@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { BS_GALLERY_IMAGES, CAT, PRODS, type CategoryKey, type Product } from "@/lib/store-data";
+import { BS_GALLERY_IMAGES, BS_HIDDEN_PAGES, BS_SECTIONS, CAT, PRODS, getBsSectionHref, type CategoryKey, type Product } from "@/lib/store-data";
 import { ProductCard } from "./product-card";
 
 type SortKey = "default" | "az" | "za";
@@ -11,21 +12,6 @@ const SORT_OPTIONS: { key: SortKey; label: string }[] = [
   { key: "az", label: "Name A-Z" },
   { key: "za", label: "Name Z-A" },
 ];
-
-const BS_SECTIONS = [
-  { id: "t-shirts", label: "T-Shirts", start: 1, end: 36 },
-  { id: "round-neck-t-shirts", label: "Round Neck T-Shirts", start: 37, end: 42 },
-  { id: "shirts", label: "Shirts", start: 43, end: 50 },
-  { id: "jackets", label: "Jackets", start: 51, end: 66 },
-  { id: "track-pants", label: "Track Pants", start: 67, end: 69 },
-  { id: "sling-bags", label: "Sling Bags", start: 70, end: 72 },
-  { id: "backpacks", label: "Backpacks", start: 73, end: 79 },
-  { id: "duffle-bags", label: "Duffle Bags", start: 80, end: 86 },
-  { id: "file-cases", label: "File Cases", start: 87, end: 92 },
-  { id: "accessories", label: "Accessories", start: 93, end: 97 },
-] as const;
-
-const BS_HIDDEN_PAGES = new Set([1, 30, 97]);
 
 type Props = {
   category: CategoryKey;
@@ -64,14 +50,18 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
   });
 
   const showBsGallery = category === "Apparel" && subcategory === "BS";
-  const bsProduct = allProducts.find((product) => product.sub === "BS") ?? allProducts[0];
-  const bsSections = BS_SECTIONS.map((section) => ({
-    ...section,
-    images: BS_GALLERY_IMAGES.slice(section.start - 1, section.end).filter((_, index) => {
+  const bsSections = BS_SECTIONS.map((section) => {
+    const images = BS_GALLERY_IMAGES.slice(section.start - 1, section.end).filter((_, index) => {
       const pageNumber = section.start + index;
       return !BS_HIDDEN_PAGES.has(pageNumber);
-    }),
-  }));
+    });
+
+    return {
+      ...section,
+      coverImage: images[0] ?? BS_GALLERY_IMAGES[section.start - 1],
+      images,
+    };
+  });
   const visibleCount = showBsGallery
     ? bsSections.reduce((count, section) => count + section.images.length, 0)
     : sortedProducts.length;
@@ -88,18 +78,6 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
     { label: category, action: () => onNav(category, null) },
     ...(subcategory && subcategory !== "All" ? [{ label: subcategory, action: null }] : []),
   ];
-
-  const openBsEnquiry = (image: string, index: number) => {
-    onEnquiry(
-      {
-        ...bsProduct,
-        name: `BS Stock ${String(index + 1).padStart(2, "0")}`,
-        desc: `Selected BS catalogue design ${String(index + 1).padStart(2, "0")}`,
-        img: image,
-      },
-      category
-    );
-  };
 
   return (
     <section
@@ -285,7 +263,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                 BS Stocks
               </div>
               <div className="mt-2 text-[13px] leading-[1.7] text-[#5c5348]">
-                All updated BS images are loaded here. Click any design to enquire.
+                Choose a BS category to open its products on a separate page.
               </div>
             </div>
 
@@ -301,98 +279,43 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#8b755c]">
               Browse By Category
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {bsSections.map((section) => (
-                <a
+                <Link
                   key={section.id}
-                  href={`#${section.id}`}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#e4d6c7] bg-white/90 px-4 py-2.5 text-[12.5px] font-medium text-[#5c5348] shadow-[0_8px_24px_rgba(94,72,46,.05)] transition hover:-translate-y-px hover:border-[#c8ab84] hover:text-[#0d0c0b]"
+                  href={getBsSectionHref(section.id)}
+                  className="group overflow-hidden rounded-[26px] border border-[#e4d6c7] bg-white/90 text-left shadow-[0_8px_24px_rgba(94,72,46,.05)] transition duration-300 hover:-translate-y-1 hover:border-[#c8ab84] hover:shadow-[0_18px_36px_rgba(88,61,31,.10)]"
                 >
-                  <span className="h-2 w-2 rounded-full bg-[#c19865]" />
-                  {section.label}
-                </a>
+                  <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top,#faf4ec_0%,#efe4d5_100%)] p-3">
+                    <img
+                      src={section.coverImage}
+                      alt={section.label}
+                      className="h-auto w-full rounded-[18px] object-contain transition duration-500 group-hover:scale-[1.02]"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-x-3 bottom-3 h-20 rounded-b-[18px] bg-[linear-gradient(to_top,rgba(27,20,14,.34)_0%,rgba(27,20,14,0)_100%)]" />
+                  </div>
+                  <div className="flex items-center justify-between gap-4 px-4 pb-4 pt-1">
+                    <div>
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#9b7c57]">
+                        BS Collection
+                      </div>
+                      <div className="mt-1 font-[var(--font-cormorant)] text-[26px] leading-none text-[#17120d]">
+                        {section.label}
+                      </div>
+                      <div className="mt-2 text-[11.5px] leading-[1.6] text-[#6d6053]">
+                        Products {String(section.start).padStart(2, "0")} to {String(section.end).padStart(2, "0")}
+                      </div>
+                    </div>
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#d8c3aa] bg-[linear-gradient(180deg,#fffdfa_0%,#f2e5d4_100%)] text-[#5c4d3d] transition group-hover:border-[#b78b56] group-hover:bg-[#0d0c0b] group-hover:text-white">
+                      <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                  </div>
+                </Link>
               ))}
             </div>
-          </div>
-
-          <div className="space-y-10 p-4 md:p-6">
-            {bsSections.map((section) => (
-              <section
-                key={section.id}
-                id={section.id}
-                className="scroll-mt-24 rounded-[28px] border border-[#efe3d4] bg-[linear-gradient(180deg,#fffdf9_0%,#fbf6ef_100%)] p-4 md:p-5"
-              >
-                <div className="mb-5 flex flex-col gap-3 border-b border-[#eadfce] pb-4 md:flex-row md:items-end md:justify-between">
-                  <div>
-                    <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#9a7a56]">
-                      BS Collection
-                    </div>
-                    <div className="mt-1 font-[var(--font-cormorant)] text-[32px] leading-none tracking-[-0.02em] text-[#17120d]">
-                      {section.label}
-                    </div>
-                    <div className="mt-2 text-[12.5px] leading-[1.7] text-[#6d6053]">
-                      Designs {String(section.start).padStart(2, "0")} to {String(section.end).padStart(2, "0")}
-                    </div>
-                  </div>
-                  <div className="inline-flex self-start rounded-full border border-[#e2d4c3] bg-white px-4 py-2 text-[12px] font-medium text-[#5c5348]">
-                    {section.images.length} styles
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                  {section.images.map((image, localIndex) => {
-                    const globalIndex = section.start + localIndex - 1;
-
-                    return (
-                      <button
-                        key={image}
-                        onClick={() => openBsEnquiry(image, globalIndex)}
-                        className="group relative overflow-hidden rounded-[28px] border border-[#dfcfbb] bg-[linear-gradient(145deg,#fffdf9_0%,#f7f0e6_52%,#efe3d2_100%)] text-left shadow-[0_18px_44px_rgba(88,61,31,.10)] transition duration-300 hover:-translate-y-2 hover:border-[#c5a57d] hover:shadow-[0_26px_60px_rgba(88,61,31,.18)]"
-                      >
-                        <div className="pointer-events-none absolute inset-0">
-                          <div className="absolute left-0 top-0 h-full w-[1px] bg-white/70" />
-                          <div className="absolute inset-x-0 top-0 h-[1px] bg-white/80" />
-                          <div className="absolute right-[-40px] top-[-48px] h-36 w-36 rounded-full bg-[rgba(255,255,255,.6)] blur-3xl transition duration-500 group-hover:scale-110" />
-                          <div className="absolute bottom-[-70px] left-[-30px] h-40 w-40 rounded-full bg-[rgba(192,153,103,.18)] blur-3xl" />
-                        </div>
-
-                        <div className="relative p-3">
-                          <div className="relative overflow-hidden rounded-[22px] border border-white/80 bg-[radial-gradient(circle_at_top,#fbf6ef_0%,#f1e7d7_100%)] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,.7)]">
-                            <img
-                              src={image}
-                              alt={`BS catalogue design ${globalIndex + 1}`}
-                              className="h-auto w-full rounded-[16px] object-contain transition duration-500 group-hover:scale-[1.03]"
-                              loading="lazy"
-                            />
-                            <div className="absolute inset-x-2 bottom-2 h-24 rounded-b-[16px] bg-[linear-gradient(to_top,rgba(33,24,16,.34)_0%,rgba(33,24,16,0)_100%)]" />
-                          </div>
-                        </div>
-
-                        <div className="relative flex items-center justify-between gap-4 px-5 pb-5 pt-1">
-                          <div>
-                            <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#9b7c57]">
-                              {section.label}
-                            </div>
-                            <div className="mt-1 font-[var(--font-cormorant)] text-[28px] leading-none tracking-[-0.02em] text-[#1a1510]">
-                              {String(globalIndex + 1).padStart(2, "0")}
-                            </div>
-                            <div className="mt-2 text-[11.5px] leading-[1.6] text-[#6d6053]">
-                              Curated catalogue design for premium gifting enquiries.
-                            </div>
-                          </div>
-
-                          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#d8c3aa] bg-[linear-gradient(180deg,#fffdfa_0%,#f2e5d4_100%)] text-[#5c4d3d] shadow-[0_10px_20px_rgba(88,61,31,.08)] transition group-hover:border-[#b78b56] group-hover:bg-[#0d0c0b] group-hover:text-white">
-                            <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
-                              <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                          </span>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              </section>
-            ))}
           </div>
         </div>
       ) : (

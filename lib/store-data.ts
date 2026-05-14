@@ -15,6 +15,57 @@ export type Product = {
   img: string;
 };
 
+export const BS_SECTIONS = [
+  { id: "t-shirts", label: "T-Shirts", start: 1, end: 36 },
+  { id: "round-neck-t-shirts", label: "Round Neck T-Shirts", start: 37, end: 42 },
+  { id: "shirts", label: "Shirts", start: 43, end: 50 },
+  { id: "jackets", label: "Jackets", start: 51, end: 66 },
+  { id: "track-pants", label: "Track Pants", start: 67, end: 69 },
+  { id: "sling-bags", label: "Sling Bags", start: 70, end: 72 },
+  { id: "backpacks", label: "Backpacks", start: 73, end: 79 },
+  { id: "duffle-bags", label: "Duffle Bags", start: 80, end: 86 },
+  { id: "file-cases", label: "File Cases", start: 87, end: 92 },
+  { id: "accessories", label: "Accessories", start: 93, end: 97 },
+] as const;
+
+export const BS_HIDDEN_PAGES = new Set([1, 30, 97]);
+
+export function slugifySegment(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export function getCategorySlug(category: CategoryKey) {
+  return slugifySegment(category);
+}
+
+export function getProductSlug(product: Product) {
+  return slugifySegment(product.name);
+}
+
+export function getProductHref(category: CategoryKey, product: Product) {
+  return `/products/${getCategorySlug(category)}/${getProductSlug(product)}`;
+}
+
+export function getCategoryBySlug(categorySlug: string) {
+  return (Object.keys(CAT) as CategoryKey[]).find((category) => getCategorySlug(category) === categorySlug) ?? null;
+}
+
+export function getProductBySlug(category: CategoryKey, productSlug: string) {
+  return PRODS[category].find((product) => getProductSlug(product) === productSlug) ?? null;
+}
+
+export function getBsSectionById(sectionId: string) {
+  return BS_SECTIONS.find((section) => section.id === sectionId) ?? null;
+}
+
+export function getBsSectionHref(sectionId: string) {
+  return `/products/apparel/bs/${sectionId}`;
+}
+
 export const BS_GALLERY_IMAGES = [
   "https://res.cloudinary.com/diezixk4v/image/upload/BS_-_Stocks_17th_Aug_2024_1__page-0001_cevnam",
   "https://res.cloudinary.com/diezixk4v/image/upload/BS_-_Stocks_17th_Aug_2024_1__page-0002_ejzvtb",
@@ -202,7 +253,7 @@ export const PRODS: Record<CategoryKey, Product[]> = {
       sub: "BS",
       desc: "Premium formal shirts, crisp cotton fabric, tailored for the modern professional",
       badge: "New",
-      img: BS_GALLERY_IMAGES[0],
+      img: BS_GALLERY_IMAGES[1],
     },
     {
       id: 2,

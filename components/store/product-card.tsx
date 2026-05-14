@@ -1,16 +1,17 @@
-import { type CategoryKey, type Product } from "@/lib/store-data";
+import Link from "next/link";
+import { getProductHref, type CategoryKey, type Product } from "@/lib/store-data";
 
 type Props = {
   product: Product;
   category: CategoryKey;
   delay?: number;
-  onEnquiry: (product: Product, category: CategoryKey) => void;
+  onEnquiry?: (product: Product, category: CategoryKey) => void;
 };
 
-export function ProductCard({ product, category, delay = 0, onEnquiry }: Props) {
+export function ProductCard({ product, category, delay = 0 }: Props) {
   return (
-    <button
-      onClick={() => onEnquiry(product, category)}
+    <Link
+      href={getProductHref(category, product)}
       className="group flex translate-y-[18px] cursor-pointer flex-col overflow-hidden rounded-[18px] border border-[rgba(214,202,184,.5)] bg-[#faf9f7] text-left opacity-0 transition duration-300 hover:-translate-y-2 hover:border-[#d6cab8] hover:shadow-[var(--shadow-3)]"
       style={{ animation: `cardIn .5s var(--ease) ${delay}ms forwards` }}
     >
@@ -28,7 +29,7 @@ export function ProductCard({ product, category, delay = 0, onEnquiry }: Props) 
         <img src={product.img} alt={product.name} className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.07]" />
         <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(13,12,11,.78)_0%,transparent_52%)] opacity-0 transition group-hover:opacity-100" />
         <span className="absolute inset-x-[14px] bottom-[14px] translate-y-2.5 rounded-full bg-[#faf9f7] px-3 py-3 text-center text-[12.5px] font-semibold tracking-[0.02em] text-[#0d0c0b] opacity-0 transition group-hover:translate-y-0 group-hover:opacity-100">
-          Enquire Now
+          View Product
         </span>
       </div>
       <div className="flex flex-1 flex-col gap-1.5 px-[18px] pb-5 pt-4">
@@ -48,6 +49,6 @@ export function ProductCard({ product, category, delay = 0, onEnquiry }: Props) 
           </span>
         </div>
       </div>
-    </button>
+    </Link>
   );
 }
