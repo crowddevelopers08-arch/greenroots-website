@@ -1,16 +1,31 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { CAT, PRODS, type CategoryKey, type Product } from "@/lib/store-data";
+import { useEffect, useRef, useState } from "react";
+import { BS_GALLERY_IMAGES, CAT, PRODS, type CategoryKey, type Product } from "@/lib/store-data";
 import { ProductCard } from "./product-card";
 
 type SortKey = "default" | "az" | "za";
 
 const SORT_OPTIONS: { key: SortKey; label: string }[] = [
   { key: "default", label: "Default" },
-  { key: "az", label: "Name A–Z" },
-  { key: "za", label: "Name Z–A" },
+  { key: "az", label: "Name A-Z" },
+  { key: "za", label: "Name Z-A" },
 ];
+
+const BS_SECTIONS = [
+  { id: "t-shirts", label: "T-Shirts", start: 1, end: 36 },
+  { id: "round-neck-t-shirts", label: "Round Neck T-Shirts", start: 37, end: 42 },
+  { id: "shirts", label: "Shirts", start: 43, end: 50 },
+  { id: "jackets", label: "Jackets", start: 51, end: 66 },
+  { id: "track-pants", label: "Track Pants", start: 67, end: 69 },
+  { id: "sling-bags", label: "Sling Bags", start: 70, end: 72 },
+  { id: "backpacks", label: "Backpacks", start: 73, end: 79 },
+  { id: "duffle-bags", label: "Duffle Bags", start: 80, end: 86 },
+  { id: "file-cases", label: "File Cases", start: 87, end: 92 },
+  { id: "accessories", label: "Accessories", start: 93, end: 97 },
+] as const;
+
+const BS_HIDDEN_PAGES = new Set([1, 30, 97]);
 
 type Props = {
   category: CategoryKey;
@@ -25,11 +40,12 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
   const sortRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (sortRef.current && !sortRef.current.contains(e.target as Node)) {
+    function handleClick(event: MouseEvent) {
+      if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
         setSortOpen(false);
       }
     }
+
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
@@ -47,6 +63,19 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
     return 0;
   });
 
+  const showBsGallery = category === "Apparel" && subcategory === "BS";
+  const bsProduct = allProducts.find((product) => product.sub === "BS") ?? allProducts[0];
+  const bsSections = BS_SECTIONS.map((section) => ({
+    ...section,
+    images: BS_GALLERY_IMAGES.slice(section.start - 1, section.end).filter((_, index) => {
+      const pageNumber = section.start + index;
+      return !BS_HIDDEN_PAGES.has(pageNumber);
+    }),
+  }));
+  const visibleCount = showBsGallery
+    ? bsSections.reduce((count, section) => count + section.images.length, 0)
+    : sortedProducts.length;
+
   const subImages = Object.fromEntries(
     config.subs.map((sub) => [
       sub,
@@ -59,6 +88,18 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
     { label: category, action: () => onNav(category, null) },
     ...(subcategory && subcategory !== "All" ? [{ label: subcategory, action: null }] : []),
   ];
+
+  const openBsEnquiry = (image: string, index: number) => {
+    onEnquiry(
+      {
+        ...bsProduct,
+        name: `BS Stock ${String(index + 1).padStart(2, "0")}`,
+        desc: `Selected BS catalogue design ${String(index + 1).padStart(2, "0")}`,
+        img: image,
+      },
+      category
+    );
+  };
 
   return (
     <section
@@ -76,7 +117,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
           <div className="mb-8 flex flex-wrap items-center gap-2 text-[12.5px] text-[#5c5348]">
             {crumbs.map((crumb, index) => (
               <div key={`${crumb.label}-${index}`} className="flex items-center gap-2">
-                {index > 0 ? <span className="text-[#d6cab8]">›</span> : null}
+                {index > 0 ? <span className="text-[#d6cab8]">{">"}</span> : null}
                 {crumb.action ? (
                   <button onClick={crumb.action} className="transition hover:text-[#0d0c0b]">
                     {crumb.label}
@@ -99,7 +140,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               </div>
 
               <div className="mt-3 max-w-[540px] text-[13px] leading-[1.75] text-[#3d3530] sm:text-[14px]">
-                {sortedProducts.length} pieces · Enquire for pricing & availability
+                {visibleCount} pieces - Enquire for pricing & availability
               </div>
             </div>
 
@@ -109,46 +150,51 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                   Available
                 </div>
                 <div className="mt-1 font-[var(--font-cormorant)] text-[30px] leading-none text-[#0d0c0b]">
-                  {String(sortedProducts.length).padStart(2, "0")}
+                  {String(visibleCount).padStart(2, "0")}
                 </div>
               </div>
 
-              <div ref={sortRef} className="relative">
-                <button
-                  onClick={() => setSortOpen((v) => !v)}
-                  className={`inline-flex items-center justify-center gap-2 rounded-full border px-[18px] py-[10px] text-[12.5px] font-medium transition hover:-translate-y-px hover:text-[#0d0c0b] ${
-                    sortBy !== "default"
-                      ? "border-[#0d0c0b] bg-[#0d0c0b] text-white hover:bg-[#252320]"
-                      : "border-[#dfd2c1] bg-white text-[#5c5348] hover:border-[#b8a898]"
-                  }`}
-                >
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M2 4h10M4 7h6M6 10h2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                  </svg>
-                  {sortBy === "default" ? "Sort" : SORT_OPTIONS.find((o) => o.key === sortBy)?.label}
-                </button>
+              {!showBsGallery ? (
+                <div ref={sortRef} className="relative">
+                  <button
+                    onClick={() => setSortOpen((value) => !value)}
+                    className={`inline-flex items-center justify-center gap-2 rounded-full border px-[18px] py-[10px] text-[12.5px] font-medium transition hover:-translate-y-px hover:text-[#0d0c0b] ${
+                      sortBy !== "default"
+                        ? "border-[#0d0c0b] bg-[#0d0c0b] text-white hover:bg-[#252320]"
+                        : "border-[#dfd2c1] bg-white text-[#5c5348] hover:border-[#b8a898]"
+                    }`}
+                  >
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 4h10M4 7h6M6 10h2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                    </svg>
+                    {sortBy === "default" ? "Sort" : SORT_OPTIONS.find((option) => option.key === sortBy)?.label}
+                  </button>
 
-                {sortOpen && (
-                  <div className="absolute right-0 top-[calc(100%+8px)] z-[50] min-w-[148px] overflow-hidden rounded-[16px] border border-[#e4d9cb] bg-white shadow-[var(--shadow-3)]">
-                    {SORT_OPTIONS.map((option) => (
-                      <button
-                        key={option.key}
-                        onClick={() => { setSortBy(option.key); setSortOpen(false); }}
-                        className={`flex w-full items-center justify-between gap-3 px-4 py-3 text-left text-[12.5px] transition hover:bg-[#f4ede3] ${
-                          sortBy === option.key ? "font-semibold text-[#0d0c0b]" : "font-medium text-[#5c5348]"
-                        }`}
-                      >
-                        {option.label}
-                        {sortBy === option.key && (
-                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                            <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
+                  {sortOpen && (
+                    <div className="absolute right-0 top-[calc(100%+8px)] z-[50] min-w-[148px] overflow-hidden rounded-[16px] border border-[#e4d9cb] bg-white shadow-[var(--shadow-3)]">
+                      {SORT_OPTIONS.map((option) => (
+                        <button
+                          key={option.key}
+                          onClick={() => {
+                            setSortBy(option.key);
+                            setSortOpen(false);
+                          }}
+                          className={`flex w-full items-center justify-between gap-3 px-4 py-3 text-left text-[12.5px] transition hover:bg-[#f4ede3] ${
+                            sortBy === option.key ? "font-semibold text-[#0d0c0b]" : "font-medium text-[#5c5348]"
+                          }`}
+                        >
+                          {option.label}
+                          {sortBy === option.key ? (
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                              <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          ) : null}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : null}
             </div>
           </div>
 
@@ -160,18 +206,14 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                   <button
                     key={sub}
                     onClick={() => onNav(category, sub === "All" ? null : sub)}
-                    className={`inline-flex items-center gap-2.5 rounded-full pl-2 pr-5 py-2 text-[12.5px] font-medium transition ${
+                    className={`inline-flex items-center gap-2.5 rounded-full py-2 pl-2 pr-5 text-[12.5px] font-medium transition ${
                       active
                         ? "bg-[#0d0c0b] text-white shadow-[0_8px_18px_rgba(13,12,11,.14)]"
                         : "border border-[#dfd2c1] bg-white text-[#5c5348] hover:-translate-y-px hover:border-[#b8a898] hover:text-[#0d0c0b]"
                     }`}
                   >
                     <span className="h-9 w-9 overflow-hidden rounded-full border border-white/40 bg-[#f3ede5]">
-                      <img
-                        src={subImages[sub]}
-                        alt={sub}
-                        className="h-full w-full object-cover"
-                      />
+                      <img src={subImages[sub]} alt={sub} className="h-full w-full object-cover" />
                     </span>
                     {sub}
                   </button>
@@ -186,10 +228,10 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
         <div className="overflow-hidden rounded-[24px] border border-[#ebe2d6] bg-white shadow-[0_4px_32px_rgba(0,0,0,.06)]">
           <div className="flex items-center gap-3 border-b border-[#ebe2d6] bg-[#fcfaf7] px-5 py-3">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-[#8c847a]">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <polyline points="14,2 14,8 20,8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <polyline points="14,2 14,8 20,8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className="text-[12.5px] font-medium text-[#5c5348]">Diva & La Opala — 2024 Catalogue</span>
+            <span className="text-[12.5px] font-medium text-[#5c5348]">Diva & La Opala - 2024 Catalogue</span>
             <a
               href="/catalogues/diva-la-opala-2024.pdf"
               target="_blank"
@@ -197,9 +239,9 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-[#dfd2c1] bg-white px-4 py-1.5 text-[11.5px] font-medium text-[#5c5348] transition hover:border-[#b8a898] hover:text-[#0d0c0b]"
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                <polyline points="7 10 12 15 17 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                <polyline points="7 10 12 15 17 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
               </svg>
               Download
             </a>
@@ -211,8 +253,8 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
           >
             <div className="flex h-[85vh] flex-col items-center justify-center gap-6 bg-[#fcfaf7] px-6 text-center">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="text-[#c4b49e]">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <polyline points="14,2 14,8 20,8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <polyline points="14,2 14,8 20,8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <div>
                 <div className="font-[var(--font-cormorant)] text-[26px] text-[#0d0c0b]">Diva & La Opala Catalogue</div>
@@ -231,6 +273,127 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               </a>
             </div>
           </object>
+        </div>
+      ) : showBsGallery ? (
+        <div className="overflow-hidden rounded-[28px] border border-[#ebe2d6] bg-white shadow-[0_8px_40px_rgba(0,0,0,.05)]">
+          <div className="flex flex-col gap-3 border-b border-[#ebe2d6] bg-[#fcfaf7] px-5 py-5 md:flex-row md:items-end md:justify-between md:px-7">
+            <div>
+              <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#5c5348]">
+                Updated BS Gallery
+              </div>
+              <div className="mt-1 font-[var(--font-cormorant)] text-[30px] leading-none text-[#0d0c0b] md:text-[36px]">
+                BS Stocks
+              </div>
+              <div className="mt-2 text-[13px] leading-[1.7] text-[#5c5348]">
+                All updated BS images are loaded here. Click any design to enquire.
+              </div>
+            </div>
+
+            <div className="inline-flex items-center gap-3 self-start rounded-full border border-[#e3d8ca] bg-white px-4 py-2.5 text-[12.5px] font-medium text-[#5c5348]">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f4ede3] text-[#0d0c0b]">
+                {String(BS_GALLERY_IMAGES.length).padStart(2, "0")}
+              </span>
+              Updated products
+            </div>
+          </div>
+
+          <div className="border-b border-[#efe6db] bg-[linear-gradient(180deg,#fffdf9_0%,#fbf6ef_100%)] px-5 py-5 md:px-7">
+            <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#8b755c]">
+              Browse By Category
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {bsSections.map((section) => (
+                <a
+                  key={section.id}
+                  href={`#${section.id}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-[#e4d6c7] bg-white/90 px-4 py-2.5 text-[12.5px] font-medium text-[#5c5348] shadow-[0_8px_24px_rgba(94,72,46,.05)] transition hover:-translate-y-px hover:border-[#c8ab84] hover:text-[#0d0c0b]"
+                >
+                  <span className="h-2 w-2 rounded-full bg-[#c19865]" />
+                  {section.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-10 p-4 md:p-6">
+            {bsSections.map((section) => (
+              <section
+                key={section.id}
+                id={section.id}
+                className="scroll-mt-24 rounded-[28px] border border-[#efe3d4] bg-[linear-gradient(180deg,#fffdf9_0%,#fbf6ef_100%)] p-4 md:p-5"
+              >
+                <div className="mb-5 flex flex-col gap-3 border-b border-[#eadfce] pb-4 md:flex-row md:items-end md:justify-between">
+                  <div>
+                    <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#9a7a56]">
+                      BS Collection
+                    </div>
+                    <div className="mt-1 font-[var(--font-cormorant)] text-[32px] leading-none tracking-[-0.02em] text-[#17120d]">
+                      {section.label}
+                    </div>
+                    <div className="mt-2 text-[12.5px] leading-[1.7] text-[#6d6053]">
+                      Designs {String(section.start).padStart(2, "0")} to {String(section.end).padStart(2, "0")}
+                    </div>
+                  </div>
+                  <div className="inline-flex self-start rounded-full border border-[#e2d4c3] bg-white px-4 py-2 text-[12px] font-medium text-[#5c5348]">
+                    {section.images.length} styles
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                  {section.images.map((image, localIndex) => {
+                    const globalIndex = section.start + localIndex - 1;
+
+                    return (
+                      <button
+                        key={image}
+                        onClick={() => openBsEnquiry(image, globalIndex)}
+                        className="group relative overflow-hidden rounded-[28px] border border-[#dfcfbb] bg-[linear-gradient(145deg,#fffdf9_0%,#f7f0e6_52%,#efe3d2_100%)] text-left shadow-[0_18px_44px_rgba(88,61,31,.10)] transition duration-300 hover:-translate-y-2 hover:border-[#c5a57d] hover:shadow-[0_26px_60px_rgba(88,61,31,.18)]"
+                      >
+                        <div className="pointer-events-none absolute inset-0">
+                          <div className="absolute left-0 top-0 h-full w-[1px] bg-white/70" />
+                          <div className="absolute inset-x-0 top-0 h-[1px] bg-white/80" />
+                          <div className="absolute right-[-40px] top-[-48px] h-36 w-36 rounded-full bg-[rgba(255,255,255,.6)] blur-3xl transition duration-500 group-hover:scale-110" />
+                          <div className="absolute bottom-[-70px] left-[-30px] h-40 w-40 rounded-full bg-[rgba(192,153,103,.18)] blur-3xl" />
+                        </div>
+
+                        <div className="relative p-3">
+                          <div className="relative overflow-hidden rounded-[22px] border border-white/80 bg-[radial-gradient(circle_at_top,#fbf6ef_0%,#f1e7d7_100%)] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,.7)]">
+                            <img
+                              src={image}
+                              alt={`BS catalogue design ${globalIndex + 1}`}
+                              className="h-auto w-full rounded-[16px] object-contain transition duration-500 group-hover:scale-[1.03]"
+                              loading="lazy"
+                            />
+                            <div className="absolute inset-x-2 bottom-2 h-24 rounded-b-[16px] bg-[linear-gradient(to_top,rgba(33,24,16,.34)_0%,rgba(33,24,16,0)_100%)]" />
+                          </div>
+                        </div>
+
+                        <div className="relative flex items-center justify-between gap-4 px-5 pb-5 pt-1">
+                          <div>
+                            <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#9b7c57]">
+                              {section.label}
+                            </div>
+                            <div className="mt-1 font-[var(--font-cormorant)] text-[28px] leading-none tracking-[-0.02em] text-[#1a1510]">
+                              {String(globalIndex + 1).padStart(2, "0")}
+                            </div>
+                            <div className="mt-2 text-[11.5px] leading-[1.6] text-[#6d6053]">
+                              Curated catalogue design for premium gifting enquiries.
+                            </div>
+                          </div>
+
+                          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#d8c3aa] bg-[linear-gradient(180deg,#fffdfa_0%,#f2e5d4_100%)] text-[#5c4d3d] shadow-[0_10px_20px_rgba(88,61,31,.08)] transition group-hover:border-[#b78b56] group-hover:bg-[#0d0c0b] group-hover:text-white">
+                            <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                              <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </span>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </section>
+            ))}
+          </div>
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
