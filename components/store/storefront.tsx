@@ -117,7 +117,7 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
       </div>
 
     <main
-      className="min-h-screen bg-[#faf9f7] text-[#0d0c0b]"
+      className="min-h-screen bg-[#f5f9f5] text-[#0d0c0b]"
       style={
         {
           ["--ease" as string]: "cubic-bezier(.4,0,.2,1)",
@@ -149,9 +149,9 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
           <ProcessSection />
           <TestimonialsSection />
           <section className="px-5 pb-8 md:px-12 md:pb-24">
-            <div className="mb-5 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end sm:gap-5 md:mb-9">
+            <div className="mb-5 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end sm:gap-5 md:mb-7">
               <div>
-                <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
+                <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
                   Handpicked
                 </div>
                 <div className="font-[var(--font-cormorant)] text-[clamp(30px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
@@ -160,13 +160,32 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
               </div>
               <button
                 onClick={() => nav("Bags", null)}
-                className="hidden rounded-full border border-[#d6cab8] px-5 py-2.5 text-[12.5px] font-medium text-[#5c5348] transition hover:-translate-y-px hover:border-[#5c5348] hover:text-[#0d0c0b] md:inline-flex"
+                className="hidden rounded-full border border-[#b4ccb6] px-5 py-2.5 text-[12.5px] font-medium text-[#3d5843] transition hover:-translate-y-px hover:border-[#3a7848] hover:text-[#0d0c0b] md:inline-flex"
               >
                 View All Bags
               </button>
             </div>
-            <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-              {PRODS["Bags"].slice(0, 4).map((product, index) => (
+
+            {/* Category quick-filter */}
+            <div className="mb-6 overflow-x-auto pb-1">
+              <div className="flex min-w-max gap-2">
+                {(Object.keys(CAT) as CategoryKey[]).map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => nav(cat, null)}
+                    className="inline-flex items-center gap-2 rounded-full border border-[#ccd8ce] bg-white px-4 py-2 text-[12px] font-medium text-[#3d5843] whitespace-nowrap transition hover:-translate-y-px hover:border-[#3a7848] hover:bg-[#e4f0e6] hover:text-[#0d0c0b]"
+                  >
+                    <span
+                      className="h-2 w-2 rounded-full"
+                      style={{ background: CAT[cat].col }}
+                    />
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2 md:grid-cols-3">
+              {PRODS["Bags"].slice(0, 3).map((product, index) => (
                 <ProductCard
                   key={product.id}
                   product={product}

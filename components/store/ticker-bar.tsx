@@ -4,7 +4,7 @@ export function TickerBar() {
   const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
 
   return (
-    <div className="overflow-hidden border-t border-[rgba(255,255,255,.05)] bg-[#0d0c0b] py-[13px]">
+    <div className="overflow-hidden border-t border-[rgba(255,255,255,.05)] bg-[#111d12] py-[13px]">
       <div className="flex w-max" style={{ animation: "tickerMove 32s linear infinite" }}>
         {items.map((item, index) => (
           <span
@@ -12,7 +12,7 @@ export function TickerBar() {
             className="inline-flex shrink-0 items-center gap-8 whitespace-nowrap px-8 text-[11px] font-medium uppercase tracking-[0.16em] text-[rgba(255,255,255,.85)]"
           >
             {item}
-            <span className="h-[3px] w-[3px] rounded-full bg-[#b8975a] opacity-70" />
+            <span className="h-[3px] w-[3px] rounded-full bg-[#3a7848] opacity-80" />
           </span>
         ))}
       </div>

@@ -38,7 +38,7 @@ export function ProcessSection() {
   return (
     <section className="px-5 pb-8 md:px-12 md:pb-16">
       <Reveal animation="fadeUp" duration={600} className="mb-6 md:mb-11">
-        <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
+        <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
           How It Works
         </div>
         <div className="font-[var(--font-cormorant)] text-[clamp(30px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
@@ -46,25 +46,25 @@ export function ProcessSection() {
         </div>
       </Reveal>
 
-      <div className="grid overflow-hidden rounded-[28px] border border-[#eae0d2] lg:grid-cols-3">
+      <div className="grid overflow-hidden rounded-[28px] border border-[#cadace] lg:grid-cols-3">
         {steps.map((step, index) => (
           <Reveal
             key={step.number}
             animation="fadeUp"
             delay={index * 120}
             duration={600}
-            className={`group bg-[#faf9f7] px-6 py-8 transition hover:bg-[#f4ede3] md:px-11 md:py-[52px] ${
-              index < steps.length - 1 ? "border-b border-[#eae0d2] lg:border-b-0 lg:border-r" : ""
+            className={`group bg-[#f5f9f5] px-6 py-8 transition hover:bg-[#e4f0e6] md:px-11 md:py-[52px] ${
+              index < steps.length - 1 ? "border-b border-[#cadace] lg:border-b-0 lg:border-r" : ""
             }`}
           >
-            <div className="mb-4 font-[var(--font-cormorant)] text-[60px] leading-none font-light italic text-[#eae0d2] transition group-hover:text-[#d6cab8] md:mb-7 md:text-[80px]">
+            <div className="mb-4 font-[var(--font-cormorant)] text-[60px] leading-none font-light italic text-[#cadace] transition group-hover:text-[#b4ccb6] md:mb-7 md:text-[80px]">
               {step.number}
             </div>
-            <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full border border-[#c8baa8] text-[#5c5348] transition group-hover:-rotate-[15deg] group-hover:border-[#0d0c0b] group-hover:text-[#0d0c0b]">
+            <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full border border-[#b0c8b2] text-[#3d5843] transition group-hover:-rotate-[15deg] group-hover:border-[#0d0c0b] group-hover:text-[#0d0c0b]">
               {step.icon}
             </div>
             <div className="mb-3 font-[var(--font-cormorant)] text-2xl text-[#0d0c0b]">{step.title}</div>
-            <p className="text-[14px] leading-[1.75] text-[#3d3530]">{step.description}</p>
+            <p className="text-[14px] leading-[1.75] text-[#2d4430]">{step.description}</p>
           </Reveal>
         ))}
       </div>

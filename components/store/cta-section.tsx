@@ -8,22 +8,22 @@ type Props = {
 
 export function CtaSection({ onNav, onContact }: Props) {
   return (
-    <section className="relative mx-4 mb-8 overflow-hidden rounded-[24px] bg-[#0d0c0b] md:mx-12 md:mb-24 md:rounded-[32px]">
+    <section className="relative mx-4 mb-8 overflow-hidden rounded-[24px] bg-[#111d12] md:mx-12 md:mb-24 md:rounded-[32px]">
       <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[32px]">
-        <div className="absolute left-[-10%] top-[-30%] h-[500px] w-[500px] rounded-full bg-[rgba(184,151,90,.07)] blur-3xl" style={{ animation: "glowPulse 4s ease-in-out infinite" }} />
+        <div className="absolute left-[-10%] top-[-30%] h-[500px] w-[500px] rounded-full bg-[rgba(58,120,72,.10)] blur-3xl" style={{ animation: "glowPulse 4s ease-in-out infinite" }} />
         <div className="absolute bottom-[-20%] right-[-5%] h-[400px] w-[400px] rounded-full bg-[rgba(255,255,255,.04)] blur-3xl" style={{ animation: "glowPulse 4s ease-in-out 2s infinite" }} />
       </div>
 
       <div className="relative px-5 py-10 text-center md:px-16 md:py-24">
         <Reveal animation="fadeInBlur" duration={700}>
           <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[rgba(255,255,255,.1)] bg-[rgba(255,255,255,.06)] px-5 py-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#b8975a]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#3a7848]" />
             <span className="text-[10.5px] font-semibold uppercase tracking-[0.2em] text-[rgba(255,255,255,.90)]">
               Corporate Gifting
             </span>
           </div>
 
-          <h2 className="mx-auto mb-5 max-w-[640px] font-[var(--font-cormorant)] text-[clamp(36px,5vw,72px)] leading-[1.02] font-light tracking-[-0.02em] text-white">
+          <h2 className="mx-auto mb-5 max-w-[640px] font-[var(--font-cormorant)] text-[clamp(36px,5vw,72px)] leading-[1.02] tracking-[-0.02em] text-white">
             Ready to gift
             <br />
             <em className="text-[rgba(255,255,255,.88)]">with intention?</em>
@@ -36,7 +36,7 @@ export function CtaSection({ onNav, onContact }: Props) {
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             <button
               onClick={() => onNav(null, null)}
-              className="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-white px-8 py-4 text-[13.5px] font-semibold text-[#0d0c0b] transition hover:-translate-y-0.5 hover:bg-[#f4ede3] hover:shadow-[var(--shadow-3)] sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-white px-8 py-4 text-[13.5px] font-semibold text-[#111d12] transition hover:-translate-y-0.5 hover:bg-[#e4f0e6] hover:shadow-[var(--shadow-3)] sm:w-auto"
             >
               Browse All Products
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -58,7 +58,7 @@ export function CtaSection({ onNav, onContact }: Props) {
               { icon: "M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM1 10h22", label: "Custom bulk pricing" },
             ].map((item, i) => (
               <div key={item.label} className="flex items-center gap-2.5" style={{ animation: `fadeUp 0.5s ease ${800 + i * 100}ms both` }}>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" className="shrink-0 text-[#b8975a]">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" className="shrink-0 text-[#3a7848]">
                   <path d={item.icon} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <span className="text-[12px] font-medium text-[rgba(255,255,255,.85)]">{item.label}</span>

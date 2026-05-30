@@ -46,10 +46,10 @@ const HERO_SLIDE_CONFIGS: HeroSlideConfig[] = [
   },
   {
     cat: "Home Appliances",
-    productName: "Wonderchef",
+    productName: "Prestige",
     eyebrow: "Home Collection - Kitchen Appliances",
-    title: ["Wonderchef", "Kitchen", "blends", "wellness."],
-    note: "PFOA-free hard anodised cookware, Nutri-blend mixers, and induction-compatible designs — the modern kitchen, elevated.",
+    title: ["Prestige", "Kitchen", "built", "to last."],
+    note: "India's most trusted kitchen brand — pressure cookers, mixer grinders, and induction cooktops built for every modern home.",
   },
   {
     cat: "Premium Gifts",
@@ -160,7 +160,7 @@ export function HeroSection({ onNav }: Props) {
               <div className="flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-[14px]">
                 <button
                   onClick={() => onNav(activeSlide.cat, null)}
-                  className="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-[13px] font-semibold tracking-[0.02em] text-[#0d0c0b] transition hover:-translate-y-0.5 hover:bg-[#f4ede3] hover:shadow-[var(--shadow-3)] sm:w-auto"
+                  className="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-[13px] font-semibold tracking-[0.02em] text-[#0d0c0b] transition hover:-translate-y-0.5 hover:bg-[#e4f0e6] hover:shadow-[var(--shadow-3)] sm:w-auto"
                 >
                   Explore {activeSlide.cat}
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -273,7 +273,7 @@ export function HeroSection({ onNav }: Props) {
                       </div>
                     </div>
                     <div className="mt-0.5 flex items-center justify-between gap-2">
-                      <div className="text-[10px] text-[#5c5348]">{slide.cat}</div>
+                      <div className="text-[10px] text-[#3d5843]">{slide.cat}</div>
                       {slide.badge ? (
                         <div className="rounded-full bg-[#ece5d8] px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-[0.12em] text-[#675d50]">
                           {slide.badge}

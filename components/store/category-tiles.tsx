@@ -13,7 +13,7 @@ export function CategoryTiles({ current, onNav }: Props) {
     <section className="px-5 pt-5 md:px-12 md:pt-12">
       <Reveal animation="fadeUp" duration={600} className="mb-5 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end sm:gap-5 md:mb-11">
         <div>
-          <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
+          <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
             Browse
           </div>
           <div className="font-[var(--font-cormorant)] text-[clamp(30px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
@@ -22,7 +22,7 @@ export function CategoryTiles({ current, onNav }: Props) {
         </div>
         <button
           onClick={() => onNav("Bags", null)}
-          className="hidden rounded-full border-[1.5px] border-[#d6cab8] px-[22px] py-2.5 text-[12.5px] font-medium text-[#5c5348] transition hover:-translate-y-px hover:border-[#5c5348] hover:text-[#0d0c0b] md:inline-flex"
+          className="hidden rounded-full border-[1.5px] border-[#b4ccb6] px-[22px] py-2.5 text-[12.5px] font-medium text-[#3d5843] transition hover:-translate-y-px hover:border-[#3d5843] hover:text-[#0d0c0b] md:inline-flex"
         >
           View All
         </button>
@@ -38,7 +38,7 @@ export function CategoryTiles({ current, onNav }: Props) {
             as="button"
             onClick={() => onNav(category, null)}
             className={`group relative aspect-[0.78] overflow-hidden rounded-[20px] text-left transition duration-300 hover:z-[2] hover:-translate-y-2.5 hover:shadow-[var(--shadow-3)] sm:aspect-[2.2/4] ${
-              current === category ? "ring-1 ring-[#b8975a]" : ""
+              current === category ? "ring-1 ring-[#1e3d22]" : ""
             }`}
           >
             <img
@@ -56,7 +56,7 @@ export function CategoryTiles({ current, onNav }: Props) {
               <div className="mb-1 text-[13px] font-medium tracking-[0.01em] text-white">{category}</div>
               <div className="text-[10.5px] tracking-[0.04em] text-[rgba(255,255,255,.78)]">{config.cnt} pieces</div>
             </div>
-            <div className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-[#b8975a] transition group-hover:scale-x-100" />
+            <div className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-[#3a7848] transition group-hover:scale-x-100" />
           </Reveal>
         ))}
       </div>

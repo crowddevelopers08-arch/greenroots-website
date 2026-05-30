@@ -17,7 +17,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
         position: "fixed",
         inset: 0,
         zIndex: 9999,
-        background: "#0d0c0b",
+        background: "#111d12",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -34,7 +34,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
         width: 500,
         height: 500,
         borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(184,151,90,.12) 0%, transparent 70%)",
+        background: "radial-gradient(circle, rgba(58,120,72,.18) 0%, transparent 70%)",
         animation: "glowPulse 3s ease-in-out infinite",
         pointerEvents: "none",
       }} />
@@ -45,7 +45,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
         width: 360,
         height: 360,
         borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(184,151,90,.07) 0%, transparent 70%)",
+        background: "radial-gradient(circle, rgba(30,61,34,.12) 0%, transparent 70%)",
         animation: "glowPulse 3s ease-in-out 1.5s infinite",
         pointerEvents: "none",
       }} />
@@ -59,13 +59,14 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
             height: 72,
             width: 72,
             borderRadius: "50%",
-            border: "1px solid rgba(255,255,255,0.15)",
+            border: "1px solid rgba(58,120,72,0.45)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             fontSize: 13,
             letterSpacing: "0.1em",
-            color: "rgba(255,255,255,0.78)",
+            color: "rgba(255,255,255,0.82)",
+            background: "rgba(30,61,34,0.35)",
             animation: "scaleIn 0.7s cubic-bezier(.34,1.56,.64,1) 0.1s both",
           }}
         >
@@ -99,7 +100,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
             animation: "fadeUp 0.6s ease 0.9s both",
           }}
         >
-          Premium Corporate Gifting
+          The Gifting Company
         </div>
 
         {/* Divider line */}
@@ -118,7 +119,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
             style={{
               position: "absolute",
               inset: 0,
-              background: "linear-gradient(90deg, transparent 0%, #b8975a 50%, transparent 100%)",
+              background: "linear-gradient(90deg, transparent 0%, #3a7848 50%, transparent 100%)",
               animation: "loadBarFill 1.9s cubic-bezier(.4,0,.2,1) 0.4s both",
             }}
           />
@@ -133,7 +134,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
           fontSize: 10,
           letterSpacing: "0.18em",
           textTransform: "uppercase",
-          color: "rgba(255,255,255,0.58)",
+          color: "rgba(255,255,255,0.55)",
           animation: "fadeUp 0.6s ease 1.2s both",
         }}
       >

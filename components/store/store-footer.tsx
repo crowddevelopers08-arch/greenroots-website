@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { CAT, type CategoryKey } from "@/lib/store-data";
@@ -19,26 +20,35 @@ export function StoreFooter({ onNav }: Props) {
   }
 
   return (
-    <footer className="bg-[#0d0c0b] px-5 py-10 text-[rgba(255,255,255,.8)] md:px-12 md:py-[88px]">
-      <div className="mb-10 grid gap-8 md:mb-16 md:grid-cols-2 md:gap-10 xl:grid-cols-[2.2fr_1fr_1fr_1fr] xl:gap-14">
+    <footer className="bg-[#111d12] px-5 py-10 text-[rgba(255,255,255,.8)] md:px-12 md:py-[88px]">
+      {/* Subtle top green glow line */}
+      <div className="pointer-events-none mb-10 h-px bg-[linear-gradient(90deg,transparent,rgba(58,120,72,.55),transparent)] md:mb-16" />
+
+      <div className="grid gap-8 md:grid-cols-2 md:gap-10 xl:grid-cols-[2.2fr_1fr_1fr_1fr] xl:gap-14">
         <div>
-          <div className="mb-[14px] flex items-center gap-2.5 font-[var(--font-cormorant)] text-[28px] tracking-[0.12em]">
-            <span className="flex h-[30px] w-[30px] items-center justify-center rounded-full border border-[rgba(255,255,255,.3)] text-[9px] tracking-[0.06em] text-[rgba(255,255,255,.68)]">
-              GR
-            </span>
-            GREEN ROOTS
+          {/* Logo — white version via CSS filter */}
+          <div className="mb-5">
+            <Image
+              src="/Green-Roots-logo.png"
+              alt="Green Roots – The Gifting Company"
+              width={180}
+              height={50}
+              className="h-10 w-auto brightness-0 invert"
+            />
           </div>
-          <p className="max-w-[290px] text-[13.5px] leading-[1.75] text-[rgba(255,255,255,.88)]">
-            Premium clothing and accessories, available by enquiry. Every piece is curated with intention and enduring craft.
+
+          <p className="max-w-[290px] text-[13.5px] leading-[1.85] text-[rgba(255,255,255,.72)]">
+            Premium corporate gifting, available by enquiry. Every piece is curated with intention and enduring craft.
           </p>
+
           <div className="mt-9">
-            <div className="mb-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-[rgba(255,255,255,.75)]">
+            <div className="mb-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#3a7848]">
               Stay updated
             </div>
             {subscribed ? (
-              <div className="flex items-center gap-2 rounded-full border border-[rgba(255,255,255,.15)] bg-[rgba(255,255,255,.08)] px-5 py-3 text-[12.5px] text-[rgba(255,255,255,.85)]">
+              <div className="flex items-center gap-2 rounded-full border border-[rgba(58,120,72,.35)] bg-[rgba(58,120,72,.12)] px-5 py-3 text-[12.5px] text-[rgba(255,255,255,.85)]">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 7l4 4 6-6" stroke="#b8975a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M2 7l4 4 6-6" stroke="#3a7848" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 You&apos;re subscribed. Thank you!
               </div>
@@ -49,17 +59,18 @@ export function StoreFooter({ onNav }: Props) {
                   onChange={(e) => setEmail(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSubscribe()}
                   placeholder="your@email.com"
-                  className="min-w-0 flex-1 rounded-full border border-[rgba(255,255,255,.1)] bg-[rgba(255,255,255,.06)] px-4 py-2.5 text-[12.5px] text-white outline-none transition placeholder:text-[rgba(255,255,255,.25)] focus:border-[rgba(255,255,255,.25)] sm:min-w-[220px]"
+                  className="min-w-0 flex-1 rounded-full border border-[rgba(255,255,255,.1)] bg-[rgba(255,255,255,.05)] px-4 py-2.5 text-[12.5px] text-white outline-none transition placeholder:text-[rgba(255,255,255,.22)] focus:border-[rgba(58,120,72,.55)] sm:min-w-[220px]"
                 />
                 <button
                   onClick={handleSubscribe}
-                  className="w-full rounded-full border border-[rgba(255,255,255,.14)] bg-[rgba(255,255,255,.1)] px-5 py-2.5 text-[12.5px] font-medium text-white transition hover:bg-[rgba(255,255,255,.18)] sm:w-auto"
+                  className="w-full rounded-full border border-[rgba(58,120,72,.4)] bg-[rgba(58,120,72,.2)] px-5 py-2.5 text-[12.5px] font-medium text-white transition hover:bg-[rgba(58,120,72,.38)] sm:w-auto"
                 >
                   Subscribe
                 </button>
               </div>
             )}
           </div>
+
           <div className="mt-7 flex gap-2.5">
             <SocialIcon
               href="https://instagram.com"
@@ -81,7 +92,7 @@ export function StoreFooter({ onNav }: Props) {
             <button
               key={category}
               onClick={() => onNav(category, null)}
-              className="text-left text-[13.5px] text-[rgba(255,255,255,.88)] transition hover:text-white"
+              className="text-left text-[13.5px] text-[rgba(255,255,255,.75)] transition hover:text-white"
             >
               {category}
             </button>
@@ -93,7 +104,7 @@ export function StoreFooter({ onNav }: Props) {
             <a
               key={item}
               href={`mailto:hello@greenroots.co?subject=${encodeURIComponent(item)}`}
-              className="text-[13.5px] text-[rgba(255,255,255,.88)] transition hover:text-white"
+              className="text-[13.5px] text-[rgba(255,255,255,.75)] transition hover:text-white"
             >
               {item}
             </a>
@@ -104,35 +115,35 @@ export function StoreFooter({ onNav }: Props) {
           <FooterColumn title="Contact">
             <a
               href="mailto:hello@greenroots.co"
-              className="text-[13.5px] text-[rgba(255,255,255,.88)] transition hover:text-white"
+              className="text-[13.5px] text-[rgba(255,255,255,.75)] transition hover:text-white"
             >
               hello@greenroots.co
             </a>
             <a
               href="tel:+18002873400"
-              className="text-[13.5px] text-[rgba(255,255,255,.88)] transition hover:text-white"
+              className="text-[13.5px] text-[rgba(255,255,255,.75)] transition hover:text-white"
             >
               +1 (800) 287-3400
             </a>
-            <span className="text-[13.5px] text-[rgba(255,255,255,.88)]">Mon-Fri, 9am-6pm IST</span>
+            <span className="text-[13.5px] text-[rgba(255,255,255,.75)]">Mon-Fri, 9am-6pm IST</span>
           </FooterColumn>
           <div className="mt-7">
             <FooterColumn title="Legal">
               <Link
                 href="/privacy-policy"
-                className="text-[13.5px] text-[rgba(255,255,255,.88)] transition hover:text-white"
+                className="text-[13.5px] text-[rgba(255,255,255,.75)] transition hover:text-white"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms-and-conditions"
-                className="text-[13.5px] text-[rgba(255,255,255,.88)] transition hover:text-white"
+                className="text-[13.5px] text-[rgba(255,255,255,.75)] transition hover:text-white"
               >
                 Terms and Conditions
               </Link>
               <Link
                 href="/thank-you"
-                className="text-[13.5px] text-[rgba(255,255,255,.88)] transition hover:text-white"
+                className="text-[13.5px] text-[rgba(255,255,255,.75)] transition hover:text-white"
               >
                 Thank You
               </Link>
@@ -141,9 +152,9 @@ export function StoreFooter({ onNav }: Props) {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[rgba(255,255,255,.1)] pt-7">
-        <span className="text-xs font-light text-[rgba(255,255,255,.68)]">(c) 2026 Green Roots. All rights reserved.</span>
-        <span className="text-xs font-light text-[rgba(255,255,255,.68)]">Crafted with care for quality.</span>
+      <div className="mt-12 flex flex-wrap items-center justify-between gap-2 border-t border-[rgba(58,120,72,.25)] pt-7">
+        <span className="text-xs font-light text-[rgba(255,255,255,.45)]">© 2026 Green Roots. All rights reserved.</span>
+        <span className="text-xs font-light text-[rgba(255,255,255,.45)]">The Gifting Company</span>
       </div>
     </footer>
   );
@@ -158,7 +169,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <div className="mb-5 text-[10px] font-semibold uppercase tracking-[0.15em] text-[rgba(255,255,255,.75)]">
+      <div className="mb-5 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#3a7848]">
         {title}
       </div>
       <div className="flex flex-col gap-[13px]">{children}</div>
@@ -172,7 +183,7 @@ function SocialIcon({ d, href }: { d: string; href: string }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(255,255,255,.2)] text-[rgba(255,255,255,.68)] transition hover:-translate-y-0.5 hover:border-[rgba(255,255,255,.5)] hover:text-white"
+      className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(58,120,72,.35)] text-[rgba(255,255,255,.55)] transition hover:-translate-y-0.5 hover:border-[rgba(58,120,72,.7)] hover:text-white"
     >
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
         <path d={d} stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
