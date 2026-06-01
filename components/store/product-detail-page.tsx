@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { EnquiryModal } from "./enquiry-modal";
+import { ImageLightbox } from "./image-lightbox";
 import { ProductCard } from "./product-card";
 import { getCategorySlug, slugifySegment, type CategoryKey, type Product } from "@/lib/store-data";
 
@@ -14,6 +15,7 @@ type Props = {
 
 export function ProductDetailPage({ category, product, relatedProducts }: Props) {
   const [modalOpen, setModalOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   return (
     <>
@@ -47,11 +49,22 @@ export function ProductDetailPage({ category, product, relatedProducts }: Props)
                 <div className="absolute left-6 top-6 z-[1] rounded-full bg-[#1e3d22] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
                   {product.sub}
                 </div>
+                {/* Expand button */}
+                <button
+                  onClick={() => setLightboxOpen(true)}
+                  className="absolute right-6 top-6 z-[2] flex h-9 w-9 items-center justify-center rounded-full bg-white/85 text-[#3d5843] shadow-[0_4px_14px_rgba(0,0,0,.10)] backdrop-blur-[6px] transition hover:bg-white hover:text-[#0d0c0b] hover:shadow-[0_6px_20px_rgba(0,0,0,.14)]"
+                  aria-label="View full image"
+                >
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 5V1h4M9 1h4v4M13 9v4H9M5 13H1V9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
                 <div className="overflow-hidden rounded-[28px] border border-white/70 bg-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,.65)]">
                   <img
                     src={product.img}
                     alt={product.name}
-                    className="aspect-[4/5] h-full w-full object-cover"
+                    className="aspect-[4/5] h-full w-full cursor-zoom-in object-cover"
+                    onClick={() => setLightboxOpen(true)}
                   />
                 </div>
               </div>
@@ -144,6 +157,13 @@ export function ProductDetailPage({ category, product, relatedProducts }: Props)
         category={category}
         product={modalOpen ? product : null}
         onClose={() => setModalOpen(false)}
+      />
+
+      <ImageLightbox
+        src={product.img}
+        alt={product.name}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
       />
     </>
   );

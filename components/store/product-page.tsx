@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { BS_GALLERY_IMAGES, BS_HIDDEN_PAGES, BS_SECTIONS, CAT, PRODS, getBsSectionHref, getHaBrandHref, getHaBrandImages, type CategoryKey, type Product } from "@/lib/store-data";
 import { ProductCard } from "./product-card";
+import { ImageLightbox } from "./image-lightbox";
 
 type SortKey = "default" | "az" | "za";
 
@@ -23,6 +24,7 @@ type Props = {
 export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) {
   const [sortBy, setSortBy] = useState<SortKey>("default");
   const [sortOpen, setSortOpen] = useState(false);
+  const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const sortRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -124,7 +126,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               </div>
 
               <div className="mt-3 max-w-[540px] text-[13px] leading-[1.75] text-[#2d4430] sm:text-[14px]">
-                {visibleCount} pieces - Enquire for pricing & availability
+                {visibleCount} pieces
               </div>
             </div>
 
@@ -288,10 +290,10 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               {haGalleryImages.map((image, index) => {
                 const haProduct = sortedProducts[0];
                 return (
-                  <button
+                  <div
                     key={image}
                     onClick={() => haProduct && onEnquiry({ ...haProduct, name: `${subcategory} — Page ${String(index + 1).padStart(2, "0")}`, desc: `${subcategory} catalogue page ${String(index + 1).padStart(2, "0")}`, img: image }, category)}
-                    className="group relative flex flex-col overflow-hidden rounded-[26px] border border-[#bcccbe] bg-[linear-gradient(145deg,#f6fbf7_0%,#e8f3e9_52%,#ddeedd_100%)] text-left shadow-[0_18px_44px_rgba(30,61,34,.10)] transition duration-300 hover:-translate-y-2 hover:border-[#3a7848] hover:shadow-[0_26px_60px_rgba(30,61,34,.18)]"
+                    className="group relative flex cursor-pointer flex-col overflow-hidden rounded-[26px] border border-[#bcccbe] bg-[linear-gradient(145deg,#f6fbf7_0%,#e8f3e9_52%,#ddeedd_100%)] text-left shadow-[0_18px_44px_rgba(30,61,34,.10)] transition duration-300 hover:-translate-y-2 hover:border-[#3a7848] hover:shadow-[0_26px_60px_rgba(30,61,34,.18)]"
                   >
                     <div className="pointer-events-none absolute inset-0">
                       <div className="absolute left-0 top-0 h-full w-[1px] bg-white/70" />
@@ -308,6 +310,16 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                           loading="lazy"
                         />
                         <div className="pointer-events-none absolute inset-x-1.5 bottom-1.5 h-20 rounded-b-[16px] bg-[linear-gradient(to_top,rgba(33,24,16,.28)_0%,rgba(33,24,16,0)_100%)]" />
+                        {/* Zoom / expand button */}
+                        <button
+                          onClick={(e) => { e.stopPropagation(); setLightboxImg(image); }}
+                          className="absolute right-2 top-2 z-[10] flex h-8 w-8 scale-100 items-center justify-center rounded-full bg-white/85 text-[#3d5843] opacity-100 backdrop-blur-[6px] transition duration-200 hover:bg-white hover:text-[#0d0c0b] md:scale-90 md:opacity-0 md:group-hover:scale-100 md:group-hover:opacity-100"
+                          aria-label="View full image"
+                        >
+                          <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                            <path d="M1 5V1h4M9 1h4v4M13 9v4H9M5 13H1V9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
                       </div>
                     </div>
                     <div className="relative flex items-center justify-between gap-4 px-5 pb-5 pt-1">
@@ -316,7 +328,6 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                         <div className="mt-1 font-[var(--font-cormorant)] text-[28px] leading-none tracking-[-0.02em] text-[#111d12]">
                           {String(index + 1).padStart(2, "0")}
                         </div>
-                        <div className="mt-2 text-[11.5px] leading-[1.6] text-[#4a6652]">Enquire for pricing & availability</div>
                       </div>
                       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#b6ccb8] bg-[linear-gradient(180deg,#f6fbf7_0%,#ddeedd_100%)] text-[#2e4e33] shadow-[0_10px_20px_rgba(30,61,34,.08)] transition group-hover:border-[#3a7848] group-hover:bg-[#1e3d22] group-hover:text-white">
                         <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
@@ -324,7 +335,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                         </svg>
                       </span>
                     </div>
-                  </button>
+                  </div>
                 );
               })}
             </div>
@@ -409,6 +420,14 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
           ))}
         </div>
       )}
+
+      {/* Gallery lightbox — for HA catalogue images */}
+      <ImageLightbox
+        src={lightboxImg ?? ""}
+        alt="Catalogue image"
+        isOpen={lightboxImg !== null}
+        onClose={() => setLightboxImg(null)}
+      />
     </section>
   );
 }
