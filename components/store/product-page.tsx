@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { BS_GALLERY_IMAGES, BS_HIDDEN_PAGES, BS_SECTIONS, CAT, PRODS, getBsSectionHref, getHaBrandHref, getHaBrandImages, type CategoryKey, type Product } from "@/lib/store-data";
+import { BS_GALLERY_IMAGES, BS_HIDDEN_PAGES, BS_SECTIONS, CAT, PRODS, getApparelBrandImages, getBackpackBrandImages, getBsSectionHref, getEdibleBrandHref, getEdibleBrandImages, getElecBrandHref, getElecBrandImages, getHaBrandHref, getHaBrandImages, type CategoryKey, type Product } from "@/lib/store-data";
 import { ProductCard } from "./product-card";
 import { ImageLightbox } from "./image-lightbox";
 
@@ -51,9 +51,19 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
     return 0;
   });
 
-  const showBsGallery = category === "Apparel" && subcategory === "BS";
-  const haGalleryImages = category === "Home Appliances" && subcategory && subcategory !== "All"
-    ? getHaBrandImages(subcategory)
+  const showBsGallery = category === "Apparels" && subcategory === "BS";
+  const haGalleryImages = subcategory && subcategory !== "All"
+    ? (category === "Home Appliances"
+        ? getHaBrandImages(subcategory)
+        : category === "Electronics"
+          ? getElecBrandImages(subcategory)
+          : category === "Edible"
+            ? getEdibleBrandImages(subcategory)
+            : category === "Backpacks"
+              ? getBackpackBrandImages(subcategory)
+              : category === "Apparels"
+                ? getApparelBrandImages(subcategory)
+                : null)
     : null;
   const showHaGallery = haGalleryImages !== null;
   const bsSections = BS_SECTIONS.map((section) => {
@@ -89,18 +99,18 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
 
   return (
     <section
-      className="px-5 pb-20 md:px-12 md:pb-24"
+      className="px-4 pb-16 sm:px-5 md:px-12 md:pb-24"
       style={{ animation: "fadeUp .4s var(--ease) forwards" }}
     >
-      <div className="relative mb-10 overflow-hidden rounded-[32px] border border-[#ccd8ce] bg-[#f0f6f0]">
+      <div className="relative mb-6 overflow-hidden rounded-[24px] border border-[#ccd8ce] bg-[#f0f6f0] sm:mb-10 sm:rounded-[32px]">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-[linear-gradient(180deg,#f6fbf7_0%,#eef5ef_100%)]" />
           <div className="absolute left-0 top-0 h-full w-[6px]" style={{ backgroundColor: config.col }} />
           <div className="absolute right-[-10%] top-[-20%] h-[240px] w-[240px] rounded-full bg-white/80 blur-3xl md:h-[320px] md:w-[320px]" />
         </div>
 
-        <div className="relative z-[1] px-5 py-8 md:px-8 md:py-9 lg:px-10">
-          <div className="mb-8 flex flex-wrap items-center gap-2 text-[12.5px] text-[#3d5843]">
+        <div className="relative z-[1] px-4 py-6 sm:px-5 sm:py-8 md:px-8 md:py-9 lg:px-10">
+          <div className="mb-5 flex flex-wrap items-center gap-2 text-[12px] text-[#3d5843] sm:mb-8 sm:text-[12.5px]">
             {crumbs.map((crumb, index) => (
               <div key={`${crumb.label}-${index}`} className="flex items-center gap-2">
                 {index > 0 ? <span className="text-[#b4ccb6]">{">"}</span> : null}
@@ -115,27 +125,27 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             ))}
           </div>
 
-          <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-start">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-[1fr_auto] md:items-start">
             <div className="max-w-[760px]">
-              <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#3d5843]">
+              <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#3d5843] sm:mb-3 sm:text-[10.5px]">
                 {category}
               </div>
 
-              <div className="font-[var(--font-cormorant)] text-[clamp(38px,4.7vw,66px)] leading-[.96] tracking-[-0.025em] text-[#0d0c0b]">
+              <div className="font-[var(--font-cormorant)] text-[clamp(30px,4.7vw,66px)] leading-[.96] tracking-[-0.025em] text-[#0d0c0b]">
                 {subcategory && subcategory !== "All" ? subcategory : category}
               </div>
 
-              <div className="mt-3 max-w-[540px] text-[13px] leading-[1.75] text-[#2d4430] sm:text-[14px]">
+              <div className="mt-2 max-w-[540px] text-[12.5px] leading-[1.75] text-[#2d4430] sm:mt-3 sm:text-[14px]">
                 {visibleCount} pieces
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row md:flex-col md:items-end">
-              <div className="rounded-[22px] border border-white/70 bg-white/80 px-5 py-4 shadow-[0_10px_30px_rgba(30,61,34,.06)] backdrop-blur-[6px]">
-                <div className="text-[10px] uppercase tracking-[0.14em] text-[#3d5843]">
+            <div className="flex flex-row items-center gap-3 sm:gap-3 md:flex-col md:items-end">
+              <div className="rounded-[18px] border border-white/70 bg-white/80 px-4 py-3 shadow-[0_10px_30px_rgba(30,61,34,.06)] backdrop-blur-[6px] sm:rounded-[22px] sm:px-5 sm:py-4">
+                <div className="text-[9.5px] uppercase tracking-[0.14em] text-[#3d5843] sm:text-[10px]">
                   Available
                 </div>
-                <div className="mt-1 font-[var(--font-cormorant)] text-[30px] leading-none text-[#0d0c0b]">
+                <div className="mt-0.5 font-[var(--font-cormorant)] text-[26px] leading-none text-[#0d0c0b] sm:mt-1 sm:text-[30px]">
                   {String(visibleCount).padStart(2, "0")}
                 </div>
               </div>
@@ -184,28 +194,66 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             </div>
           </div>
 
-          <div className="mt-8 border-t border-[#c4d4c6] pt-5">
-            <div className="flex flex-wrap gap-2.5">
-              {config.subs.map((sub) => {
-                const active = (subcategory ?? "All") === sub;
-                return (
-                  <button
-                    key={sub}
-                    onClick={() => onNav(category, sub === "All" ? null : sub)}
-                    className={`inline-flex items-center gap-2.5 rounded-full py-2 pl-2 pr-5 text-[12.5px] font-medium transition ${
-                      active
-                        ? "bg-[#0d0c0b] text-white shadow-[0_8px_18px_rgba(13,12,11,.14)]"
-                        : "border border-[#c0d0c2] bg-white text-[#3d5843] hover:-translate-y-px hover:border-[#7a9e82] hover:text-[#0d0c0b]"
-                    }`}
-                  >
-                    <span className="h-9 w-9 overflow-hidden rounded-full border border-white/40 bg-[#e4f0e6]">
-                      <img src={subImages[sub]} alt={sub} className="h-full w-full object-cover" />
-                    </span>
-                    {sub}
-                  </button>
-                );
-              })}
+          <div className="mt-5 border-t border-[#c4d4c6] pt-4 sm:mt-8 sm:pt-5">
+
+            {/* ── Mobile: auto-scrolling marquee ── */}
+            <div className="-mx-4 overflow-hidden sm:hidden">
+              <div
+                className="flex items-center w-max gap-2 px-4 py-1"
+                style={{ animation: "tickerMove 32s linear infinite" }}
+                onTouchStart={(e) => (e.currentTarget.style.animationPlayState = "paused")}
+                onTouchEnd={(e) => (e.currentTarget.style.animationPlayState = "running")}
+              >
+                {[...config.subs, ...config.subs].map((sub, idx) => {
+                  const active = (subcategory ?? "All") === sub;
+                  const isReal = idx < config.subs.length;
+                  return (
+                    <button
+                      key={`mob-pill-${idx}`}
+                      onClick={() => { if (isReal) onNav(category, sub === "All" ? null : sub); }}
+                      tabIndex={isReal ? 0 : -1}
+                      aria-hidden={!isReal}
+                      className={`inline-flex shrink-0 items-center gap-2 rounded-full py-1.5 pl-1.5 pr-4 text-[11.5px] font-medium transition ${
+                        active
+                          ? "bg-[#0d0c0b] text-white shadow-[0_8px_18px_rgba(13,12,11,.14)]"
+                          : "border border-[#c0d0c2] bg-white text-[#3d5843]"
+                      }`}
+                    >
+                      <span className="h-8 w-8 overflow-hidden rounded-full border border-white/40 bg-[#e4f0e6]">
+                        <img src={subImages[sub]} alt={sub} className="h-full w-full object-cover" />
+                      </span>
+                      {sub}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
+
+            {/* ── Desktop: scrollable + wrap ── */}
+            <div className="hidden sm:-mx-5 sm:block sm:overflow-x-auto sm:scroll-smooth md:mx-0">
+              <div className="flex flex-wrap gap-2.5 px-5 pb-2 md:px-0 md:pb-0">
+                {config.subs.map((sub) => {
+                  const active = (subcategory ?? "All") === sub;
+                  return (
+                    <button
+                      key={sub}
+                      onClick={() => onNav(category, sub === "All" ? null : sub)}
+                      className={`inline-flex shrink-0 items-center gap-2.5 rounded-full py-2 pl-2 pr-5 text-[12.5px] font-medium transition ${
+                        active
+                          ? "bg-[#0d0c0b] text-white shadow-[0_8px_18px_rgba(13,12,11,.14)]"
+                          : "border border-[#c0d0c2] bg-white text-[#3d5843] hover:-translate-y-px hover:border-[#7a9e82] hover:text-[#0d0c0b]"
+                      }`}
+                    >
+                      <span className="h-9 w-9 overflow-hidden rounded-full border border-white/40 bg-[#e4f0e6]">
+                        <img src={subImages[sub]} alt={sub} className="h-full w-full object-cover" />
+                      </span>
+                      {sub}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -275,7 +323,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               </div>
             </div>
             <Link
-              href={getHaBrandHref(subcategory!)}
+              href={category === "Electronics" ? getElecBrandHref(subcategory!) : category === "Edible" ? getEdibleBrandHref(subcategory!) : getHaBrandHref(subcategory!)}
               className="inline-flex items-center gap-2 self-start rounded-full bg-[#1e3d22] px-5 py-2.5 text-[12.5px] font-medium text-white transition hover:-translate-y-0.5"
             >
               Full page view
@@ -285,8 +333,8 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             </Link>
           </div>
 
-          <div className="p-4 md:p-6">
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <div className="p-3 sm:p-4 md:p-6">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3">
               {haGalleryImages.map((image, index) => {
                 const haProduct = sortedProducts[0];
                 return (
@@ -301,8 +349,8 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                       <div className="absolute right-[-40px] top-[-48px] h-36 w-36 rounded-full bg-[rgba(255,255,255,.6)] blur-3xl transition duration-500 group-hover:scale-110" />
                       <div className="absolute bottom-[-70px] left-[-30px] h-40 w-40 rounded-full bg-[rgba(30,61,34,.08)] blur-3xl" />
                     </div>
-                    <div className="relative p-3">
-                      <div className="relative overflow-hidden rounded-[18px] border border-white/80 bg-[radial-gradient(circle_at_top,#eef5ef_0%,#ddeedd_100%)] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,.7)]">
+                    <div className="relative p-1.5 sm:p-3">
+                      <div className="relative overflow-hidden rounded-[16px] border border-white/80 bg-[radial-gradient(circle_at_top,#eef5ef_0%,#ddeedd_100%)] p-1 sm:p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,.7)]">
                         <img
                           src={image}
                           alt={`${subcategory} catalogue page ${index + 1}`}
@@ -322,14 +370,14 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                         </button>
                       </div>
                     </div>
-                    <div className="relative flex items-center justify-between gap-4 px-5 pb-5 pt-1">
+                    <div className="relative flex items-center justify-between gap-2 px-3 pb-3 pt-1 sm:gap-4 sm:px-5 sm:pb-5">
                       <div>
-                        <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d7048]">{subcategory}</div>
-                        <div className="mt-1 font-[var(--font-cormorant)] text-[28px] leading-none tracking-[-0.02em] text-[#111d12]">
+                        <div className="text-[8.5px] font-semibold uppercase tracking-[0.16em] text-[#3d7048] sm:text-[10.5px] sm:tracking-[0.18em]">{subcategory}</div>
+                        <div className="mt-0.5 font-[var(--font-cormorant)] text-[18px] leading-none tracking-[-0.02em] text-[#111d12] sm:mt-1 sm:text-[28px]">
                           {String(index + 1).padStart(2, "0")}
                         </div>
                       </div>
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#b6ccb8] bg-[linear-gradient(180deg,#f6fbf7_0%,#ddeedd_100%)] text-[#2e4e33] shadow-[0_10px_20px_rgba(30,61,34,.08)] transition group-hover:border-[#3a7848] group-hover:bg-[#1e3d22] group-hover:text-white">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#b6ccb8] bg-[linear-gradient(180deg,#f6fbf7_0%,#ddeedd_100%)] text-[#2e4e33] shadow-[0_10px_20px_rgba(30,61,34,.08)] transition group-hover:border-[#3a7848] group-hover:bg-[#1e3d22] group-hover:text-white sm:h-11 sm:w-11">
                         <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
                           <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
@@ -364,11 +412,11 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             </div>
           </div>
 
-          <div className="border-b border-[#c4d6c6] bg-[linear-gradient(180deg,#f6fbf7_0%,#eef5ef_100%)] px-5 py-5 md:px-7">
+          <div className="border-b border-[#c4d6c6] bg-[linear-gradient(180deg,#f6fbf7_0%,#eef5ef_100%)] px-4 py-4 sm:px-5 sm:py-5 md:px-7">
             <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#4a7254]">
               Browse By Category
             </div>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3">
               {bsSections.map((section) => (
                 <Link
                   key={section.id}
@@ -408,7 +456,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 md:gap-[18px]">
           {sortedProducts.map((product, index) => (
             <ProductCard
               key={product.id}

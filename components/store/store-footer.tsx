@@ -20,11 +20,11 @@ export function StoreFooter({ onNav }: Props) {
   }
 
   return (
-    <footer className="bg-[#111d12] px-5 py-10 text-[rgba(255,255,255,.8)] md:px-12 md:py-[88px]">
+    <footer className="bg-[#111d12] px-4 py-8 text-[rgba(255,255,255,.8)] sm:px-5 sm:py-10 md:px-12 md:py-[88px]">
       {/* Subtle top green glow line */}
-      <div className="pointer-events-none mb-10 h-px bg-[linear-gradient(90deg,transparent,rgba(58,120,72,.55),transparent)] md:mb-16" />
+      <div className="pointer-events-none mb-8 h-px bg-[linear-gradient(90deg,transparent,rgba(58,120,72,.55),transparent)] sm:mb-10 md:mb-16" />
 
-      <div className="grid gap-8 md:grid-cols-2 md:gap-10 xl:grid-cols-[2.2fr_1fr_1fr_1fr] xl:gap-14">
+      <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 xl:grid-cols-[2.2fr_1fr_1fr_1fr] xl:gap-14">
         <div>
           {/* Logo — white version via CSS filter */}
           <div className="mb-5">
@@ -41,7 +41,7 @@ export function StoreFooter({ onNav }: Props) {
             Premium corporate gifting, available by enquiry. Every piece is curated with intention and enduring craft.
           </p>
 
-          <div className="mt-9">
+          <div className="mt-7 sm:mt-9">
             <div className="mb-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#3a7848]">
               Stay updated
             </div>
@@ -152,7 +152,7 @@ export function StoreFooter({ onNav }: Props) {
         </div>
       </div>
 
-      <div className="mt-12 flex flex-wrap items-center justify-between gap-2 border-t border-[rgba(58,120,72,.25)] pt-7">
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-2 border-t border-[rgba(58,120,72,.25)] pt-6 sm:mt-12 sm:pt-7">
         <span className="text-xs font-light text-[rgba(255,255,255,.45)]">© 2026 Green Roots. All rights reserved.</span>
         <span className="text-xs font-light text-[rgba(255,255,255,.45)]">The Gifting Company</span>
       </div>

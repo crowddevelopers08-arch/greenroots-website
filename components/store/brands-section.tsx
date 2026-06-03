@@ -1,18 +1,18 @@
 import { Reveal } from "./reveal";
 
 const BRANDS = [
-  "Wildcraft", "Delsey Paris", "JBL", "PUMA", "Prestige", "Pigeon",
-  "Milton", "Sheaffer", "Parker", "SWISS MILITARY", "Adidas",
-  "Kent", "Noise", "SkullCandy", "Rare Rabbit", "ALLEN SOLLY",
-  "Pexpo", "Lapis Bard", "Safari", "Reebok", "MIVI", "Blaupunkt",
+  "Nasher Miles", "Toburo Bags", "JBL", "Puma", "Prestige", "Pigeon",
+  "Milton", "Sheaffer", "Parker", "SKECHERS", "Adidas",
+  "Kent", "Noise", "SkullCandy", "Pepe Jeans London", "VH",
+  "Pexpo", "Decathlon", "Safari", "Reebok-Low", "MIVI", "Blaupunkt",
 ];
 
 export function BrandsSection() {
   const row = [...BRANDS, ...BRANDS];
 
   return (
-    <section className="pb-8 pt-4 md:pb-16 md:pt-8">
-      <Reveal animation="fadeUp" duration={600} className="mb-4 px-5 md:mb-6 md:px-12">
+    <section className="pb-6 pt-4 sm:pb-8 md:pb-16 md:pt-8">
+      <Reveal animation="fadeUp" duration={600} className="mb-4 px-4 sm:px-5 md:mb-6 md:px-12">
         <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
           Our Portfolio
         </div>

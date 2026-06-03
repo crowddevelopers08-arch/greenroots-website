@@ -10,25 +10,25 @@ export function CategoryTiles({ current, onNav }: Props) {
   const entries = Object.entries(CAT) as [CategoryKey, (typeof CAT)[CategoryKey]][];
 
   return (
-    <section className="px-5 pt-5 md:px-12 md:pt-12">
-      <Reveal animation="fadeUp" duration={600} className="mb-5 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end sm:gap-5 md:mb-11">
+    <section className="px-4 pt-5 sm:px-5 md:px-12 md:pt-12">
+      <Reveal animation="fadeUp" duration={600} className="mb-4 flex items-start justify-between gap-3 sm:mb-5 sm:flex-row sm:items-end sm:gap-5 md:mb-11">
         <div>
-          <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
+          <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3d5843] sm:mb-2 sm:text-[10.5px]">
             Browse
           </div>
-          <div className="font-[var(--font-cormorant)] text-[clamp(30px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
+          <div className="font-[var(--font-cormorant)] text-[clamp(26px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
             All Categories
           </div>
         </div>
         <button
-          onClick={() => onNav("Bags", null)}
-          className="hidden rounded-full border-[1.5px] border-[#b4ccb6] px-[22px] py-2.5 text-[12.5px] font-medium text-[#3d5843] transition hover:-translate-y-px hover:border-[#3d5843] hover:text-[#0d0c0b] md:inline-flex"
+          onClick={() => onNav("Backpacks", null)}
+          className="mt-1 shrink-0 rounded-full border-[1.5px] border-[#b4ccb6] px-4 py-2 text-[11.5px] font-medium text-[#3d5843] transition hover:-translate-y-px hover:border-[#3d5843] hover:text-[#0d0c0b] sm:px-[22px] sm:py-2.5 sm:text-[12.5px]"
         >
           View All
         </button>
       </Reveal>
 
-      <div className="mb-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-7">
+      <div className="mb-4 grid grid-cols-3 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-6">
         {entries.map(([category, config], index) => (
           <Reveal
             key={category}
@@ -37,7 +37,7 @@ export function CategoryTiles({ current, onNav }: Props) {
             duration={550}
             as="button"
             onClick={() => onNav(category, null)}
-            className={`group relative aspect-[0.78] overflow-hidden rounded-[20px] text-left transition duration-300 hover:z-[2] hover:-translate-y-2.5 hover:shadow-[var(--shadow-3)] sm:aspect-[2.2/4] ${
+            className={`group relative aspect-square overflow-hidden rounded-[16px] text-left transition duration-300 hover:z-[2] hover:-translate-y-2.5 hover:shadow-[var(--shadow-3)] sm:aspect-[0.78] sm:rounded-[20px] ${
               current === category ? "ring-1 ring-[#1e3d22]" : ""
             }`}
           >
@@ -52,9 +52,9 @@ export function CategoryTiles({ current, onNav }: Props) {
                 <path d="M2 9L9 2M9 2H4M9 2v5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <div className="absolute inset-x-0 bottom-0 px-[14px] pb-5 pt-[18px]">
-              <div className="mb-1 text-[13px] font-medium tracking-[0.01em] text-white">{category}</div>
-              <div className="text-[10.5px] tracking-[0.04em] text-[rgba(255,255,255,.78)]">{config.cnt} pieces</div>
+            <div className="absolute inset-x-0 bottom-0 px-2.5 pb-3 pt-4 sm:px-[14px] sm:pb-5 sm:pt-[18px]">
+              <div className="mb-0.5 text-[11px] font-medium tracking-[0.01em] text-white sm:mb-1 sm:text-[13px]">{category}</div>
+              <div className="text-[9.5px] tracking-[0.04em] text-[rgba(255,255,255,.78)] sm:text-[10.5px]">{config.cnt} pieces</div>
             </div>
             <div className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-[#3a7848] transition group-hover:scale-x-100" />
           </Reveal>

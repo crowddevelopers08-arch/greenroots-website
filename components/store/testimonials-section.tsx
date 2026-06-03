@@ -17,7 +17,7 @@ const TESTIMONIALS = [
     initial: "P",
   },
   {
-    quote: "From Wildcraft bags to Borosil bottles — everything arrived perfectly packaged and on time. Our employees were genuinely impressed.",
+    quote: "From Nasher Miles trolleys to Borosil bottles — everything arrived perfectly packaged and on time. Our employees were genuinely impressed.",
     name: "Arjun Mehta",
     role: "Admin Director · HDFC Life",
     initial: "A",
@@ -77,11 +77,11 @@ export function TestimonialsSection() {
   };
 
   return (
-    <section className="pb-8 md:px-12 md:pb-16">
+    <section className="pb-6 sm:pb-8 md:px-12 md:pb-16">
       <Reveal
         animation="fadeUp"
         duration={600}
-        className="mb-6 flex flex-col items-start justify-between gap-3 px-5 md:mb-11 md:flex-row md:items-end md:px-0"
+        className="mb-5 flex flex-col items-start justify-between gap-3 px-4 sm:px-5 md:mb-11 md:flex-row md:items-end md:px-0"
       >
         <div>
           <div className="mb-1.5 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
@@ -106,11 +106,11 @@ export function TestimonialsSection() {
       {/* ── Mobile: one-at-a-time centered carousel ── */}
       <div className="md:hidden">
         {/* Stars + quote + author — centered */}
-        <div className="relative px-5">
+        <div className="relative px-4 sm:px-5">
           {/* Fade-in card */}
           <div
             key={animKey}
-            className="flex flex-col items-center text-center"
+            className="flex flex-col items-center px-10 text-center"
             style={{ animation: "fadeInBlur 0.35s ease both" }}
           >
             {/* Stars */}

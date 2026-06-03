@@ -72,6 +72,8 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
             const category = item as CategoryKey;
             const isOpen = dropdown === category;
             const isActive = activeCategory === category || isOpen;
+            const subsWithoutAll = CAT[category].subs.filter((sub) => sub !== "All");
+            const isManyItems = subsWithoutAll.length > 8;
             return (
               <div
                 key={category}
@@ -110,7 +112,11 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
                   </svg>
                 </button>
                 <div
-                  className={`absolute left-1/2 top-[calc(100%+14px)] min-w-[220px] -translate-x-1/2 overflow-hidden rounded-[22px] border border-[#b4ccb6] bg-[linear-gradient(180deg,rgba(246,251,247,.98)_0%,rgba(240,246,241,.96)_100%)] p-2 shadow-[var(--shadow-3)] transition ${
+                  className={`absolute top-[calc(100%+14px)] overflow-y-auto rounded-[22px] border border-[#b4ccb6] bg-[linear-gradient(180deg,rgba(246,251,247,.98)_0%,rgba(240,246,241,.96)_100%)] p-2 shadow-[var(--shadow-3)] transition ${
+                    isManyItems
+                      ? "left-1/2 -translate-x-1/2 w-[440px] max-h-[70vh]"
+                      : "left-1/2 -translate-x-1/2 min-w-[220px] max-h-[70vh]"
+                  } ${
                     isOpen
                       ? "pointer-events-auto translate-y-0 opacity-100"
                       : "pointer-events-none -translate-y-1.5 opacity-0"
@@ -119,21 +125,21 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
                   <div className="mb-1 rounded-[16px] bg-[rgba(30,61,34,.06)] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#4a6a50]">
                     {category}
                   </div>
-                  {CAT[category].subs
-                    .filter((sub) => sub !== "All")
-                    .map((sub) => (
+                  <div className={isManyItems ? "grid grid-cols-2" : "flex flex-col"}>
+                    {subsWithoutAll.map((sub) => (
                       <button
                         key={sub}
                         onClick={() => handleNav(category, sub)}
-                        className="flex w-full items-center gap-2.5 rounded-[16px] px-[13px] py-[10px] text-left text-[13px] text-[#3d5843] transition hover:bg-[#e4f0e6] hover:text-[#0d0c0b]"
+                        className="flex w-full items-center gap-2.5 rounded-[16px] px-[13px] py-[9px] text-left text-[13px] text-[#3d5843] transition hover:bg-[#e4f0e6] hover:text-[#0d0c0b]"
                       >
                         <span
-                          className="h-[6px] w-[6px] rounded-full opacity-70"
+                          className="h-[6px] w-[6px] shrink-0 rounded-full opacity-70"
                           style={{ background: CAT[category].col }}
                         />
-                        {sub}
+                        <span className="truncate">{sub}</span>
                       </button>
                     ))}
+                  </div>
                 </div>
               </div>
             );
@@ -235,25 +241,27 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
                     />
                   </svg>
                 </button>
-                <div className={`${expanded ? "block" : "hidden"} border-t border-[#cadace] px-3 py-3`}>
-                  <div className="mb-2 flex flex-wrap gap-2">
-                    <button
-                      onClick={() => handleNav(category, null)}
-                      className="rounded-full bg-[#1e3d22] px-4 py-2 text-[12px] font-medium text-white shadow-[0_10px_24px_rgba(30,61,34,.22)]"
-                    >
-                      View All
-                    </button>
-                    {CAT[category].subs
-                      .filter((sub) => sub !== "All")
-                      .map((sub) => (
-                        <button
-                          key={sub}
-                          onClick={() => handleNav(category, sub)}
-                          className="rounded-full border border-[#b4ccb6] bg-white/80 px-4 py-2 text-[12px] font-medium text-[#3d5843] transition hover:border-[#3d5843] hover:text-[#0d0c0b]"
-                        >
-                          {sub}
-                        </button>
-                      ))}
+                <div className={`${expanded ? "block" : "hidden"} border-t border-[#cadace] py-3`}>
+                  <div className="-mx-1 overflow-x-auto scroll-smooth">
+                    <div className="flex gap-2 px-3 pb-1">
+                      <button
+                        onClick={() => handleNav(category, null)}
+                        className="shrink-0 rounded-full bg-[#1e3d22] px-4 py-2 text-[12px] font-medium text-white shadow-[0_10px_24px_rgba(30,61,34,.22)]"
+                      >
+                        View All
+                      </button>
+                      {CAT[category].subs
+                        .filter((sub) => sub !== "All")
+                        .map((sub) => (
+                          <button
+                            key={sub}
+                            onClick={() => handleNav(category, sub)}
+                            className="shrink-0 rounded-full border border-[#b4ccb6] bg-white/80 px-4 py-2 text-[12px] font-medium text-[#3d5843] transition hover:border-[#3d5843] hover:text-[#0d0c0b]"
+                          >
+                            {sub}
+                          </button>
+                        ))}
+                    </div>
                   </div>
                 </div>
               </div>

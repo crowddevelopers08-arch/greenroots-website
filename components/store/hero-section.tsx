@@ -24,25 +24,25 @@ function upgradeImage(url: string) {
 
 const HERO_SLIDE_CONFIGS: HeroSlideConfig[] = [
   {
-    cat: "Bags",
-    productName: "Wildcraft",
+    cat: "Backpacks",
+    productName: "Nasher Miles",
     eyebrow: "Featured Collection - Backpacks",
-    title: ["Wildcraft", "Campus", "for", "adventure."],
-    note: "Engineered for the everyday explorer — 30L capacity, padded laptop sleeve, and ergonomic shoulder straps built to last.",
+    title: ["Nasher Miles", "Travels", "built", "to explore."],
+    note: "Polycarbonate shell trolleys and premium travel bags — 360° spinner wheels, TSA-approved locks, and sleek design built for every journey.",
   },
   {
     cat: "Electronics",
-    productName: "JBL B2B",
-    eyebrow: "New Arrival - Earbuds",
-    title: ["JBL Pure", "Bass", "goes", "wireless."],
-    note: "24-hour total battery life, IPX5 sweat resistance, and JBL's signature deep bass sound in a truly wireless form.",
+    productName: "HAMMER B2B",
+    eyebrow: "New Arrival - Electronics",
+    title: ["HAMMER B2B", "Audio", "for", "business."],
+    note: "Professional HAMMER audio solutions — wireless earbuds, speakers, and headphones built for bulk corporate gifting.",
   },
   {
-    cat: "Apparel",
-    productName: "Crocodile Polo",
-    eyebrow: "Curated Drop - Polo Shirts",
-    title: ["Crocodile", "Polo", "for", "presence."],
-    note: "Premium pique knit, embroidered heritage logo, and a classic three-button placket — corporate gifting elevated.",
+    cat: "Apparels",
+    productName: "Adidas",
+    eyebrow: "Featured Collection - Sportswear",
+    title: ["Adidas", "Sportswear", "built", "to perform."],
+    note: "Iconic Adidas sportswear — moisture-wicking Climalite fabric, bold three-stripe heritage, and a relaxed athletic fit for every occasion.",
   },
   {
     cat: "Home Appliances",
@@ -52,18 +52,18 @@ const HERO_SLIDE_CONFIGS: HeroSlideConfig[] = [
     note: "India's most trusted kitchen brand — pressure cookers, mixer grinders, and induction cooktops built for every modern home.",
   },
   {
-    cat: "Premium Gifts",
-    productName: "Sheaffer",
-    eyebrow: "Premium Gifts - Luxury Pens",
-    title: ["Sheaffer", "Prestige", "in every", "stroke."],
-    note: "Glossy black lacquer rollerballs, palladium trim, and premium fountain pen combinations — gifting that leaves a lasting mark.",
+    cat: "Edible",
+    productName: "Cacao Springs Brochure",
+    eyebrow: "Edible Collection - Artisan Chocolates",
+    title: ["Cacao", "Springs", "crafted", "to delight."],
+    note: "Artisan chocolates and confectionery from Cacao Springs — premium edible corporate gifts that leave a lasting impression.",
   },
   {
-    cat: "Water Bottles",
-    productName: "Divine Copper",
-    eyebrow: "Wellness Collection - Copper Bottles",
-    title: ["Divine", "Copper", "for", "wellness."],
-    note: "Hand-etched pure copper bottles with Ayurvedic wellness benefits — the art of mindful hydration, beautifully crafted.",
+    cat: "B2B Importer",
+    productName: "B2B Catalogue",
+    eyebrow: "B2B Importer - Bulk Corporate Orders",
+    title: ["B2B", "Importer", "built", "for scale."],
+    note: "Exclusive bulk corporate orders across all categories — your one-stop B2B importer for premium branded gifting at scale.",
   },
 ];
 
@@ -200,7 +200,7 @@ export function HeroSection({ onNav }: Props) {
               </div>
             </div>
 
-            <div className="mt-7 flex gap-3 overflow-x-auto pb-1 xl:hidden">
+            <div className="mt-7 flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 xl:hidden">
               {HERO_SLIDES.map((slide, index) => {
                 const isActive = index === activeIndex;
 
@@ -208,7 +208,7 @@ export function HeroSection({ onNav }: Props) {
                   <button
                     key={`${slide.productName}-mobile`}
                     onClick={() => setActiveIndex(index)}
-                    className={`min-w-[180px] overflow-hidden rounded-[18px] border text-left backdrop-blur-[12px] transition ${
+                    className={`min-w-[160px] shrink-0 snap-start overflow-hidden rounded-[18px] border text-left backdrop-blur-[12px] transition sm:min-w-[180px] ${
                       isActive
                         ? "border-[rgba(255,255,255,.4)] bg-[rgba(250,249,247,.18)]"
                         : "border-[rgba(255,255,255,.18)] bg-[rgba(250,249,247,.1)]"

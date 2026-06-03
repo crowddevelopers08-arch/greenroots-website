@@ -58,8 +58,8 @@ export function StatsSection() {
   }, []);
 
   return (
-    <section ref={ref} className="px-5 py-5 md:px-12 md:py-14">
-      <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[28px] border border-[#ccd8ce] bg-[#ccd8ce] lg:grid-cols-4">
+    <section ref={ref} className="px-4 py-4 sm:px-5 sm:py-5 md:px-12 md:py-14">
+      <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[20px] border border-[#ccd8ce] bg-[#ccd8ce] sm:rounded-[28px] lg:grid-cols-4">
         {STATS.map((stat, i) => <StatCard key={stat.label} stat={stat} active={active} index={i} />)}
       </div>
     </section>

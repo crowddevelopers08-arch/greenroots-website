@@ -41,23 +41,23 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
-      className={`fixed inset-0 z-[300] flex items-center justify-center bg-[rgba(17,29,18,.55)] p-5 backdrop-blur-[14px] transition ${
+      className={`fixed inset-0 z-[300] flex items-end justify-center bg-[rgba(17,29,18,.55)] p-0 backdrop-blur-[14px] transition sm:items-center sm:p-5 ${
         isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
       }`}
     >
       <div
-        className={`w-full max-w-[520px] overflow-hidden rounded-3xl bg-[#f5f9f5] shadow-[var(--shadow-4)] transition duration-300 ${
+        className={`w-full max-w-[520px] overflow-hidden rounded-t-[28px] bg-[#f5f9f5] shadow-[var(--shadow-4)] transition duration-300 sm:rounded-3xl ${
           isOpen ? "translate-y-0 scale-100" : "translate-y-8 scale-95"
         }`}
       >
         {!done ? (
           <>
-            <div className="flex items-start justify-between px-9 pt-8">
+            <div className="flex items-start justify-between px-5 pt-6 sm:px-9 sm:pt-8">
               <div>
                 <div className="mb-1.5 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-[#4a6a50]">
                   {product ? "Product Enquiry" : "Book Appointment"}
                 </div>
-                <div className="font-[var(--font-cormorant)] text-[30px] tracking-[-0.01em] text-[#0d0c0b]">
+                <div className="font-[var(--font-cormorant)] text-[26px] tracking-[-0.01em] text-[#0d0c0b] sm:text-[30px]">
                   {product ? "Request Details" : "Get in Touch"}
                 </div>
               </div>
@@ -72,8 +72,8 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
             </div>
 
             {product ? (
-              <div className="mx-9 my-5 flex items-center gap-[14px] rounded-xl border border-[#cadace] bg-[#e4f0e6] p-[14px]">
-                <div className="h-[52px] w-[52px] shrink-0 overflow-hidden rounded-[10px] bg-[#d0e0d2]">
+              <div className="mx-5 my-4 flex items-center gap-3 rounded-xl border border-[#cadace] bg-[#e4f0e6] p-3 sm:mx-9 sm:my-5 sm:gap-[14px] sm:p-[14px]">
+                <div className="h-12 w-12 shrink-0 overflow-hidden rounded-[10px] bg-[#d0e0d2] sm:h-[52px] sm:w-[52px]">
                   <img src={product.img} alt={product.name} className="h-full w-full object-cover" />
                 </div>
                 <div>
@@ -90,7 +90,7 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
                 event.preventDefault();
                 setDone(true);
               }}
-              className="flex flex-col gap-[14px] px-9 pb-9"
+              className="flex flex-col gap-3 px-5 pb-6 sm:gap-[14px] sm:px-9 sm:pb-9"
             >
               <div className="grid gap-[14px] md:grid-cols-2">
                 <Field label="Name">
@@ -151,7 +151,7 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
             </form>
           </>
         ) : (
-          <div className="px-9 py-16 text-center">
+          <div className="px-6 py-12 text-center sm:px-9 sm:py-16">
             <div className="mx-auto mb-6 flex h-[72px] w-[72px] items-center justify-center rounded-full border-[1.5px] border-[#b4ccb6]">
               <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
                 <path d="M5 13l6 6L21 7" stroke="#1e3d22" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />

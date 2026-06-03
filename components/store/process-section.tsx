@@ -36,24 +36,24 @@ export function ProcessSection() {
   ];
 
   return (
-    <section className="px-5 pb-8 md:px-12 md:pb-16">
-      <Reveal animation="fadeUp" duration={600} className="mb-6 md:mb-11">
-        <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
+    <section className="px-4 pb-6 sm:px-5 sm:pb-8 md:px-12 md:pb-16">
+      <Reveal animation="fadeUp" duration={600} className="mb-5 md:mb-11">
+        <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3d5843] sm:mb-2 sm:text-[10.5px]">
           How It Works
         </div>
-        <div className="font-[var(--font-cormorant)] text-[clamp(30px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
+        <div className="font-[var(--font-cormorant)] text-[clamp(26px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
           Simple by design
         </div>
       </Reveal>
 
-      <div className="grid overflow-hidden rounded-[28px] border border-[#cadace] lg:grid-cols-3">
+      <div className="grid overflow-hidden rounded-[20px] border border-[#cadace] sm:rounded-[28px] lg:grid-cols-3">
         {steps.map((step, index) => (
           <Reveal
             key={step.number}
             animation="fadeUp"
             delay={index * 120}
             duration={600}
-            className={`group bg-[#f5f9f5] px-6 py-8 transition hover:bg-[#e4f0e6] md:px-11 md:py-[52px] ${
+            className={`group bg-[#f5f9f5] px-5 py-7 transition hover:bg-[#e4f0e6] sm:px-6 sm:py-8 md:px-11 md:py-[52px] ${
               index < steps.length - 1 ? "border-b border-[#cadace] lg:border-b-0 lg:border-r" : ""
             }`}
           >

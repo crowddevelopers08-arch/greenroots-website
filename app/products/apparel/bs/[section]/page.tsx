@@ -44,7 +44,7 @@ export default async function BsSectionRoutePage({ params }: PageProps) {
       globalIndex: item.pageNumber - 1,
     }));
 
-  const bsProduct = PRODS.Apparel.find((product) => product.sub === "BS");
+  const bsProduct = PRODS.Apparels.find((product) => product.sub === "BS");
 
   if (!bsProduct) {
     notFound();
@@ -52,7 +52,7 @@ export default async function BsSectionRoutePage({ params }: PageProps) {
 
   return (
     <BsSectionPage
-      category="Apparel"
+      category="Apparels"
       section={section}
       items={items}
       bsProduct={bsProduct}

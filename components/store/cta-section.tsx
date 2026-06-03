@@ -8,13 +8,13 @@ type Props = {
 
 export function CtaSection({ onNav, onContact }: Props) {
   return (
-    <section className="relative mx-4 mb-8 overflow-hidden rounded-[24px] bg-[#111d12] md:mx-12 md:mb-24 md:rounded-[32px]">
+    <section className="relative mx-4 mb-6 overflow-hidden rounded-[20px] bg-[#111d12] sm:mb-8 md:mx-12 md:mb-24 md:rounded-[32px]">
       <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[32px]">
         <div className="absolute left-[-10%] top-[-30%] h-[500px] w-[500px] rounded-full bg-[rgba(58,120,72,.10)] blur-3xl" style={{ animation: "glowPulse 4s ease-in-out infinite" }} />
         <div className="absolute bottom-[-20%] right-[-5%] h-[400px] w-[400px] rounded-full bg-[rgba(255,255,255,.04)] blur-3xl" style={{ animation: "glowPulse 4s ease-in-out 2s infinite" }} />
       </div>
 
-      <div className="relative px-5 py-10 text-center md:px-16 md:py-24">
+      <div className="relative px-5 py-8 text-center sm:py-10 md:px-16 md:py-24">
         <Reveal animation="fadeInBlur" duration={700}>
           <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[rgba(255,255,255,.1)] bg-[rgba(255,255,255,.06)] px-5 py-2">
             <span className="h-1.5 w-1.5 rounded-full bg-[#3a7848]" />
@@ -23,13 +23,13 @@ export function CtaSection({ onNav, onContact }: Props) {
             </span>
           </div>
 
-          <h2 className="mx-auto mb-5 max-w-[640px] font-[var(--font-cormorant)] text-[clamp(36px,5vw,72px)] leading-[1.02] tracking-[-0.02em] text-white">
+          <h2 className="mx-auto mb-4 max-w-[640px] font-[var(--font-cormorant)] text-[clamp(32px,5vw,72px)] leading-[1.02] tracking-[-0.02em] text-white sm:mb-5">
             Ready to gift
             <br />
             <em className="text-[rgba(255,255,255,.88)]">with intention?</em>
           </h2>
 
-          <p className="mx-auto mb-10 max-w-[460px] text-[14.5px] leading-[1.75] text-[rgba(255,255,255,.92)]">
+          <p className="mx-auto mb-7 max-w-[460px] text-[13.5px] leading-[1.75] text-[rgba(255,255,255,.92)] sm:mb-10 sm:text-[14.5px]">
             Browse our full catalogue and enquire on any piece. Our team responds within 24 hours with pricing, availability and delivery options.
           </p>
 
