@@ -29,6 +29,8 @@ type Props = {
 export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) {
   const [sortBy, setSortBy] = useState<SortKey>("default");
   const [sortOpen, setSortOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [newOnly, setNewOnly] = useState(false);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const sortRef = useRef<HTMLDivElement>(null);
 
@@ -38,17 +40,38 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
         setSortOpen(false);
       }
     }
-
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
+  // Reset all local filters whenever the user navigates to a different category / subcategory
+  useEffect(() => {
+    setSearchQuery("");
+    setNewOnly(false);
+    setSortBy("default");
+  }, [category, subcategory]);
+
   const config = CAT[category];
   const allProducts = PRODS[category];
-  const filteredProducts =
+  const baseProducts =
     subcategory && subcategory !== "All"
-      ? allProducts.filter((product) => product.sub === subcategory)
+      ? allProducts.filter((p) => p.sub === subcategory)
       : allProducts;
+
+  const filteredProducts = (() => {
+    let list = baseProducts;
+    if (newOnly) list = list.filter((p) => !!p.badge);
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      list = list.filter(
+        (p) => p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q)
+      );
+    }
+    return list;
+  })();
+
+  const hasNewItems = baseProducts.some((p) => !!p.badge);
+  const hasActiveFilters = !!searchQuery.trim() || newOnly;
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (sortBy === "az") return a.name.localeCompare(b.name);
@@ -155,47 +178,9 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                 </div>
               </div>
 
-              {!showBsGallery ? (
-                <div ref={sortRef} className="relative">
-                  <button
-                    onClick={() => setSortOpen((value) => !value)}
-                    className={`inline-flex items-center justify-center gap-2 rounded-full border px-[18px] py-[10px] text-[12.5px] font-medium transition hover:-translate-y-px hover:text-[#0d0c0b] ${
-                      sortBy !== "default"
-                        ? "border-[#0d0c0b] bg-[#0d0c0b] text-white hover:bg-[#252320]"
-                        : "border-[#c0d0c2] bg-white text-[#3d5843] hover:border-[#7a9e82]"
-                    }`}
-                  >
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <path d="M2 4h10M4 7h6M6 10h2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                    </svg>
-                    {sortBy === "default" ? "Sort" : SORT_OPTIONS.find((option) => option.key === sortBy)?.label}
-                  </button>
-
-                  {sortOpen && (
-                    <div className="absolute right-0 top-[calc(100%+8px)] z-[50] min-w-[148px] overflow-hidden rounded-[16px] border border-[#c2d4c4] bg-white shadow-[var(--shadow-3)]">
-                      {SORT_OPTIONS.map((option) => (
-                        <button
-                          key={option.key}
-                          onClick={() => {
-                            setSortBy(option.key);
-                            setSortOpen(false);
-                          }}
-                          className={`flex w-full items-center justify-between gap-3 px-4 py-3 text-left text-[12.5px] transition hover:bg-[#e4f0e6] ${
-                            sortBy === option.key ? "font-semibold text-[#0d0c0b]" : "font-medium text-[#3d5843]"
-                          }`}
-                        >
-                          {option.label}
-                          {sortBy === option.key ? (
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                              <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                          ) : null}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : null}
+              <div className="text-[11px] font-medium text-[#3d5843] sm:text-[12px]">
+                {visibleCount} {visibleCount === 1 ? "item" : "items"}
+              </div>
             </div>
           </div>
 
@@ -262,6 +247,107 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
           </div>
         </div>
       </div>
+
+      {/* ── Filter bar — search · new-only · sort ── */}
+      {!showHaGallery && !showBsGallery && subcategory !== "Diva & La Opala" && (
+        <div className="mb-4 flex flex-col gap-2.5 sm:mb-5 sm:flex-row sm:items-center sm:justify-between">
+          {/* Search input */}
+          <div className="relative flex-1 sm:max-w-[420px]">
+            <svg
+              className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[#7a9a82]"
+              width="14" height="14" viewBox="0 0 14 14" fill="none"
+            >
+              <circle cx="6" cy="6" r="4.5" stroke="currentColor" strokeWidth="1.4" />
+              <path d="M9.5 9.5L12.5 12.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={`Search ${category}…`}
+              className="w-full rounded-full border border-[#c0d0c2] bg-white py-[9px] pl-9 pr-9 text-[13px] text-[#0d0c0b] placeholder:text-[#9ab8a0] shadow-[0_4px_14px_rgba(30,61,34,.04)] focus:border-[#3a7848] focus:outline-none focus:ring-2 focus:ring-[#3a7848]/10"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                aria-label="Clear search"
+                className="absolute right-3 top-1/2 -translate-y-1/2 flex h-[22px] w-[22px] items-center justify-center rounded-full bg-[#e4f0e6] text-[#4a6a50] transition hover:bg-[#c8d8ca]"
+              >
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <path d="M1 1l6 6M7 1L1 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              </button>
+            )}
+          </div>
+
+          {/* Right: New-only · Sort · Clear */}
+          <div className="flex shrink-0 items-center gap-2">
+            {hasNewItems && (
+              <button
+                onClick={() => setNewOnly((v) => !v)}
+                className={`inline-flex items-center gap-1.5 rounded-full border px-[14px] py-[9px] text-[12px] font-medium transition hover:-translate-y-px ${
+                  newOnly
+                    ? "border-[#1e3d22] bg-[#1e3d22] text-white shadow-[0_6px_14px_rgba(30,61,34,.20)]"
+                    : "border-[#c0d0c2] bg-white text-[#3d5843] shadow-[0_4px_14px_rgba(30,61,34,.04)] hover:border-[#7a9e82]"
+                }`}
+              >
+                <span className={`h-1.5 w-1.5 rounded-full ${newOnly ? "bg-[#7af0a0]" : "bg-[#3a7848]"}`} />
+                New only
+              </button>
+            )}
+
+            {/* Sort */}
+            <div ref={sortRef} className="relative">
+              <button
+                onClick={() => setSortOpen((v) => !v)}
+                className={`inline-flex items-center gap-1.5 rounded-full border px-[14px] py-[9px] text-[12px] font-medium transition hover:-translate-y-px hover:text-[#0d0c0b] ${
+                  sortBy !== "default"
+                    ? "border-[#0d0c0b] bg-[#0d0c0b] text-white hover:bg-[#252320]"
+                    : "border-[#c0d0c2] bg-white text-[#3d5843] shadow-[0_4px_14px_rgba(30,61,34,.04)] hover:border-[#7a9e82]"
+                }`}
+              >
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 4h10M4 7h6M6 10h2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                </svg>
+                {sortBy === "default" ? "Sort" : SORT_OPTIONS.find((o) => o.key === sortBy)?.label}
+              </button>
+              {sortOpen && (
+                <div className="absolute right-0 top-[calc(100%+6px)] z-[50] min-w-[148px] overflow-hidden rounded-[16px] border border-[#c2d4c4] bg-white shadow-[var(--shadow-3)]">
+                  {SORT_OPTIONS.map((option) => (
+                    <button
+                      key={option.key}
+                      onClick={() => { setSortBy(option.key); setSortOpen(false); }}
+                      className={`flex w-full items-center justify-between gap-3 px-4 py-3 text-left text-[12.5px] transition hover:bg-[#e4f0e6] ${
+                        sortBy === option.key ? "font-semibold text-[#0d0c0b]" : "font-medium text-[#3d5843]"
+                      }`}
+                    >
+                      {option.label}
+                      {sortBy === option.key && (
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                          <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Clear all filters */}
+            {hasActiveFilters && (
+              <button
+                onClick={() => { setSearchQuery(""); setNewOnly(false); setSortBy("default"); }}
+                className="inline-flex items-center gap-1 rounded-full border border-[#f0c4c4] bg-[#fff5f5] px-[14px] py-[9px] text-[12px] font-medium text-[#9b4444] transition hover:bg-[#ffe8e8]"
+              >
+                Clear
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <path d="M1 1l6 6M7 1L1 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              </button>
+            )}
+          </div>
+        </div>
+      )}
 
       {subcategory === "Diva & La Opala" ? (
         <div className="overflow-hidden rounded-[24px] border border-[#ccd8ce] bg-white shadow-[0_4px_32px_rgba(0,0,0,.06)]">
@@ -463,6 +549,29 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               ))}
             </div>
           </div>
+        </div>
+      ) : sortedProducts.length === 0 ? (
+        /* ── Empty state ── */
+        <div className="flex flex-col items-center gap-5 rounded-[28px] border border-[#ccd8ce] bg-[#f6fbf7] py-20 text-center px-6">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#e4f0e6] text-[#4a7254]">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M16.5 16.5L20 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              <path d="M8 11h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          </div>
+          <div>
+            <div className="font-[var(--font-cormorant)] text-[28px] text-[#0d0c0b]">No results found</div>
+            <div className="mt-1.5 text-[13px] leading-[1.7] text-[#4a6652]">
+              {searchQuery ? `No items matching "${searchQuery}"` : "No new items in this category yet"}
+            </div>
+          </div>
+          <button
+            onClick={() => { setSearchQuery(""); setNewOnly(false); }}
+            className="rounded-full bg-[#1e3d22] px-7 py-2.5 text-[13px] font-medium text-white transition hover:-translate-y-0.5"
+          >
+            Clear filters
+          </button>
         </div>
       ) : (
         <div className="columns-2 gap-3 sm:columns-2 md:columns-3 md:gap-[18px]">
