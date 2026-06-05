@@ -52,26 +52,19 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
 
       {/* Center logo block */}
       <div style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
-        {/* Monogram */}
-        <div
+        {/* Logo image */}
+        <img
+          src="https://res.cloudinary.com/diezixk4v/image/upload/v1780662417/Screenshot_2026-06-05_175504-removebg-preview_l5gxpe.png"
+          alt="Green Roots"
           style={{
+            display: "block",
             margin: "0 auto 24px",
-            height: 72,
-            width: 72,
-            borderRadius: "50%",
-            border: "1px solid rgba(58,120,72,0.45)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: 13,
-            letterSpacing: "0.1em",
-            color: "rgba(255,255,255,0.82)",
-            background: "rgba(30,61,34,0.35)",
+            height: 90,
+            width: "auto",
+            objectFit: "contain",
             animation: "scaleIn 0.7s cubic-bezier(.34,1.56,.64,1) 0.1s both",
           }}
-        >
-          GR
-        </div>
+        />
 
         {/* Brand name clip reveal */}
         <div

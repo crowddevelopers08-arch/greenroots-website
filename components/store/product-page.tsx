@@ -6,6 +6,11 @@ import { BS_GALLERY_IMAGES, BS_HIDDEN_PAGES, BS_SECTIONS, CAT, PRODS, getApparel
 import { ProductCard } from "./product-card";
 import { ImageLightbox } from "./image-lightbox";
 
+/** Inserts a Cloudinary transformation string right after /upload/ */
+function cloudinaryTransform(url: string, transform: string): string {
+  return url.replace("/upload/", `/upload/${transform}/`);
+}
+
 type SortKey = "default" | "az" | "za";
 
 const SORT_OPTIONS: { key: SortKey; label: string }[] = [
@@ -334,14 +339,18 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
           </div>
 
           <div className="p-3 sm:p-4 md:p-6">
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3">
+            <div className="columns-2 gap-3 sm:gap-4 sm:columns-3">
               {haGalleryImages.map((image, index) => {
                 const haProduct = sortedProducts[0];
+                // Cloudinary e_trim strips the baked-in white padding from Decathlon PDF pages
+                const displayImage = subcategory === "Decathlon"
+                  ? cloudinaryTransform(image, "e_trim:20")
+                  : image;
                 return (
                   <div
                     key={image}
-                    onClick={() => haProduct && onEnquiry({ ...haProduct, name: `${subcategory} — Page ${String(index + 1).padStart(2, "0")}`, desc: `${subcategory} catalogue page ${String(index + 1).padStart(2, "0")}`, img: image }, category)}
-                    className="group relative flex cursor-pointer flex-col overflow-hidden rounded-[26px] border border-[#bcccbe] bg-[linear-gradient(145deg,#f6fbf7_0%,#e8f3e9_52%,#ddeedd_100%)] text-left shadow-[0_18px_44px_rgba(30,61,34,.10)] transition duration-300 hover:-translate-y-2 hover:border-[#3a7848] hover:shadow-[0_26px_60px_rgba(30,61,34,.18)]"
+                    onClick={() => haProduct && onEnquiry({ ...haProduct, name: `${subcategory} — Page ${String(index + 1).padStart(2, "0")}`, desc: `${subcategory} catalogue page ${String(index + 1).padStart(2, "0")}`, img: displayImage }, category)}
+                    className="break-inside-avoid mb-3 sm:mb-4 group relative flex cursor-pointer flex-col overflow-hidden rounded-[26px] border border-[#bcccbe] bg-[linear-gradient(145deg,#f6fbf7_0%,#e8f3e9_52%,#ddeedd_100%)] text-left shadow-[0_18px_44px_rgba(30,61,34,.10)] transition duration-300 hover:-translate-y-2 hover:border-[#3a7848] hover:shadow-[0_26px_60px_rgba(30,61,34,.18)]"
                   >
                     <div className="pointer-events-none absolute inset-0">
                       <div className="absolute left-0 top-0 h-full w-[1px] bg-white/70" />
@@ -350,17 +359,17 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                       <div className="absolute bottom-[-70px] left-[-30px] h-40 w-40 rounded-full bg-[rgba(30,61,34,.08)] blur-3xl" />
                     </div>
                     <div className="relative p-1.5 sm:p-3">
-                      <div className="relative overflow-hidden rounded-[16px] border border-white/80 bg-[radial-gradient(circle_at_top,#eef5ef_0%,#ddeedd_100%)] p-1 sm:p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,.7)]">
+                      <div className="relative overflow-hidden rounded-[16px] border border-white/80 bg-[radial-gradient(circle_at_top,#eef5ef_0%,#ddeedd_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,.7)]">
                         <img
-                          src={image}
+                          src={displayImage}
                           alt={`${subcategory} catalogue page ${index + 1}`}
-                          className="h-auto w-full rounded-[16px] object-contain transition duration-500 group-hover:scale-[1.03]"
+                          className="block w-full h-auto transition duration-500 group-hover:scale-[1.03]"
                           loading="lazy"
                         />
                         <div className="pointer-events-none absolute inset-x-1.5 bottom-1.5 h-20 rounded-b-[16px] bg-[linear-gradient(to_top,rgba(33,24,16,.28)_0%,rgba(33,24,16,0)_100%)]" />
                         {/* Zoom / expand button */}
                         <button
-                          onClick={(e) => { e.stopPropagation(); setLightboxImg(image); }}
+                          onClick={(e) => { e.stopPropagation(); setLightboxImg(displayImage); }}
                           className="absolute right-2 top-2 z-[10] flex h-8 w-8 scale-100 items-center justify-center rounded-full bg-white/85 text-[#3d5843] opacity-100 backdrop-blur-[6px] transition duration-200 hover:bg-white hover:text-[#0d0c0b] md:scale-90 md:opacity-0 md:group-hover:scale-100 md:group-hover:opacity-100"
                           aria-label="View full image"
                         >
@@ -416,18 +425,18 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#4a7254]">
               Browse By Category
             </div>
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3">
+            <div className="columns-2 gap-3 sm:gap-4 sm:columns-3">
               {bsSections.map((section) => (
                 <Link
                   key={section.id}
                   href={getBsSectionHref(section.id)}
-                  className="group overflow-hidden rounded-[26px] border border-[#c2d4c4] bg-white/90 text-left shadow-[0_8px_24px_rgba(30,61,34,.05)] transition duration-300 hover:-translate-y-1 hover:border-[#3a7848] hover:shadow-[0_18px_36px_rgba(30,61,34,.10)]"
+                  className="break-inside-avoid mb-3 sm:mb-4 block group overflow-hidden rounded-[26px] border border-[#c2d4c4] bg-white/90 text-left shadow-[0_8px_24px_rgba(30,61,34,.05)] transition duration-300 hover:-translate-y-1 hover:border-[#3a7848] hover:shadow-[0_18px_36px_rgba(30,61,34,.10)]"
                 >
-                  <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top,#eaf4eb_0%,#ddeedd_100%)] p-3">
+                  <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top,#eaf4eb_0%,#ddeedd_100%)]">
                     <img
                       src={section.coverImage}
                       alt={section.label}
-                      className="h-auto w-full rounded-[18px] object-contain transition duration-500 group-hover:scale-[1.02]"
+                      className="block w-full h-auto transition duration-500 group-hover:scale-[1.02]"
                       loading="lazy"
                     />
                     <div className="absolute inset-x-3 bottom-3 h-20 rounded-b-[18px] bg-[linear-gradient(to_top,rgba(17,29,18,.34)_0%,rgba(27,20,14,0)_100%)]" />
@@ -456,15 +465,17 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 md:gap-[18px]">
+        <div className="columns-2 gap-3 sm:columns-2 md:columns-3 md:gap-[18px]">
           {sortedProducts.map((product, index) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              category={category}
-              delay={index * 55}
-              onEnquiry={onEnquiry}
-            />
+            <div key={product.id} className="break-inside-avoid mb-3 md:mb-[18px]">
+              <ProductCard
+                product={product}
+                category={category}
+                delay={index * 55}
+                onEnquiry={onEnquiry}
+                onBrandClick={() => onNav(category, product.sub)}
+              />
+            </div>
           ))}
         </div>
       )}

@@ -13,6 +13,8 @@ type HeroSlideConfig = {
   eyebrow: string;
   title: [string, string, string, string];
   note: string;
+  /** Optional custom hero background image — overrides the product's catalogue cover */
+  heroImg?: string;
 };
 
 function upgradeImage(url: string) {
@@ -24,46 +26,49 @@ function upgradeImage(url: string) {
 
 const HERO_SLIDE_CONFIGS: HeroSlideConfig[] = [
   {
+    cat: "Apparels",
+    productName: "Puma",
+    eyebrow: "Featured Collection — Sportswear",
+    title: ["Puma", "Sportswear", "engineered", "to perform."],
+    note: "High-performance Puma sportswear featuring innovative DryCELL moisture-wicking technology — bold athletic designs crafted for the modern professional.",
+    heroImg: "https://res.cloudinary.com/diezixk4v/image/upload/v1780658301/9371367a-a235-48b9-9ad2-268bb77b2f17_zb0nna.png",
+  },
+  {
     cat: "Backpacks",
     productName: "Nasher Miles",
-    eyebrow: "Featured Collection - Backpacks",
-    title: ["Nasher Miles", "Travels", "built", "to explore."],
-    note: "Polycarbonate shell trolleys and premium travel bags — 360° spinner wheels, TSA-approved locks, and sleek design built for every journey.",
+    eyebrow: "New Arrival — Travel & Bags",
+    title: ["Nasher Miles", "Luggage", "built", "to explore."],
+    note: "Premium polycarbonate shell trolleys and travel bags — 360° spinner wheels, TSA-approved locks, and refined designs crafted for every corporate journey.",
   },
   {
     cat: "Electronics",
-    productName: "HAMMER B2B",
-    eyebrow: "New Arrival - Electronics",
-    title: ["HAMMER B2B", "Audio", "for", "business."],
-    note: "Professional HAMMER audio solutions — wireless earbuds, speakers, and headphones built for bulk corporate gifting.",
-  },
-  {
-    cat: "Apparels",
-    productName: "Adidas",
-    eyebrow: "Featured Collection - Sportswear",
-    title: ["Adidas", "Sportswear", "built", "to perform."],
-    note: "Iconic Adidas sportswear — moisture-wicking Climalite fabric, bold three-stripe heritage, and a relaxed athletic fit for every occasion.",
+    productName: "BLAUPUNKT",
+    eyebrow: "Featured Collection — Electronics",
+    title: ["Blaupunkt", "Audio", "crafted", "for impact."],
+    note: "360° surround sound Bluetooth speakers with IPX6 waterproofing, 12-hour playtime, and TWS mode — premium audio solutions for standout corporate gifting.",
+    heroImg: "https://res.cloudinary.com/diezixk4v/image/upload/v1780658627/3ddbc289-13e5-4aa5-8822-8cd244c7df02_nf2naq.png",
   },
   {
     cat: "Home Appliances",
-    productName: "Prestige",
-    eyebrow: "Home Collection - Kitchen Appliances",
-    title: ["Prestige", "Kitchen", "built", "to last."],
-    note: "India's most trusted kitchen brand — pressure cookers, mixer grinders, and induction cooktops built for every modern home.",
+    productName: "Pexpo",
+    eyebrow: "New Arrival — Home & Kitchen",
+    title: ["Pexpo", "Drinkware", "insulated", "to impress."],
+    note: "Stainless steel insulated bottles and kitchenware with double-wall vacuum technology — a sleek, sophisticated corporate gifting range that leaves a lasting impression.",
+    heroImg: "https://res.cloudinary.com/diezixk4v/image/upload/v1780661217/55abf178-3147-413b-b99a-65665878f0e5_bshsfh.png",
   },
   {
     cat: "Edible",
-    productName: "Cacao Springs Brochure",
-    eyebrow: "Edible Collection - Artisan Chocolates",
-    title: ["Cacao", "Springs", "crafted", "to delight."],
-    note: "Artisan chocolates and confectionery from Cacao Springs — premium edible corporate gifts that leave a lasting impression.",
+    productName: "Cacao Springs Festive Brochure",
+    eyebrow: "Festive Collection — Edible Gifts",
+    title: ["Cacao Springs", "Festive", "crafted", "to celebrate."],
+    note: "Seasonal chocolate hampers and artisan gift boxes from Cacao Springs — premium edible corporate gifts curated for celebrations and special occasions.",
   },
   {
     cat: "B2B Importer",
     productName: "B2B Catalogue",
-    eyebrow: "B2B Importer - Bulk Corporate Orders",
-    title: ["B2B", "Importer", "built", "for scale."],
-    note: "Exclusive bulk corporate orders across all categories — your one-stop B2B importer for premium branded gifting at scale.",
+    eyebrow: "B2B Importer — Bulk Corporate Orders",
+    title: ["B2B", "Importer", "scaled", "for business."],
+    note: "Exclusive bulk corporate orders spanning every category — your one-stop B2B importer for premium branded gifting at competitive scale.",
   },
 ];
 
@@ -74,13 +79,14 @@ const HERO_SLIDES = HERO_SLIDE_CONFIGS.map((slide) => {
     throw new Error(`Missing hero product: ${slide.productName}`);
   }
 
+  const heroImg = slide.heroImg ?? product.img;
   return {
     ...slide,
     desc: product.desc,
     sub: product.sub,
     badge: product.badge,
-    img: upgradeImage(product.img),
-    thumb: product.img,
+    img: upgradeImage(heroImg),
+    thumb: heroImg,
   };
 });
 

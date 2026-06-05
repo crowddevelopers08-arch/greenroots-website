@@ -67,7 +67,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
           />
         </button>
 
-        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center rounded-full border border-[rgba(180,204,182,.6)] bg-[rgba(246,251,247,.88)] px-2 py-1.5 shadow-[0_12px_30px_rgba(30,61,34,.06)] backdrop-blur-[16px] xl:flex">
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center rounded-full border border-[rgba(180,204,182,.6)] bg-[rgba(246,251,247,.88)] px-1.5 py-1.5 shadow-[0_12px_30px_rgba(30,61,34,.06)] backdrop-blur-[16px] xl:flex xl:px-2">
           {Object.keys(CAT).map((item) => {
             const category = item as CategoryKey;
             const isOpen = dropdown === category;
@@ -83,7 +83,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
               >
                 <button
                   onClick={() => handleNav(category, null)}
-                  className={`group relative flex items-center gap-1 rounded-full px-[14px] py-2 text-[12.5px] font-medium tracking-[0.025em] transition ${
+                  className={`group relative flex items-center gap-1 whitespace-nowrap rounded-full px-[11px] py-2 text-[12px] font-medium tracking-[0.02em] transition xl:px-[14px] xl:text-[12.5px] xl:tracking-[0.025em] ${
                     isActive
                       ? "bg-[#e4f0e6] text-[#0d0c0b] shadow-[inset_0_1px_0_rgba(255,255,255,.7),0_8px_18px_rgba(30,61,34,.07)]"
                       : "text-[#3d5843] hover:bg-[rgba(228,240,230,.7)] hover:text-[#0d0c0b]"
