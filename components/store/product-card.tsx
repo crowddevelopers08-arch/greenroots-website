@@ -41,13 +41,13 @@ export function ProductCard({ product, category, delay = 0, onBrandClick }: Prop
           {onBrandClick ? "View Catalogue" : "View Product"}
         </span>
       </div>
-      <div className="flex flex-1 flex-col gap-1.5 px-[18px] pb-5 pt-4">
+      <div className="flex flex-col gap-1.5 px-[18px] pb-4 pt-3">
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1 text-sm font-medium leading-[1.3] text-[#0d0c0b]">{product.name}</div>
           <div className="mt-0.5 whitespace-nowrap text-[11.5px] font-medium text-[#4a6a50]">POA</div>
         </div>
-        <p className="flex-1 text-xs font-light leading-[1.5] text-[#3d5843]">{product.desc}</p>
-        <div className="mt-2 flex items-center justify-between">
+        <p className="text-xs font-light leading-[1.5] text-[#3d5843]">{product.desc}</p>
+        <div className="mt-1.5 flex items-center justify-between">
           <span className="rounded-[20px] bg-[#e4f0e6] px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-[0.1em] text-[#4a7254]">
             {product.sub}
           </span>

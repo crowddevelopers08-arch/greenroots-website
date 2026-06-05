@@ -184,15 +184,16 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
                 ))}
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 md:gap-[18px]">
+            <div className="columns-2 gap-3 md:columns-3 md:gap-[18px]">
               {PRODS["Backpacks"].slice(0, 3).map((product, index) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  category="Backpacks"
-                  delay={index * 70}
-                  onEnquiry={openEnquiry}
-                />
+                <div key={product.id} className="break-inside-avoid mb-3 md:mb-[18px]">
+                  <ProductCard
+                    product={product}
+                    category="Backpacks"
+                    delay={index * 70}
+                    onEnquiry={openEnquiry}
+                  />
+                </div>
               ))}
             </div>
           </section>
