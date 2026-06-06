@@ -1,7 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CAT, PRODS, type CategoryKey, type Product } from "@/lib/store-data";
+
+/** 5 hand-picked products shown in the homepage featured carousel */
+const FEATURED: { product: Product; category: CategoryKey }[] = [
+  { product: PRODS["Backpacks"][0],  category: "Backpacks" },   // MI Canvas Bag
+  { product: PRODS["Backpacks"][1],  category: "Backpacks" },   // Toburo Bags
+  { product: PRODS["Backpacks"][2],  category: "Backpacks" },   // God_s
+  { product: PRODS["Backpacks"][3],  category: "Backpacks" },   // Nasher Miles
+  { product: PRODS["Apparels"][12],  category: "Apparels"  },   // Adidas
+];
+const DESKTOP_VISIBLE   = 3;                                     // cards visible at once on desktop
+const DESKTOP_MAX_SLIDE = FEATURED.length - DESKTOP_VISIBLE;    // 5 - 3 = 2
 import { LoadingScreen } from "./loading-screen";
 import { StoreHeader } from "./store-header";
 import { HeroSection } from "./hero-section";
@@ -14,7 +25,6 @@ import { EditorialElectronics } from "./editorial-electronics";
 import { ProcessSection } from "./process-section";
 import { TestimonialsSection } from "./testimonials-section";
 import { CtaSection } from "./cta-section";
-import { ProductCard } from "./product-card";
 import { ProductPage } from "./product-page";
 import { SearchBar } from "./search-bar";
 import { EnquiryModal } from "./enquiry-modal";
@@ -33,6 +43,45 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
   const [modalCategory, setModalCategory] = useState<CategoryKey | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [bookOpen, setBookOpen] = useState(false);
+
+  // ── Featured carousel (mobile auto-advance) ──────────────────────────────
+  const [featuredSlide, setFeaturedSlide] = useState(0);
+  const [desktopSlide, setDesktopSlide] = useState(0);
+  const touchStartX = useRef(0);
+  const carouselPaused = useRef(false);
+
+  useEffect(() => {
+    // Mobile: auto-advance every 3.5 s (pauses on touch)
+    const mobileId = setInterval(() => {
+      if (!carouselPaused.current) {
+        setFeaturedSlide((s) => (s + 1) % FEATURED.length);
+      }
+    }, 3500);
+    // Desktop: auto-advance through the 3 pages every 3.8 s
+    const desktopId = setInterval(() => {
+      setDesktopSlide((s) => (s + 1) % (DESKTOP_MAX_SLIDE + 1));
+    }, 3800);
+    return () => {
+      clearInterval(mobileId);
+      clearInterval(desktopId);
+    };
+  }, []);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    carouselPaused.current = true;
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 40) {
+      setFeaturedSlide((s) =>
+        delta > 0
+          ? (s + 1) % FEATURED.length
+          : (s - 1 + FEATURED.length) % FEATURED.length
+      );
+    }
+    carouselPaused.current = false;
+  };
 
   const nav = (nextCategory: CategoryKey | null, nextSubcategory: string | null) => {
     setCategory(nextCategory);
@@ -148,8 +197,10 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
           <EditorialElectronics onNav={nav} />
           <ProcessSection />
           <TestimonialsSection />
-          <section className="px-4 pb-8 sm:px-5 md:px-12 md:pb-24">
-            <div className="mb-4 flex items-start justify-between gap-3 md:mb-7">
+          <section className="pb-8 sm:pb-12 md:pb-24">
+
+            {/* ── Heading + View All (padded) ── */}
+            <div className="mb-4 flex items-start justify-between gap-3 px-4 sm:px-5 md:mb-7 md:px-12">
               <div>
                 <div className="mb-1.5 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
                   Handpicked
@@ -166,36 +217,179 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
               </button>
             </div>
 
-            {/* Category quick-filter */}
-            <div className="mb-5 -mx-4 overflow-x-auto px-4 pb-1 sm:-mx-5 sm:px-5 md:mx-0 md:px-0">
-              <div className="flex gap-2 w-max">
+            {/* ── Category pills (padded) ── */}
+            <div className="mb-4 overflow-x-auto px-4 py-1 sm:px-5 md:mb-6 md:px-12">
+              <div className="flex w-max gap-2">
                 {(Object.keys(CAT) as CategoryKey[]).map((cat) => (
                   <button
                     key={cat}
                     onClick={() => nav(cat, null)}
                     className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#ccd8ce] bg-white px-3.5 py-1.5 text-[11.5px] font-medium text-[#3d5843] whitespace-nowrap transition hover:-translate-y-px hover:border-[#3a7848] hover:bg-[#e4f0e6] hover:text-[#0d0c0b] sm:gap-2 sm:px-4 sm:py-2 sm:text-[12px]"
                   >
-                    <span
-                      className="h-2 w-2 rounded-full"
-                      style={{ background: CAT[cat].col }}
-                    />
+                    <span className="h-2 w-2 rounded-full" style={{ background: CAT[cat].col }} />
                     {cat}
                   </button>
                 ))}
               </div>
             </div>
-            <div className="columns-2 gap-3 md:columns-3 md:gap-[18px]">
-              {PRODS["Backpacks"].slice(0, 3).map((product, index) => (
-                <div key={product.id} className="break-inside-avoid mb-3 md:mb-[18px]">
-                  <ProductCard
-                    product={product}
-                    category="Backpacks"
-                    delay={index * 70}
-                    onEnquiry={openEnquiry}
-                  />
+
+            {/* ── Mobile: padded 1-card auto-carousel ── */}
+            <div className="px-4 sm:hidden">
+              <div
+                className="overflow-hidden rounded-[18px] border border-[#e0ece0]"
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+              >
+                <div
+                  className="flex transition-transform duration-500 ease-[cubic-bezier(.4,0,.2,1)]"
+                  style={{ transform: `translateX(-${featuredSlide * 100}%)` }}
+                >
+                  {FEATURED.map(({ product, category: cat }) => (
+                    <div
+                      key={product.id}
+                      className="relative w-full shrink-0 cursor-pointer"
+                      onClick={() => nav(cat, product.sub)}
+                    >
+                      {/* Fixed-height image — fully visible, no cropping */}
+                      <div className="h-[240px] w-full overflow-hidden bg-[#f0f6f0]">
+                        <img
+                          src={product.img}
+                          alt={product.name}
+                          className="h-full w-full object-contain p-3 transition duration-500"
+                        />
+                      </div>
+                      {product.badge && (
+                        <span className="absolute left-3 top-3 z-10 rounded-full bg-[#1e3d22] px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-[0.1em] text-white">
+                          {product.badge}
+                        </span>
+                      )}
+                      <div className="border-t border-[#e0ece0] bg-[#f5f9f5] px-4 py-4">
+                        <div className="flex items-start justify-between gap-2">
+                          <span className="text-sm font-semibold leading-[1.3] text-[#0d0c0b]">{product.name}</span>
+                          <span className="whitespace-nowrap text-[11.5px] font-medium text-[#4a6a50]">POA</span>
+                        </div>
+                        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-[#3d5843]">{product.desc}</p>
+                        <div className="mt-3 flex items-center justify-between">
+                          <span className="rounded-[20px] bg-[#e4f0e6] px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-[0.1em] text-[#4a7254]">
+                            {product.sub}
+                          </span>
+                          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#d0e0d2] text-[#3d5843]">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                              <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+                {/* Slide dots */}
+                <div className="flex justify-center gap-2 border-t border-[#e0ece0] bg-[#f5f9f5] py-3">
+                  {FEATURED.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setFeaturedSlide(i)}
+                      aria-label={`Go to slide ${i + 1}`}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        i === featuredSlide ? "w-5 bg-[#1e3d22]" : "w-1.5 bg-[#c0d0c2]"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
+
+            {/* ── Desktop: 3-at-a-time carousel with side padding ── */}
+            <div className="hidden sm:block sm:px-5 md:px-12">
+              {/* Nav row: page dots (left) + prev / next arrows (right) */}
+              <div className="mb-3 flex items-center justify-between">
+                <div className="flex gap-1.5">
+                  {Array.from({ length: DESKTOP_MAX_SLIDE + 1 }).map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setDesktopSlide(i)}
+                      aria-label={`Desktop page ${i + 1}`}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        i === desktopSlide ? "w-5 bg-[#1e3d22]" : "w-1.5 bg-[#c0d0c2]"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setDesktopSlide((s) => Math.max(0, s - 1))}
+                    disabled={desktopSlide === 0}
+                    aria-label="Previous"
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-[#c0d0c2] bg-white text-[#3d5843] transition hover:border-[#3a7848] hover:bg-[#1e3d22] hover:text-white disabled:pointer-events-none disabled:opacity-30"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M9 3L5 7l4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => setDesktopSlide((s) => Math.min(DESKTOP_MAX_SLIDE, s + 1))}
+                    disabled={desktopSlide === DESKTOP_MAX_SLIDE}
+                    aria-label="Next"
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-[#c0d0c2] bg-white text-[#3d5843] transition hover:border-[#3a7848] hover:bg-[#1e3d22] hover:text-white disabled:pointer-events-none disabled:opacity-30"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M5 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              {/* Carousel track — overflow hidden so only 3 cards show */}
+              <div className="overflow-hidden rounded-[20px] border border-[#e0ece0]">
+                <div
+                  className="flex transition-transform duration-500 ease-[cubic-bezier(.4,0,.2,1)]"
+                  style={{ transform: `translateX(-${desktopSlide * (100 / DESKTOP_VISIBLE)}%)` }}
+                >
+                  {FEATURED.map(({ product, category: cat }, index) => (
+                    <div
+                      key={product.id}
+                      onClick={() => nav(cat, product.sub)}
+                      style={{ width: `${100 / DESKTOP_VISIBLE}%`, flexShrink: 0 }}
+                      className={`group relative cursor-pointer bg-[#f5f9f5] ${
+                        index < FEATURED.length - 1 ? "border-r border-[#e0ece0]" : ""
+                      }`}
+                    >
+                      {/* Fixed-height image — fully visible, no cropping */}
+                      <div className="h-[260px] overflow-hidden bg-[#f0f6f0]">
+                        <img
+                          src={product.img}
+                          alt={product.name}
+                          className="h-full w-full object-contain p-4 transition duration-700 group-hover:scale-[1.04]"
+                        />
+                      </div>
+                      {product.badge && (
+                        <span className="absolute left-3 top-3 z-10 rounded-full bg-[#1e3d22] px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-[0.1em] text-white">
+                          {product.badge}
+                        </span>
+                      )}
+                      {/* Info panel */}
+                      <div className="border-t border-[#e0ece0] p-4">
+                        <div className="flex items-start justify-between gap-2">
+                          <span className="text-[13px] font-semibold leading-[1.3] text-[#0d0c0b]">{product.name}</span>
+                          <span className="whitespace-nowrap text-[11px] font-medium text-[#4a6a50]">POA</span>
+                        </div>
+                        <p className="mt-1.5 line-clamp-2 text-[11px] leading-[1.5] text-[#3d5843]">{product.desc}</p>
+                        <div className="mt-3 flex items-center justify-between">
+                          <span className="rounded-[20px] bg-[#e4f0e6] px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] text-[#4a7254]">
+                            {product.sub}
+                          </span>
+                          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#d0e0d2] text-[#3d5843] transition duration-200 group-hover:bg-[#1e3d22] group-hover:text-white">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                              <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
           </section>
         </>
       ) : (

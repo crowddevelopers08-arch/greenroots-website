@@ -119,7 +119,7 @@ export function HeroSection({ onNav }: Props) {
             key={slide.productName}
             src={slide.img}
             alt={slide.productName}
-            className={`absolute inset-0 h-full w-full object-cover object-[72%_center] transition-all duration-[1600ms] ease-out xl:object-[78%_center] ${
+            className={`absolute inset-0 h-full w-full object-cover object-center sm:object-[72%_center] xl:object-[78%_center] transition-all duration-[1600ms] ease-out ${
               index === activeIndex ? "scale-100 opacity-[.92]" : "scale-[1.08] opacity-0"
             }`}
             style={{
@@ -129,7 +129,10 @@ export function HeroSection({ onNav }: Props) {
         ))}
       </div>
 
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(13,12,11,.9)_0%,rgba(13,12,11,.68)_34%,rgba(13,12,11,.3)_60%,rgba(13,12,11,.16)_100%),linear-gradient(to_top,rgba(13,12,11,.68)_0%,rgba(13,12,11,.16)_42%,rgba(13,12,11,.42)_100%)]" />
+      {/* Mobile overlay: top + bottom dark, middle open so the centred image shows through */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(13,12,11,.75)_0%,rgba(13,12,11,.14)_38%,rgba(13,12,11,.14)_62%,rgba(13,12,11,.82)_100%)] sm:hidden" />
+      {/* Desktop overlay: left-heavy horizontal + vertical gradient for text legibility */}
+      <div className="absolute inset-0 hidden sm:block bg-[linear-gradient(to_right,rgba(13,12,11,.9)_0%,rgba(13,12,11,.68)_34%,rgba(13,12,11,.3)_60%,rgba(13,12,11,.16)_100%),linear-gradient(to_top,rgba(13,12,11,.68)_0%,rgba(13,12,11,.16)_42%,rgba(13,12,11,.42)_100%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(255,255,255,.14),transparent_28%),radial-gradient(circle_at_75%_82%,rgba(255,255,255,.08),transparent_24%)] mix-blend-screen" />
 
       <div className="relative z-[2] mx-auto flex min-h-[620px] h-full w-full max-w-[1440px] items-end px-4 pb-20 pt-16 sm:min-h-[680px] sm:px-5 sm:pb-24 sm:pt-18 md:px-8 xl:min-h-[calc(100svh-68px)] xl:items-center xl:px-12 xl:pb-8 xl:pt-6">

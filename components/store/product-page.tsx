@@ -19,6 +19,20 @@ const SORT_OPTIONS: { key: SortKey; label: string }[] = [
   { key: "za", label: "Name Z-A" },
 ];
 
+/** Cycling palette for brand-pill letter avatars */
+const PILL_COLORS: { bg: string; text: string }[] = [
+  { bg: "#e4f0e6", text: "#1e4d22" },
+  { bg: "#e8e4f0", text: "#3d1e6a" },
+  { bg: "#f0e8e4", text: "#5a2d1e" },
+  { bg: "#e4eaf0", text: "#1e3a5a" },
+  { bg: "#f0f0e4", text: "#4a4a1e" },
+  { bg: "#f0e4ea", text: "#5a1e3d" },
+  { bg: "#e4f0f0", text: "#1e4a4a" },
+  { bg: "#f0ece4", text: "#4a3a1e" },
+  { bg: "#ece4f0", text: "#3a1e4a" },
+  { bg: "#eaf0e4", text: "#2d4a1e" },
+];
+
 type Props = {
   category: CategoryKey;
   subcategory: string | null;
@@ -186,17 +200,19 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
 
           <div className="mt-5 border-t border-[#c4d4c6] pt-4 sm:mt-8 sm:pt-5">
 
-            {/* ── Mobile: auto-scrolling marquee ── */}
-            <div className="-mx-4 overflow-hidden sm:hidden">
+            {/* ── Mobile: auto-scrolling marquee (overflow-hidden keeps it in-bounds, no -mx so page stays full-width) ── */}
+            <div className="overflow-hidden sm:hidden">
               <div
-                className="flex items-center w-max gap-2 px-4 py-1"
-                style={{ animation: "tickerMove 32s linear infinite" }}
+                className="flex w-max items-center gap-2 py-1"
+                style={{ animation: "tickerMove 30s linear infinite" }}
                 onTouchStart={(e) => (e.currentTarget.style.animationPlayState = "paused")}
-                onTouchEnd={(e) => (e.currentTarget.style.animationPlayState = "running")}
+                onTouchEnd={(e)   => (e.currentTarget.style.animationPlayState = "running")}
               >
                 {[...config.subs, ...config.subs].map((sub, idx) => {
-                  const active = (subcategory ?? "All") === sub;
-                  const isReal = idx < config.subs.length;
+                  const active  = (subcategory ?? "All") === sub;
+                  const isReal  = idx < config.subs.length;
+                  const colorIdx = config.subs.indexOf(sub) % PILL_COLORS.length;
+                  const avatarColor = PILL_COLORS[colorIdx];
                   return (
                     <button
                       key={`mob-pill-${idx}`}
@@ -209,8 +225,13 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                           : "border border-[#c0d0c2] bg-white text-[#3d5843]"
                       }`}
                     >
-                      <span className="h-8 w-8 overflow-hidden rounded-full border border-white/40 bg-[#e4f0e6]">
-                        <img src={subImages[sub]} alt={sub} className="h-full w-full object-cover" />
+                      <span
+                        className="h-8 w-8 shrink-0 rounded-full flex items-center justify-center text-[11px] font-bold uppercase"
+                        style={active
+                          ? { backgroundColor: "rgba(255,255,255,0.18)", color: "#fff" }
+                          : { backgroundColor: avatarColor.bg, color: avatarColor.text }}
+                      >
+                        {sub.charAt(0)}
                       </span>
                       {sub}
                     </button>
@@ -220,10 +241,11 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             </div>
 
             {/* ── Desktop: scrollable + wrap ── */}
-            <div className="hidden sm:-mx-5 sm:block sm:overflow-x-auto sm:scroll-smooth md:mx-0">
-              <div className="flex flex-wrap gap-2.5 px-5 pb-2 md:px-0 md:pb-0">
-                {config.subs.map((sub) => {
+            <div className="hidden sm:block sm:overflow-x-auto sm:scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <div className="flex flex-wrap gap-2.5 pt-1 pb-2">
+                {config.subs.map((sub, i) => {
                   const active = (subcategory ?? "All") === sub;
+                  const avatarColor = PILL_COLORS[i % PILL_COLORS.length];
                   return (
                     <button
                       key={sub}
@@ -234,8 +256,13 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                           : "border border-[#c0d0c2] bg-white text-[#3d5843] hover:-translate-y-px hover:border-[#7a9e82] hover:text-[#0d0c0b]"
                       }`}
                     >
-                      <span className="h-9 w-9 overflow-hidden rounded-full border border-white/40 bg-[#e4f0e6]">
-                        <img src={subImages[sub]} alt={sub} className="h-full w-full object-cover" />
+                      <span
+                        className="h-9 w-9 shrink-0 rounded-full flex items-center justify-center text-[12px] font-bold uppercase"
+                        style={active
+                          ? { backgroundColor: "rgba(255,255,255,0.18)", color: "#fff" }
+                          : { backgroundColor: avatarColor.bg, color: avatarColor.text }}
+                      >
+                        {sub.charAt(0)}
                       </span>
                       {sub}
                     </button>
@@ -281,7 +308,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
           </div>
 
           {/* Right: New-only · Sort · Clear */}
-          <div className="flex shrink-0 items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2 py-1">
             {hasNewItems && (
               <button
                 onClick={() => setNewOnly((v) => !v)}
@@ -425,7 +452,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
           </div>
 
           <div className="p-3 sm:p-4 md:p-6">
-            <div className="columns-2 gap-3 sm:gap-4 sm:columns-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 md:gap-4">
               {haGalleryImages.map((image, index) => {
                 const haProduct = sortedProducts[0];
                 // Cloudinary e_trim strips the baked-in white padding from Decathlon PDF pages
@@ -436,7 +463,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                   <div
                     key={image}
                     onClick={() => haProduct && onEnquiry({ ...haProduct, name: `${subcategory} — Page ${String(index + 1).padStart(2, "0")}`, desc: `${subcategory} catalogue page ${String(index + 1).padStart(2, "0")}`, img: displayImage }, category)}
-                    className="break-inside-avoid mb-3 sm:mb-4 group relative flex cursor-pointer flex-col overflow-hidden rounded-[26px] border border-[#bcccbe] bg-[linear-gradient(145deg,#f6fbf7_0%,#e8f3e9_52%,#ddeedd_100%)] text-left shadow-[0_18px_44px_rgba(30,61,34,.10)] transition duration-300 hover:-translate-y-2 hover:border-[#3a7848] hover:shadow-[0_26px_60px_rgba(30,61,34,.18)]"
+                    className="group relative flex cursor-pointer flex-col overflow-hidden rounded-[26px] border border-[#bcccbe] bg-[linear-gradient(145deg,#f6fbf7_0%,#e8f3e9_52%,#ddeedd_100%)] text-left shadow-[0_18px_44px_rgba(30,61,34,.10)] transition duration-300 hover:-translate-y-2 hover:border-[#3a7848] hover:shadow-[0_26px_60px_rgba(30,61,34,.18)]"
                   >
                     <div className="pointer-events-none absolute inset-0">
                       <div className="absolute left-0 top-0 h-full w-[1px] bg-white/70" />
@@ -511,12 +538,12 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#4a7254]">
               Browse By Category
             </div>
-            <div className="columns-2 gap-3 sm:gap-4 sm:columns-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 md:gap-4">
               {bsSections.map((section) => (
                 <Link
                   key={section.id}
                   href={getBsSectionHref(section.id)}
-                  className="break-inside-avoid mb-3 sm:mb-4 block group overflow-hidden rounded-[26px] border border-[#c2d4c4] bg-white/90 text-left shadow-[0_8px_24px_rgba(30,61,34,.05)] transition duration-300 hover:-translate-y-1 hover:border-[#3a7848] hover:shadow-[0_18px_36px_rgba(30,61,34,.10)]"
+                  className="block group overflow-hidden rounded-[26px] border border-[#c2d4c4] bg-white/90 text-left shadow-[0_8px_24px_rgba(30,61,34,.05)] transition duration-300 hover:-translate-y-1 hover:border-[#3a7848] hover:shadow-[0_18px_36px_rgba(30,61,34,.10)]"
                 >
                   <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top,#eaf4eb_0%,#ddeedd_100%)]">
                     <img
@@ -574,9 +601,9 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
           </button>
         </div>
       ) : (
-        <div className="columns-2 gap-3 sm:columns-2 md:columns-3 md:gap-[18px]">
+        <div className="columns-1 gap-4 sm:columns-2 sm:gap-3 md:columns-3 md:gap-[18px]">
           {sortedProducts.map((product, index) => (
-            <div key={product.id} className="break-inside-avoid mb-3 md:mb-[18px]">
+            <div key={product.id} className="break-inside-avoid mb-4 sm:mb-3 md:mb-[18px]">
               <ProductCard
                 product={product}
                 category={category}

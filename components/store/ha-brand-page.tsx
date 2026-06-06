@@ -98,7 +98,7 @@ export function HaBrandPage({ brandProduct, images }: Props) {
 
             {/* Image grid */}
             <div className="p-4 md:p-6">
-              <div className="columns-2 gap-4 sm:columns-3">
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
                 {images.map((image, index) => (
                   <div
                     key={image}
@@ -110,7 +110,7 @@ export function HaBrandPage({ brandProduct, images }: Props) {
                         img: image,
                       })
                     }
-                    className="break-inside-avoid mb-4 group relative flex cursor-pointer flex-col overflow-hidden rounded-[26px] border border-[#bcccbe] bg-[linear-gradient(145deg,#f6fbf7_0%,#e8f3e9_52%,#ddeedd_100%)] text-left shadow-[0_18px_44px_rgba(30,61,34,.10)] transition duration-300 hover:-translate-y-2 hover:border-[#3a7848] hover:shadow-[0_26px_60px_rgba(30,61,34,.18)]"
+                    className="group relative flex cursor-pointer flex-col overflow-hidden rounded-[26px] border border-[#bcccbe] bg-[linear-gradient(145deg,#f6fbf7_0%,#e8f3e9_52%,#ddeedd_100%)] text-left shadow-[0_18px_44px_rgba(30,61,34,.10)] transition duration-300 hover:-translate-y-2 hover:border-[#3a7848] hover:shadow-[0_26px_60px_rgba(30,61,34,.18)]"
                   >
                     <div className="pointer-events-none absolute inset-0">
                       <div className="absolute left-0 top-0 h-full w-[1px] bg-white/70" />
