@@ -129,13 +129,13 @@ export function HeroSection({ onNav }: Props) {
         ))}
       </div>
 
-      {/* Mobile overlay: top + bottom dark, middle open so the centred image shows through */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(13,12,11,.75)_0%,rgba(13,12,11,.14)_38%,rgba(13,12,11,.14)_62%,rgba(13,12,11,.82)_100%)] sm:hidden" />
+      {/* Mobile overlay: bottom-heavy gradient so text stays readable while image shows at top */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(13,12,11,.96)_0%,rgba(13,12,11,.82)_32%,rgba(13,12,11,.50)_54%,rgba(13,12,11,.14)_72%,rgba(13,12,11,.10)_100%)] sm:hidden" />
       {/* Desktop overlay: left-heavy horizontal + vertical gradient for text legibility */}
       <div className="absolute inset-0 hidden sm:block bg-[linear-gradient(to_right,rgba(13,12,11,.9)_0%,rgba(13,12,11,.68)_34%,rgba(13,12,11,.3)_60%,rgba(13,12,11,.16)_100%),linear-gradient(to_top,rgba(13,12,11,.68)_0%,rgba(13,12,11,.16)_42%,rgba(13,12,11,.42)_100%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(255,255,255,.14),transparent_28%),radial-gradient(circle_at_75%_82%,rgba(255,255,255,.08),transparent_24%)] mix-blend-screen" />
 
-      <div className="relative z-[2] mx-auto flex min-h-[620px] h-full w-full max-w-[1440px] items-end px-4 pb-20 pt-16 sm:min-h-[680px] sm:px-5 sm:pb-24 sm:pt-18 md:px-8 xl:min-h-[calc(100svh-68px)] xl:items-center xl:px-12 xl:pb-8 xl:pt-6">
+      <div className="relative z-[2] mx-auto flex min-h-[620px] h-full w-full max-w-[1440px] flex-col justify-end px-4 pt-16 sm:min-h-[680px] sm:px-5 sm:pt-18 md:px-8 xl:min-h-[calc(100svh-68px)] xl:justify-center xl:px-12 xl:pb-8 xl:pt-6 max-[470px]:pt-6">
         <div className="w-full xl:grid xl:grid-cols-[minmax(0,1fr)_220px] xl:items-center xl:gap-10 2xl:grid-cols-[minmax(0,1fr)_232px] 2xl:gap-12">
           <div className="max-w-[720px] xl:max-w-[640px]">
             <div
@@ -144,12 +144,12 @@ export function HeroSection({ onNav }: Props) {
             >
               <div className="mb-5 flex items-center gap-[14px] sm:mb-6">
                 <span className="h-px w-9 bg-[rgba(255,255,255,.4)]" />
-                <span className="text-[10.5px] font-medium uppercase tracking-[0.2em] text-[rgba(255,255,255,.88)]">
+                <span className="text-[10.5px] font-medium uppercase tracking-[0.2em] text-[rgba(255,255,255,.88)] [text-shadow:0_1px_6px_rgba(0,0,0,.7)]">
                   {activeSlide.eyebrow}
                 </span>
               </div>
 
-              <h1 className="mb-5 max-w-[620px] font-[var(--font-cormorant)] text-[clamp(40px,8vw,92px)] leading-[.94] font-light tracking-[-0.02em] text-white sm:mb-6">
+              <h1 className="mb-5 max-w-[620px] [font-family:var(--font-cormorant)] text-[clamp(32px,8.5vw,92px)] leading-[.94] font-light tracking-[-0.02em] text-white [text-shadow:0_2px_16px_rgba(0,0,0,.55)] sm:mb-6">
                 {activeSlide.title[0]}
                 <br />
                 {activeSlide.title[1]}
@@ -209,33 +209,6 @@ export function HeroSection({ onNav }: Props) {
               </div>
             </div>
 
-            <div className="mt-7 flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 xl:hidden">
-              {HERO_SLIDES.map((slide, index) => {
-                const isActive = index === activeIndex;
-
-                return (
-                  <button
-                    key={`${slide.productName}-mobile`}
-                    onClick={() => setActiveIndex(index)}
-                    className={`min-w-[160px] shrink-0 snap-start overflow-hidden rounded-[18px] border text-left backdrop-blur-[12px] transition sm:min-w-[180px] ${
-                      isActive
-                        ? "border-[rgba(255,255,255,.4)] bg-[rgba(250,249,247,.18)]"
-                        : "border-[rgba(255,255,255,.18)] bg-[rgba(250,249,247,.1)]"
-                    }`}
-                  >
-                    <div className="h-24 overflow-hidden">
-                      <img src={slide.thumb} alt={slide.productName} className="h-full w-full object-cover" />
-                    </div>
-                    <div className="px-3 py-3">
-                      <div className="text-[12px] font-medium text-white">{slide.productName}</div>
-                      <div className="mt-0.5 text-[10px] uppercase tracking-[0.12em] text-[rgba(255,255,255,.75)]">
-                        {slide.cat}
-                      </div>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
           </div>
 
           <div
@@ -302,13 +275,45 @@ export function HeroSection({ onNav }: Props) {
             })}
 
             <div className="mt-2 w-full rounded-2xl border border-[rgba(255,255,255,.18)] bg-[rgba(250,249,247,.12)] px-5 py-4 backdrop-blur-[12px]">
-              <div className="mb-0.5 font-[var(--font-cormorant)] text-4xl leading-none font-light text-white">
+              <div className="mb-0.5 [font-family:var(--font-cormorant)] text-4xl leading-none font-light text-white">
                 240+
               </div>
               <div className="text-[10px] uppercase tracking-[0.1em] text-[rgba(255,255,255,.72)]">
                 Curated pieces
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* ── Mobile marquee brand strip (full-bleed, auto-scrolls like a ticker) ── */}
+        <div className="mt-6 overflow-hidden -mx-4 sm:-mx-5 md:-mx-8 pb-6 xl:hidden">
+          <div className="flex gap-3 w-max animate-[tickerMove_22s_linear_infinite] hover:[animation-play-state:paused]">
+            {[...HERO_SLIDES, ...HERO_SLIDES].map((slide, i) => {
+              const isActive = (i % HERO_SLIDES.length) === activeIndex;
+              return (
+                <button
+                  key={`${slide.productName}-marquee-${i}`}
+                  onClick={() => setActiveIndex(i % HERO_SLIDES.length)}
+                  className={`w-[148px] shrink-0 overflow-hidden rounded-[16px] border text-left backdrop-blur-[12px] transition-colors ${
+                    isActive
+                      ? "border-[rgba(255,255,255,.45)] bg-[rgba(250,249,247,.20)]"
+                      : "border-[rgba(255,255,255,.16)] bg-[rgba(250,249,247,.09)]"
+                  }`}
+                >
+                  <div className="h-[76px] overflow-hidden">
+                    <img src={slide.thumb} alt={slide.productName} className="h-full w-full object-cover" />
+                  </div>
+                  <div className="px-2.5 py-2.5">
+                    <div className="truncate text-[11.5px] font-medium leading-tight text-white">
+                      {slide.productName}
+                    </div>
+                    <div className="mt-0.5 text-[9.5px] uppercase tracking-[0.1em] text-[rgba(255,255,255,.68)]">
+                      {slide.cat}
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
