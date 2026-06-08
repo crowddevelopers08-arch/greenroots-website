@@ -17,6 +17,18 @@ const cormorant = Fraunces({
 export const metadata: Metadata = {
   title: "Green Roots - Premium Collection",
   description: "Green Roots — premium clothing, accessories, and gifts available by enquiry.",
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  other: {
+    "theme-color": "#111d12",
+    "msapplication-TileColor": "#111d12",
+  },
 };
 
 export default function RootLayout({
