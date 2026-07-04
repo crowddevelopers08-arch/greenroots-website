@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --font-body: var(--font-outfit);
-  --font-display: var(--font-cormorant);
+  --font-body: var(--font-montserrat);
+  --font-display: var(--font-montserrat);
 }
 
 html {

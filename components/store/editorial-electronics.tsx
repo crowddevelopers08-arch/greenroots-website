@@ -35,7 +35,7 @@ export function EditorialElectronics({ onNav }: Props) {
           <div className="mb-7 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#3d5843]">
             New Arrivals
           </div>
-          <h2 className="font-[var(--font-cormorant)] text-[clamp(36px,4vw,60px)] leading-[1.04] tracking-[-0.01em] text-[#0d0c0b]">
+          <h2 className="font-[var(--font-montserrat)] text-[clamp(36px,4vw,60px)] leading-[1.04] tracking-[-0.01em] text-[#0d0c0b]">
             Sound that
             <br />
             moves <em className="text-[#3a7848]">you</em>
@@ -53,7 +53,7 @@ export function EditorialElectronics({ onNav }: Props) {
               { value: "24h", label: "Dispatch" },
             ].map((item, i) => (
               <div key={item.label} className="text-center" style={{ animation: `fadeUp 0.5s ease ${500 + i * 80}ms both` }}>
-                <div className="font-[var(--font-cormorant)] text-[28px] leading-none text-[#0d0c0b]">
+                <div className="font-[var(--font-montserrat)] text-[28px] leading-none text-[#0d0c0b]">
                   {item.value}
                 </div>
                 <div className="mt-1 text-[10px] uppercase tracking-[0.12em] text-[#3d5843]">

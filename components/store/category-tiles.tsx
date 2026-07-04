@@ -16,7 +16,7 @@ export function CategoryTiles({ current, onNav }: Props) {
           <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3d5843] sm:mb-2 sm:text-[10.5px]">
             Browse
           </div>
-          <div className="font-[var(--font-cormorant)] text-[clamp(26px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
+          <div className="font-[var(--font-montserrat)] text-[clamp(26px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
             All Categories
           </div>
         </div>

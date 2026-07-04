@@ -16,7 +16,7 @@ export function BrandsSection() {
         <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
           Our Portfolio
         </div>
-        <div className="font-[var(--font-cormorant)] text-[clamp(30px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
+        <div className="font-[var(--font-montserrat)] text-[clamp(30px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
           Trusted Brands
         </div>
       </Reveal>

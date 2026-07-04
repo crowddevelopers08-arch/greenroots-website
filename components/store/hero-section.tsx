@@ -149,7 +149,7 @@ export function HeroSection({ onNav }: Props) {
                 </span>
               </div>
 
-              <h1 className="mb-5 max-w-[620px] [font-family:var(--font-cormorant)] text-[clamp(32px,8.5vw,92px)] leading-[.94] font-light tracking-[-0.02em] text-white [text-shadow:0_2px_16px_rgba(0,0,0,.55)] sm:mb-6">
+              <h1 className="mb-5 max-w-[620px] [font-family:var(--font-montserrat)] text-[clamp(32px,8.5vw,92px)] leading-[.94] font-light tracking-[-0.02em] text-white [text-shadow:0_2px_16px_rgba(0,0,0,.55)] sm:mb-6">
                 {activeSlide.title[0]}
                 <br />
                 {activeSlide.title[1]}
@@ -275,7 +275,7 @@ export function HeroSection({ onNav }: Props) {
             })}
 
             <div className="mt-2 w-full rounded-2xl border border-[rgba(255,255,255,.18)] bg-[rgba(250,249,247,.12)] px-5 py-4 backdrop-blur-[12px]">
-              <div className="mb-0.5 [font-family:var(--font-cormorant)] text-4xl leading-none font-light text-white">
+              <div className="mb-0.5 [font-family:var(--font-montserrat)] text-4xl leading-none font-light text-white">
                 240+
               </div>
               <div className="text-[10px] uppercase tracking-[0.1em] text-[rgba(255,255,255,.72)]">

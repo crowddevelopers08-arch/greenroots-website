@@ -50,7 +50,7 @@ function TestimonialCard({ t }: { t: typeof TESTIMONIALS[0] }) {
         </p>
       </div>
       <div className="mt-6 flex items-center gap-3 border-t border-[#f0e8de] pt-4">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0d0c0b] font-[var(--font-cormorant)] text-[18px] text-white">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0d0c0b] font-[var(--font-montserrat)] text-[18px] text-white">
           {t.initial}
         </div>
         <div>
@@ -87,7 +87,7 @@ export function TestimonialsSection() {
           <div className="mb-1.5 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
             What Clients Say
           </div>
-          <div className="font-[var(--font-cormorant)] text-[clamp(28px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
+          <div className="font-[var(--font-montserrat)] text-[clamp(28px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
             Trusted by teams
           </div>
         </div>
@@ -123,7 +123,7 @@ export function TestimonialsSection() {
 
             {/* Author */}
             <div className="flex flex-col items-center gap-2">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0d0c0b] font-[var(--font-cormorant)] text-[20px] text-white">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0d0c0b] font-[var(--font-montserrat)] text-[20px] text-white">
                 {TESTIMONIALS[active].initial}
               </div>
               <div>

@@ -20,10 +20,15 @@ import { TickerBar } from "./ticker-bar";
 import { StatsSection } from "./stats-section";
 import { CategoryTiles } from "./category-tiles";
 import { BrandsSection } from "./brands-section";
+import { AboutSection } from "./about-section";
+import { WhyUsSection } from "./why-us-section";
 import { EditorialSection } from "./editorial-section";
 import { EditorialElectronics } from "./editorial-electronics";
 import { ProcessSection } from "./process-section";
+import { ClientsSection } from "./clients-section";
 import { TestimonialsSection } from "./testimonials-section";
+import { WeSupportSection } from "./we-support-section";
+import { ReachUsSection } from "./reach-us-section";
 import { CtaSection } from "./cta-section";
 import { ProductPage } from "./product-page";
 import { SearchBar } from "./search-bar";
@@ -193,10 +198,14 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
           <StatsSection />
           <CategoryTiles current={category} onNav={nav} />
           <BrandsSection />
+          <AboutSection />
+          <WhyUsSection />
           <EditorialSection onNav={nav} />
           <EditorialElectronics onNav={nav} />
           <ProcessSection />
+          <ClientsSection />
           <TestimonialsSection />
+          <WeSupportSection />
           <section className="pb-8 sm:pb-12 md:pb-24">
 
             {/* ── Heading + View All (padded) ── */}
@@ -205,7 +214,7 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
                 <div className="mb-1.5 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
                   Handpicked
                 </div>
-                <div className="font-[var(--font-cormorant)] text-[clamp(26px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
+                <div className="font-[var(--font-montserrat)] text-[clamp(26px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
                   Featured Products
                 </div>
               </div>
@@ -404,6 +413,7 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
         </>
       )}
 
+      {!category && <ReachUsSection onContact={openContact} />}
       {!category && <CtaSection onNav={nav} onContact={openContact} />}
       <StoreFooter onNav={nav} />
       <EnquiryModal

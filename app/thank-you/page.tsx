@@ -25,7 +25,7 @@ export default function ThankYouPage() {
             <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
               Confirmation
             </div>
-            <h1 className="max-w-3xl font-[var(--font-cormorant)] text-[clamp(42px,6vw,72px)] leading-[0.96] tracking-[-0.03em] text-[#0d0c0b]">
+            <h1 className="max-w-3xl font-[var(--font-montserrat)] text-[clamp(42px,6vw,72px)] leading-[0.96] tracking-[-0.03em] text-[#0d0c0b]">
               Thank you for reaching out.
             </h1>
             <p className="mt-5 max-w-2xl text-[15px] leading-[1.8] text-[#3d3530]">
@@ -52,7 +52,7 @@ export default function ThankYouPage() {
                 key={card.title}
                 className="rounded-[24px] border border-[#efe5d8] bg-white/72 px-5 py-5 shadow-[0_8px_28px_rgba(13,12,11,.03)]"
               >
-                <h2 className="mb-2 font-[var(--font-cormorant)] text-[28px] leading-none text-[#0d0c0b]">
+                <h2 className="mb-2 font-[var(--font-montserrat)] text-[28px] leading-none text-[#0d0c0b]">
                   {card.title}
                 </h2>
                 <p className="text-[14px] leading-[1.8] text-[#433b36]">{card.text}</p>

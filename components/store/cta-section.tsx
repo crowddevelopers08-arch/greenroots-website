@@ -23,7 +23,7 @@ export function CtaSection({ onNav, onContact }: Props) {
             </span>
           </div>
 
-          <h2 className="mx-auto mb-4 max-w-[640px] font-[var(--font-cormorant)] text-[clamp(32px,5vw,72px)] leading-[1.02] tracking-[-0.02em] text-white sm:mb-5">
+          <h2 className="mx-auto mb-4 max-w-[640px] font-[var(--font-montserrat)] text-[clamp(32px,5vw,72px)] leading-[1.02] tracking-[-0.02em] text-white sm:mb-5">
             Ready to gift
             <br />
             <em className="text-[rgba(255,255,255,.88)]">with intention?</em>

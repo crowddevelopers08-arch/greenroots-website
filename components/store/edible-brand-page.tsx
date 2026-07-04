@@ -74,7 +74,7 @@ export function EdibleBrandPage({ brandProduct, images }: Props) {
                   <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#4a7254]">
                     Edible
                   </div>
-                  <h1 className="mt-2 font-[var(--font-cormorant)] text-[clamp(38px,4vw,58px)] leading-[0.95] tracking-[-0.03em] text-[#111d12]">
+                  <h1 className="mt-2 font-[var(--font-montserrat)] text-[clamp(38px,4vw,58px)] leading-[0.95] tracking-[-0.03em] text-[#111d12]">
                     {brandProduct.name}
                   </h1>
                   <div className="mt-3 text-[13px] leading-[1.7] text-[#4a6652]">
@@ -147,7 +147,7 @@ export function EdibleBrandPage({ brandProduct, images }: Props) {
                         <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d7048]">
                           {brandProduct.name}
                         </div>
-                        <div className="mt-1 font-[var(--font-cormorant)] text-[28px] leading-none tracking-[-0.02em] text-[#111d12]">
+                        <div className="mt-1 font-[var(--font-montserrat)] text-[28px] leading-none tracking-[-0.02em] text-[#111d12]">
                           {String(index + 1).padStart(2, "0")}
                         </div>
                       </div>
@@ -168,7 +168,7 @@ export function EdibleBrandPage({ brandProduct, images }: Props) {
             <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#3d7048]">
               Interested?
             </div>
-            <div className="mt-2 font-[var(--font-cormorant)] text-[30px] leading-none text-[#111d12]">
+            <div className="mt-2 font-[var(--font-montserrat)] text-[30px] leading-none text-[#111d12]">
               Enquire about {brandProduct.name}
             </div>
             <div className="mt-3 flex flex-wrap justify-center gap-3">

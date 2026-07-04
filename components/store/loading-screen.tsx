@@ -69,7 +69,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
         {/* Brand name clip reveal */}
         <div
           style={{
-            fontFamily: "var(--font-cormorant)",
+            fontFamily: "var(--font-montserrat)",
             fontSize: "clamp(30px,6vw,48px)",
             letterSpacing: "0.18em",
             color: "white",

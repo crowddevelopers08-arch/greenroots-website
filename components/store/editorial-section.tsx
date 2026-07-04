@@ -15,7 +15,7 @@ export function EditorialSection({ onNav }: Props) {
             <div className="mb-7 text-[10px] font-semibold uppercase tracking-[0.2em] text-[rgba(255,255,255,.80)]">
               Featured Collection
             </div>
-            <h2 className="font-[var(--font-cormorant)] text-[clamp(36px,4vw,60px)] leading-[1.04] tracking-[-0.01em] text-white">
+            <h2 className="font-[var(--font-montserrat)] text-[clamp(36px,4vw,60px)] leading-[1.04] tracking-[-0.01em] text-white">
               Travel
               <br />
               in <em className="text-[rgba(255,255,255,.78)]">Style</em>

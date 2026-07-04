@@ -42,7 +42,7 @@ export function LegalPageShell({
             <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
               {eyebrow}
             </div>
-            <h1 className="max-w-3xl font-[var(--font-cormorant)] text-[clamp(42px,6vw,72px)] leading-[0.96] tracking-[-0.03em] text-[#0d0c0b]">
+            <h1 className="max-w-3xl font-[var(--font-montserrat)] text-[clamp(42px,6vw,72px)] leading-[0.96] tracking-[-0.03em] text-[#0d0c0b]">
               {title}
             </h1>
             <p className="mt-5 max-w-2xl text-[15px] leading-[1.8] text-[#3d3530]">
@@ -57,7 +57,7 @@ export function LegalPageShell({
                   key={section.title}
                   className="rounded-[24px] border border-[#efe5d8] bg-white/72 px-5 py-5 shadow-[0_8px_28px_rgba(13,12,11,.03)] md:px-6"
                 >
-                  <h2 className="mb-3 font-[var(--font-cormorant)] text-[30px] leading-none text-[#0d0c0b]">
+                  <h2 className="mb-3 font-[var(--font-montserrat)] text-[30px] leading-none text-[#0d0c0b]">
                     {section.title}
                   </h2>
                   <div className="grid gap-3">

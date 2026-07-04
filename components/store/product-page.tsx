@@ -173,7 +173,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                 {category}
               </div>
 
-              <div className="font-[var(--font-cormorant)] text-[clamp(30px,4.7vw,66px)] leading-[.96] tracking-[-0.025em] text-[#0d0c0b]">
+              <div className="font-[var(--font-montserrat)] text-[clamp(30px,4.7vw,66px)] leading-[.96] tracking-[-0.025em] text-[#0d0c0b]">
                 {subcategory && subcategory !== "All" ? subcategory : category}
               </div>
 
@@ -187,7 +187,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                 <div className="text-[9.5px] uppercase tracking-[0.14em] text-[#3d5843] sm:text-[10px]">
                   Available
                 </div>
-                <div className="mt-0.5 font-[var(--font-cormorant)] text-[26px] leading-none text-[#0d0c0b] sm:mt-1 sm:text-[30px]">
+                <div className="mt-0.5 font-[var(--font-montserrat)] text-[26px] leading-none text-[#0d0c0b] sm:mt-1 sm:text-[30px]">
                   {String(visibleCount).padStart(2, "0")}
                 </div>
               </div>
@@ -409,7 +409,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                 <polyline points="14,2 14,8 20,8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <div>
-                <div className="font-[var(--font-cormorant)] text-[26px] text-[#0d0c0b]">Diva & La Opala Catalogue</div>
+                <div className="font-[var(--font-montserrat)] text-[26px] text-[#0d0c0b]">Diva & La Opala Catalogue</div>
                 <div className="mt-2 text-[13px] text-[#3d5843]">Your browser cannot display this PDF inline.</div>
               </div>
               <a
@@ -433,7 +433,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#3d5843]">
                 {subcategory} Catalogue
               </div>
-              <div className="mt-1 font-[var(--font-cormorant)] text-[30px] leading-none text-[#0d0c0b] md:text-[36px]">
+              <div className="mt-1 font-[var(--font-montserrat)] text-[30px] leading-none text-[#0d0c0b] md:text-[36px]">
                 {subcategory}
               </div>
               <div className="mt-2 text-[13px] leading-[1.7] text-[#3d5843]">
@@ -495,7 +495,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                     <div className="relative flex items-center justify-between gap-2 px-3 pb-3 pt-1 sm:gap-4 sm:px-5 sm:pb-5">
                       <div>
                         <div className="text-[8.5px] font-semibold uppercase tracking-[0.16em] text-[#3d7048] sm:text-[10.5px] sm:tracking-[0.18em]">{subcategory}</div>
-                        <div className="mt-0.5 font-[var(--font-cormorant)] text-[18px] leading-none tracking-[-0.02em] text-[#111d12] sm:mt-1 sm:text-[28px]">
+                        <div className="mt-0.5 font-[var(--font-montserrat)] text-[18px] leading-none tracking-[-0.02em] text-[#111d12] sm:mt-1 sm:text-[28px]">
                           {String(index + 1).padStart(2, "0")}
                         </div>
                       </div>
@@ -518,7 +518,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#3d5843]">
                 Updated BS Gallery
               </div>
-              <div className="mt-1 font-[var(--font-cormorant)] text-[30px] leading-none text-[#0d0c0b] md:text-[36px]">
+              <div className="mt-1 font-[var(--font-montserrat)] text-[30px] leading-none text-[#0d0c0b] md:text-[36px]">
                 BS Stocks
               </div>
               <div className="mt-2 text-[13px] leading-[1.7] text-[#3d5843]">
@@ -559,7 +559,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                       <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3d7048]">
                         BS Collection
                       </div>
-                      <div className="mt-1 font-[var(--font-cormorant)] text-[26px] leading-none text-[#111d12]">
+                      <div className="mt-1 font-[var(--font-montserrat)] text-[26px] leading-none text-[#111d12]">
                         {section.label}
                       </div>
                       <div className="mt-2 text-[11.5px] leading-[1.6] text-[#4a6652]">
@@ -588,7 +588,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             </svg>
           </div>
           <div>
-            <div className="font-[var(--font-cormorant)] text-[28px] text-[#0d0c0b]">No results found</div>
+            <div className="font-[var(--font-montserrat)] text-[28px] text-[#0d0c0b]">No results found</div>
             <div className="mt-1.5 text-[13px] leading-[1.7] text-[#4a6652]">
               {searchQuery ? `No items matching "${searchQuery}"` : "No new items in this category yet"}
             </div>

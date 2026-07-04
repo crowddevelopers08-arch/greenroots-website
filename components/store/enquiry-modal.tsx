@@ -57,7 +57,7 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
                 <div className="mb-1.5 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-[#4a6a50]">
                   {product ? "Product Enquiry" : "Book Appointment"}
                 </div>
-                <div className="font-[var(--font-cormorant)] text-[26px] tracking-[-0.01em] text-[#0d0c0b] sm:text-[30px]">
+                <div className="font-[var(--font-montserrat)] text-[26px] tracking-[-0.01em] text-[#0d0c0b] sm:text-[30px]">
                   {product ? "Request Details" : "Get in Touch"}
                 </div>
               </div>
@@ -157,7 +157,7 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
                 <path d="M5 13l6 6L21 7" stroke="#1e3d22" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <h2 className="mb-3 font-[var(--font-cormorant)] text-[32px]">Enquiry Sent</h2>
+            <h2 className="mb-3 font-[var(--font-montserrat)] text-[32px]">Enquiry Sent</h2>
             <p className="mb-8 text-[15px] leading-[1.7] text-[#2d4430]">{message}</p>
             <button
               onClick={onClose}

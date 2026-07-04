@@ -84,7 +84,7 @@ export function BsSectionPage({ category, section, items, bsProduct }: Props) {
                   <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#4a7254]">
                     BS Collection
                   </div>
-                  <h1 className="mt-2 font-[var(--font-cormorant)] text-[clamp(38px,4vw,58px)] leading-[0.95] tracking-[-0.03em] text-[#111d12]">
+                  <h1 className="mt-2 font-[var(--font-montserrat)] text-[clamp(38px,4vw,58px)] leading-[0.95] tracking-[-0.03em] text-[#111d12]">
                     {section.label}
                   </h1>
                   <div className="mt-3 text-[13px] leading-[1.7] text-[#4a6652]">
@@ -156,7 +156,7 @@ export function BsSectionPage({ category, section, items, bsProduct }: Props) {
                         <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d7048]">
                           {section.label}
                         </div>
-                        <div className="mt-1 font-[var(--font-cormorant)] text-[28px] leading-none tracking-[-0.02em] text-[#111d12]">
+                        <div className="mt-1 font-[var(--font-montserrat)] text-[28px] leading-none tracking-[-0.02em] text-[#111d12]">
                           {String(globalIndex + 1).padStart(2, "0")}
                         </div>
                       </div>
@@ -176,7 +176,7 @@ export function BsSectionPage({ category, section, items, bsProduct }: Props) {
             <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#3d7048]">
               Explore More
             </div>
-            <div className="mt-2 font-[var(--font-cormorant)] text-[30px] leading-none text-[#111d12]">
+            <div className="mt-2 font-[var(--font-montserrat)] text-[30px] leading-none text-[#111d12]">
               Browse another BS collection
             </div>
             <div className="mt-3 flex flex-wrap justify-center gap-3">
