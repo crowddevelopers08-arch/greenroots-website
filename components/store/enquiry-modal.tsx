@@ -54,10 +54,10 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
           <>
             <div className="flex items-start justify-between px-5 pt-6 sm:px-9 sm:pt-8">
               <div>
-                <div className="mb-1.5 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-[#4a6a50]">
+                <div className="mb-1.5 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.12em] text-[#4a6a50]">
                   {product ? "Product Enquiry" : "Book Appointment"}
                 </div>
-                <div className="font-[var(--font-montserrat)] text-[26px] tracking-[-0.01em] text-[#0d0c0b] sm:text-[30px]">
+                <div className="font-[var(--font-montserrat)] text-[length:var(--fs-h3)] tracking-[-0.01em] text-[#0d0c0b] sm:text-[length:var(--fs-h3)]">
                   {product ? "Request Details" : "Get in Touch"}
                 </div>
               </div>
@@ -77,8 +77,8 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
                   <img src={product.img} alt={product.name} className="h-full w-full object-cover" />
                 </div>
                 <div>
-                  <div className="mb-0.5 text-sm font-medium text-[#0d0c0b]">{product.name}</div>
-                  <div className="text-xs text-[#4a6a50]">
+                  <div className="mb-0.5 text-[length:var(--fs-small)] font-medium text-[#0d0c0b]">{product.name}</div>
+                  <div className="text-[length:var(--fs-caption)] text-[#4a6a50]">
                     {category} · {product.sub}
                   </div>
                 </div>
@@ -99,7 +99,7 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
                     value={form.name}
                     onChange={updateField("name")}
                     placeholder="Your name"
-                    className="rounded-xl border-[1.5px] border-[#cadace] bg-[#f5f9f5] px-4 py-3 text-[13.5px] outline-none transition placeholder:text-[#7a9e82] focus:border-[#1e3d22]"
+                    className="rounded-xl border-[1.5px] border-[#cadace] bg-[#f5f9f5] px-4 py-3 text-[length:var(--fs-small)] outline-none transition placeholder:text-[#7a9e82] focus:border-[#1e3d22]"
                   />
                 </Field>
                 <Field label="Phone">
@@ -108,7 +108,7 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
                     value={form.phone}
                     onChange={updateField("phone")}
                     placeholder="+1 000 000 0000"
-                    className="rounded-xl border-[1.5px] border-[#cadace] bg-[#f5f9f5] px-4 py-3 text-[13.5px] outline-none transition placeholder:text-[#7a9e82] focus:border-[#1e3d22]"
+                    className="rounded-xl border-[1.5px] border-[#cadace] bg-[#f5f9f5] px-4 py-3 text-[length:var(--fs-small)] outline-none transition placeholder:text-[#7a9e82] focus:border-[#1e3d22]"
                   />
                 </Field>
               </div>
@@ -119,7 +119,7 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
                   value={form.email}
                   onChange={updateField("email")}
                   placeholder="your@email.com"
-                  className="rounded-xl border-[1.5px] border-[#cadace] bg-[#f5f9f5] px-4 py-3 text-[13.5px] outline-none transition placeholder:text-[#7a9e82] focus:border-[#1e3d22]"
+                  className="rounded-xl border-[1.5px] border-[#cadace] bg-[#f5f9f5] px-4 py-3 text-[length:var(--fs-small)] outline-none transition placeholder:text-[#7a9e82] focus:border-[#1e3d22]"
                 />
               </Field>
               {product && (
@@ -127,7 +127,7 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
                   <input
                     readOnly
                     value={product.name}
-                    className="rounded-xl border-[1.5px] border-[#cadace] bg-[#e4f0e6] px-4 py-3 text-[13.5px] text-[#3d5843] outline-none"
+                    className="rounded-xl border-[1.5px] border-[#cadace] bg-[#e4f0e6] px-4 py-3 text-[length:var(--fs-small)] text-[#3d5843] outline-none"
                   />
                 </Field>
               )}
@@ -136,16 +136,16 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
                   value={form.msg}
                   onChange={updateField("msg")}
                   placeholder="Size, quantity, customisation or any details..."
-                  className="min-h-[90px] resize-y rounded-xl border-[1.5px] border-[#cadace] bg-[#f5f9f5] px-4 py-3 text-[13.5px] leading-[1.5] outline-none transition placeholder:text-[#7a9e82] focus:border-[#1e3d22]"
+                  className="min-h-[90px] resize-y rounded-xl border-[1.5px] border-[#cadace] bg-[#f5f9f5] px-4 py-3 text-[length:var(--fs-small)] leading-[1.5] outline-none transition placeholder:text-[#7a9e82] focus:border-[#1e3d22]"
                 />
               </Field>
-              <button className="mt-1 inline-flex items-center justify-center gap-2.5 rounded-full bg-[#1e3d22] px-7 py-3.5 text-[13.5px] font-semibold tracking-[0.03em] text-white transition hover:-translate-y-0.5 hover:bg-[#2d5a30] hover:shadow-[var(--shadow-2)]">
+              <button className="mt-1 inline-flex items-center justify-center gap-2.5 rounded-full bg-[#1e3d22] px-7 py-3.5 text-[length:var(--fs-small)] font-semibold tracking-[0.03em] text-white transition hover:-translate-y-0.5 hover:bg-[#2d5a30] hover:shadow-[var(--shadow-2)]">
                 Get Quote
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
-              <p className="text-center text-[12px] leading-[1.55] text-[#3d5843]">
+              <p className="text-center text-[length:var(--fs-caption)] leading-[1.55] text-[#3d5843]">
                 We respond within 24 hours · No commitment required
               </p>
             </form>
@@ -157,11 +157,11 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
                 <path d="M5 13l6 6L21 7" stroke="#1e3d22" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <h2 className="mb-3 font-[var(--font-montserrat)] text-[32px]">Enquiry Sent</h2>
-            <p className="mb-8 text-[15px] leading-[1.7] text-[#2d4430]">{message}</p>
+            <h2 className="mb-3 font-[var(--font-montserrat)] text-[length:var(--fs-h2)]">Enquiry Sent</h2>
+            <p className="mb-8 text-[length:var(--fs-body)] leading-[1.7] text-[#2d4430]">{message}</p>
             <button
               onClick={onClose}
-              className="rounded-full border-[1.5px] border-[#b4ccb6] px-9 py-3 text-[13.5px] font-medium text-[#0d0c0b] transition hover:border-[#3d5843]"
+              className="rounded-full border-[1.5px] border-[#b4ccb6] px-9 py-3 text-[length:var(--fs-small)] font-medium text-[#0d0c0b] transition hover:border-[#3d5843]"
             >
               Back to Shopping
             </button>
@@ -181,7 +181,7 @@ function Field({
 }) {
   return (
     <label className="flex flex-col gap-1.5">
-      <span className="text-[10.5px] font-semibold uppercase tracking-[0.08em] text-[#3d5843]">
+      <span className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.08em] text-[#3d5843]">
         {label}
       </span>
       {children}

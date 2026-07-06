@@ -45,17 +45,17 @@ function TestimonialCard({ t }: { t: typeof TESTIMONIALS[0] }) {
             </svg>
           ))}
         </div>
-        <p className="text-[14px] leading-[1.8] text-[#3d3530]">
+        <p className="text-[length:var(--fs-small)] leading-[1.8] text-[#3d3530]">
           &ldquo;{t.quote}&rdquo;
         </p>
       </div>
       <div className="mt-6 flex items-center gap-3 border-t border-[#f0e8de] pt-4">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0d0c0b] font-[var(--font-montserrat)] text-[18px] text-white">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0d0c0b] font-[var(--font-montserrat)] text-[length:var(--fs-h5)] text-white">
           {t.initial}
         </div>
         <div>
-          <div className="text-[13px] font-semibold text-[#0d0c0b]">{t.name}</div>
-          <div className="text-[11.5px] text-[#5c5348]">{t.role}</div>
+          <div className="text-[length:var(--fs-small)] font-semibold text-[#0d0c0b]">{t.name}</div>
+          <div className="text-[length:var(--fs-caption)] text-[#5c5348]">{t.role}</div>
         </div>
       </div>
     </div>
@@ -84,10 +84,10 @@ export function TestimonialsSection() {
         className="mb-5 flex flex-col items-start justify-between gap-3 px-4 sm:px-5 md:mb-11 md:flex-row md:items-end md:px-0"
       >
         <div>
-          <div className="mb-1.5 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
+          <div className="mb-1.5 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#5c5348]">
             What Clients Say
           </div>
-          <div className="font-[var(--font-montserrat)] text-[clamp(28px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
+          <div className="font-[var(--font-montserrat)] text-[length:var(--fs-h2)] leading-[1.06] tracking-[-0.01em]">
             Trusted by teams
           </div>
         </div>
@@ -99,7 +99,7 @@ export function TestimonialsSection() {
               </svg>
             ))}
           </div>
-          <span className="text-[12.5px] font-medium text-[#5c5348]">5.0 · 120+ clients</span>
+          <span className="text-[length:var(--fs-caption)] font-medium text-[#5c5348]">5.0 · 120+ clients</span>
         </div>
       </Reveal>
 
@@ -117,18 +117,18 @@ export function TestimonialsSection() {
             <div className="mb-5">{STARS}</div>
 
             {/* Quote */}
-            <p className="mb-6 text-[15px] leading-[1.85] text-[#3d3530]">
+            <p className="mb-6 text-[length:var(--fs-body)] leading-[1.85] text-[#3d3530]">
               &ldquo;{TESTIMONIALS[active].quote}&rdquo;
             </p>
 
             {/* Author */}
             <div className="flex flex-col items-center gap-2">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0d0c0b] font-[var(--font-montserrat)] text-[20px] text-white">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0d0c0b] font-[var(--font-montserrat)] text-[length:var(--fs-h4)] text-white">
                 {TESTIMONIALS[active].initial}
               </div>
               <div>
-                <div className="text-[14px] font-semibold text-[#0d0c0b]">{TESTIMONIALS[active].name}</div>
-                <div className="mt-0.5 text-[12px] text-[#5c5348]">{TESTIMONIALS[active].role}</div>
+                <div className="text-[length:var(--fs-small)] font-semibold text-[#0d0c0b]">{TESTIMONIALS[active].name}</div>
+                <div className="mt-0.5 text-[length:var(--fs-caption)] text-[#5c5348]">{TESTIMONIALS[active].role}</div>
               </div>
             </div>
           </div>

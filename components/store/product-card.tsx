@@ -27,7 +27,7 @@ export function ProductCard({ product, category, delay = 0, onBrandClick }: Prop
     <>
       <div className="relative overflow-hidden bg-[#e4f0e6]">
         {product.badge ? (
-          <span className="absolute left-3 top-3 z-[2] rounded-full bg-[#1e3d22] px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-[0.1em] text-white">
+          <span className="absolute left-3 top-3 z-[2] rounded-full bg-[#1e3d22] px-2.5 py-1 text-[length:var(--fs-caption)] font-bold uppercase tracking-[0.1em] text-white">
             {product.badge}
           </span>
         ) : null}
@@ -37,18 +37,18 @@ export function ProductCard({ product, category, delay = 0, onBrandClick }: Prop
           className="block w-full h-auto transition duration-700 group-hover:scale-[1.07]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(13,12,11,.78)_0%,transparent_52%)] opacity-0 transition group-hover:opacity-100" />
-        <span className="absolute inset-x-[14px] bottom-[14px] translate-y-2.5 rounded-full bg-[#f5f9f5] px-3 py-3 text-center text-[12.5px] font-semibold tracking-[0.02em] text-[#0d0c0b] opacity-0 transition group-hover:translate-y-0 group-hover:opacity-100">
+        <span className="absolute inset-x-[14px] bottom-[14px] translate-y-2.5 rounded-full bg-[#f5f9f5] px-3 py-3 text-center text-[length:var(--fs-caption)] font-semibold tracking-[0.02em] text-[#0d0c0b] opacity-0 transition group-hover:translate-y-0 group-hover:opacity-100">
           {onBrandClick ? "View Catalogue" : "View Product"}
         </span>
       </div>
       <div className="flex flex-col gap-1.5 px-[18px] pb-4 pt-3">
         <div className="flex items-start justify-between gap-2">
-          <div className="flex-1 text-sm font-medium leading-[1.3] text-[#0d0c0b]">{product.name}</div>
-          <div className="mt-0.5 whitespace-nowrap text-[11.5px] font-medium text-[#4a6a50]">POA</div>
+          <div className="flex-1 text-[length:var(--fs-small)] font-medium leading-[1.3] text-[#0d0c0b]">{product.name}</div>
+          <div className="mt-0.5 whitespace-nowrap text-[length:var(--fs-caption)] font-medium text-[#4a6a50]">POA</div>
         </div>
-        <p className="text-xs font-light leading-[1.5] text-[#3d5843]">{product.desc}</p>
+        <p className="text-[length:var(--fs-caption)] font-light leading-[1.5] text-[#3d5843]">{product.desc}</p>
         <div className="mt-1.5 flex items-center justify-between">
-          <span className="rounded-[20px] bg-[#e4f0e6] px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-[0.1em] text-[#4a7254]">
+          <span className="rounded-[20px] bg-[#e4f0e6] px-2.5 py-1 text-[length:var(--fs-caption)] font-bold uppercase tracking-[0.1em] text-[#4a7254]">
             {product.sub}
           </span>
           <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#d0e0d2] text-[#3d5843] transition group-hover:bg-[#1e3d22] group-hover:text-white">

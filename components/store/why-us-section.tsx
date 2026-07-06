@@ -47,10 +47,10 @@ export function WhyUsSection() {
   return (
     <section className="px-4 py-10 sm:px-5 sm:py-14 md:px-12 md:py-20">
       <Reveal animation="fadeUp" duration={600} className="mb-6 md:mb-9">
-        <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
+        <div className="mb-2 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
           Why Choose Green Roots
         </div>
-        <h2 className="font-[var(--font-montserrat)] text-[clamp(32px,5.5vw,64px)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[#0d0c0b]">
+        <h2 className="font-[var(--font-montserrat)] text-[length:var(--fs-h1)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[#0d0c0b]">
           Why Us?
         </h2>
       </Reveal>
@@ -71,7 +71,7 @@ export function WhyUsSection() {
             <div className="flex h-14 w-14 items-center justify-center rounded-full border border-[#0d0c0b] text-[#0d0c0b] transition hover:bg-[#0d0c0b] hover:text-white">
               {reason.icon}
             </div>
-            <div className="max-w-[140px] text-[13.5px] font-semibold leading-snug text-[#0d0c0b]">
+            <div className="max-w-[140px] text-[length:var(--fs-small)] font-semibold leading-snug text-[#0d0c0b]">
               {reason.label}
             </div>
           </Reveal>
@@ -83,7 +83,7 @@ export function WhyUsSection() {
       </Reveal>
 
       <Reveal animation="fadeUp" duration={600} delay={160}>
-        <p className="max-w-[760px] text-[14.5px] leading-[1.8] text-[#2d4430]">
+        <p className="max-w-[760px] text-[length:var(--fs-small)] leading-[1.8] text-[#2d4430]">
           We specialize in creating memorable corporate gifts that enhance your brand identity and strengthen client relationships. Our wide range of customisable gifts ensures a personal touch that aligns with your brand message.
         </p>
       </Reveal>

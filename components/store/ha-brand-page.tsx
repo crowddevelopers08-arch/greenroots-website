@@ -28,7 +28,7 @@ export function HaBrandPage({ brandProduct, images }: Props) {
       >
         <div className="w-full">
           {/* Breadcrumb */}
-          <div className="mb-6 flex flex-wrap items-center gap-2 text-[12.5px] text-[#3d5843]">
+          <div className="mb-6 flex flex-wrap items-center gap-2 text-[length:var(--fs-caption)] text-[#3d5843]">
             <Link href="/" className="transition hover:text-[#0d0c0b]">Home</Link>
             <span className="text-[#b4ccb6]">{">"}</span>
             <Link
@@ -50,7 +50,7 @@ export function HaBrandPage({ brandProduct, images }: Props) {
                   <Link
                     key={brand.id}
                     href={getHaBrandHref(brand.name)}
-                    className={`inline-flex items-center gap-2 rounded-full py-2 pl-2 pr-4 text-[12.5px] font-medium whitespace-nowrap transition ${
+                    className={`inline-flex items-center gap-2 rounded-full py-2 pl-2 pr-4 text-[length:var(--fs-caption)] font-medium whitespace-nowrap transition ${
                       isActive
                         ? "bg-[#1e3d22] text-white shadow-[0_8px_18px_rgba(30,61,34,.18)]"
                         : "border border-[#ccd8ce] bg-white text-[#3d5843] hover:-translate-y-px hover:border-[#3a7848] hover:text-[#0d0c0b]"
@@ -71,13 +71,13 @@ export function HaBrandPage({ brandProduct, images }: Props) {
             <div className="border-b border-[#ccd8ce] bg-[linear-gradient(180deg,#f6fbf7_0%,#eef5ef_100%)] px-5 py-6 md:px-7">
               <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div>
-                  <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#4a7254]">
+                  <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#4a7254]">
                     Home Appliances
                   </div>
-                  <h1 className="mt-2 font-[var(--font-montserrat)] text-[clamp(38px,4vw,58px)] leading-[0.95] tracking-[-0.03em] text-[#111d12]">
+                  <h1 className="mt-2 font-[var(--font-montserrat)] text-[length:var(--fs-h1)] leading-[0.95] tracking-[-0.03em] text-[#111d12]">
                     {brandProduct.name}
                   </h1>
-                  <div className="mt-3 text-[13px] leading-[1.7] text-[#4a6652]">
+                  <div className="mt-3 text-[length:var(--fs-small)] leading-[1.7] text-[#4a6652]">
                     {images.length} catalogue pages
                   </div>
                 </div>
@@ -85,11 +85,11 @@ export function HaBrandPage({ brandProduct, images }: Props) {
                 <div className="flex flex-wrap gap-3">
                   <Link
                     href={`/?category=${getCategorySlug("Home Appliances")}`}
-                    className="inline-flex rounded-full border border-[#c0d0c2] bg-white px-4 py-2 text-[12px] font-medium text-[#3d5843] transition hover:border-[#3a7848] hover:text-[#0d0c0b]"
+                    className="inline-flex rounded-full border border-[#c0d0c2] bg-white px-4 py-2 text-[length:var(--fs-caption)] font-medium text-[#3d5843] transition hover:border-[#3a7848] hover:text-[#0d0c0b]"
                   >
                     Back to categories
                   </Link>
-                  <div className="inline-flex self-start rounded-full border border-[#ccd8ce] bg-white px-4 py-2 text-[12px] font-medium text-[#3d5843]">
+                  <div className="inline-flex self-start rounded-full border border-[#ccd8ce] bg-white px-4 py-2 text-[length:var(--fs-caption)] font-medium text-[#3d5843]">
                     {images.length} pages
                   </div>
                 </div>
@@ -144,10 +144,10 @@ export function HaBrandPage({ brandProduct, images }: Props) {
 
                     <div className="relative flex items-center justify-between gap-4 px-5 pb-5 pt-1">
                       <div>
-                        <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d7048]">
+                        <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d7048]">
                           {brandProduct.name}
                         </div>
-                        <div className="mt-1 font-[var(--font-montserrat)] text-[28px] leading-none tracking-[-0.02em] text-[#111d12]">
+                        <div className="mt-1 font-[var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none tracking-[-0.02em] text-[#111d12]">
                           {String(index + 1).padStart(2, "0")}
                         </div>
                       </div>
@@ -165,22 +165,22 @@ export function HaBrandPage({ brandProduct, images }: Props) {
 
           {/* Footer CTA */}
           <section className="mt-8 rounded-[28px] border border-[#ccd8ce] bg-[linear-gradient(180deg,#f6fbf7_0%,#eef5ef_100%)] px-6 py-8 text-center">
-            <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#3d7048]">
+            <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#3d7048]">
               Interested?
             </div>
-            <div className="mt-2 font-[var(--font-montserrat)] text-[30px] leading-none text-[#111d12]">
+            <div className="mt-2 font-[var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#111d12]">
               Enquire about {brandProduct.name}
             </div>
             <div className="mt-3 flex flex-wrap justify-center gap-3">
               <button
                 onClick={() => setModalProduct(brandProduct)}
-                className="inline-flex rounded-full bg-[#1e3d22] px-6 py-3 text-[12.5px] font-medium text-white transition hover:-translate-y-0.5"
+                className="inline-flex rounded-full bg-[#1e3d22] px-6 py-3 text-[length:var(--fs-caption)] font-medium text-white transition hover:-translate-y-0.5"
               >
                 Enquire Now
               </button>
               <Link
                 href={`/?category=${getCategorySlug("Home Appliances")}`}
-                className="inline-flex rounded-full border border-[#c0d0c2] bg-white px-6 py-3 text-[12.5px] font-medium text-[#3d5843]"
+                className="inline-flex rounded-full border border-[#c0d0c2] bg-white px-6 py-3 text-[length:var(--fs-caption)] font-medium text-[#3d5843]"
               >
                 All Home Appliances
               </Link>

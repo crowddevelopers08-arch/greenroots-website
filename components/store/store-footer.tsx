@@ -22,22 +22,22 @@ export function StoreFooter({ onNav }: Props) {
       {/* ── Top glow divider ── */}
       <div className="pointer-events-none h-px bg-[linear-gradient(90deg,transparent,rgba(58,120,72,.55),transparent)]" />
 
-      <div className="px-4 py-12 sm:px-5 sm:py-14 md:px-12 md:py-20">
-        <div className="grid gap-10 sm:grid-cols-2 sm:gap-12 xl:grid-cols-[2fr_1fr_1fr_1.1fr] xl:gap-16">
+      <div className="px-4 py-8 sm:px-5 sm:py-10 md:px-12 md:py-12">
+        <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 xl:grid-cols-[2fr_1fr_1fr_1.1fr] xl:gap-12">
 
           {/* ── Brand column ── */}
           <div>
-            <div className="mb-5">
+            <div className="mb-4">
               <Image
                 src="/Green-Roots-logo.png"
                 alt="Green Roots – The Gifting Company"
-                width={180}
-                height={50}
-                className="h-10 w-auto brightness-0 invert"
+                width={160}
+                height={45}
+                className="h-8 w-auto brightness-0 invert"
               />
             </div>
 
-            <p className="mb-6 max-w-[300px] text-[13.5px] leading-[1.85] text-[rgba(255,255,255,.68)]">
+            <p className="mb-4 max-w-[300px] text-[length:var(--fs-small)] leading-[1.7] text-[rgba(255,255,255,.68)]">
               India&rsquo;s trusted corporate gifting partner — premium curated collections across apparel, electronics, home essentials, and edibles, available by bulk enquiry.
             </p>
 
@@ -46,19 +46,19 @@ export function StoreFooter({ onNav }: Props) {
               href="https://wa.me/919820000000"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 rounded-full border border-[rgba(58,120,72,.45)] bg-[rgba(58,120,72,.14)] px-5 py-2.5 text-[12.5px] font-medium text-[rgba(255,255,255,.88)] transition hover:bg-[rgba(58,120,72,.30)] hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border border-[rgba(58,120,72,.45)] bg-[rgba(58,120,72,.14)] px-4 py-2 text-[length:var(--fs-caption)] font-medium text-[rgba(255,255,255,.88)] transition hover:bg-[rgba(58,120,72,.30)] hover:text-white"
             >
               <WhatsAppIcon />
               Chat on WhatsApp
             </a>
 
             {/* Newsletter */}
-            <div className="mt-8">
-              <div className="mb-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#3a7848]">
+            <div className="mt-6">
+              <div className="mb-2 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.15em] text-[#3a7848]">
                 Stay updated
               </div>
               {subscribed ? (
-                <div className="flex items-center gap-2 rounded-full border border-[rgba(58,120,72,.35)] bg-[rgba(58,120,72,.12)] px-5 py-3 text-[12.5px] text-[rgba(255,255,255,.85)]">
+                <div className="flex items-center gap-2 rounded-full border border-[rgba(58,120,72,.35)] bg-[rgba(58,120,72,.12)] px-4 py-2 text-[length:var(--fs-caption)] text-[rgba(255,255,255,.85)]">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M2 7l4 4 6-6" stroke="#3a7848" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -71,11 +71,11 @@ export function StoreFooter({ onNav }: Props) {
                     onChange={(e) => setEmail(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleSubscribe()}
                     placeholder="your@email.com"
-                    className="min-w-0 flex-1 rounded-full border border-[rgba(255,255,255,.1)] bg-[rgba(255,255,255,.05)] px-4 py-2.5 text-[12.5px] text-white outline-none transition placeholder:text-[rgba(255,255,255,.22)] focus:border-[rgba(58,120,72,.55)] sm:min-w-[200px]"
+                    className="min-w-0 flex-1 rounded-full border border-[rgba(255,255,255,.1)] bg-[rgba(255,255,255,.05)] px-4 py-2 text-[length:var(--fs-caption)] text-white outline-none transition placeholder:text-[rgba(255,255,255,.22)] focus:border-[rgba(58,120,72,.55)] sm:min-w-[180px]"
                   />
                   <button
                     onClick={handleSubscribe}
-                    className="w-full rounded-full border border-[rgba(58,120,72,.4)] bg-[rgba(58,120,72,.2)] px-5 py-2.5 text-[12.5px] font-medium text-white transition hover:bg-[rgba(58,120,72,.38)] sm:w-auto"
+                    className="w-full rounded-full border border-[rgba(58,120,72,.4)] bg-[rgba(58,120,72,.2)] px-4 py-2 text-[length:var(--fs-caption)] font-medium text-white transition hover:bg-[rgba(58,120,72,.38)] sm:w-auto"
                   >
                     Subscribe
                   </button>
@@ -84,17 +84,12 @@ export function StoreFooter({ onNav }: Props) {
             </div>
 
             {/* Social icons */}
-            <div className="mt-7 flex gap-2.5">
+            <div className="mt-5 flex gap-2">
               <SocialIcon
                 href="https://instagram.com"
                 label="Instagram"
                 d="M10.6 1.5H4.4A2.9 2.9 0 0 0 1.5 4.4v6.2a2.9 2.9 0 0 0 2.9 2.9h6.2a2.9 2.9 0 0 0 2.9-2.9V4.4a2.9 2.9 0 0 0-2.9-2.9zM7.5 10.8A3.3 3.3 0 1 1 7.5 4.2a3.3 3.3 0 0 1 0 6.6zm3.45-6.95a.78.78 0 1 1 0-1.56.78.78 0 0 1 0 1.56z"
               />
-              {/* <SocialIcon
-                href="https://linkedin.com"
-                label="LinkedIn"
-                d="M3.1 5.5v6.9M3.15 3.2a.85.85 0 1 1-.01 1.7.85.85 0 0 1 .01-1.7zM6.1 12.4V5.5h2.2v1c.38-.7 1.28-1.2 2.36-1.2 2.02 0 2.84 1.32 2.84 3.53v3.57h-2.2V9.12c0-1.14-.4-1.92-1.42-1.92-.78 0-1.24.52-1.45 1.02-.07.18-.09.43-.09.68v3.5H6.1z"
-              /> */}
               <SocialIcon
                 href="https://youtube.com"
                 label="YouTube"
@@ -109,7 +104,7 @@ export function StoreFooter({ onNav }: Props) {
               <button
                 key={category}
                 onClick={() => onNav(category, null)}
-                className="text-left text-[13.5px] text-[rgba(255,255,255,.72)] transition hover:text-white"
+                className="text-left text-[length:var(--fs-small)] text-[rgba(255,255,255,.72)] transition hover:text-white"
               >
                 {category}
               </button>
@@ -129,7 +124,7 @@ export function StoreFooter({ onNav }: Props) {
               <a
                 key={item}
                 href={`mailto:hello@greenroots.co?subject=${encodeURIComponent(item + " Enquiry")}`}
-                className="text-[13.5px] text-[rgba(255,255,255,.72)] transition hover:text-white"
+                className="text-[length:var(--fs-small)] text-[rgba(255,255,255,.72)] transition hover:text-white"
               >
                 {item}
               </a>
@@ -137,11 +132,11 @@ export function StoreFooter({ onNav }: Props) {
           </FooterColumn>
 
           {/* ── Contact & Legal column ── */}
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6">
             <FooterColumn title="Contact Us">
               <a
                 href="mailto:hello@greenroots.co"
-                className="flex items-center gap-2 text-[13.5px] text-[rgba(255,255,255,.72)] transition hover:text-white"
+                className="flex items-center gap-2 text-[length:var(--fs-small)] text-[rgba(255,255,255,.72)] transition hover:text-white"
               >
                 <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
                   <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.3" />
@@ -151,7 +146,7 @@ export function StoreFooter({ onNav }: Props) {
               </a>
               <a
                 href="tel:+919820000000"
-                className="flex items-center gap-2 text-[13.5px] text-[rgba(255,255,255,.72)] transition hover:text-white"
+                className="flex items-center gap-2 text-[length:var(--fs-small)] text-[rgba(255,255,255,.72)] transition hover:text-white"
               >
                 <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
                   <path d="M5.5 2H3a1 1 0 0 0-1 1 11 11 0 0 0 11 11 1 1 0 0 0 1-1v-2.5l-3-1-1.5 1.5A8.1 8.1 0 0 1 6.5 8L8 6.5 7 3.5H5.5z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
@@ -162,25 +157,25 @@ export function StoreFooter({ onNav }: Props) {
                 href="https://wa.me/919820000000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[13.5px] text-[rgba(255,255,255,.72)] transition hover:text-white"
+                className="flex items-center gap-2 text-[length:var(--fs-small)] text-[rgba(255,255,255,.72)] transition hover:text-white"
               >
                 <WhatsAppIcon size={13} />
                 WhatsApp Us
               </a>
-              <span className="text-[12.5px] text-[rgba(255,255,255,.42)]">Mon – Sat, 10 am – 7 pm IST</span>
-              <span className="text-[12.5px] text-[rgba(255,255,255,.42)]">Chennai, India</span>
+              <span className="text-[length:var(--fs-caption)] text-[rgba(255,255,255,.42)]">Mon – Sat, 10 am – 7 pm IST</span>
+              <span className="text-[length:var(--fs-caption)] text-[rgba(255,255,255,.42)]">Chennai, India</span>
             </FooterColumn>
 
             <FooterColumn title="Legal">
               <Link
                 href="/privacy-policy"
-                className="text-[13.5px] text-[rgba(255,255,255,.72)] transition hover:text-white"
+                className="text-[length:var(--fs-small)] text-[rgba(255,255,255,.72)] transition hover:text-white"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms-and-conditions"
-                className="text-[13.5px] text-[rgba(255,255,255,.72)] transition hover:text-white"
+                className="text-[length:var(--fs-small)] text-[rgba(255,255,255,.72)] transition hover:text-white"
               >
                 Terms &amp; Conditions
               </Link>
@@ -191,17 +186,15 @@ export function StoreFooter({ onNav }: Props) {
       </div>
 
       {/* ── Bottom bar ── */}
-      <div className="border-t border-[rgba(58,120,72,.2)] px-4 py-5 sm:px-5 md:px-12">
+      <div className="border-t border-[rgba(58,120,72,.2)] px-4 py-3 sm:px-5 md:px-12">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <span className="text-xs font-light text-[rgba(255,255,255,.38)]">
+          <span className="text-[length:var(--fs-caption)] font-light text-[rgba(255,255,255,.38)]">
             © 2026 Green Roots. All rights reserved.
           </span>
-          <div className="flex items-center gap-3 text-xs font-light text-[rgba(255,255,255,.32)]">
+          <div className="flex items-center gap-3 text-[length:var(--fs-caption)] font-light text-[rgba(255,255,255,.32)]">
             <span>The Gifting Company</span>
             <span className="h-3 w-px bg-[rgba(255,255,255,.15)]" />
             <span>Chennai, India</span>
-            {/* <span className="h-3 w-px bg-[rgba(255,255,255,.15)]" /> */}
-            {/* <span>CIN: UXXXXXXMHXXXXPTCXXXXXX</span> */}
           </div>
         </div>
       </div>
@@ -214,10 +207,10 @@ export function StoreFooter({ onNav }: Props) {
 function FooterColumn({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <div className="mb-5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#3a7848]">
+      <div className="mb-4 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#3a7848]">
         {title}
       </div>
-      <div className="flex flex-col gap-[13px]">{children}</div>
+      <div className="flex flex-col gap-3">{children}</div>
     </div>
   );
 }
@@ -229,16 +222,16 @@ function SocialIcon({ d, href, label }: { d: string; href: string; label: string
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(58,120,72,.35)] text-[rgba(255,255,255,.55)] transition hover:-translate-y-0.5 hover:border-[rgba(58,120,72,.7)] hover:text-white"
+      className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(58,120,72,.35)] text-[rgba(255,255,255,.55)] transition hover:-translate-y-0.5 hover:border-[rgba(58,120,72,.7)] hover:text-white"
     >
-      <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+      <svg width="14" height="14" viewBox="0 0 15 15" fill="none">
         <path d={d} stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </a>
   );
 }
 
-function WhatsAppIcon({ size = 15 }: { size?: number }) {
+function WhatsAppIcon({ size = 14 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" opacity=".9" />

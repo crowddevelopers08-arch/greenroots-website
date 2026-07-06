@@ -203,7 +203,7 @@ export const CAT: Record<
       "StuffCool 2",
       "Small Domestic Appliances",
       "Pricing",
-      "Catalogue",
+      "Wayona",
       "UBON",
       "Toreto",
       "Suruchi X Ekmatra",

@@ -144,12 +144,12 @@ export function HeroSection({ onNav }: Props) {
             >
               <div className="mb-5 flex items-center gap-[14px] sm:mb-6">
                 <span className="h-px w-9 bg-[rgba(255,255,255,.4)]" />
-                <span className="text-[10.5px] font-medium uppercase tracking-[0.2em] text-[rgba(255,255,255,.88)] [text-shadow:0_1px_6px_rgba(0,0,0,.7)]">
+                <span className="text-[length:var(--fs-caption)] font-medium uppercase tracking-[0.2em] text-[rgba(255,255,255,.88)] [text-shadow:0_1px_6px_rgba(0,0,0,.7)]">
                   {activeSlide.eyebrow}
                 </span>
               </div>
 
-              <h1 className="mb-5 max-w-[620px] [font-family:var(--font-montserrat)] text-[clamp(32px,8.5vw,92px)] leading-[.94] font-light tracking-[-0.02em] text-white [text-shadow:0_2px_16px_rgba(0,0,0,.55)] sm:mb-6">
+              <h1 className="mb-5 max-w-[620px] [font-family:var(--font-montserrat)] text-[length:var(--fs-h1)] leading-[.94] font-light tracking-[-0.02em] text-white [text-shadow:0_2px_16px_rgba(0,0,0,.55)] sm:mb-6">
                 {activeSlide.title[0]}
                 <br />
                 {activeSlide.title[1]}
@@ -159,17 +159,17 @@ export function HeroSection({ onNav }: Props) {
                 <em className="text-[rgba(255,255,255,.82)]">{activeSlide.title[3]}</em>
               </h1>
 
-              <p className="mb-3 max-w-[470px] text-[14px] leading-[1.7] text-[rgba(255,255,255,.95)] sm:text-[15.5px]">
+              <p className="mb-3 max-w-[470px] text-[length:var(--fs-small)] leading-[1.7] text-[rgba(255,255,255,.95)] sm:text-[length:var(--fs-body)]">
                 {activeSlide.note}
               </p>
-              <p className="mb-7 max-w-[430px] text-[12px] leading-[1.8] uppercase tracking-[0.14em] text-[rgba(255,255,255,.80)] sm:mb-8">
+              <p className="mb-7 max-w-[430px] text-[length:var(--fs-caption)] leading-[1.8] uppercase tracking-[0.14em] text-[rgba(255,255,255,.80)] sm:mb-8">
                 {activeSlide.desc}
               </p>
 
               <div className="flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-[14px]">
                 <button
                   onClick={() => onNav(activeSlide.cat, null)}
-                  className="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-[13px] font-semibold tracking-[0.02em] text-[#0d0c0b] transition hover:-translate-y-0.5 hover:bg-[#e4f0e6] hover:shadow-[var(--shadow-3)] sm:w-auto"
+                  className="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-[length:var(--fs-small)] font-semibold tracking-[0.02em] text-[#0d0c0b] transition hover:-translate-y-0.5 hover:bg-[#e4f0e6] hover:shadow-[var(--shadow-3)] sm:w-auto"
                 >
                   Explore {activeSlide.cat}
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -178,13 +178,13 @@ export function HeroSection({ onNav }: Props) {
                 </button>
                 <button
                   onClick={() => onNav(activeSlide.cat, activeSlide.sub)}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border-[1.5px] border-[rgba(255,255,255,.3)] px-[26px] py-3.5 text-[13px] font-medium text-[rgba(255,255,255,.85)] transition hover:-translate-y-0.5 hover:border-[rgba(255,255,255,.6)] hover:text-white sm:w-auto"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border-[1.5px] border-[rgba(255,255,255,.3)] px-[26px] py-3.5 text-[length:var(--fs-small)] font-medium text-[rgba(255,255,255,.85)] transition hover:-translate-y-0.5 hover:border-[rgba(255,255,255,.6)] hover:text-white sm:w-auto"
                 >
                   View {activeSlide.sub}
                 </button>
               </div>
 
-              <div className="mt-8 flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-[rgba(255,255,255,.68)]">
+              <div className="mt-8 flex items-center gap-3 text-[length:var(--fs-caption)] uppercase tracking-[0.18em] text-[rgba(255,255,255,.68)]">
                 <span>
                   {String(activeIndex + 1).padStart(2, "0")} / {String(HERO_SLIDES.length).padStart(2, "0")}
                 </span>
@@ -247,7 +247,7 @@ export function HeroSection({ onNav }: Props) {
                   </div>
                   <div className="px-[11px] py-[8px]">
                     <div className="flex items-center justify-between gap-2">
-                      <div className="truncate text-[11px] font-medium text-[#0d0c0b]">{slide.productName}</div>
+                      <div className="truncate text-[length:var(--fs-caption)] font-medium text-[#0d0c0b]">{slide.productName}</div>
                       <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0d0c0b] transition group-hover:-rotate-45">
                         <svg width="9" height="9" viewBox="0 0 11 11" fill="none">
                           <path d="M2 9L9 2M9 2H4M9 2v5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -255,9 +255,9 @@ export function HeroSection({ onNav }: Props) {
                       </div>
                     </div>
                     <div className="mt-0.5 flex items-center justify-between gap-2">
-                      <div className="text-[10px] text-[#3d5843]">{slide.cat}</div>
+                      <div className="text-[length:var(--fs-caption)] text-[#3d5843]">{slide.cat}</div>
                       {slide.badge ? (
-                        <div className="rounded-full bg-[#ece5d8] px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-[0.12em] text-[#675d50]">
+                        <div className="rounded-full bg-[#ece5d8] px-1.5 py-0.5 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.12em] text-[#675d50]">
                           {slide.badge}
                         </div>
                       ) : null}
@@ -275,10 +275,10 @@ export function HeroSection({ onNav }: Props) {
             })}
 
             <div className="mt-2 w-full rounded-2xl border border-[rgba(255,255,255,.18)] bg-[rgba(250,249,247,.12)] px-5 py-4 backdrop-blur-[12px]">
-              <div className="mb-0.5 [font-family:var(--font-montserrat)] text-4xl leading-none font-light text-white">
+              <div className="mb-0.5 [font-family:var(--font-montserrat)] text-[length:var(--fs-h2)] leading-none font-light text-white">
                 240+
               </div>
-              <div className="text-[10px] uppercase tracking-[0.1em] text-[rgba(255,255,255,.72)]">
+              <div className="text-[length:var(--fs-caption)] uppercase tracking-[0.1em] text-[rgba(255,255,255,.72)]">
                 Curated pieces
               </div>
             </div>
@@ -304,10 +304,10 @@ export function HeroSection({ onNav }: Props) {
                     <img src={slide.thumb} alt={slide.productName} className="h-full w-full object-cover" />
                   </div>
                   <div className="px-2.5 py-2.5">
-                    <div className="truncate text-[11.5px] font-medium leading-tight text-white">
+                    <div className="truncate text-[length:var(--fs-caption)] font-medium leading-tight text-white">
                       {slide.productName}
                     </div>
-                    <div className="mt-0.5 text-[9.5px] uppercase tracking-[0.1em] text-[rgba(255,255,255,.68)]">
+                    <div className="mt-0.5 text-[length:var(--fs-caption)] uppercase tracking-[0.1em] text-[rgba(255,255,255,.68)]">
                       {slide.cat}
                     </div>
                   </div>

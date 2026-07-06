@@ -83,7 +83,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
               >
                 <button
                   onClick={() => handleNav(category, null)}
-                  className={`group relative flex items-center gap-1 whitespace-nowrap rounded-full px-[11px] py-2 text-[12px] font-medium tracking-[0.02em] transition xl:px-[14px] xl:text-[12.5px] xl:tracking-[0.025em] ${
+                  className={`group relative flex items-center gap-1 whitespace-nowrap rounded-full px-[11px] py-2 text-[length:var(--fs-caption)] font-medium tracking-[0.02em] transition xl:px-[14px] xl:text-[length:var(--fs-caption)] xl:tracking-[0.025em] ${
                     isActive
                       ? "bg-[#e4f0e6] text-[#0d0c0b] shadow-[inset_0_1px_0_rgba(255,255,255,.7),0_8px_18px_rgba(30,61,34,.07)]"
                       : "text-[#3d5843] hover:bg-[rgba(228,240,230,.7)] hover:text-[#0d0c0b]"
@@ -122,7 +122,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
                       : "pointer-events-none -translate-y-1.5 opacity-0"
                   }`}
                 >
-                  <div className="mb-1 rounded-[16px] bg-[rgba(30,61,34,.06)] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#4a6a50]">
+                  <div className="mb-1 rounded-[16px] bg-[rgba(30,61,34,.06)] px-3 py-2 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#4a6a50]">
                     {category}
                   </div>
                   <div className={isManyItems ? "grid grid-cols-2" : "flex flex-col"}>
@@ -130,7 +130,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
                       <button
                         key={sub}
                         onClick={() => handleNav(category, sub)}
-                        className="flex w-full items-center gap-2.5 rounded-[16px] px-[13px] py-[9px] text-left text-[13px] text-[#3d5843] transition hover:bg-[#e4f0e6] hover:text-[#0d0c0b]"
+                        className="flex w-full items-center gap-2.5 rounded-[16px] px-[13px] py-[9px] text-left text-[length:var(--fs-small)] text-[#3d5843] transition hover:bg-[#e4f0e6] hover:text-[#0d0c0b]"
                       >
                         <span
                           className="h-[6px] w-[6px] shrink-0 rounded-full opacity-70"
@@ -158,7 +158,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
           </button>
           <button
             onClick={onContact}
-            className="hidden rounded-full border border-[rgba(30,61,34,.12)] bg-[linear-gradient(135deg,#1e3d22_0%,#2d5a30_100%)] px-4 py-[10px] text-[12px] font-medium tracking-[0.05em] text-white shadow-[0_14px_28px_rgba(30,61,34,.22)] transition hover:-translate-y-px hover:shadow-[0_18px_36px_rgba(30,61,34,.30)] sm:inline-flex xl:px-5 xl:text-[12.5px]"
+            className="hidden rounded-full border border-[rgba(30,61,34,.12)] bg-[linear-gradient(135deg,#1e3d22_0%,#2d5a30_100%)] px-4 py-[10px] text-[length:var(--fs-caption)] font-medium tracking-[0.05em] text-white shadow-[0_14px_28px_rgba(30,61,34,.22)] transition hover:-translate-y-px hover:shadow-[0_18px_36px_rgba(30,61,34,.30)] sm:inline-flex xl:px-5 xl:text-[length:var(--fs-caption)]"
           >
             Contact Us
           </button>
@@ -192,16 +192,16 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
         <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_top,rgba(30,61,34,.08),transparent_72%)]" />
         <div className="mb-4 flex items-center justify-between gap-3">
           <div>
-            <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
+            <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
               Navigation
             </div>
-            <div className="font-[var(--font-montserrat)] text-[28px] leading-none text-[#0d0c0b]">
+            <div className="font-[var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#0d0c0b]">
               Browse Store
             </div>
           </div>
           <button
             onClick={() => setMobileMenuOpen(false)}
-            className="rounded-full border border-[#baccbe] bg-white/75 px-4 py-2 text-[12px] font-medium text-[#3d5843] shadow-[0_8px_18px_rgba(30,61,34,.05)]"
+            className="rounded-full border border-[#baccbe] bg-white/75 px-4 py-2 text-[length:var(--fs-caption)] font-medium text-[#3d5843] shadow-[0_8px_18px_rgba(30,61,34,.05)]"
           >
             Close
           </button>
@@ -223,7 +223,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
                       className="h-2.5 w-2.5 rounded-full shadow-[0_0_0_4px_rgba(228,240,230,.9)]"
                       style={{ background: CAT[category].col }}
                     />
-                    <span className="text-[14px] font-medium text-[#0d0c0b]">{category}</span>
+                    <span className="text-[length:var(--fs-small)] font-medium text-[#0d0c0b]">{category}</span>
                   </span>
                   <svg
                     className={`transition ${expanded ? "rotate-180" : ""}`}
@@ -246,7 +246,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
                     <div className="flex gap-2 px-3 pb-1">
                       <button
                         onClick={() => handleNav(category, null)}
-                        className="shrink-0 rounded-full bg-[#1e3d22] px-4 py-2 text-[12px] font-medium text-white shadow-[0_10px_24px_rgba(30,61,34,.22)]"
+                        className="shrink-0 rounded-full bg-[#1e3d22] px-4 py-2 text-[length:var(--fs-caption)] font-medium text-white shadow-[0_10px_24px_rgba(30,61,34,.22)]"
                       >
                         View All
                       </button>
@@ -256,7 +256,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
                           <button
                             key={sub}
                             onClick={() => handleNav(category, sub)}
-                            className="shrink-0 rounded-full border border-[#b4ccb6] bg-white/80 px-4 py-2 text-[12px] font-medium text-[#3d5843] transition hover:border-[#3d5843] hover:text-[#0d0c0b]"
+                            className="shrink-0 rounded-full border border-[#b4ccb6] bg-white/80 px-4 py-2 text-[length:var(--fs-caption)] font-medium text-[#3d5843] transition hover:border-[#3d5843] hover:text-[#0d0c0b]"
                           >
                             {sub}
                           </button>

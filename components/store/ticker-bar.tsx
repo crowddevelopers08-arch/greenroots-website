@@ -9,7 +9,7 @@ export function TickerBar() {
         {items.map((item, index) => (
           <span
             key={`${item}-${index}`}
-            className="inline-flex shrink-0 items-center gap-8 whitespace-nowrap px-8 text-[11px] font-medium uppercase tracking-[0.16em] text-[rgba(255,255,255,.85)]"
+            className="inline-flex shrink-0 items-center gap-8 whitespace-nowrap px-8 text-[length:var(--fs-caption)] font-medium uppercase tracking-[0.16em] text-[rgba(255,255,255,.85)]"
           >
             {item}
             <span className="h-[3px] w-[3px] rounded-full bg-[#3a7848] opacity-80" />

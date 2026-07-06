@@ -10,19 +10,19 @@ export function CategoryTiles({ current, onNav }: Props) {
   const entries = Object.entries(CAT) as [CategoryKey, (typeof CAT)[CategoryKey]][];
 
   return (
-    <section className="px-4 pt-5 sm:px-5 md:px-12 md:pt-12">
+    <section className="px-4 pb-6 pt-5 sm:px-5 sm:pb-8 md:px-12 md:pb-16 md:pt-12">
       <Reveal animation="fadeUp" duration={600} className="mb-4 flex items-start justify-between gap-3 sm:mb-5 sm:flex-row sm:items-end sm:gap-5 md:mb-11">
         <div>
-          <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3d5843] sm:mb-2 sm:text-[10.5px]">
+          <div className="mb-1.5 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d5843] sm:mb-2 sm:text-[length:var(--fs-caption)]">
             Browse
           </div>
-          <div className="font-[var(--font-montserrat)] text-[clamp(26px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
+          <div className="font-[var(--font-montserrat)] text-[length:var(--fs-h2)] leading-[1.06] tracking-[-0.01em]">
             All Categories
           </div>
         </div>
         <button
           onClick={() => onNav("Backpacks", null)}
-          className="mt-1 shrink-0 rounded-full border-[1.5px] border-[#b4ccb6] px-4 py-2 text-[11.5px] font-medium text-[#3d5843] transition hover:-translate-y-px hover:border-[#3d5843] hover:text-[#0d0c0b] sm:px-[22px] sm:py-2.5 sm:text-[12.5px]"
+          className="mt-1 shrink-0 rounded-full border-[1.5px] border-[#b4ccb6] px-4 py-2 text-[length:var(--fs-caption)] font-medium text-[#3d5843] transition hover:-translate-y-px hover:border-[#3d5843] hover:text-[#0d0c0b] sm:px-[22px] sm:py-2.5 sm:text-[length:var(--fs-caption)]"
         >
           View All
         </button>
@@ -53,8 +53,8 @@ export function CategoryTiles({ current, onNav }: Props) {
               </svg>
             </div>
             <div className="absolute inset-x-0 bottom-0 px-2.5 pb-3 pt-4 sm:px-[14px] sm:pb-5 sm:pt-[18px]">
-              <div className="mb-0.5 text-[11px] font-medium tracking-[0.01em] text-white sm:mb-1 sm:text-[13px]">{category}</div>
-              <div className="text-[9.5px] tracking-[0.04em] text-[rgba(255,255,255,.78)] sm:text-[10.5px]">{config.cnt} pieces</div>
+              <div className="mb-0.5 text-[length:var(--fs-caption)] font-medium tracking-[0.01em] text-white sm:mb-1 sm:text-[length:var(--fs-small)]">{category}</div>
+              <div className="text-[length:var(--fs-caption)] tracking-[0.04em] text-[rgba(255,255,255,.78)] sm:text-[length:var(--fs-caption)]">{config.cnt} pieces</div>
             </div>
             <div className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-[#3a7848] transition group-hover:scale-x-100" />
           </Reveal>

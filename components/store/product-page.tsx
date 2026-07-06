@@ -152,7 +152,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
         </div>
 
         <div className="relative z-[1] px-4 py-6 sm:px-5 sm:py-8 md:px-8 md:py-9 lg:px-10">
-          <div className="mb-5 flex flex-wrap items-center gap-2 text-[12px] text-[#3d5843] sm:mb-8 sm:text-[12.5px]">
+          <div className="mb-5 flex flex-wrap items-center gap-2 text-[length:var(--fs-caption)] text-[#3d5843] sm:mb-8 sm:text-[length:var(--fs-caption)]">
             {crumbs.map((crumb, index) => (
               <div key={`${crumb.label}-${index}`} className="flex items-center gap-2">
                 {index > 0 ? <span className="text-[#b4ccb6]">{">"}</span> : null}
@@ -169,30 +169,30 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
 
           <div className="grid gap-4 sm:gap-6 md:grid-cols-[1fr_auto] md:items-start">
             <div className="max-w-[760px]">
-              <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#3d5843] sm:mb-3 sm:text-[10.5px]">
+              <div className="mb-2 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#3d5843] sm:mb-3 sm:text-[length:var(--fs-caption)]">
                 {category}
               </div>
 
-              <div className="font-[var(--font-montserrat)] text-[clamp(30px,4.7vw,66px)] leading-[.96] tracking-[-0.025em] text-[#0d0c0b]">
+              <div className="font-[var(--font-montserrat)] text-[length:var(--fs-h1)] leading-[.96] tracking-[-0.025em] text-[#0d0c0b]">
                 {subcategory && subcategory !== "All" ? subcategory : category}
               </div>
 
-              <div className="mt-2 max-w-[540px] text-[12.5px] leading-[1.75] text-[#2d4430] sm:mt-3 sm:text-[14px]">
+              <div className="mt-2 max-w-[540px] text-[length:var(--fs-caption)] leading-[1.75] text-[#2d4430] sm:mt-3 sm:text-[length:var(--fs-small)]">
                 {visibleCount} pieces
               </div>
             </div>
 
             <div className="flex flex-row items-center gap-3 sm:gap-3 md:flex-col md:items-end">
               <div className="rounded-[18px] border border-white/70 bg-white/80 px-4 py-3 shadow-[0_10px_30px_rgba(30,61,34,.06)] backdrop-blur-[6px] sm:rounded-[22px] sm:px-5 sm:py-4">
-                <div className="text-[9.5px] uppercase tracking-[0.14em] text-[#3d5843] sm:text-[10px]">
+                <div className="text-[length:var(--fs-caption)] uppercase tracking-[0.14em] text-[#3d5843] sm:text-[length:var(--fs-caption)]">
                   Available
                 </div>
-                <div className="mt-0.5 font-[var(--font-montserrat)] text-[26px] leading-none text-[#0d0c0b] sm:mt-1 sm:text-[30px]">
+                <div className="mt-0.5 font-[var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#0d0c0b] sm:mt-1 sm:text-[length:var(--fs-h3)]">
                   {String(visibleCount).padStart(2, "0")}
                 </div>
               </div>
 
-              <div className="text-[11px] font-medium text-[#3d5843] sm:text-[12px]">
+              <div className="text-[length:var(--fs-caption)] font-medium text-[#3d5843] sm:text-[length:var(--fs-caption)]">
                 {visibleCount} {visibleCount === 1 ? "item" : "items"}
               </div>
             </div>
@@ -219,14 +219,14 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                       onClick={() => { if (isReal) onNav(category, sub === "All" ? null : sub); }}
                       tabIndex={isReal ? 0 : -1}
                       aria-hidden={!isReal}
-                      className={`inline-flex shrink-0 items-center gap-2 rounded-full py-1.5 pl-1.5 pr-4 text-[11.5px] font-medium transition ${
+                      className={`inline-flex shrink-0 items-center gap-2 rounded-full py-1.5 pl-1.5 pr-4 text-[length:var(--fs-caption)] font-medium transition ${
                         active
                           ? "bg-[#0d0c0b] text-white shadow-[0_8px_18px_rgba(13,12,11,.14)]"
                           : "border border-[#c0d0c2] bg-white text-[#3d5843]"
                       }`}
                     >
                       <span
-                        className="h-8 w-8 shrink-0 rounded-full flex items-center justify-center text-[11px] font-bold uppercase"
+                        className="h-8 w-8 shrink-0 rounded-full flex items-center justify-center text-[length:var(--fs-caption)] font-bold uppercase"
                         style={active
                           ? { backgroundColor: "rgba(255,255,255,0.18)", color: "#fff" }
                           : { backgroundColor: avatarColor.bg, color: avatarColor.text }}
@@ -250,14 +250,14 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                     <button
                       key={sub}
                       onClick={() => onNav(category, sub === "All" ? null : sub)}
-                      className={`inline-flex shrink-0 items-center gap-2.5 rounded-full py-2 pl-2 pr-5 text-[12.5px] font-medium transition ${
+                      className={`inline-flex shrink-0 items-center gap-2.5 rounded-full py-2 pl-2 pr-5 text-[length:var(--fs-caption)] font-medium transition ${
                         active
                           ? "bg-[#0d0c0b] text-white shadow-[0_8px_18px_rgba(13,12,11,.14)]"
                           : "border border-[#c0d0c2] bg-white text-[#3d5843] hover:-translate-y-px hover:border-[#7a9e82] hover:text-[#0d0c0b]"
                       }`}
                     >
                       <span
-                        className="h-9 w-9 shrink-0 rounded-full flex items-center justify-center text-[12px] font-bold uppercase"
+                        className="h-9 w-9 shrink-0 rounded-full flex items-center justify-center text-[length:var(--fs-caption)] font-bold uppercase"
                         style={active
                           ? { backgroundColor: "rgba(255,255,255,0.18)", color: "#fff" }
                           : { backgroundColor: avatarColor.bg, color: avatarColor.text }}
@@ -292,7 +292,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={`Search ${category}…`}
-              className="w-full rounded-full border border-[#c0d0c2] bg-white py-[9px] pl-9 pr-9 text-[13px] text-[#0d0c0b] placeholder:text-[#9ab8a0] shadow-[0_4px_14px_rgba(30,61,34,.04)] focus:border-[#3a7848] focus:outline-none focus:ring-2 focus:ring-[#3a7848]/10"
+              className="w-full rounded-full border border-[#c0d0c2] bg-white py-[9px] pl-9 pr-9 text-[length:var(--fs-small)] text-[#0d0c0b] placeholder:text-[#9ab8a0] shadow-[0_4px_14px_rgba(30,61,34,.04)] focus:border-[#3a7848] focus:outline-none focus:ring-2 focus:ring-[#3a7848]/10"
             />
             {searchQuery && (
               <button
@@ -312,7 +312,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             {hasNewItems && (
               <button
                 onClick={() => setNewOnly((v) => !v)}
-                className={`inline-flex items-center gap-1.5 rounded-full border px-[14px] py-[9px] text-[12px] font-medium transition hover:-translate-y-px ${
+                className={`inline-flex items-center gap-1.5 rounded-full border px-[14px] py-[9px] text-[length:var(--fs-caption)] font-medium transition hover:-translate-y-px ${
                   newOnly
                     ? "border-[#1e3d22] bg-[#1e3d22] text-white shadow-[0_6px_14px_rgba(30,61,34,.20)]"
                     : "border-[#c0d0c2] bg-white text-[#3d5843] shadow-[0_4px_14px_rgba(30,61,34,.04)] hover:border-[#7a9e82]"
@@ -327,7 +327,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             <div ref={sortRef} className="relative">
               <button
                 onClick={() => setSortOpen((v) => !v)}
-                className={`inline-flex items-center gap-1.5 rounded-full border px-[14px] py-[9px] text-[12px] font-medium transition hover:-translate-y-px hover:text-[#0d0c0b] ${
+                className={`inline-flex items-center gap-1.5 rounded-full border px-[14px] py-[9px] text-[length:var(--fs-caption)] font-medium transition hover:-translate-y-px hover:text-[#0d0c0b] ${
                   sortBy !== "default"
                     ? "border-[#0d0c0b] bg-[#0d0c0b] text-white hover:bg-[#252320]"
                     : "border-[#c0d0c2] bg-white text-[#3d5843] shadow-[0_4px_14px_rgba(30,61,34,.04)] hover:border-[#7a9e82]"
@@ -344,7 +344,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                     <button
                       key={option.key}
                       onClick={() => { setSortBy(option.key); setSortOpen(false); }}
-                      className={`flex w-full items-center justify-between gap-3 px-4 py-3 text-left text-[12.5px] transition hover:bg-[#e4f0e6] ${
+                      className={`flex w-full items-center justify-between gap-3 px-4 py-3 text-left text-[length:var(--fs-caption)] transition hover:bg-[#e4f0e6] ${
                         sortBy === option.key ? "font-semibold text-[#0d0c0b]" : "font-medium text-[#3d5843]"
                       }`}
                     >
@@ -364,7 +364,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             {hasActiveFilters && (
               <button
                 onClick={() => { setSearchQuery(""); setNewOnly(false); setSortBy("default"); }}
-                className="inline-flex items-center gap-1 rounded-full border border-[#f0c4c4] bg-[#fff5f5] px-[14px] py-[9px] text-[12px] font-medium text-[#9b4444] transition hover:bg-[#ffe8e8]"
+                className="inline-flex items-center gap-1 rounded-full border border-[#f0c4c4] bg-[#fff5f5] px-[14px] py-[9px] text-[length:var(--fs-caption)] font-medium text-[#9b4444] transition hover:bg-[#ffe8e8]"
               >
                 Clear
                 <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
@@ -383,12 +383,12 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               <polyline points="14,2 14,8 20,8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className="text-[12.5px] font-medium text-[#3d5843]">Diva & La Opala - 2024 Catalogue</span>
+            <span className="text-[length:var(--fs-caption)] font-medium text-[#3d5843]">Diva & La Opala - 2024 Catalogue</span>
             <a
               href="/catalogues/diva-la-opala-2024.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-[#c0d0c2] bg-white px-4 py-1.5 text-[11.5px] font-medium text-[#3d5843] transition hover:border-[#b8a898] hover:text-[#0d0c0b]"
+              className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-[#c0d0c2] bg-white px-4 py-1.5 text-[length:var(--fs-caption)] font-medium text-[#3d5843] transition hover:border-[#b8a898] hover:text-[#0d0c0b]"
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -409,14 +409,14 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                 <polyline points="14,2 14,8 20,8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <div>
-                <div className="font-[var(--font-montserrat)] text-[26px] text-[#0d0c0b]">Diva & La Opala Catalogue</div>
-                <div className="mt-2 text-[13px] text-[#3d5843]">Your browser cannot display this PDF inline.</div>
+                <div className="font-[var(--font-montserrat)] text-[length:var(--fs-h3)] text-[#0d0c0b]">Diva & La Opala Catalogue</div>
+                <div className="mt-2 text-[length:var(--fs-small)] text-[#3d5843]">Your browser cannot display this PDF inline.</div>
               </div>
               <a
                 href="/catalogues/diva-la-opala-2024.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[#0d0c0b] px-7 py-3.5 text-[13px] font-medium text-white transition hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-full bg-[#0d0c0b] px-7 py-3.5 text-[length:var(--fs-small)] font-medium text-white transition hover:-translate-y-0.5"
               >
                 Open Catalogue PDF
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -430,19 +430,19 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
         <div className="overflow-hidden rounded-[28px] border border-[#ccd8ce] bg-white shadow-[0_8px_40px_rgba(0,0,0,.05)]">
           <div className="flex flex-col gap-3 border-b border-[#ccd8ce] bg-[#f0f6f0] px-5 py-5 md:flex-row md:items-end md:justify-between md:px-7">
             <div>
-              <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#3d5843]">
+              <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#3d5843]">
                 {subcategory} Catalogue
               </div>
-              <div className="mt-1 font-[var(--font-montserrat)] text-[30px] leading-none text-[#0d0c0b] md:text-[36px]">
+              <div className="mt-1 font-[var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#0d0c0b] md:text-[length:var(--fs-h2)]">
                 {subcategory}
               </div>
-              <div className="mt-2 text-[13px] leading-[1.7] text-[#3d5843]">
+              <div className="mt-2 text-[length:var(--fs-small)] leading-[1.7] text-[#3d5843]">
                 {haGalleryImages.length} catalogue pages — click any to enquire
               </div>
             </div>
             <Link
               href={category === "Electronics" ? getElecBrandHref(subcategory!) : category === "Edible" ? getEdibleBrandHref(subcategory!) : getHaBrandHref(subcategory!)}
-              className="inline-flex items-center gap-2 self-start rounded-full bg-[#1e3d22] px-5 py-2.5 text-[12.5px] font-medium text-white transition hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 self-start rounded-full bg-[#1e3d22] px-5 py-2.5 text-[length:var(--fs-caption)] font-medium text-white transition hover:-translate-y-0.5"
             >
               Full page view
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -494,8 +494,8 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                     </div>
                     <div className="relative flex items-center justify-between gap-2 px-3 pb-3 pt-1 sm:gap-4 sm:px-5 sm:pb-5">
                       <div>
-                        <div className="text-[8.5px] font-semibold uppercase tracking-[0.16em] text-[#3d7048] sm:text-[10.5px] sm:tracking-[0.18em]">{subcategory}</div>
-                        <div className="mt-0.5 font-[var(--font-montserrat)] text-[18px] leading-none tracking-[-0.02em] text-[#111d12] sm:mt-1 sm:text-[28px]">
+                        <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#3d7048] sm:text-[length:var(--fs-caption)] sm:tracking-[0.18em]">{subcategory}</div>
+                        <div className="mt-0.5 font-[var(--font-montserrat)] text-[length:var(--fs-h5)] leading-none tracking-[-0.02em] text-[#111d12] sm:mt-1 sm:text-[length:var(--fs-h3)]">
                           {String(index + 1).padStart(2, "0")}
                         </div>
                       </div>
@@ -515,18 +515,18 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
         <div className="overflow-hidden rounded-[28px] border border-[#ccd8ce] bg-white shadow-[0_8px_40px_rgba(0,0,0,.05)]">
           <div className="flex flex-col gap-3 border-b border-[#ccd8ce] bg-[#f0f6f0] px-5 py-5 md:flex-row md:items-end md:justify-between md:px-7">
             <div>
-              <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#3d5843]">
+              <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#3d5843]">
                 Updated BS Gallery
               </div>
-              <div className="mt-1 font-[var(--font-montserrat)] text-[30px] leading-none text-[#0d0c0b] md:text-[36px]">
+              <div className="mt-1 font-[var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#0d0c0b] md:text-[length:var(--fs-h2)]">
                 BS Stocks
               </div>
-              <div className="mt-2 text-[13px] leading-[1.7] text-[#3d5843]">
+              <div className="mt-2 text-[length:var(--fs-small)] leading-[1.7] text-[#3d5843]">
                 Choose a BS category to open its products on a separate page.
               </div>
             </div>
 
-            <div className="inline-flex items-center gap-3 self-start rounded-full border border-[#c2d4c4] bg-white px-4 py-2.5 text-[12.5px] font-medium text-[#3d5843]">
+            <div className="inline-flex items-center gap-3 self-start rounded-full border border-[#c2d4c4] bg-white px-4 py-2.5 text-[length:var(--fs-caption)] font-medium text-[#3d5843]">
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e4f0e6] text-[#0d0c0b]">
                 {String(BS_GALLERY_IMAGES.length).padStart(2, "0")}
               </span>
@@ -535,7 +535,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
           </div>
 
           <div className="border-b border-[#c4d6c6] bg-[linear-gradient(180deg,#f6fbf7_0%,#eef5ef_100%)] px-4 py-4 sm:px-5 sm:py-5 md:px-7">
-            <div className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#4a7254]">
+            <div className="mb-3 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#4a7254]">
               Browse By Category
             </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 md:gap-4">
@@ -556,13 +556,13 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                   </div>
                   <div className="flex items-center justify-between gap-4 px-4 pb-4 pt-1">
                     <div>
-                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3d7048]">
+                      <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d7048]">
                         BS Collection
                       </div>
-                      <div className="mt-1 font-[var(--font-montserrat)] text-[26px] leading-none text-[#111d12]">
+                      <div className="mt-1 font-[var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#111d12]">
                         {section.label}
                       </div>
-                      <div className="mt-2 text-[11.5px] leading-[1.6] text-[#4a6652]">
+                      <div className="mt-2 text-[length:var(--fs-caption)] leading-[1.6] text-[#4a6652]">
                         Products {String(section.start).padStart(2, "0")} to {String(section.end).padStart(2, "0")}
                       </div>
                     </div>
@@ -588,14 +588,14 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             </svg>
           </div>
           <div>
-            <div className="font-[var(--font-montserrat)] text-[28px] text-[#0d0c0b]">No results found</div>
-            <div className="mt-1.5 text-[13px] leading-[1.7] text-[#4a6652]">
+            <div className="font-[var(--font-montserrat)] text-[length:var(--fs-h3)] text-[#0d0c0b]">No results found</div>
+            <div className="mt-1.5 text-[length:var(--fs-small)] leading-[1.7] text-[#4a6652]">
               {searchQuery ? `No items matching "${searchQuery}"` : "No new items in this category yet"}
             </div>
           </div>
           <button
             onClick={() => { setSearchQuery(""); setNewOnly(false); }}
-            className="rounded-full bg-[#1e3d22] px-7 py-2.5 text-[13px] font-medium text-white transition hover:-translate-y-0.5"
+            className="rounded-full bg-[#1e3d22] px-7 py-2.5 text-[length:var(--fs-small)] font-medium text-white transition hover:-translate-y-0.5"
           >
             Clear filters
           </button>

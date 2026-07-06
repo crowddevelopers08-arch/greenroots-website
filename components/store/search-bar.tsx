@@ -64,9 +64,9 @@ export function SearchBar({ open, onClose, onNav }: Props) {
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Search brands, categories, products…"
-            className="min-w-0 flex-1 rounded-full border-[1.5px] border-[#ccd8ce] bg-[#e4f0e6] px-[22px] py-3 text-[15px] outline-none transition focus:border-[#3a7848] focus:bg-white"
+            className="min-w-0 flex-1 rounded-full border-[1.5px] border-[#ccd8ce] bg-[#e4f0e6] px-[22px] py-3 text-[length:var(--fs-body)] outline-none transition focus:border-[#3a7848] focus:bg-white"
           />
-          <button onClick={onClose} className="px-2 py-2 text-[13.5px] font-medium text-[#3d5843] transition hover:text-[#0d0c0b] sm:px-3">
+          <button onClick={onClose} className="px-2 py-2 text-[length:var(--fs-small)] font-medium text-[#3d5843] transition hover:text-[#0d0c0b] sm:px-3">
             Cancel
           </button>
         </div>
@@ -81,14 +81,14 @@ export function SearchBar({ open, onClose, onNav }: Props) {
                 className="flex w-full items-center gap-3 px-5 py-3.5 text-left transition hover:bg-[#e4f0e6]"
               >
                 <span
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[9px] font-bold uppercase text-white"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[length:var(--fs-caption)] font-bold uppercase text-white"
                   style={{ background: CAT[item.cat].col }}
                 >
                   {item.cat.slice(0, 2)}
                 </span>
                 <span className="flex-1">
-                  <span className="block text-[13.5px] font-medium text-[#0d0c0b]">{item.label}</span>
-                  <span className="text-[11px] text-[#4a6652]">
+                  <span className="block text-[length:var(--fs-small)] font-medium text-[#0d0c0b]">{item.label}</span>
+                  <span className="text-[length:var(--fs-caption)] text-[#4a6652]">
                     {item.type === "category" ? "Category" : item.cat}
                   </span>
                 </span>
@@ -107,7 +107,7 @@ export function SearchBar({ open, onClose, onNav }: Props) {
               <button
                 key={cat}
                 onClick={() => { onNav(cat, null); onClose(); setQuery(""); }}
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#ccd8ce] bg-white px-4 py-2 text-[12px] font-medium text-[#3d5843] transition hover:border-[#3a7848] hover:bg-[#e4f0e6] hover:text-[#0d0c0b]"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#ccd8ce] bg-white px-4 py-2 text-[length:var(--fs-caption)] font-medium text-[#3d5843] transition hover:border-[#3a7848] hover:bg-[#e4f0e6] hover:text-[#0d0c0b]"
               >
                 <span
                   className="h-2 w-2 rounded-full"

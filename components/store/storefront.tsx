@@ -20,16 +20,13 @@ import { TickerBar } from "./ticker-bar";
 import { StatsSection } from "./stats-section";
 import { CategoryTiles } from "./category-tiles";
 import { BrandsSection } from "./brands-section";
-import { AboutSection } from "./about-section";
-import { WhyUsSection } from "./why-us-section";
 import { EditorialSection } from "./editorial-section";
 import { EditorialElectronics } from "./editorial-electronics";
 import { ProcessSection } from "./process-section";
 import { ClientsSection } from "./clients-section";
 import { TestimonialsSection } from "./testimonials-section";
 import { WeSupportSection } from "./we-support-section";
-import { ReachUsSection } from "./reach-us-section";
-import { CtaSection } from "./cta-section";
+import { CombinedSection } from "./reach-us-section";
 import { ProductPage } from "./product-page";
 import { SearchBar } from "./search-bar";
 import { EnquiryModal } from "./enquiry-modal";
@@ -193,57 +190,64 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
 
       {!category ? (
         <>
+          {/* Intro → credibility */}
           <HeroSection onNav={nav} />
           <TickerBar />
           <StatsSection />
+
+          {/* Shop entry point */}
           <CategoryTiles current={category} onNav={nav} />
+
+          {/* Featured storytelling */}
+          <EditorialSection />
+          <EditorialElectronics />
+
+          {/* Trust: brands we carry + clients we serve */}
           <BrandsSection />
-          <AboutSection />
-          <WhyUsSection />
-          <EditorialSection onNav={nav} />
-          <EditorialElectronics onNav={nav} />
-          <ProcessSection />
           <ClientsSection />
-          <TestimonialsSection />
+
+          {/* How we work → our values → social proof */}
+          <ProcessSection />
           <WeSupportSection />
+          <TestimonialsSection />
           <section className="pb-8 sm:pb-12 md:pb-24">
 
             {/* ── Heading + View All (padded) ── */}
-            <div className="mb-4 flex items-start justify-between gap-3 px-4 sm:px-5 md:mb-7 md:px-12">
+            {/* <div className="mb-4 flex items-start justify-between gap-3 px-4 sm:px-5 md:mb-7 md:px-12">
               <div>
-                <div className="mb-1.5 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
+                <div className="mb-1.5 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
                   Handpicked
                 </div>
-                <div className="font-[var(--font-montserrat)] text-[clamp(26px,3.5vw,46px)] leading-[1.06] tracking-[-0.01em]">
+                <div className="font-[var(--font-montserrat)] text-[length:var(--fs-h2)] leading-[1.06] tracking-[-0.01em]">
                   Featured Products
                 </div>
               </div>
               <button
                 onClick={() => nav("Backpacks", null)}
-                className="mt-1 shrink-0 rounded-full border border-[#b4ccb6] px-4 py-2 text-[11.5px] font-medium text-[#3d5843] transition hover:-translate-y-px hover:border-[#3a7848] hover:text-[#0d0c0b] sm:px-5 sm:py-2.5 sm:text-[12.5px]"
+                className="mt-1 shrink-0 rounded-full border border-[#b4ccb6] px-4 py-2 text-[length:var(--fs-caption)] font-medium text-[#3d5843] transition hover:-translate-y-px hover:border-[#3a7848] hover:text-[#0d0c0b] sm:px-5 sm:py-2.5 sm:text-[length:var(--fs-caption)]"
               >
                 View All
               </button>
-            </div>
+            </div> */}
 
             {/* ── Category pills (padded) ── */}
-            <div className="mb-4 overflow-x-auto px-4 py-1 sm:px-5 md:mb-6 md:px-12">
+            {/* <div className="mb-4 overflow-x-auto px-4 py-1 sm:px-5 md:mb-6 md:px-12">
               <div className="flex w-max gap-2">
                 {(Object.keys(CAT) as CategoryKey[]).map((cat) => (
                   <button
                     key={cat}
                     onClick={() => nav(cat, null)}
-                    className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#ccd8ce] bg-white px-3.5 py-1.5 text-[11.5px] font-medium text-[#3d5843] whitespace-nowrap transition hover:-translate-y-px hover:border-[#3a7848] hover:bg-[#e4f0e6] hover:text-[#0d0c0b] sm:gap-2 sm:px-4 sm:py-2 sm:text-[12px]"
+                    className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#ccd8ce] bg-white px-3.5 py-1.5 text-[length:var(--fs-caption)] font-medium text-[#3d5843] whitespace-nowrap transition hover:-translate-y-px hover:border-[#3a7848] hover:bg-[#e4f0e6] hover:text-[#0d0c0b] sm:gap-2 sm:px-4 sm:py-2 sm:text-[length:var(--fs-caption)]"
                   >
                     <span className="h-2 w-2 rounded-full" style={{ background: CAT[cat].col }} />
                     {cat}
                   </button>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* ── Mobile: padded 1-card auto-carousel ── */}
-            <div className="px-4 sm:hidden">
+            {/* <div className="px-4 sm:hidden">
               <div
                 className="overflow-hidden rounded-[18px] border border-[#e0ece0]"
                 onTouchStart={handleTouchStart}
@@ -259,7 +263,7 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
                       className="relative w-full shrink-0 cursor-pointer"
                       onClick={() => nav(cat, product.sub)}
                     >
-                      {/* Fixed-height image — fully visible, no cropping */}
+           
                       <div className="h-[240px] w-full overflow-hidden bg-[#f0f6f0]">
                         <img
                           src={product.img}
@@ -268,18 +272,18 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
                         />
                       </div>
                       {product.badge && (
-                        <span className="absolute left-3 top-3 z-10 rounded-full bg-[#1e3d22] px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-[0.1em] text-white">
+                        <span className="absolute left-3 top-3 z-10 rounded-full bg-[#1e3d22] px-2.5 py-1 text-[length:var(--fs-caption)] font-bold uppercase tracking-[0.1em] text-white">
                           {product.badge}
                         </span>
                       )}
                       <div className="border-t border-[#e0ece0] bg-[#f5f9f5] px-4 py-4">
                         <div className="flex items-start justify-between gap-2">
-                          <span className="text-sm font-semibold leading-[1.3] text-[#0d0c0b]">{product.name}</span>
-                          <span className="whitespace-nowrap text-[11.5px] font-medium text-[#4a6a50]">POA</span>
+                          <span className="text-[length:var(--fs-small)] font-semibold leading-[1.3] text-[#0d0c0b]">{product.name}</span>
+                          <span className="whitespace-nowrap text-[length:var(--fs-caption)] font-medium text-[#4a6a50]">POA</span>
                         </div>
-                        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-[#3d5843]">{product.desc}</p>
+                        <p className="mt-1 line-clamp-2 text-[length:var(--fs-caption)] leading-relaxed text-[#3d5843]">{product.desc}</p>
                         <div className="mt-3 flex items-center justify-between">
-                          <span className="rounded-[20px] bg-[#e4f0e6] px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-[0.1em] text-[#4a7254]">
+                          <span className="rounded-[20px] bg-[#e4f0e6] px-2.5 py-1 text-[length:var(--fs-caption)] font-bold uppercase tracking-[0.1em] text-[#4a7254]">
                             {product.sub}
                           </span>
                           <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#d0e0d2] text-[#3d5843]">
@@ -292,7 +296,7 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
                     </div>
                   ))}
                 </div>
-                {/* Slide dots */}
+
                 <div className="flex justify-center gap-2 border-t border-[#e0ece0] bg-[#f5f9f5] py-3">
                   {FEATURED.map((_, i) => (
                     <button
@@ -306,11 +310,11 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
                   ))}
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* ── Desktop: 3-at-a-time carousel with side padding ── */}
-            <div className="hidden sm:block sm:px-5 md:px-12">
-              {/* Nav row: page dots (left) + prev / next arrows (right) */}
+            {/* <div className="hidden sm:block sm:px-5 md:px-12">
+       
               <div className="mb-3 flex items-center justify-between">
                 <div className="flex gap-1.5">
                   {Array.from({ length: DESKTOP_MAX_SLIDE + 1 }).map((_, i) => (
@@ -347,7 +351,7 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
                   </button>
                 </div>
               </div>
-              {/* Carousel track — overflow hidden so only 3 cards show */}
+    
               <div className="overflow-hidden rounded-[20px] border border-[#e0ece0]">
                 <div
                   className="flex transition-transform duration-500 ease-[cubic-bezier(.4,0,.2,1)]"
@@ -362,7 +366,7 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
                         index < FEATURED.length - 1 ? "border-r border-[#e0ece0]" : ""
                       }`}
                     >
-                      {/* Fixed-height image — fully visible, no cropping */}
+   
                       <div className="h-[260px] overflow-hidden bg-[#f0f6f0]">
                         <img
                           src={product.img}
@@ -371,19 +375,19 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
                         />
                       </div>
                       {product.badge && (
-                        <span className="absolute left-3 top-3 z-10 rounded-full bg-[#1e3d22] px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-[0.1em] text-white">
+                        <span className="absolute left-3 top-3 z-10 rounded-full bg-[#1e3d22] px-2.5 py-1 text-[length:var(--fs-caption)] font-bold uppercase tracking-[0.1em] text-white">
                           {product.badge}
                         </span>
                       )}
-                      {/* Info panel */}
+
                       <div className="border-t border-[#e0ece0] p-4">
                         <div className="flex items-start justify-between gap-2">
-                          <span className="text-[13px] font-semibold leading-[1.3] text-[#0d0c0b]">{product.name}</span>
-                          <span className="whitespace-nowrap text-[11px] font-medium text-[#4a6a50]">POA</span>
+                          <span className="text-[length:var(--fs-small)] font-semibold leading-[1.3] text-[#0d0c0b]">{product.name}</span>
+                          <span className="whitespace-nowrap text-[length:var(--fs-caption)] font-medium text-[#4a6a50]">POA</span>
                         </div>
-                        <p className="mt-1.5 line-clamp-2 text-[11px] leading-[1.5] text-[#3d5843]">{product.desc}</p>
+                        <p className="mt-1.5 line-clamp-2 text-[length:var(--fs-caption)] leading-[1.5] text-[#3d5843]">{product.desc}</p>
                         <div className="mt-3 flex items-center justify-between">
-                          <span className="rounded-[20px] bg-[#e4f0e6] px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] text-[#4a7254]">
+                          <span className="rounded-[20px] bg-[#e4f0e6] px-2 py-0.5 text-[length:var(--fs-caption)] font-bold uppercase tracking-[0.1em] text-[#4a7254]">
                             {product.sub}
                           </span>
                           <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#d0e0d2] text-[#3d5843] transition duration-200 group-hover:bg-[#1e3d22] group-hover:text-white">
@@ -397,7 +401,7 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
                   ))}
                 </div>
               </div>
-            </div>
+            </div> */}
 
           </section>
         </>
@@ -413,8 +417,7 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
         </>
       )}
 
-      {!category && <ReachUsSection onContact={openContact} />}
-      {!category && <CtaSection onNav={nav} onContact={openContact} />}
+      {!category && <CombinedSection onNav={nav} onContact={openContact} />}
       <StoreFooter onNav={nav} />
       <EnquiryModal
         category={modalCategory}
