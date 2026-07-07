@@ -72,7 +72,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
               >
                 <button
                   onClick={() => handleNav(category, null)}
-                  className={`group relative flex items-center gap-0.5 whitespace-nowrap rounded-full px-2 py-2 text-[length:var(--fs-caption)] font-medium tracking-[0.01em] transition xl:px-2.5 xl:text-[length:var(--fs-caption)] xl:tracking-[0.01em] ${
+                  className={`group relative flex items-center gap-0.5 whitespace-nowrap rounded-full px-1.5 py-2 text-[length:var(--fs-caption)] font-medium tracking-[0.01em] transition xl:px-2 xl:text-[length:var(--fs-caption)] xl:tracking-[0.01em] ${
                     isActive
                       ? "bg-[#e4f0e6] text-[#0d0c0b] shadow-[inset_0_1px_0_rgba(255,255,255,.7),0_8px_18px_rgba(30,61,34,.07)]"
                       : "text-[#3d5843] hover:bg-[rgba(228,240,230,.7)] hover:text-[#0d0c0b]"
