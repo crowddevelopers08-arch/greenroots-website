@@ -13,7 +13,7 @@ export function EditorialSection() {
                 Who We Are
               </span>
             </div>
-            <h2 className="font-[var(--font-montserrat)] text-[length:var(--fs-h1)] font-extrabold leading-[1.04] tracking-[-0.01em] text-white whitespace-nowrap">
+            <h2 className="[font-family:var(--font-montserrat)] text-[length:var(--fs-h1)] font-extrabold leading-[1.04] tracking-[-0.01em] text-white whitespace-nowrap">
               About <span className="text-[rgba(255,255,255,.78)]">Us</span>
             </h2>
             <p className="mt-4 max-w-[520px] text-[length:var(--fs-small)] leading-[1.7] text-[rgba(255,255,255,.92)]">

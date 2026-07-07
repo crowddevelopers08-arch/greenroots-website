@@ -27,7 +27,7 @@ export function ClientsSection() {
         <div className="mb-2 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
           Who We Work With
         </div>
-        <h2 className="font-[var(--font-montserrat)] text-[length:var(--fs-h1)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[#0d0c0b]">
+        <h2 className="[font-family:var(--font-montserrat)] text-[length:var(--fs-h1)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[#0d0c0b]">
           Our Clients
         </h2>
         <p className="mx-auto mt-4 max-w-[520px] text-[length:var(--fs-small)] leading-[1.7] text-[#2d4430]">

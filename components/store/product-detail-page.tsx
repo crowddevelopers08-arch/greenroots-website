@@ -74,7 +74,7 @@ export function ProductDetailPage({ category, product, relatedProducts }: Props)
                   <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#4a7254]">
                     Product Detail
                   </div>
-                  <h1 className="mt-3 font-[var(--font-montserrat)] text-[length:var(--fs-h1)] leading-[0.95] tracking-[-0.03em] text-[#0d0c0b]">
+                  <h1 className="mt-3 [font-family:var(--font-montserrat)] text-[length:var(--fs-h1)] leading-[0.95] tracking-[-0.03em] text-[#0d0c0b]">
                     {product.name}
                   </h1>
                   <p className="mt-4 text-[length:var(--fs-small)] leading-[1.85] text-[#334836]">
@@ -124,7 +124,7 @@ export function ProductDetailPage({ category, product, relatedProducts }: Props)
                 <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#4a7254]">
                   Related Products
                 </div>
-                <h2 className="mt-2 font-[var(--font-montserrat)] text-[length:var(--fs-h2)] leading-none text-[#0d0c0b]">
+                <h2 className="mt-2 [font-family:var(--font-montserrat)] text-[length:var(--fs-h2)] leading-none text-[#0d0c0b]">
                   More from {category}
                 </h2>
               </div>

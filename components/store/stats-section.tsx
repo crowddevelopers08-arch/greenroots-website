@@ -32,7 +32,7 @@ function StatCard({ stat, active, index }: { stat: typeof STATS[0]; active: bool
       className="group flex flex-col items-center bg-[linear-gradient(180deg,#fbfdfb,#eef4ef)] px-4 py-7 text-center transition hover:bg-[#e4f0e6] md:px-6 md:py-11"
       style={active ? { animation: `scaleIn 0.6s cubic-bezier(.4,0,.2,1) ${index * 110}ms both` } : { opacity: 0 }}
     >
-      <div className="font-[var(--font-montserrat)] text-[length:var(--fs-h1)] leading-none font-light tracking-[-0.02em] text-[#0d0c0b]">
+      <div className="[font-family:var(--font-montserrat)] text-[length:var(--fs-h1)] leading-none font-light tracking-[-0.02em] text-[#0d0c0b]">
         {count}{stat.suffix}
       </div>
       <div className="mt-2.5 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d5843] transition group-hover:text-[#0d0c0b]">

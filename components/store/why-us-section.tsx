@@ -45,12 +45,12 @@ const REASONS = [
 
 export function WhyUsSection() {
   return (
-    <section className="px-4 py-10 sm:px-5 sm:py-14 md:px-12 md:py-20">
+    <section className="bg-[linear-gradient(180deg,#f7fbf7,#e9f3ea)] px-4 py-10 sm:px-5 sm:py-14 md:px-12 md:py-20">
       <Reveal animation="fadeUp" duration={600} className="mb-6 md:mb-9">
         <div className="mb-2 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
           Why Choose Green Roots
         </div>
-        <h2 className="font-[var(--font-montserrat)] text-[length:var(--fs-h1)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[#0d0c0b]">
+        <h2 className="[font-family:var(--font-montserrat)] text-[length:var(--fs-h1)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[#0d0c0b]">
           Why Us?
         </h2>
       </Reveal>
@@ -66,7 +66,7 @@ export function WhyUsSection() {
             animation="fadeUp"
             delay={i * 100}
             duration={550}
-            className="flex flex-col items-center gap-3 text-center sm:border-l sm:border-[#e0ece0] sm:px-4 sm:first:border-l-0"
+            className="flex flex-col items-center gap-3 rounded-2xl border border-[#e0ece0] bg-[linear-gradient(160deg,#ffffff,#eef6ef)] px-4 py-6 text-center shadow-[var(--shadow-1)] transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-2)]"
           >
             <div className="flex h-14 w-14 items-center justify-center rounded-full border border-[#0d0c0b] text-[#0d0c0b] transition hover:bg-[#0d0c0b] hover:text-white">
               {reason.icon}

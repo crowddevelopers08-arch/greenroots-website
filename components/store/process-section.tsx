@@ -41,7 +41,7 @@ export function ProcessSection() {
         <div className="mb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3d5843] sm:text-[10.5px]">
           How It Works
         </div>
-        <div className="font-[var(--font-montserrat)] text-[clamp(28px,4vw,48px)] leading-[1.06] tracking-[-0.01em] text-[#0d0c0b]">
+        <div className="[font-family:var(--font-montserrat)] text-[clamp(28px,4vw,48px)] leading-[1.06] tracking-[-0.01em] text-[#0d0c0b]">
           Simple by design
         </div>
       </Reveal>
@@ -57,13 +57,13 @@ export function ProcessSection() {
               index < steps.length - 1 ? "border-b border-[#cadace] lg:border-b-0 lg:border-r" : ""
             }`}
           >
-            <div className="mb-3 font-[var(--font-montserrat)] text-[clamp(32px,3vw,48px)] leading-none font-light italic text-[#cadace] transition group-hover:text-[#b4ccb6] md:mb-4">
+            <div className="mb-3 [font-family:var(--font-montserrat)] text-[clamp(32px,3vw,48px)] leading-none font-light text-[#cadace] transition group-hover:text-[#b4ccb6] md:mb-4">
               {step.number}
             </div>
             <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-full border border-[#b0c8b2] text-[#3d5843] transition group-hover:-rotate-[15deg] group-hover:border-[#0d0c0b] group-hover:text-[#0d0c0b]">
               {step.icon}
             </div>
-            <div className="mb-2 font-[var(--font-montserrat)] text-[clamp(18px,2vw,24px)] text-[#0d0c0b]">{step.title}</div>
+            <div className="mb-2 [font-family:var(--font-montserrat)] text-[clamp(18px,2vw,24px)] text-[#0d0c0b]">{step.title}</div>
             <p className="text-[13px] leading-[1.6] text-[#2d4430]">{step.description}</p>
           </Reveal>
         ))}

@@ -9,7 +9,7 @@ const HIGHLIGHTS = [
 
 export function EditorialElectronics() {
   return (
-    <section className="mx-4 mb-6 overflow-hidden rounded-[20px] border border-[#ccd8ce] bg-[#f0f6f0] shadow-[var(--shadow-2)] sm:mb-8 md:mx-12 md:mb-16 md:rounded-[28px] lg:grid lg:grid-cols-2">
+    <section className="mx-4 mb-6 overflow-hidden rounded-[20px] border border-[#ccd8ce] bg-[linear-gradient(180deg,#f7fbf7,#eef6ef)] shadow-[var(--shadow-2)] sm:mb-8 md:mx-12 md:mb-16 md:rounded-[28px] lg:grid lg:grid-cols-2">
       <Reveal animation="slideLeft" duration={700} delay={150} className="group relative min-h-[180px] overflow-hidden sm:min-h-[220px] md:min-h-[260px]">
         <img
           src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=1600&h=1000&fit=crop&q=85"
@@ -35,7 +35,7 @@ export function EditorialElectronics() {
           <div className="mb-4 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.2em] text-[#3d5843]">
             Why Choose Green Roots
           </div>
-          <h2 className="font-[var(--font-montserrat)] text-[length:var(--fs-h1)] leading-[1.04] tracking-[-0.01em] text-[#0d0c0b] whitespace-nowrap">
+          <h2 className="[font-family:var(--font-montserrat)] text-[length:var(--fs-h1)] font-extrabold leading-[1.04] tracking-[-0.01em] text-[#0d0c0b] whitespace-nowrap">
             Why <span className="text-[#3a7848]">Us?</span>
           </h2>
           <p className="mt-3 max-w-[520px] text-[length:var(--fs-small)] leading-[1.6] text-[#2d4430]">
@@ -50,7 +50,7 @@ export function EditorialElectronics() {
               { value: "Competitive", label: "Pricing" },
             ].map((item, i) => (
               <div key={item.label} className="text-center" style={{ animation: `fadeUp 0.5s ease ${500 + i * 80}ms both` }}>
-                <div className="font-[var(--font-montserrat)] text-[length:var(--fs-body)] leading-none text-[#0d0c0b] sm:text-[length:var(--fs-h4)]">
+                <div className="[font-family:var(--font-montserrat)] text-[length:var(--fs-body)] leading-none text-[#0d0c0b] sm:text-[length:var(--fs-h4)]">
                   {item.value}
                 </div>
                 <div className="mt-0.5 text-[length:var(--fs-caption)] uppercase tracking-[0.12em] text-[#3d5843]">

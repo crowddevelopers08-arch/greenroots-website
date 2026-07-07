@@ -163,7 +163,7 @@ export function HeroSection({ onNav }: Props) {
                 <br />
                 <span className="text-[rgba(255,255,255,.88)]">{activeSlide.title[2]}</span>
                 <br />
-                <em className="text-[rgba(255,255,255,.82)]">{activeSlide.title[3]}</em>
+                <span className="not-italic text-[rgba(255,255,255,.82)]">{activeSlide.title[3]}</span>
               </h1>
 
               <p className="mb-3 max-w-[470px] text-[length:var(--fs-small)] leading-[1.7] text-[rgba(255,255,255,.95)] sm:text-[length:var(--fs-body)]">

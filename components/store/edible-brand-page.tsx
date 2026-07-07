@@ -74,7 +74,7 @@ export function EdibleBrandPage({ brandProduct, images }: Props) {
                   <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#4a7254]">
                     Edible
                   </div>
-                  <h1 className="mt-2 font-[var(--font-montserrat)] text-[length:var(--fs-h1)] leading-[0.95] tracking-[-0.03em] text-[#111d12]">
+                  <h1 className="mt-2 [font-family:var(--font-montserrat)] text-[length:var(--fs-h1)] leading-[0.95] tracking-[-0.03em] text-[#111d12]">
                     {brandProduct.name}
                   </h1>
                   <div className="mt-3 text-[length:var(--fs-small)] leading-[1.7] text-[#4a6652]">
@@ -147,7 +147,7 @@ export function EdibleBrandPage({ brandProduct, images }: Props) {
                         <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d7048]">
                           {brandProduct.name}
                         </div>
-                        <div className="mt-1 font-[var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none tracking-[-0.02em] text-[#111d12]">
+                        <div className="mt-1 [font-family:var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none tracking-[-0.02em] text-[#111d12]">
                           {String(index + 1).padStart(2, "0")}
                         </div>
                       </div>
@@ -168,7 +168,7 @@ export function EdibleBrandPage({ brandProduct, images }: Props) {
             <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#3d7048]">
               Interested?
             </div>
-            <div className="mt-2 font-[var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#111d12]">
+            <div className="mt-2 [font-family:var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#111d12]">
               Enquire about {brandProduct.name}
             </div>
             <div className="mt-3 flex flex-wrap justify-center gap-3">

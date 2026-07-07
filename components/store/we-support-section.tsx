@@ -21,7 +21,7 @@ export function WeSupportSection() {
         <div className="mb-2 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
           Pan-India Presence
         </div>
-        <h2 className="font-[var(--font-montserrat)] text-[length:var(--fs-h1)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[#0d0c0b]">
+        <h2 className="[font-family:var(--font-montserrat)] text-[length:var(--fs-h1)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[#0d0c0b]">
           We Support
         </h2>
         <p className="mx-auto mt-3 max-w-[560px] text-[length:var(--fs-small)] leading-[1.6] text-[#2d4430]">

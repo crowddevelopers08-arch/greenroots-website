@@ -67,7 +67,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
         {/* Brand name — gold shimmer sweep */}
         <div
           style={{
-            fontFamily: "var(--font-cormorant)",
+            fontFamily: "var(--font-montserrat)",
             fontSize: "clamp(30px,6vw,48px)",
             letterSpacing: "0.18em",
             lineHeight: 1,

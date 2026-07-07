@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={montserrat.variable}>
-      <body className="font-[var(--font-montserrat)] antialiased">{children}</body>
+      <body className="[font-family:var(--font-montserrat)] antialiased">{children}</body>
     </html>
   );
 }

@@ -21,7 +21,7 @@ export function AboutSection() {
             </span>
           </div>
 
-          <h2 className="max-w-[720px] font-[var(--font-montserrat)] text-[length:var(--fs-h1)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-white">
+          <h2 className="max-w-[720px] [font-family:var(--font-montserrat)] text-[length:var(--fs-h1)] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-white">
             About Us
           </h2>
 

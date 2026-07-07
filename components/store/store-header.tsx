@@ -184,7 +184,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
             <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
               Navigation
             </div>
-            <div className="font-[var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#0d0c0b]">
+            <div className="[font-family:var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#0d0c0b]">
               Browse Store
             </div>
           </div>

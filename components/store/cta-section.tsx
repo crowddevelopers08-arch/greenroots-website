@@ -23,10 +23,10 @@ export function CtaSection({ onNav, onContact }: Props) {
             </span>
           </div>
 
-          <h2 className="mx-auto mb-3 max-w-[640px] font-[var(--font-montserrat)] text-[length:var(--fs-h1)] font-extrabold leading-[1.05] tracking-[-0.02em] text-white sm:mb-4">
+          <h2 className="mx-auto mb-3 max-w-[640px] [font-family:var(--font-montserrat)] text-[length:var(--fs-h1)] font-extrabold leading-[1.05] tracking-[-0.02em] text-white sm:mb-4">
             Ready to gift
             <br />
-            <em className="text-[rgba(255,255,255,.88)]">with intention?</em>
+            <span className="not-italic text-[rgba(255,255,255,.88)]">with intention?</span>
           </h2>
 
           <p className="mx-auto mb-6 max-w-[440px] text-[length:var(--fs-small)] leading-[1.7] text-[rgba(255,255,255,.92)] sm:mb-8 sm:text-[length:var(--fs-small)]">

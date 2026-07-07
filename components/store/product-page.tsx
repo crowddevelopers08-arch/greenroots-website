@@ -177,7 +177,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                 {category}
               </div>
 
-              <div className="font-[var(--font-montserrat)] text-[length:var(--fs-h1)] leading-[.96] tracking-[-0.025em] text-[#0d0c0b]">
+              <div className="[font-family:var(--font-montserrat)] text-[length:var(--fs-h1)] leading-[.96] tracking-[-0.025em] text-[#0d0c0b]">
                 {subcategory && subcategory !== "All" ? subcategory : category}
               </div>
 
@@ -191,7 +191,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                 <div className="text-[length:var(--fs-caption)] uppercase tracking-[0.14em] text-[#3d5843] sm:text-[length:var(--fs-caption)]">
                   Available
                 </div>
-                <div className="mt-0.5 font-[var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#0d0c0b] sm:mt-1 sm:text-[length:var(--fs-h3)]">
+                <div className="mt-0.5 [font-family:var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#0d0c0b] sm:mt-1 sm:text-[length:var(--fs-h3)]">
                   {String(visibleCount).padStart(2, "0")}
                 </div>
               </div>
@@ -413,7 +413,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                 <polyline points="14,2 14,8 20,8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <div>
-                <div className="font-[var(--font-montserrat)] text-[length:var(--fs-h3)] text-[#0d0c0b]">Diva & La Opala Catalogue</div>
+                <div className="[font-family:var(--font-montserrat)] text-[length:var(--fs-h3)] text-[#0d0c0b]">Diva & La Opala Catalogue</div>
                 <div className="mt-2 text-[length:var(--fs-small)] text-[#3d5843]">Your browser cannot display this PDF inline.</div>
               </div>
               <a
@@ -437,7 +437,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#3d5843]">
                 {subcategory} Catalogue
               </div>
-              <div className="mt-1 font-[var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#0d0c0b] md:text-[length:var(--fs-h2)]">
+              <div className="mt-1 [font-family:var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#0d0c0b] md:text-[length:var(--fs-h2)]">
                 {subcategory}
               </div>
               <div className="mt-2 text-[length:var(--fs-small)] leading-[1.7] text-[#3d5843]">
@@ -513,7 +513,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                     <div className="relative flex items-center justify-between gap-2 px-3 pb-3 pt-1 sm:gap-4 sm:px-5 sm:pb-5">
                       <div>
                         <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#3d7048] sm:text-[length:var(--fs-caption)] sm:tracking-[0.18em]">{subcategory}</div>
-                        <div className="mt-0.5 font-[var(--font-montserrat)] text-[length:var(--fs-h5)] leading-none tracking-[-0.02em] text-[#111d12] sm:mt-1 sm:text-[length:var(--fs-h3)]">
+                        <div className="mt-0.5 [font-family:var(--font-montserrat)] text-[length:var(--fs-h5)] leading-none tracking-[-0.02em] text-[#111d12] sm:mt-1 sm:text-[length:var(--fs-h3)]">
                           {String(index + 1).padStart(2, "0")}
                         </div>
                       </div>
@@ -536,7 +536,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#3d5843]">
                 Updated BS Gallery
               </div>
-              <div className="mt-1 font-[var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#0d0c0b] md:text-[length:var(--fs-h2)]">
+              <div className="mt-1 [font-family:var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#0d0c0b] md:text-[length:var(--fs-h2)]">
                 BS Stocks
               </div>
               <div className="mt-2 text-[length:var(--fs-small)] leading-[1.7] text-[#3d5843]">
@@ -577,7 +577,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                       <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d7048]">
                         BS Collection
                       </div>
-                      <div className="mt-1 font-[var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#111d12]">
+                      <div className="mt-1 [font-family:var(--font-montserrat)] text-[length:var(--fs-h3)] leading-none text-[#111d12]">
                         {section.label}
                       </div>
                       <div className="mt-2 text-[length:var(--fs-caption)] leading-[1.6] text-[#4a6652]">
@@ -606,7 +606,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             </svg>
           </div>
           <div>
-            <div className="font-[var(--font-montserrat)] text-[length:var(--fs-h3)] text-[#0d0c0b]">No results found</div>
+            <div className="[font-family:var(--font-montserrat)] text-[length:var(--fs-h3)] text-[#0d0c0b]">No results found</div>
             <div className="mt-1.5 text-[length:var(--fs-small)] leading-[1.7] text-[#4a6652]">
               {searchQuery ? `No items matching "${searchQuery}"` : "No new items in this category yet"}
             </div>
