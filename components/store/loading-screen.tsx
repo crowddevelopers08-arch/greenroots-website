@@ -17,8 +17,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
         position: "fixed",
         inset: 0,
         zIndex: 9999,
-        background:
-          "radial-gradient(circle at 50% 38%, #234a2a 0%, #16311d 55%, #0d1f12 100%)",
+        background: "#111d12",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
