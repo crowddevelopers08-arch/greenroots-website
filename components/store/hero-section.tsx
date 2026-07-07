@@ -64,11 +64,18 @@ const HERO_SLIDE_CONFIGS: HeroSlideConfig[] = [
     note: "Seasonal chocolate hampers and artisan gift boxes from Cacao Springs — premium edible corporate gifts curated for celebrations and special occasions.",
   },
   {
-    cat: "B2B Importer",
-    productName: "B2B Catalogue",
-    eyebrow: "B2B Importer — Bulk Corporate Orders",
-    title: ["B2B", "Importer", "scaled", "for business."],
-    note: "Exclusive bulk corporate orders spanning every category — your one-stop B2B importer for premium branded gifting at competitive scale.",
+    cat: "Premium Giftset",
+    productName: "Sheaffer",
+    eyebrow: "Curated Collection - Premium Gifting",
+    title: ["Premium", "Giftsets", "curated", "to impress."],
+    note: "Elevated corporate gift sets designed for leadership gifting, festive campaigns, and memorable brand experiences.",
+  },
+  {
+    cat: "New Joiner Kit",
+    productName: "Master",
+    eyebrow: "Onboarding Essentials - First-Day Experience",
+    title: ["New Joiner", "Kits", "built", "to welcome."],
+    note: "Thoughtfully assembled onboarding kits that create a polished first impression with practical essentials and branded merchandise.",
   },
 ];
 
@@ -320,3 +327,4 @@ export function HeroSection({ onNav }: Props) {
     </section>
   );
 }
+

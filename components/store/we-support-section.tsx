@@ -16,7 +16,7 @@ const CITY_IMAGES = {
 
 export function WeSupportSection() {
   return (
-    <section className="px-4 py-6 sm:px-5 sm:py-8 md:px-12 md:py-12">
+    <section className="bg-[linear-gradient(180deg,#e9f3ea,#f7fbf7)] px-4 py-6 sm:px-5 sm:py-8 md:px-12 md:py-12">
       <Reveal animation="fadeUp" duration={600} className="mb-5 text-center md:mb-8">
         <div className="mb-2 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
           Pan-India Presence

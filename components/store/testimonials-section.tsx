@@ -77,7 +77,7 @@ export function TestimonialsSection() {
   };
 
   return (
-    <section className="pb-6 sm:pb-8 md:px-12 md:pb-16">
+    <section className="bg-[linear-gradient(180deg,#f7fbf7,#eef6ef)] pb-6 sm:pb-8 md:px-12 md:pb-16">
       <Reveal
         animation="fadeUp"
         duration={600}

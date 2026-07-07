@@ -29,7 +29,7 @@ function StatCard({ stat, active, index }: { stat: typeof STATS[0]; active: bool
   const count = useCountUp(stat.value, active);
   return (
     <div
-      className="group flex flex-col items-center bg-[#f5f9f5] px-4 py-7 text-center transition hover:bg-[#e4f0e6] md:px-6 md:py-11"
+      className="group flex flex-col items-center bg-[linear-gradient(180deg,#fbfdfb,#eef4ef)] px-4 py-7 text-center transition hover:bg-[#e4f0e6] md:px-6 md:py-11"
       style={active ? { animation: `scaleIn 0.6s cubic-bezier(.4,0,.2,1) ${index * 110}ms both` } : { opacity: 0 }}
     >
       <div className="font-[var(--font-montserrat)] text-[length:var(--fs-h1)] leading-none font-light tracking-[-0.02em] text-[#0d0c0b]">
@@ -58,7 +58,7 @@ export function StatsSection() {
   }, []);
 
   return (
-    <section ref={ref} className="px-4 py-4 sm:px-5 sm:py-5 md:px-12 md:py-14">
+    <section ref={ref} className="bg-[linear-gradient(180deg,#f7fbf7,#e9f3ea)] px-4 py-4 sm:px-5 sm:py-5 md:px-12 md:py-14">
       <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[20px] border border-[#ccd8ce] bg-[#ccd8ce] sm:rounded-[28px] lg:grid-cols-4">
         {STATS.map((stat, i) => <StatCard key={stat.label} stat={stat} active={active} index={i} />)}
       </div>

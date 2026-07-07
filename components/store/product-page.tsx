@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { BS_GALLERY_IMAGES, BS_HIDDEN_PAGES, BS_SECTIONS, CAT, PRODS, getApparelBrandImages, getBackpackBrandImages, getBsSectionHref, getEdibleBrandHref, getEdibleBrandImages, getElecBrandHref, getElecBrandImages, getHaBrandHref, getHaBrandImages, type CategoryKey, type Product } from "@/lib/store-data";
+import { BS_GALLERY_IMAGES, BS_HIDDEN_PAGES, BS_SECTIONS, CAT, PRODS, getApparelBrandHref, getApparelBrandImages, getBackpackBrandHref, getBackpackBrandImages, getBsSectionHref, getEdibleBrandHref, getEdibleBrandImages, getElecBrandHref, getElecBrandImages, getHaBrandHref, getHaBrandImages, getNewJoinerKitImages, getPremiumGiftsetImages, getProductHref, type CategoryKey, type Product } from "@/lib/store-data";
 import { ProductCard } from "./product-card";
 import { ImageLightbox } from "./image-lightbox";
 
@@ -103,6 +103,10 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             ? getEdibleBrandImages(subcategory)
             : category === "Backpacks"
               ? getBackpackBrandImages(subcategory)
+              : category === "Premium Giftset"
+                ? getPremiumGiftsetImages(subcategory)
+                : category === "New Joiner Kit"
+                  ? getNewJoinerKitImages(subcategory)
               : category === "Apparels"
                 ? getApparelBrandImages(subcategory)
                 : null)
@@ -441,7 +445,21 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
               </div>
             </div>
             <Link
-              href={category === "Electronics" ? getElecBrandHref(subcategory!) : category === "Edible" ? getEdibleBrandHref(subcategory!) : getHaBrandHref(subcategory!)}
+              href={
+                category === "Electronics"
+                  ? getElecBrandHref(subcategory!)
+                  : category === "Edible"
+                    ? getEdibleBrandHref(subcategory!)
+                  : category === "Backpacks"
+                      ? getBackpackBrandHref(subcategory!)
+                      : category === "Premium Giftset"
+                        ? getProductHref(category, sortedProducts[0]!)
+                        : category === "New Joiner Kit"
+                          ? getProductHref(category, sortedProducts[0]!)
+                      : category === "Apparels"
+                        ? getApparelBrandHref(subcategory!)
+                        : getHaBrandHref(subcategory!)
+              }
               className="inline-flex items-center gap-2 self-start rounded-full bg-[#1e3d22] px-5 py-2.5 text-[length:var(--fs-caption)] font-medium text-white transition hover:-translate-y-0.5"
             >
               Full page view

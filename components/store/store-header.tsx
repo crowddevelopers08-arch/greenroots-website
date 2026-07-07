@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { CAT, type CategoryKey } from "@/lib/store-data";
 
 type Props = {
@@ -13,16 +13,9 @@ type Props = {
 
 export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Props) {
   const [dropdown, setDropdown] = useState<CategoryKey | null>(null);
-  const [glass, setGlass] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileCategory, setMobileCategory] = useState<CategoryKey | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    const handleScroll = () => setGlass(window.scrollY > 30);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const open = (category: CategoryKey) => {
     if (timer.current) clearTimeout(timer.current);
@@ -43,19 +36,15 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-[200] flex h-[68px] items-center justify-between px-4 transition-all duration-300 sm:px-5 md:px-8 xl:px-12 ${
-          glass
-            ? "border-b border-[rgba(180,204,182,.35)] bg-[rgba(245,249,245,.90)] shadow-[var(--shadow-1)] backdrop-blur-[24px]"
-            : "border-b border-transparent bg-[linear-gradient(180deg,rgba(245,249,245,.85)_0%,rgba(245,249,245,.28)_72%,transparent_100%)]"
-        }`}
+        className="fixed inset-x-0 top-0 z-[200] flex h-[68px] items-center justify-between border-b border-[rgba(180,204,182,.35)] bg-[rgba(245,249,245,.97)] px-4 shadow-[var(--shadow-1)] backdrop-blur-[24px] transition-all duration-300 sm:px-5 md:px-8 xl:px-12"
       >
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(30,61,34,.4),transparent)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(180,204,182,.5),transparent)]" />
         <div className="pointer-events-none absolute inset-x-6 bottom-0 h-px bg-[linear-gradient(90deg,transparent,rgba(180,204,182,.5),transparent)] sm:inset-x-8 xl:inset-x-12" />
 
         {/* Logo — uses actual PNG */}
         <button
           onClick={() => handleNav(null, null)}
-          className="relative z-[1] flex items-center transition hover:scale-[1.01]"
+          className="relative z-[1] flex shrink-0 items-center transition hover:scale-[1.01]"
         >
           <Image
             src="/Green-Roots-logo.png"
@@ -67,7 +56,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
           />
         </button>
 
-        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center rounded-full border border-[rgba(180,204,182,.6)] bg-[rgba(246,251,247,.88)] px-1.5 py-1.5 shadow-[0_12px_30px_rgba(30,61,34,.06)] backdrop-blur-[16px] xl:flex xl:px-2">
+        <nav className="mx-auto hidden items-center rounded-full border border-[rgba(180,204,182,.6)] bg-[rgba(246,251,247,.88)] px-1 py-1.5 shadow-[0_12px_30px_rgba(30,61,34,.06)] backdrop-blur-[16px] xl:mx-4 xl:flex 2xl:mx-auto">
           {Object.keys(CAT).map((item) => {
             const category = item as CategoryKey;
             const isOpen = dropdown === category;
@@ -83,7 +72,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
               >
                 <button
                   onClick={() => handleNav(category, null)}
-                  className={`group relative flex items-center gap-1 whitespace-nowrap rounded-full px-[11px] py-2 text-[length:var(--fs-caption)] font-medium tracking-[0.02em] transition xl:px-[14px] xl:text-[length:var(--fs-caption)] xl:tracking-[0.025em] ${
+                  className={`group relative flex items-center gap-0.5 whitespace-nowrap rounded-full px-2 py-2 text-[length:var(--fs-caption)] font-medium tracking-[0.01em] transition xl:px-2.5 xl:text-[length:var(--fs-caption)] xl:tracking-[0.01em] ${
                     isActive
                       ? "bg-[#e4f0e6] text-[#0d0c0b] shadow-[inset_0_1px_0_rgba(255,255,255,.7),0_8px_18px_rgba(30,61,34,.07)]"
                       : "text-[#3d5843] hover:bg-[rgba(228,240,230,.7)] hover:text-[#0d0c0b]"
@@ -146,7 +135,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
           })}
         </nav>
 
-        <div className="relative z-[1] flex items-center gap-1.5 sm:gap-2">
+        <div className="relative z-[1] flex shrink-0 items-center gap-1.5 sm:gap-2">
           <button
             onClick={onSearch}
             className="flex h-[40px] w-[40px] items-center justify-center rounded-full border border-[rgba(180,204,182,.6)] bg-[rgba(246,251,247,.75)] text-[#3d5843] shadow-[0_8px_18px_rgba(30,61,34,.04)] transition hover:-translate-y-px hover:bg-[#e4f0e6] hover:text-[#0d0c0b]"

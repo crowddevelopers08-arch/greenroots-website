@@ -168,7 +168,7 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
       </div>
 
     <main
-      className="min-h-screen bg-[#f5f9f5] text-[#0d0c0b]"
+      className="min-h-screen bg-[linear-gradient(180deg,#f7fbf7,#eef6ef)] text-[#0d0c0b]"
       style={
         {
           ["--ease" as string]: "cubic-bezier(.4,0,.2,1)",

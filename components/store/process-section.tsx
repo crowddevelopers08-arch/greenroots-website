@@ -36,7 +36,7 @@ export function ProcessSection() {
   ];
 
   return (
-    <section className="px-4 py-4 sm:px-5 sm:py-6 md:px-12 md:py-12">
+    <section className="bg-[linear-gradient(180deg,#f7fbf7,#e9f3ea)] px-4 py-4 sm:px-5 sm:py-6 md:px-12 md:py-12">
       <Reveal animation="fadeUp" duration={600} className="mb-4 md:mb-8">
         <div className="mb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3d5843] sm:text-[10.5px]">
           How It Works
@@ -53,7 +53,7 @@ export function ProcessSection() {
             animation="fadeUp"
             delay={index * 120}
             duration={600}
-            className={`group bg-[#f5f9f5] px-4 py-5 transition hover:bg-[#e4f0e6] sm:px-5 sm:py-6 md:px-8 md:py-8 ${
+            className={`group bg-[linear-gradient(180deg,#fbfdfb,#eef4ef)] px-4 py-5 transition hover:bg-[#e4f0e6] sm:px-5 sm:py-6 md:px-8 md:py-8 ${
               index < steps.length - 1 ? "border-b border-[#cadace] lg:border-b-0 lg:border-r" : ""
             }`}
           >

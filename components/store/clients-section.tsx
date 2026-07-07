@@ -22,7 +22,7 @@ const CLIENTS = [
 
 export function ClientsSection() {
   return (
-    <section className="px-4 py-10 sm:px-5 sm:py-14 md:px-12 md:py-20">
+    <section className="bg-[linear-gradient(180deg,#e9f3ea,#f7fbf7)] px-4 py-10 sm:px-5 sm:py-14 md:px-12 md:py-20">
       <Reveal animation="fadeUp" duration={600} className="mb-7 text-center md:mb-11">
         <div className="mb-2 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
           Who We Work With

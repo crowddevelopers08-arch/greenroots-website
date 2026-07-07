@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef } from "react";
 import { CAT, type CategoryKey } from "@/lib/store-data";
 import { Reveal } from "./reveal";
 
@@ -8,9 +11,16 @@ type Props = {
 
 export function CategoryTiles({ current, onNav }: Props) {
   const entries = Object.entries(CAT) as [CategoryKey, (typeof CAT)[CategoryKey]][];
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  const scrollByCards = (direction: 1 | -1) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.scrollBy({ left: direction * track.clientWidth * 0.8, behavior: "smooth" });
+  };
 
   return (
-    <section className="px-4 pb-6 pt-5 sm:px-5 sm:pb-8 md:px-12 md:pb-16 md:pt-12">
+    <section className="bg-[linear-gradient(180deg,#e9f3ea,#f7fbf7)] px-4 pb-6 pt-5 sm:px-5 sm:pb-8 md:px-12 md:pb-16 md:pt-12">
       <Reveal animation="fadeUp" duration={600} className="mb-4 flex items-start justify-between gap-3 sm:mb-5 sm:flex-row sm:items-end sm:gap-5 md:mb-11">
         <div>
           <div className="mb-1.5 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d5843] sm:mb-2 sm:text-[length:var(--fs-caption)]">
@@ -20,15 +30,39 @@ export function CategoryTiles({ current, onNav }: Props) {
             All Categories
           </div>
         </div>
-        <button
-          onClick={() => onNav("Backpacks", null)}
-          className="mt-1 shrink-0 rounded-full border-[1.5px] border-[#b4ccb6] px-4 py-2 text-[length:var(--fs-caption)] font-medium text-[#3d5843] transition hover:-translate-y-px hover:border-[#3d5843] hover:text-[#0d0c0b] sm:px-[22px] sm:py-2.5 sm:text-[length:var(--fs-caption)]"
-        >
-          View All
-        </button>
+        <div className="mt-1 flex shrink-0 items-center gap-2 sm:gap-3">
+          {/* Carousel arrows — desktop */}
+          <button
+            onClick={() => scrollByCards(-1)}
+            aria-label="Previous categories"
+            className="hidden h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[#b4ccb6] text-[#3d5843] transition hover:-translate-y-px hover:border-[#3d5843] hover:text-[#0d0c0b] md:inline-flex"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <button
+            onClick={() => scrollByCards(1)}
+            aria-label="Next categories"
+            className="hidden h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[#b4ccb6] text-[#3d5843] transition hover:-translate-y-px hover:border-[#3d5843] hover:text-[#0d0c0b] md:inline-flex"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <button
+            onClick={() => onNav("Backpacks", null)}
+            className="rounded-full border-[1.5px] border-[#b4ccb6] px-4 py-2 text-[length:var(--fs-caption)] font-medium text-[#3d5843] transition hover:-translate-y-px hover:border-[#3d5843] hover:text-[#0d0c0b] sm:px-[22px] sm:py-2.5 sm:text-[length:var(--fs-caption)]"
+          >
+            View All
+          </button>
+        </div>
       </Reveal>
 
-      <div className="mb-4 grid grid-cols-3 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-6">
+      <div
+        ref={trackRef}
+        className="scrollbar-hide -mx-4 flex snap-x snap-mandatory gap-2.5 overflow-x-auto scroll-smooth px-4 pb-2 sm:gap-3 sm:px-5 md:mx-0 md:px-0"
+      >
         {entries.map(([category, config], index) => (
           <Reveal
             key={category}
@@ -37,7 +71,7 @@ export function CategoryTiles({ current, onNav }: Props) {
             duration={550}
             as="button"
             onClick={() => onNav(category, null)}
-            className={`group relative aspect-square overflow-hidden rounded-[16px] text-left transition duration-300 hover:z-[2] hover:-translate-y-2.5 hover:shadow-[var(--shadow-3)] sm:aspect-[0.78] sm:rounded-[20px] ${
+            className={`group relative aspect-square w-[46%] shrink-0 snap-start overflow-hidden rounded-[16px] text-left transition duration-300 hover:z-[2] hover:-translate-y-2.5 hover:shadow-[var(--shadow-3)] sm:aspect-[0.78] sm:w-[30%] sm:rounded-[20px] md:w-[calc((100%-4*0.75rem)/5)] ${
               current === category ? "ring-1 ring-[#1e3d22]" : ""
             }`}
           >

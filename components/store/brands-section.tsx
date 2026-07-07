@@ -43,7 +43,7 @@ export function BrandsSection() {
   const rowB = [...otherHalf, ...otherHalf];
 
   return (
-    <section className="pb-6 pt-4 sm:pb-8 md:pb-16 md:pt-8">
+    <section className="bg-[linear-gradient(180deg,#f7fbf7,#e9f3ea)] pb-6 pt-4 sm:pb-8 md:pb-16 md:pt-8">
       <Reveal animation="fadeUp" duration={600} className="mb-4 px-4 sm:px-5 md:mb-6 md:px-12">
         <div className="mb-2 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.18em] text-[#3d5843]">
           Our Portfolio

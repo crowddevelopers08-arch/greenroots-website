@@ -25,7 +25,7 @@ export function EditorialSection() {
 
       <Reveal animation="slideLeft" duration={700} delay={150} className="group relative min-h-[200px] overflow-hidden md:min-h-[240px]">
         <img
-          src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=1600&h=1000&fit=crop&q=85"
+          src="https://res.cloudinary.com/diezixk4v/image/upload/Cross_Gift_Sets_for_Diwali_page-0002_q7qrhp"
           alt="Green Roots corporate gifting presentation"
           className="h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-[1.04]"
         />
