@@ -26,30 +26,6 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
         pointerEvents: exiting ? "none" : undefined,
       }}
     >
-      {/* Ambient glow orbs */}
-      <div style={{
-        position: "absolute",
-        top: "18%",
-        left: "28%",
-        width: 520,
-        height: 520,
-        borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(201,168,106,.16) 0%, transparent 68%)",
-        animation: "plGlow 3.4s ease-in-out infinite",
-        pointerEvents: "none",
-      }} />
-      <div style={{
-        position: "absolute",
-        bottom: "14%",
-        right: "24%",
-        width: 380,
-        height: 380,
-        borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(122,178,132,.18) 0%, transparent 70%)",
-        animation: "plGlow 3.4s ease-in-out 1.7s infinite",
-        pointerEvents: "none",
-      }} />
-
       {/* Center block */}
       <div style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
         {/* Spinning ring + monogram */}
