@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { CAT, type CategoryKey } from "@/lib/store-data";
+import { STORE_ASSETS } from "@/lib/store-assets";
 
 type Props = {
   activeCategory: CategoryKey | null;
@@ -47,7 +48,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
           className="relative z-[1] flex shrink-0 items-center transition hover:scale-[1.01]"
         >
           <Image
-            src="/Green-Roots-logo.png"
+            src={STORE_ASSETS.logo}
             alt="Green Roots – The Gifting Company"
             width={160}
             height={44}

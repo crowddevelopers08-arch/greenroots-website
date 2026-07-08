@@ -1,17 +1,18 @@
 import Image from "next/image";
 import { Reveal } from "./reveal";
+import { STORE_ASSETS } from "@/lib/store-assets";
 
 const CITIES = ["Delhi", "Mumbai", "Bengaluru", "Chennai", "Ahmedabad", "Pune", "Kolkata", "Hyderabad"];
 
 const CITY_IMAGES = {
-  Delhi: "/delhinew.png",
-  Mumbai: "/mumbai.png",
-  Bengaluru: "/bengaluru.png",
-  Chennai: "/chennai.png",
-  Ahmedabad: "/ahmedabad.png",
-  Pune: "/pune.png",
-  Kolkata: "/kolkata.png",
-  Hyderabad: "/hyderabad.png",
+  Delhi: STORE_ASSETS.cities.Delhi,
+  Mumbai: STORE_ASSETS.cities.Mumbai,
+  Bengaluru: STORE_ASSETS.cities.Bengaluru,
+  Chennai: STORE_ASSETS.cities.Chennai,
+  Ahmedabad: STORE_ASSETS.cities.Ahmedabad,
+  Pune: STORE_ASSETS.cities.Pune,
+  Kolkata: STORE_ASSETS.cities.Kolkata,
+  Hyderabad: STORE_ASSETS.cities.Hyderabad,
 };
 
 export function WeSupportSection() {

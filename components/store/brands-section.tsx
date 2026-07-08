@@ -1,25 +1,26 @@
 import Image from "next/image";
 import { Reveal } from "./reveal";
+import { STORE_ASSETS } from "@/lib/store-assets";
 
 const BRANDS = [
-  { name: "adidas", src: "/adidas.png" },
-  { name: "Blaupunkt", src: "/Blaupunkt.png" },
-  { name: "JBL", src: "/jbl.png" },
-  { name: "MIVI", src: "/mivi.png" },
-  { name: "Nasher Miles", src: "/nahser.png" },
-  { name: "Noise", src: "/noise.png" },
-  { name: "Parker", src: "/parker.png" },
-  { name: "Pepe Jeans", src: "/pepe.png" },
-  { name: "Pexpo", src: "/pexpo.png" },
-  { name: "Pigeon", src: "/pigeon.png" },
-  { name: "Prestige", src: "/prestige.png" },
-  { name: "Puma", src: "/puma.png" },
-  { name: "Reebok", src: "/reebok.png" },
-  { name: "Safari", src: "/safari.png" },
-  { name: "Sheaffer", src: "/sheaffer.png" },
-  { name: "Skechers", src: "/skechers.png" },
-  { name: "SkullCandy", src: "/skullcandy.png" },
-  { name: "Toburo", src: "/tuburo.png" },
+  { name: "adidas", src: STORE_ASSETS.brands.adidas },
+  { name: "Blaupunkt", src: STORE_ASSETS.brands.blaupunkt },
+  { name: "JBL", src: STORE_ASSETS.brands.jbl },
+  { name: "MIVI", src: STORE_ASSETS.brands.mivi },
+  { name: "Nasher Miles", src: STORE_ASSETS.brands.nasher },
+  { name: "Noise", src: STORE_ASSETS.brands.noise },
+  { name: "Parker", src: STORE_ASSETS.brands.parker },
+  { name: "Pepe Jeans", src: STORE_ASSETS.brands.pepe },
+  { name: "Pexpo", src: STORE_ASSETS.brands.pexpo },
+  { name: "Pigeon", src: STORE_ASSETS.brands.pigeon },
+  { name: "Prestige", src: STORE_ASSETS.brands.prestige },
+  { name: "Puma", src: STORE_ASSETS.brands.puma },
+  { name: "Reebok", src: STORE_ASSETS.brands.reebok },
+  { name: "Safari", src: STORE_ASSETS.brands.safari },
+  { name: "Sheaffer", src: STORE_ASSETS.brands.sheaffer },
+  { name: "Skechers", src: STORE_ASSETS.brands.skechers },
+  { name: "SkullCandy", src: STORE_ASSETS.brands.skullcandy },
+  { name: "Toburo", src: STORE_ASSETS.brands.toburo },
 ];
 
 function BrandLogo({ name, src }: { name: string; src: string }) {

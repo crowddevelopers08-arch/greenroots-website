@@ -45,7 +45,7 @@ export default function ThankYouPage() {
               },
               {
                 title: "Need urgent help?",
-                text: "You can also contact us directly at hello@greenroots.co or +1 (800) 287-3400 for priority follow-up.",
+                text: "You can also contact us directly at hello@greenroots.co or 8072319441 / 9962214100 for priority follow-up.",
               },
             ].map((card) => (
               <div

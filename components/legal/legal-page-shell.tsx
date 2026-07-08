@@ -91,8 +91,8 @@ export function LegalPageShell({
                   hello@greenroots.co
                 </a>{" "}
                 or{" "}
-                <a className="font-medium text-[#0d0c0b] underline decoration-[#d6cab8] underline-offset-4" href="tel:+18002873400">
-                  +1 (800) 287-3400
+                <a className="font-medium text-[#0d0c0b] underline decoration-[#d6cab8] underline-offset-4" href="tel:+918072319441">
+                  8072319441 / 9962214100
                 </a>
                 .
               </p>

@@ -1,23 +1,24 @@
 import Image from "next/image";
 import { Reveal } from "./reveal";
+import { STORE_ASSETS } from "@/lib/store-assets";
 
 const CLIENTS = [
-  { name: "L&T", src: "/l&t.png", width: 220, height: 120 },
-  { name: "TATA", src: "/tata.webp", width: 220, height: 160 },
-  { name: "V-Guard", src: "/V-Guard-Logo.png", width: 220, height: 170 },
-  { name: "Tube Investments", src: "/TubeInvestments.png", width: 220, height: 120 },
-  { name: "Equitas Small Finance Bank", src: "/equitas-small-finance-bank.png", width: 240, height: 120 },
-  { name: "KONE", src: "/kone.png", width: 180, height: 140 },
-  { name: "Chola", src: "/chola.png", width: 220, height: 140 },
-  { name: "TAFE", src: "/tafe.png", width: 200, height: 140 },
-  { name: "Premji Invest", src: "/premji.png", width: 240, height: 120 },
-  { name: "TATA Play", src: "/tata-play.png", width: 200, height: 140 },
-  { name: "Sundaram-Clayton", src: "/tvs.png", width: 220, height: 150 },
-  { name: "IndusInd Bank", src: "/IndusIndBankJPEGlogo.png", width: 240, height: 120 },
-  { name: "Hexaware", src: "/hexaware.png", width: 220, height: 160 },
-  { name: "Straive", src: "/strive.png", width: 240, height: 130 },
-  { name: "Axis Bank", src: "/axisbank.png", width: 220, height: 130 },
-  { name: "Reserve Bank of India", src: "/reservebank.png", width: 170, height: 170 },
+  { name: "L&T", src: STORE_ASSETS.clients.lAndT, width: 220, height: 120 },
+  { name: "TATA", src: STORE_ASSETS.clients.tata, width: 220, height: 160 },
+  { name: "V-Guard", src: STORE_ASSETS.clients.vGuard, width: 220, height: 170 },
+  { name: "Tube Investments", src: STORE_ASSETS.clients.tubeInvestments, width: 220, height: 120 },
+  { name: "Equitas Small Finance Bank", src: STORE_ASSETS.clients.equitas, width: 240, height: 120 },
+  { name: "KONE", src: STORE_ASSETS.clients.kone, width: 180, height: 140 },
+  { name: "Chola", src: STORE_ASSETS.clients.chola, width: 220, height: 140 },
+  { name: "TAFE", src: STORE_ASSETS.clients.tafe, width: 200, height: 140 },
+  { name: "Premji Invest", src: STORE_ASSETS.clients.premji, width: 240, height: 120 },
+  { name: "TATA Play", src: STORE_ASSETS.clients.tataPlay, width: 200, height: 140 },
+  { name: "Sundaram-Clayton", src: STORE_ASSETS.clients.tvs, width: 220, height: 150 },
+  { name: "IndusInd Bank", src: STORE_ASSETS.clients.indusind, width: 240, height: 120 },
+  { name: "Hexaware", src: STORE_ASSETS.clients.hexaware, width: 220, height: 160 },
+  { name: "Straive", src: STORE_ASSETS.clients.straive, width: 240, height: 130 },
+  { name: "Axis Bank", src: STORE_ASSETS.clients.axis, width: 220, height: 130 },
+  { name: "Reserve Bank of India", src: STORE_ASSETS.clients.rbi, width: 170, height: 170 },
 ] as const;
 
 export function ClientsSection() {

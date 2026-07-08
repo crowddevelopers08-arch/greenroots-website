@@ -691,7 +691,7 @@ export const PRODS: Record<CategoryKey, Product[]> = {
       sub: "Sheaffer",
       desc: "Premium Sheaffer gift sets curated for refined executive gifting and elevated brand presentations",
       badge: "New",
-      img: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=600&h=800&fit=crop&q=80",
+      img: "https://res.cloudinary.com/diezixk4v/image/upload/Sheaffer_Catalogue_2026-27_page-0024_fki0ki",
     },
     {
       id: 211,
@@ -699,7 +699,7 @@ export const PRODS: Record<CategoryKey, Product[]> = {
       sub: "Pierre Cardin",
       desc: "Pierre Cardin gifting sets with polished writing instruments and premium presentation for corporate occasions",
       badge: "New",
-      img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&h=800&fit=crop&q=80",
+      img: "https://res.cloudinary.com/diezixk4v/image/upload/pierre_cardin_catlogue_2025A_2__page-0001_g3ubyw",
     },
     {
       id: 212,
@@ -718,7 +718,7 @@ export const PRODS: Record<CategoryKey, Product[]> = {
       sub: "Master",
       desc: "Master onboarding kits with practical workplace essentials for a confident and polished first day",
       badge: "New",
-      img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=800&fit=crop&q=80",
+      img: "https://res.cloudinary.com/diezixk4v/image/upload/0_knthon",
     },
     {
       id: 214,
@@ -726,7 +726,7 @@ export const PRODS: Record<CategoryKey, Product[]> = {
       sub: "Combos",
       desc: "Ready-to-go new joiner combos combining useful desk and lifestyle essentials in one welcome pack",
       badge: "New",
-      img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=800&fit=crop&q=80",
+      img: "https://res.cloudinary.com/diezixk4v/image/upload/53_zkndgp",
     },
     {
       id: 215,
@@ -734,7 +734,7 @@ export const PRODS: Record<CategoryKey, Product[]> = {
       sub: "GR",
       desc: "Green Roots branded joining kits created to deliver a strong, memorable onboarding experience",
       badge: "New",
-      img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=600&h=800&fit=crop&q=80",
+      img: "https://res.cloudinary.com/diezixk4v/image/upload/GR_Catalogue_page-0001_iqx3a0",
     },
   ],
 };
@@ -1486,6 +1486,7 @@ export const NEW_JOINER_KIT_COMBOS_IMAGES = [
 ];
 
 export const NEW_JOINER_KIT_GR_IMAGES = [
+  "https://res.cloudinary.com/diezixk4v/image/upload/GR_Catalogue_page-0001_iqx3a0",
   "https://res.cloudinary.com/diezixk4v/image/upload/GR_Catalogue_page-0047_x3joh7",
   "https://res.cloudinary.com/diezixk4v/image/upload/GR_Catalogue_page-0043_pt8m7y",
   "https://res.cloudinary.com/diezixk4v/image/upload/GR_Catalogue_page-0045_gxxt8c",
@@ -1545,10 +1546,10 @@ export const NEW_JOINER_KIT_GR_IMAGES = [
   "https://res.cloudinary.com/diezixk4v/image/upload/GR_Catalogue_page-0002_ueebis",
   "https://res.cloudinary.com/diezixk4v/image/upload/GR_Catalogue_page-0010_wbr2ej",
   "https://res.cloudinary.com/diezixk4v/image/upload/GR_Catalogue_page-0005_auu8bh",
-  "https://res.cloudinary.com/diezixk4v/image/upload/GR_Catalogue_page-0001_iqx3a0",
 ];
 
 export const NEW_JOINER_KIT_MASTER_IMAGES = [
+    "https://res.cloudinary.com/diezixk4v/image/upload/0_knthon",
   "https://res.cloudinary.com/diezixk4v/image/upload/53_qomxtm",
   "https://res.cloudinary.com/diezixk4v/image/upload/52_zuvqsx",
   "https://res.cloudinary.com/diezixk4v/image/upload/51_file8z",
@@ -1602,7 +1603,6 @@ export const NEW_JOINER_KIT_MASTER_IMAGES = [
   "https://res.cloudinary.com/diezixk4v/image/upload/3_p8weak",
   "https://res.cloudinary.com/diezixk4v/image/upload/1_gbam5u",
   "https://res.cloudinary.com/diezixk4v/image/upload/2_b9wp9k",
-  "https://res.cloudinary.com/diezixk4v/image/upload/0_knthon",
 ];
 
 export const BACKPACK_BRAND_GALLERY_MAP: Record<string, string[]> = {

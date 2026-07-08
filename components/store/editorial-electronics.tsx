@@ -1,4 +1,5 @@
 import { Reveal } from "./reveal";
+import { STORE_ASSETS } from "@/lib/store-assets";
 
 const HIGHLIGHTS = [
   "On-Time Delivery",
@@ -12,22 +13,11 @@ export function EditorialElectronics() {
     <section className="mx-4 mb-6 overflow-hidden rounded-[20px] border border-[#ccd8ce] bg-[linear-gradient(180deg,#f7fbf7,#eef6ef)] shadow-[var(--shadow-2)] sm:mb-8 md:mx-12 md:mb-16 md:rounded-[28px] lg:grid lg:grid-cols-2">
       <Reveal animation="slideLeft" duration={700} delay={150} className="group relative min-h-[180px] overflow-hidden sm:min-h-[220px] md:min-h-[260px]">
         <img
-          src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=1600&h=1000&fit=crop&q=85"
+          src={STORE_ASSETS.editorialWhyUs}
           alt="Green Roots corporate gifting solutions"
           className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.05]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(to_left,rgba(240,246,240,.15)_0%,transparent_50%),linear-gradient(to_top,rgba(13,12,11,.22)_0%,transparent_55%)]" />
-        <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
-          {HIGHLIGHTS.map((item, i) => (
-            <span
-              key={item}
-              className="rounded-full border border-[rgba(255,255,255,.45)] bg-[rgba(255,255,255,.22)] px-3 py-1 text-[length:var(--fs-caption)] font-medium tracking-[0.04em] text-white backdrop-blur-[10px]"
-              style={{ animation: `fadeUp 0.5s ease ${300 + i * 100}ms both` }}
-            >
-              {item}
-            </span>
-          ))}
-        </div>
       </Reveal>
 
       <Reveal animation="slideRight" duration={700} className="flex flex-col justify-center px-5 py-8 md:px-12 md:py-12">

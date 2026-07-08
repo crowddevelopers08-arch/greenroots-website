@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { CAT, type CategoryKey } from "@/lib/store-data";
+import { STORE_ASSETS } from "@/lib/store-assets";
 
 type Props = {
   onNav: (category: CategoryKey | null, subcategory: string | null) => void;
@@ -29,7 +30,7 @@ export function StoreFooter({ onNav }: Props) {
           <div>
             <div className="mb-4">
               <Image
-                src="/Green-Roots-logo.png"
+                src={STORE_ASSETS.logo}
                 alt="Green Roots – The Gifting Company"
                 width={160}
                 height={45}
@@ -43,7 +44,7 @@ export function StoreFooter({ onNav }: Props) {
 
             {/* WhatsApp quick-contact */}
             <a
-              href="https://wa.me/919820000000"
+              href="https://wa.me/918072319441"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-[rgba(58,120,72,.45)] bg-[rgba(58,120,72,.14)] px-4 py-2 text-[length:var(--fs-caption)] font-medium text-[rgba(255,255,255,.88)] transition hover:bg-[rgba(58,120,72,.30)] hover:text-white"
@@ -104,7 +105,7 @@ export function StoreFooter({ onNav }: Props) {
               <button
                 key={category}
                 onClick={() => onNav(category, null)}
-                className="text-left text-[length:var(--fs-small)] text-[rgba(255,255,255,.72)] transition hover:text-white"
+                className="text-left text-[length:var(--fs-small)] font-normal text-[rgba(255,255,255,.72)] transition hover:text-white"
               >
                 {category}
               </button>
@@ -145,16 +146,16 @@ export function StoreFooter({ onNav }: Props) {
                 hello@greenroots.co
               </a>
               <a
-                href="tel:+919820000000"
+                href="tel:+918072319441"
                 className="flex items-center gap-2 text-[length:var(--fs-small)] text-[rgba(255,255,255,.72)] transition hover:text-white"
               >
                 <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
                   <path d="M5.5 2H3a1 1 0 0 0-1 1 11 11 0 0 0 11 11 1 1 0 0 0 1-1v-2.5l-3-1-1.5 1.5A8.1 8.1 0 0 1 6.5 8L8 6.5 7 3.5H5.5z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
                 </svg>
-                +91 98200 00000
+                8072319441 / 9962214100
               </a>
               <a
-                href="https://wa.me/919820000000"
+                href="https://wa.me/918072319441"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[length:var(--fs-small)] text-[rgba(255,255,255,.72)] transition hover:text-white"

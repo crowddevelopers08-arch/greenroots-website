@@ -116,7 +116,7 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
             style={{ animation: "fabRing 2s ease-out 1.2s infinite" }}
           />
           <a
-            href="https://wa.me/919999999999"
+            href="https://wa.me/918072319441"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat on WhatsApp"
@@ -136,7 +136,7 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
             style={{ animation: "fabRing 2s ease-out 1.8s infinite" }}
           />
           <a
-            href="tel:+919999999999"
+            href="tel:+918072319441"
             aria-label="Call us now"
             style={{ width: 46, height: 46 }}
             className="relative flex items-center justify-center rounded-full bg-[#1976d2] shadow-lg transition-transform duration-200 hover:scale-110 hover:shadow-xl active:scale-95 sm:h-[52px] sm:w-[52px]"
