@@ -5,7 +5,7 @@ import { CAT, PRODS, type CategoryKey, type Product } from "@/lib/store-data";
 
 /** 5 hand-picked products shown in the homepage featured carousel */
 const FEATURED: { product: Product; category: CategoryKey }[] = [
-  { product: PRODS["Backpacks"][0],  category: "Backpacks" },   // MI Canvas Bag
+  { product: PRODS["Backpacks"][0],  category: "Backpacks" },   // Canvas Bag
   { product: PRODS["Backpacks"][1],  category: "Backpacks" },   // Toburo Bags
   { product: PRODS["Backpacks"][2],  category: "Backpacks" },   // God_s
   { product: PRODS["Backpacks"][3],  category: "Backpacks" },   // Nasher Miles

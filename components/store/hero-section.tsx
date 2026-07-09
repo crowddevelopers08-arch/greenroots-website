@@ -72,7 +72,7 @@ const HERO_SLIDE_CONFIGS: HeroSlideConfig[] = [
   },
   {
     cat: "New Joiner Kit",
-    productName: "Master",
+    productName: "GR",
     eyebrow: "Onboarding Essentials - First-Day Experience",
     title: ["New Joiner", "Kits", "built", "to welcome."],
     note: "Thoughtfully assembled onboarding kits that create a polished first impression with practical essentials and branded merchandise.",
