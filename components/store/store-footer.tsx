@@ -124,7 +124,7 @@ export function StoreFooter({ onNav }: Props) {
             ].map((item) => (
               <a
                 key={item}
-                href={`mailto:hello@greenroots.co?subject=${encodeURIComponent(item + " Enquiry")}`}
+                href={`mailto:gifts@thegreenroots.in?subject=${encodeURIComponent(item + " Enquiry")}`}
                 className="text-[length:var(--fs-small)] text-[rgba(255,255,255,.72)] transition hover:text-white"
               >
                 {item}
@@ -136,14 +136,14 @@ export function StoreFooter({ onNav }: Props) {
           <div className="flex flex-col gap-6">
             <FooterColumn title="Contact Us">
               <a
-                href="mailto:hello@greenroots.co"
+                href="mailto:gifts@thegreenroots.in"
                 className="flex items-center gap-2 text-[length:var(--fs-small)] text-[rgba(255,255,255,.72)] transition hover:text-white"
               >
                 <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
                   <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.3" />
                   <path d="M1.5 5.5l6.5 4 6.5-4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
                 </svg>
-                hello@greenroots.co
+                gifts@thegreenroots.in
               </a>
               <a
                 href="tel:+918072319441"

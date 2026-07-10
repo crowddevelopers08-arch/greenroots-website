@@ -15,6 +15,12 @@ type HeroSlideConfig = {
   note: string;
   /** Optional custom hero background image — overrides the product's catalogue cover */
   heroImg?: string;
+  /** Set for slides with no matching catalogue product — supplies the copy the product would have */
+  standalone?: {
+    desc: string;
+    sub: string;
+    badge?: string;
+  };
 };
 
 function upgradeImage(url: string) {
@@ -35,10 +41,16 @@ const HERO_SLIDE_CONFIGS: HeroSlideConfig[] = [
   },
   {
     cat: "Backpacks",
-    productName: "Nasher Miles",
+    productName: "American Tourister",
     eyebrow: "New Arrival — Travel & Bags",
-    title: ["Nasher Miles", "Luggage", "built", "to explore."],
-    note: "Premium polycarbonate shell trolleys and travel bags — 360° spinner wheels, TSA-approved locks, and refined designs crafted for every corporate journey.",
+    title: ["American", "Tourister", "built", "to explore."],
+    note: "Durable American Tourister luggage and backpacks — hard-shell trolleys, 360° spinner wheels, and travel-ready designs crafted for every corporate journey.",
+    heroImg: "/american.png",
+    standalone: {
+      desc: "Hard-shell trolleys, cabin bags and backpacks engineered for the long haul",
+      sub: "All",
+      badge: "New",
+    },
   },
   {
     cat: "Electronics",
@@ -65,33 +77,50 @@ const HERO_SLIDE_CONFIGS: HeroSlideConfig[] = [
   },
   {
     cat: "Premium Giftset",
-    productName: "Sheaffer",
-    eyebrow: "Curated Collection - Premium Gifting",
-    title: ["Premium", "Giftsets", "curated", "to impress."],
-    note: "Elevated corporate gift sets designed for leadership gifting, festive campaigns, and memorable brand experiences.",
+    productName: "Prestige",
+    eyebrow: "Curated Collection — Premium Gifting",
+    title: ["Prestige", "Giftsets", "curated", "to impress."],
+    note: "India's most trusted kitchen brand, reimagined for corporate gifting — pressure cookers, mixer grinders, induction cooktops and cookware sets presented as premium curated hampers.",
+    heroImg: "/prestige.png",
+    standalone: {
+      desc: "Prestige kitchen appliance gift sets for leadership gifting and festive campaigns",
+      sub: "All",
+    },
   },
   {
-    cat: "New Joiner Kit",
-    productName: "GR",
-    eyebrow: "Onboarding Essentials - First-Day Experience",
-    title: ["New Joiner", "Kits", "built", "to welcome."],
-    note: "Thoughtfully assembled onboarding kits that create a polished first impression with practical essentials and branded merchandise.",
+    cat: "Electronics",
+    productName: "Titan",
+    eyebrow: "Featured Collection — Electronics",
+    title: ["Titan", "Timepieces", "built", "to welcome."],
+    note: "Iconic Titan watches and accessories that turn a first-day welcome into a lasting statement — precision craftsmanship, timeless design, and premium presentation packaging.",
+    heroImg: "/titan.png",
+    standalone: {
+      desc: "Titan watches and accessories curated for onboarding kits and milestone gifting",
+      sub: "All",
+      badge: "New",
+    },
   },
 ];
 
 const HERO_SLIDES = HERO_SLIDE_CONFIGS.map((slide) => {
   const product = PRODS[slide.cat].find((item) => item.name === slide.productName);
+  const source = slide.standalone ?? product;
 
-  if (!product) {
+  if (!source) {
     throw new Error(`Missing hero product: ${slide.productName}`);
   }
 
-  const heroImg = slide.heroImg ?? product.img;
+  const heroImg = slide.heroImg ?? product?.img;
+
+  if (!heroImg) {
+    throw new Error(`Missing hero image: ${slide.productName}`);
+  }
+
   return {
     ...slide,
-    desc: product.desc,
-    sub: product.sub,
-    badge: product.badge,
+    desc: source.desc,
+    sub: source.sub,
+    badge: source.badge,
     img: upgradeImage(heroImg),
     thumb: heroImg,
   };

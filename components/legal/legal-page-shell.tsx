@@ -87,8 +87,8 @@ export function LegalPageShell({
               </div>
               <p className="text-[length:var(--fs-small)] leading-[1.8] text-[#433b36]">
                 For any policy or legal questions, contact Green Roots at{" "}
-                <a className="font-medium text-[#0d0c0b] underline decoration-[#d6cab8] underline-offset-4" href="mailto:hello@greenroots.co">
-                  hello@greenroots.co
+                <a className="font-medium text-[#0d0c0b] underline decoration-[#d6cab8] underline-offset-4" href="mailto:gifts@thegreenroots.in">
+                  gifts@thegreenroots.in
                 </a>{" "}
                 or{" "}
                 <a className="font-medium text-[#0d0c0b] underline decoration-[#d6cab8] underline-offset-4" href="tel:+918072319441">
