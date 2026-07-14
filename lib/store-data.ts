@@ -1498,6 +1498,94 @@ export function getNewJoinerKitImages(brandName: string): string[] | null {
   return NEW_JOINER_KIT_GALLERY_MAP[slugifySegment(brandName)] ?? null;
 }
 
+// ─── GR Catalogue sub-category filters ────────────────────────────────────────
+// Each of the 60 GR catalogue pages shows one or more product families. These
+// filters let a visitor jump straight to the pages featuring a given product.
+// Derived by analysing every catalogue page image (see NEW_JOINER_KIT_GR_IMAGES).
+export const GR_FILTER_CATEGORIES = [
+  "Notebook",
+  "Water Bottle",
+  "Pen",
+  "Mug",
+  "Keychain",
+  "Card Holder",
+  "Bags",
+  "Desk & Tech",
+] as const;
+
+export type GrFilterCategory = (typeof GR_FILTER_CATEGORIES)[number];
+
+const GR = "https://res.cloudinary.com/diezixk4v/image/upload/GR_Catalogue_";
+
+// Maps each GR catalogue page (by image URL) to the product families it features.
+// Pages with an empty list (e.g. the cover) only appear under "All".
+export const NEW_JOINER_KIT_GR_TAGS: Record<string, GrFilterCategory[]> = {
+  [`${GR}page-0001_iqx3a0`]: [],                                  // Cover
+  [`${GR}page-0047_x3joh7`]: ["Desk & Tech"],                     // Mobile stands, lunch boxes
+  [`${GR}page-0043_pt8m7y`]: ["Bags"],                            // Duffel / travel bags
+  [`${GR}page-0045_gxxt8c`]: ["Desk & Tech"],                     // Charging cables
+  [`${GR}page-0042_dvuzj5`]: ["Bags"],                            // Sling bags
+  [`${GR}page-0056_lwbdjb`]: ["Desk & Tech"],                     // Key finder, desk mate, mouse
+  [`${GR}page-0055_wserse`]: ["Desk & Tech"],                     // Wireless charger, photo frame
+  [`${GR}page-0053_gvzgsw`]: ["Desk & Tech"],                     // Anti-stress keyboard, jewel box
+  [`${GR}page-0052_gzhy9k`]: ["Pen", "Desk & Tech"],              // Massager, pen stand, ball pen
+  [`${GR}page-0008_gefzfl`]: ["Notebook"],                        // Notebooks / diaries
+  [`${GR}page-0058_cwejap`]: ["Desk & Tech"],                     // Deskmate, alarm clocks
+  [`${GR}page-0060_v8uqeb`]: ["Desk & Tech"],                     // Wooden clock, cleaning kit
+  [`${GR}page-0057_mcs9c5`]: ["Desk & Tech"],                     // Speaker clock, umbrellas
+  [`${GR}page-0030_qglovq`]: ["Water Bottle"],                    // Water bottles
+  [`${GR}page-0029_dplgmm`]: ["Water Bottle"],                    // Water bottles
+  [`${GR}page-0027_skaaga`]: ["Water Bottle"],                    // Water bottles
+  [`${GR}page-0025_ewkg9q`]: ["Water Bottle"],                    // Water bottles / flasks
+  [`${GR}page-0024_b45zws`]: ["Water Bottle"],                    // Water bottles / tumblers
+  [`${GR}page-0022_nnzcdc`]: ["Card Holder"],                     // Business card holders
+  [`${GR}page-0020_mn5fcq`]: ["Keychain"],                        // Keychains
+  [`${GR}page-0009_rxkuww`]: ["Notebook"],                        // Notebooks / notepads
+  [`${GR}page-0049_alfg5k`]: ["Desk & Tech"],                     // Pen-holder clock, lamp, charger
+  [`${GR}page-0046_scwiqn`]: ["Desk & Tech"],                     // Desk lamps with pen stand
+  [`${GR}page-0048_f6hwi3`]: ["Desk & Tech"],                     // Stationery box, clock, mouse
+  [`${GR}page-0035_te8o3v`]: ["Bags"],                            // Travel / cable organiser, backpack
+  [`${GR}page-0044_mxmjky`]: ["Desk & Tech"],                     // Desktop clocks with pen holder
+  [`${GR}page-0040_t2yqpd`]: ["Card Holder", "Bags"],             // Passport wallet, backpack
+  [`${GR}page-0038_ww5rur`]: ["Bags"],                            // Jute / tote bags
+  [`${GR}page-0033_jiqqwo`]: ["Mug"],                             // Mugs
+  [`${GR}page-0059_iryaj1`]: ["Desk & Tech"],                     // Wooden pen stands, calendars
+  [`${GR}page-0051_eqvvdz`]: ["Card Holder", "Desk & Tech"],      // Passport holder, speaker
+  [`${GR}page-0050_n8k3sd`]: ["Desk & Tech"],                     // Travel kit, mirror clock, laptop stand
+  [`${GR}page-0054_iuz4ty`]: ["Mug", "Desk & Tech"],              // Desk fusion clock, mug warmer
+  [`${GR}page-0041_m2gw75`]: ["Bags"],                            // Backpacks, laptop bags
+  [`${GR}page-0039_tizneh`]: ["Bags"],                            // Eco / canvas bags
+  [`${GR}page-0037_r1mi2t`]: ["Bags"],                            // Sling bags, jute pouch, duffle
+  [`${GR}page-0036_bqib9f`]: ["Bags"],                            // Laptop sleeves, organiser bags
+  [`${GR}page-0034_zgvtm2`]: ["Mug"],                             // Mugs, vacuum flask
+  [`${GR}page-0032_ypkwpe`]: ["Mug"],                             // Mugs, tumblers
+  [`${GR}page-0031_ql378d`]: ["Mug"],                             // Mugs, coffee mugs
+  [`${GR}page-0028_te2ajx`]: ["Water Bottle"],                    // Water bottles
+  [`${GR}page-0026_cgc8bd`]: ["Water Bottle"],                    // Water bottles
+  [`${GR}page-0023_ss9bjg`]: ["Card Holder"],                     // Business card holders
+  [`${GR}page-0021_boy06a`]: ["Keychain"],                        // Keychains
+  [`${GR}page-0019_ezzfv0`]: ["Keychain"],                        // Keychains
+  [`${GR}page-0017_pmuzkh`]: ["Keychain"],                        // Keychains
+  [`${GR}page-0018_ntxdfo`]: ["Keychain"],                        // Bamboo / wood keychains
+  [`${GR}page-0016_jvwck1`]: ["Keychain"],                        // Keychains
+  [`${GR}page-0015_vqqrla`]: ["Pen"],                             // Pens in acrylic boxes
+  [`${GR}page-0014_cpyjcm`]: ["Pen"],                             // Multi-utility / bamboo pens
+  [`${GR}page-0013_g6srb9`]: ["Pen"],                             // Pens
+  [`${GR}page-0012_z5oopf`]: ["Pen"],                             // Pens
+  [`${GR}page-0006_xbdvez`]: ["Notebook"],                        // Notebooks / diaries
+  [`${GR}page-0011_xzf8cw`]: ["Pen"],                             // Pens
+  [`${GR}page-0007_fp6xqy`]: ["Notebook"],                        // Notebooks
+  [`${GR}page-0004_bpzlvv`]: ["Notebook"],                        // Bamboo / world-map notebooks
+  [`${GR}page-0003_jn3hjq`]: ["Notebook"],                        // Notebooks
+  [`${GR}page-0002_ueebis`]: ["Notebook"],                        // Notebooks
+  [`${GR}page-0010_wbr2ej`]: ["Pen"],                             // Pens
+  [`${GR}page-0005_auu8bh`]: ["Notebook"],                        // Cork / mobile-stand notebooks
+};
+
+export function getGrImageTags(url: string): GrFilterCategory[] {
+  return NEW_JOINER_KIT_GR_TAGS[url] ?? [];
+}
+
 export const HA_B2B_IMAGES = [
   "https://res.cloudinary.com/diezixk4v/image/upload/B2b_Corporate_Catalougue_26_page-0001_ahdyoo",
   "https://res.cloudinary.com/diezixk4v/image/upload/B2b_Corporate_Catalougue_26_page-0002_eeocq3",

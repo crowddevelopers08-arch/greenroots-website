@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { BS_GALLERY_IMAGES, BS_HIDDEN_PAGES, BS_SECTIONS, CAT, PRODS, getApparelBrandHref, getApparelBrandImages, getBackpackBrandHref, getBackpackBrandImages, getBsSectionHref, getEdibleBrandHref, getEdibleBrandImages, getElecBrandHref, getElecBrandImages, getHaBrandHref, getHaBrandImages, getNewJoinerKitImages, getPremiumGiftsetImages, getProductHref, type CategoryKey, type Product } from "@/lib/store-data";
+import { BS_GALLERY_IMAGES, BS_HIDDEN_PAGES, BS_SECTIONS, CAT, GR_FILTER_CATEGORIES, PRODS, getApparelBrandHref, getApparelBrandImages, getBackpackBrandHref, getBackpackBrandImages, getBsSectionHref, getEdibleBrandHref, getEdibleBrandImages, getElecBrandHref, getElecBrandImages, getGrImageTags, getHaBrandHref, getHaBrandImages, getNewJoinerKitImages, getPremiumGiftsetImages, getProductHref, type CategoryKey, type Product } from "@/lib/store-data";
 import { ProductCard } from "./product-card";
 import { ImageLightbox } from "./image-lightbox";
 
@@ -45,6 +45,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
   const [sortOpen, setSortOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [newOnly, setNewOnly] = useState(false);
+  const [grFilter, setGrFilter] = useState<string | null>(null);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const sortRef = useRef<HTMLDivElement>(null);
 
@@ -63,6 +64,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
     setSearchQuery("");
     setNewOnly(false);
     setSortBy("default");
+    setGrFilter(null);
   }, [category, subcategory]);
 
   const config = CAT[category];
@@ -112,6 +114,23 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                 : null)
     : null;
   const showHaGallery = haGalleryImages !== null;
+
+  // ── GR catalogue sub-category filters (New Joiner Kit → GR) ──
+  const isGrGallery = category === "New Joiner Kit" && subcategory === "GR";
+  // Assign a stable page number before filtering so labels never renumber
+  const galleryPages = (haGalleryImages ?? []).map((image, index) => ({ image, pageNo: index + 1 }));
+  const grCounts: Record<string, number> = isGrGallery
+    ? Object.fromEntries(
+        GR_FILTER_CATEGORIES.map((cat) => [
+          cat,
+          galleryPages.filter((page) => getGrImageTags(page.image).includes(cat)).length,
+        ])
+      )
+    : {};
+  const visibleGalleryPages =
+    isGrGallery && grFilter
+      ? galleryPages.filter((page) => getGrImageTags(page.image).includes(grFilter as never))
+      : galleryPages;
   const bsSections = BS_SECTIONS.map((section) => {
     const images = BS_GALLERY_IMAGES.slice(section.start - 1, section.end).filter((_, index) => {
       const pageNumber = section.start + index;
@@ -127,7 +146,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
   const visibleCount = showBsGallery
     ? bsSections.reduce((count, section) => count + section.images.length, 0)
     : showHaGallery
-      ? (haGalleryImages?.length ?? 0)
+      ? visibleGalleryPages.length
       : sortedProducts.length;
 
   const subImages = Object.fromEntries(
@@ -441,7 +460,10 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                 {subcategory}
               </div>
               <div className="mt-2 text-[length:var(--fs-small)] leading-[1.7] text-[#3d5843]">
-                {haGalleryImages.length} catalogue pages — click any to enquire
+                {isGrGallery && grFilter
+                  ? `${visibleGalleryPages.length} of ${galleryPages.length} pages — ${grFilter}`
+                  : `${haGalleryImages.length} catalogue pages`}{" "}
+                — click any to enquire
               </div>
             </div>
             <Link
@@ -469,9 +491,52 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
             </Link>
           </div>
 
+          {/* ── GR sub-category filter chips ── */}
+          {isGrGallery && (
+            <div className="border-b border-[#c4d6c6] bg-[linear-gradient(180deg,#f6fbf7_0%,#eef5ef_100%)] px-4 py-4 sm:px-5 md:px-7">
+              <div className="mb-3 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#4a7254]">
+                Filter By Product
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setGrFilter(null)}
+                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[length:var(--fs-caption)] font-medium transition ${
+                    grFilter === null
+                      ? "border-[#0d0c0b] bg-[#0d0c0b] text-white shadow-[0_8px_18px_rgba(13,12,11,.14)]"
+                      : "border-[#c0d0c2] bg-white text-[#3d5843] hover:-translate-y-px hover:border-[#7a9e82] hover:text-[#0d0c0b]"
+                  }`}
+                >
+                  All
+                  <span className={`rounded-full px-2 py-0.5 text-[length:var(--fs-caption)] ${grFilter === null ? "bg-white/20 text-white" : "bg-[#e4f0e6] text-[#3d5843]"}`}>
+                    {galleryPages.length}
+                  </span>
+                </button>
+                {GR_FILTER_CATEGORIES.filter((cat) => grCounts[cat] > 0).map((cat) => {
+                  const active = grFilter === cat;
+                  return (
+                    <button
+                      key={cat}
+                      onClick={() => setGrFilter(active ? null : cat)}
+                      className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[length:var(--fs-caption)] font-medium transition ${
+                        active
+                          ? "border-[#1e3d22] bg-[#1e3d22] text-white shadow-[0_8px_18px_rgba(30,61,34,.20)]"
+                          : "border-[#c0d0c2] bg-white text-[#3d5843] hover:-translate-y-px hover:border-[#7a9e82] hover:text-[#0d0c0b]"
+                      }`}
+                    >
+                      {cat}
+                      <span className={`rounded-full px-2 py-0.5 text-[length:var(--fs-caption)] ${active ? "bg-white/20 text-white" : "bg-[#e4f0e6] text-[#3d5843]"}`}>
+                        {grCounts[cat]}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           <div className="p-3 sm:p-4 md:p-6">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 md:gap-4">
-              {haGalleryImages.map((image, index) => {
+              {visibleGalleryPages.map(({ image, pageNo }) => {
                 const haProduct = sortedProducts[0];
                 // Cloudinary e_trim strips the baked-in white padding from Decathlon PDF pages
                 const displayImage = subcategory === "Decathlon"
@@ -480,7 +545,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                 return (
                   <div
                     key={image}
-                    onClick={() => haProduct && onEnquiry({ ...haProduct, name: `${subcategory} — Page ${String(index + 1).padStart(2, "0")}`, desc: `${subcategory} catalogue page ${String(index + 1).padStart(2, "0")}`, img: displayImage }, category)}
+                    onClick={() => haProduct && onEnquiry({ ...haProduct, name: `${subcategory} — Page ${String(pageNo).padStart(2, "0")}`, desc: `${subcategory} catalogue page ${String(pageNo).padStart(2, "0")}`, img: displayImage }, category)}
                     className="group relative flex cursor-pointer flex-col overflow-hidden rounded-[26px] border border-[#bcccbe] bg-[linear-gradient(145deg,#f6fbf7_0%,#e8f3e9_52%,#ddeedd_100%)] text-left shadow-[0_18px_44px_rgba(30,61,34,.10)] transition duration-300 hover:-translate-y-2 hover:border-[#3a7848] hover:shadow-[0_26px_60px_rgba(30,61,34,.18)]"
                   >
                     <div className="pointer-events-none absolute inset-0">
@@ -493,7 +558,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                       <div className="relative overflow-hidden rounded-[16px] border border-white/80 bg-[radial-gradient(circle_at_top,#eef5ef_0%,#ddeedd_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,.7)]">
                         <img
                           src={displayImage}
-                          alt={`${subcategory} catalogue page ${index + 1}`}
+                          alt={`${subcategory} catalogue page ${pageNo}`}
                           className="block w-full h-auto transition duration-500 group-hover:scale-[1.03]"
                           loading="lazy"
                         />
@@ -514,7 +579,7 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
                       <div>
                         <div className="text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.16em] text-[#3d7048] sm:text-[length:var(--fs-caption)] sm:tracking-[0.18em]">{subcategory}</div>
                         <div className="mt-0.5 [font-family:var(--font-montserrat)] text-[length:var(--fs-h5)] leading-none tracking-[-0.02em] text-[#111d12] sm:mt-1 sm:text-[length:var(--fs-h3)]">
-                          {String(index + 1).padStart(2, "0")}
+                          {String(pageNo).padStart(2, "0")}
                         </div>
                       </div>
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#b6ccb8] bg-[linear-gradient(180deg,#f6fbf7_0%,#ddeedd_100%)] text-[#2e4e33] shadow-[0_10px_20px_rgba(30,61,34,.08)] transition group-hover:border-[#3a7848] group-hover:bg-[#1e3d22] group-hover:text-white sm:h-11 sm:w-11">
