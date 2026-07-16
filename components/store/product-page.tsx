@@ -36,16 +36,18 @@ const PILL_COLORS: { bg: string; text: string }[] = [
 type Props = {
   category: CategoryKey;
   subcategory: string | null;
-  onNav: (category: CategoryKey | null, subcategory: string | null) => void;
+  /** Pre-selected GR catalogue product filter (when navigating from the navbar) */
+  initialGrFilter?: string | null;
+  onNav: (category: CategoryKey | null, subcategory: string | null, grFilter?: string | null) => void;
   onEnquiry: (product: Product, category: CategoryKey) => void;
 };
 
-export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) {
+export function ProductPage({ category, subcategory, initialGrFilter = null, onNav, onEnquiry }: Props) {
   const [sortBy, setSortBy] = useState<SortKey>("default");
   const [sortOpen, setSortOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [newOnly, setNewOnly] = useState(false);
-  const [grFilter, setGrFilter] = useState<string | null>(null);
+  const [grFilter, setGrFilter] = useState<string | null>(initialGrFilter);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const sortRef = useRef<HTMLDivElement>(null);
 
@@ -64,8 +66,8 @@ export function ProductPage({ category, subcategory, onNav, onEnquiry }: Props) 
     setSearchQuery("");
     setNewOnly(false);
     setSortBy("default");
-    setGrFilter(null);
-  }, [category, subcategory]);
+    setGrFilter(initialGrFilter ?? null);
+  }, [category, subcategory, initialGrFilter]);
 
   const config = CAT[category];
   const allProducts = PRODS[category];

@@ -53,22 +53,6 @@ const HERO_SLIDE_CONFIGS: HeroSlideConfig[] = [
     },
   },
   {
-    cat: "Electronics",
-    productName: "BLAUPUNKT",
-    eyebrow: "Featured Collection — Electronics",
-    title: ["Blaupunkt", "Audio", "crafted", "for impact."],
-    note: "360° surround sound Bluetooth speakers with IPX6 waterproofing, 12-hour playtime, and TWS mode — premium audio solutions for standout corporate gifting.",
-    heroImg: "https://res.cloudinary.com/diezixk4v/image/upload/v1780658627/3ddbc289-13e5-4aa5-8822-8cd244c7df02_nf2naq.png",
-  },
-  {
-    cat: "Home Appliances",
-    productName: "Pexpo",
-    eyebrow: "New Arrival — Home & Kitchen",
-    title: ["Pexpo", "Drinkware", "insulated", "to impress."],
-    note: "Stainless steel insulated bottles and kitchenware with double-wall vacuum technology — a sleek, sophisticated corporate gifting range that leaves a lasting impression.",
-    heroImg: "https://res.cloudinary.com/diezixk4v/image/upload/v1780661217/55abf178-3147-413b-b99a-65665878f0e5_bshsfh.png",
-  },
-  {
     cat: "Edible",
     productName: "Cacao Springs Festive Brochure",
     eyebrow: "Festive Collection — Edible Gifts",
@@ -85,6 +69,19 @@ const HERO_SLIDE_CONFIGS: HeroSlideConfig[] = [
     standalone: {
       desc: "Prestige kitchen appliance gift sets for leadership gifting and festive campaigns",
       sub: "All",
+    },
+  },
+  {
+    cat: "Electronics",
+    productName: "boAt",
+    eyebrow: "Featured Collection — Electronics",
+    title: ["boAt", "Audio", "tuned", "for the beat."],
+    note: "boAt wireless earbuds, headphones and Bluetooth speakers with signature sound, deep bass and long-lasting battery — the youth-favourite audio brand reimagined for corporate gifting.",
+    heroImg: "/boat.png",
+    standalone: {
+      desc: "boAt earbuds, headphones and speakers curated for premium tech gifting",
+      sub: "All",
+      badge: "New",
     },
   },
   {

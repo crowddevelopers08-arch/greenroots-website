@@ -41,6 +41,7 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState<CategoryKey | null>(initialCategory);
   const [subcategory, setSubcategory] = useState<string | null>(initialSubcategory);
+  const [grFilter, setGrFilter] = useState<string | null>(null);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const [modalCategory, setModalCategory] = useState<CategoryKey | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -85,9 +86,14 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
     carouselPaused.current = false;
   };
 
-  const nav = (nextCategory: CategoryKey | null, nextSubcategory: string | null) => {
+  const nav = (
+    nextCategory: CategoryKey | null,
+    nextSubcategory: string | null,
+    nextGrFilter: string | null = null
+  ) => {
     setCategory(nextCategory);
     setSubcategory(nextSubcategory);
+    setGrFilter(nextGrFilter);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -411,6 +417,7 @@ export function Storefront({ initialCategory = null, initialSubcategory = null }
           <ProductPage
             category={category}
             subcategory={subcategory}
+            initialGrFilter={grFilter}
             onNav={nav}
             onEnquiry={openEnquiry}
           />

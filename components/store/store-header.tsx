@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { CAT, type CategoryKey } from "@/lib/store-data";
+import { CAT, GR_FILTER_CATEGORIES, type CategoryKey } from "@/lib/store-data";
 import { STORE_ASSETS } from "@/lib/store-assets";
 
 type Props = {
   activeCategory: CategoryKey | null;
-  onNav: (category: CategoryKey | null, subcategory: string | null) => void;
+  onNav: (category: CategoryKey | null, subcategory: string | null, grFilter?: string | null) => void;
   onSearch: () => void;
   onContact: () => void;
 };
@@ -27,8 +27,12 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
     timer.current = setTimeout(() => setDropdown(null), 140);
   };
 
-  const handleNav = (category: CategoryKey | null, subcategory: string | null) => {
-    onNav(category, subcategory);
+  const handleNav = (
+    category: CategoryKey | null,
+    subcategory: string | null,
+    grFilter: string | null = null
+  ) => {
+    onNav(category, subcategory, grFilter);
     setDropdown(null);
     setMobileMenuOpen(false);
     setMobileCategory(null);
@@ -63,7 +67,7 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
             const isOpen = dropdown === category;
             const isActive = activeCategory === category || isOpen;
             const subsWithoutAll = CAT[category].subs.filter((sub) => sub !== "All");
-            const isManyItems = subsWithoutAll.length > 8;
+            const isManyItems = subsWithoutAll.length > 8 || category === "New Joiner Kit";
             return (
               <div
                 key={category}
@@ -130,6 +134,28 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
                       </button>
                     ))}
                   </div>
+                  {category === "New Joiner Kit" && (
+                    <div className="mt-1 border-t border-[rgba(30,61,34,.08)] pt-1">
+                      <div className="px-[13px] py-1.5 text-[length:var(--fs-caption)] font-semibold uppercase tracking-[0.14em] text-[#4a6a50]">
+                        GR Products
+                      </div>
+                      <div className="grid grid-cols-2">
+                        {GR_FILTER_CATEGORIES.map((grCat) => (
+                          <button
+                            key={grCat}
+                            onClick={() => handleNav(category, "GR", grCat)}
+                            className="flex w-full items-center gap-2.5 rounded-[16px] px-[13px] py-[8px] text-left text-[length:var(--fs-small)] text-[#3d5843] transition hover:bg-[#e4f0e6] hover:text-[#0d0c0b]"
+                          >
+                            <span
+                              className="h-[5px] w-[5px] shrink-0 rounded-full opacity-60"
+                              style={{ background: CAT[category].col }}
+                            />
+                            <span className="truncate">{grCat}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             );
@@ -249,6 +275,16 @@ export function StoreHeader({ activeCategory, onNav, onSearch, onContact }: Prop
                             className="shrink-0 rounded-full border border-[#b4ccb6] bg-white/80 px-4 py-2 text-[length:var(--fs-caption)] font-medium text-[#3d5843] transition hover:border-[#3d5843] hover:text-[#0d0c0b]"
                           >
                             {sub}
+                          </button>
+                        ))}
+                      {category === "New Joiner Kit" &&
+                        GR_FILTER_CATEGORIES.map((grCat) => (
+                          <button
+                            key={grCat}
+                            onClick={() => handleNav(category, "GR", grCat)}
+                            className="shrink-0 rounded-full border border-[#b4ccb6] bg-white/80 px-4 py-2 text-[length:var(--fs-caption)] font-medium text-[#3d5843] transition hover:border-[#3d5843] hover:text-[#0d0c0b]"
+                          >
+                            {grCat}
                           </button>
                         ))}
                     </div>
