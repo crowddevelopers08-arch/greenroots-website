@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  email     String
+  message   String?
+  product   String?
+  category  String?
+  type      String   @default("enquiry") // "enquiry" | "appointment"
+  status    String   @default("New") //     "New" | "Contacted" | "Qualified" | "Won" | "Lost"
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+}

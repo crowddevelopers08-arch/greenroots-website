@@ -13,15 +13,49 @@ type Props = {
 export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
   const [form, setForm] = useState({ name: "", phone: "", email: "", msg: "" });
   const [done, setDone] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const isOpen = Boolean(product) || Boolean(bookOpen);
 
   useEffect(() => {
     if (!isOpen) {
       setDone(false);
+      setSubmitting(false);
+      setError(null);
       setForm({ name: "", phone: "", email: "", msg: "" });
     }
   }, [isOpen]);
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          message: form.msg,
+          product: product?.name ?? null,
+          category: category ?? null,
+          type: product ? "enquiry" : "appointment",
+        }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Something went wrong. Please try again.");
+      }
+      setDone(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to submit.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const message = useMemo(
     () => product
@@ -86,10 +120,7 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
             ) : null}
 
             <form
-              onSubmit={(event) => {
-                event.preventDefault();
-                setDone(true);
-              }}
+              onSubmit={handleSubmit}
               className="flex flex-col gap-3 px-5 pb-6 sm:gap-[14px] sm:px-9 sm:pb-9"
             >
               <div className="grid gap-[14px] md:grid-cols-2">
@@ -139,11 +170,22 @@ export function EnquiryModal({ product, category, bookOpen, onClose }: Props) {
                   className="min-h-[90px] resize-y rounded-xl border-[1.5px] border-[#cadace] bg-[#f5f9f5] px-4 py-3 text-[length:var(--fs-small)] leading-[1.5] outline-none transition placeholder:text-[#7a9e82] focus:border-[#1e3d22]"
                 />
               </Field>
-              <button className="mt-1 inline-flex items-center justify-center gap-2.5 rounded-full bg-[#1e3d22] px-7 py-3.5 text-[length:var(--fs-small)] font-semibold tracking-[0.03em] text-white transition hover:-translate-y-0.5 hover:bg-[#2d5a30] hover:shadow-[var(--shadow-2)]">
-                Get Quote
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+              {error && (
+                <p className="rounded-xl border-[1.5px] border-[#e0b4b4] bg-[#f9eded] px-4 py-3 text-center text-[length:var(--fs-caption)] text-[#9e4a4a]">
+                  {error}
+                </p>
+              )}
+              <button
+                type="submit"
+                disabled={submitting}
+                className="mt-1 inline-flex items-center justify-center gap-2.5 rounded-full bg-[#1e3d22] px-7 py-3.5 text-[length:var(--fs-small)] font-semibold tracking-[0.03em] text-white transition hover:-translate-y-0.5 hover:bg-[#2d5a30] hover:shadow-[var(--shadow-2)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+              >
+                {submitting ? "Sending..." : "Get Quote"}
+                {!submitting && (
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )}
               </button>
               <p className="text-center text-[length:var(--fs-caption)] leading-[1.55] text-[#3d5843]">
                 We respond within 24 hours · No commitment required
