@@ -161,11 +161,6 @@ export default function DashboardPage() {
       <header className="sticky top-0 z-20 border-b border-[#d4e2d6] bg-[#f5f9f5]/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-8">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1e3d22] text-white shadow-[0_6px_16px_rgba(30,61,34,.25)]">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M12 3c-3 4-6 6-6 10a6 6 0 0 0 12 0c0-4-3-6-6-10Z" fill="currentColor" opacity=".9" />
-              </svg>
-            </div>
             <div>
               <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#4a6a50]">
                 Green Roots
