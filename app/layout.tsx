@@ -31,6 +31,21 @@ export default function RootLayout({
   return (
     <html lang="en" className={montserrat.variable}>
       <head>
+        {/* Google Tag Manager */}
+        <Script
+          id="google-tag-manager"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-P83KS2ZT');
+            `,
+          }}
+        />
+
         {/* Meta Pixel */}
         <Script id="facebook-pixel" strategy="afterInteractive">
           {`
@@ -54,7 +69,20 @@ export default function RootLayout({
             fbq('track', 'PageView');
           `}
         </Script>
+      </head>
 
+      <body className="[font-family:var(--font-montserrat)] antialiased">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-P83KS2ZT"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+
+        {/* Facebook Pixel (noscript) */}
         <noscript>
           <img
             height="1"
@@ -64,9 +92,7 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
-      </head>
 
-      <body className="[font-family:var(--font-montserrat)] antialiased">
         {children}
       </body>
     </html>
