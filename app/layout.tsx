@@ -61,6 +61,9 @@ export default function RootLayout({
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'AW-17217121782');
+              gtag('config', 'AW-17217121782/9VIkCNDXleQcEPbb4ZFA', {
+                'phone_conversion_number': '080723 19441'
+              });
             `,
           }}
         />

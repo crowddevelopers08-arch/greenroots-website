@@ -16,6 +16,19 @@ export default function ThankYouPage() {
         `}
       </Script>
 
+      {/* Google Ads: Submit lead form (New) conversion */}
+      <Script id="google-ads-lead-conversion" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('event', 'conversion', {
+            'send_to': 'AW-17217121782/etLoCMX6k-QcEPbb4ZFA',
+            'value': 1.0,
+            'currency': 'INR'
+          });
+        `}
+      </Script>
+
       <main className="min-h-screen bg-[#faf9f7] px-5 py-8 md:px-12 md:py-12">
         <div className="mx-auto max-w-4xl">
           <div className="mb-6 flex justify-start">
